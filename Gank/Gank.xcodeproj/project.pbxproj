@@ -14,6 +14,9 @@
 		86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62141CEB27B600D1FEB6 /* LaunchScreen.storyboard */; };
 		86BD62211CEB27B600D1FEB6 /* GankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD62201CEB27B600D1FEB6 /* GankTests.swift */; };
 		86BD622C1CEB27B600D1FEB6 /* GankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD622B1CEB27B600D1FEB6 /* GankUITests.swift */; };
+		86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */; };
+		86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */; };
+		86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		86BD62271CEB27B600D1FEB6 /* GankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD622B1CEB27B600D1FEB6 /* GankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankUITests.swift; sourceTree = "<group>"; };
 		86BD622D1CEB27B600D1FEB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBarController.swift; sourceTree = "<group>"; };
+		86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBar.swift; sourceTree = "<group>"; };
+		86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCTabBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,10 @@
 		86BD620A1CEB27B600D1FEB6 /* Gank */ = {
 			isa = PBXGroup;
 			children = (
+				86BD62391CEB29F200D1FEB6 /* Comment */,
+				86BD623A1CEB29F200D1FEB6 /* Sort */,
+				86BD623B1CEB29F200D1FEB6 /* Welfare */,
+				86BD623C1CEB2A0200D1FEB6 /* Other */,
 				86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */,
 				86BD620D1CEB27B600D1FEB6 /* ViewController.swift */,
 				86BD620F1CEB27B600D1FEB6 /* Main.storyboard */,
@@ -123,6 +133,45 @@
 				86BD622D1CEB27B600D1FEB6 /* Info.plist */,
 			);
 			path = GankUITests;
+			sourceTree = "<group>";
+		};
+		86BD62391CEB29F200D1FEB6 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		86BD623A1CEB29F200D1FEB6 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		86BD623B1CEB29F200D1FEB6 /* Welfare */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Welfare;
+			sourceTree = "<group>";
+		};
+		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
+				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		86BD62431CEB2C0E00D1FEB6 /* QCTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */,
+				86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */,
+			);
+			name = QCTabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +236,7 @@
 		86BD62001CEB27B600D1FEB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = QC;
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = qiuncheng.com;
@@ -233,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
+				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +310,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
+				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 			);
