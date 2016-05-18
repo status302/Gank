@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="266" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKl-Bi-uwC">
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKl-Bi-uwC">
                     <rect key="frame" x="90" y="0.0" width="74" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="干货分类">
@@ -24,7 +24,7 @@
                         <action selector="tabBarButtonDidClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="QVk-xR-J7z"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROC-gB-7bh">
+                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROC-gB-7bh">
                     <rect key="frame" x="191" y="0.0" width="74.5" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="妹子福利">
@@ -37,7 +37,7 @@
                         <action selector="tabBarButtonDidClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="JAa-gl-bgF"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi2-M0-GaW">
+                <button opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi2-M0-GaW">
                     <rect key="frame" x="0.0" y="0.0" width="74" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="每日一干">
@@ -69,7 +69,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="EveryDayGankButton" destination="hi2-M0-GaW" id="FEo-ua-Z1t"/>
+                <outlet property="everyDayGankButton" destination="hi2-M0-GaW" id="PJK-hF-iVp"/>
                 <outlet property="gankSortButton" destination="kKl-Bi-uwC" id="HfT-ye-Txx"/>
                 <outlet property="meiziWelfareButton" destination="ROC-gB-7bh" id="g1e-wk-gbE"/>
             </connections>

@@ -15,7 +15,7 @@ protocol QCTabBarDelegate {
 
 class QCTabBar: UIView {
 
-    @IBOutlet weak var EveryDayGankButton: UIButton!
+    @IBOutlet weak var everyDayGankButton: UIButton!
     @IBOutlet weak var gankSortButton: UIButton!
     @IBOutlet weak var meiziWelfareButton: UIButton!
 
@@ -28,14 +28,20 @@ class QCTabBar: UIView {
         return NSBundle.mainBundle().loadNibNamed("QCTabBar", owner: nil, options: nil).first as! QCTabBar
     }
 
+    /**
+     *  when first load from nib, the first tab is everyDayGankButton
+     */
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        selectedButton = EveryDayGankButton
+        selectedButton = everyDayGankButton
         selectedButton.enabled = false
     }
 
 
+    /**
+     *  tags: everyDayGankButton = 100, gankSortButton = 101,  meiziWelfareButton = 102
+     */
 
     @IBAction func tabBarButtonDidClicked(sender: UIButton) {
         print("button's tag is : \(sender.tag)")
@@ -45,6 +51,7 @@ class QCTabBar: UIView {
         }
 
         selectedButton.enabled = true
+        delegate?.tabBarDidSelected(fromButtonWithTag: selectedButton.tag, to: sender.tag, title: (sender.titleLabel?.text)!)
         selectedButton = sender
         selectedButton.enabled = false
 

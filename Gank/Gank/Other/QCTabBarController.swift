@@ -8,16 +8,40 @@
 
 import UIKit
 
-class QCTabBarController: UITabBarController {
+class QCTabBarController: UITabBarController, QCTabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBarView.delegate = self
+
         //添加自定义的tabBar
         let tabBarView = self.tabBarView
         self.tabBar.addSubview(tabBarView)
+
+        let vc1 = UIViewController()
+        vc1.view.backgroundColor = UIColor.redColor()
+        self.addChildViewController(self.setupChildViewControllers(vc1, titleText: "干货"))
+        let vc2 = UIViewController()
+        vc2.view.backgroundColor = UIColor.orangeColor()
+        self.addChildViewController(self.setupChildViewControllers(vc2, titleText: "分类"))
+
+        let vc3 = UIViewController()
+        vc3.view.backgroundColor = UIColor.blueColor()
+        self.addChildViewController(self.setupChildViewControllers(vc3, titleText: "福利"))
+
+
+
     }
 
+
+
+    func setupChildViewControllers(vc: UIViewController, titleText: String) -> UIViewController {
+        let navigation = UINavigationController()
+        vc.navigationItem.title = titleText
+        navigation.addChildViewController(vc)
+        return navigation
+    }
 
     // 懒加载tabBarView
     private lazy var tabBarView: QCTabBar = {
@@ -42,5 +66,8 @@ class QCTabBarController: UITabBarController {
             }
         }
     }
-
+    // MARK: - QCTabBarDelegate
+    func tabBarDidSelected(fromButtonWithTag from: Int, to: Int, title: String) {
+        self.selectedIndex = to % 100
+    }
 }
