@@ -7,29 +7,64 @@
 //
 
 import UIKit
+import Alamofire
 
-class QCEveryDayGnakViewController: UIViewController {
+class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        self.view.addSubview(self.collectionView)
+
+        // Alamofire
+
+        Alamofire.request(.GET, "http://gank.io/api/day/2016/05/20", parameters: nil, encoding: .URL, headers: nil).responseJSON { (response) in
+            if let json = response.result.value {
+                print("\(json["results"])")
+            }
+        }
+
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
+    lazy var collectionView: QCCollectionView = {
+        let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionViewLayout())
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        return collectionView
+
+    }()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension QCEveryDayGnakViewController {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 50
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.everydayGankCellID, forIndexPath: indexPath) as UICollectionViewCell
+        let labelTag = 10
+        var label = cell.contentView.viewWithTag(labelTag) as? UILabel
+        if label == nil {
+            label = UILabel()
+            label?.tag = labelTag
+            cell.contentView.addSubview(label!)
+        }
+        label?.text = "\(indexPath.row)"
+        label?.sizeToFit()
+
+        cell.backgroundColor = UIColor.randomColor()
+        return cell
+    }
+}
+
