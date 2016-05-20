@@ -19,9 +19,9 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         let tabBarView = self.tabBarView
         self.tabBar.addSubview(tabBarView)
 
-        let vc1 = UIViewController()
-        vc1.view.backgroundColor = UIColor.redColor()
-        self.addChildViewController(self.setupChildViewControllers(vc1, titleText: "干货"))
+        let everydayGankVC = QCEveryDayGnakViewController()
+        everydayGankVC.view.backgroundColor = UIColor.redColor()
+        self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "干货"))
         let vc2 = UIViewController()
         vc2.view.backgroundColor = UIColor.orangeColor()
         self.addChildViewController(self.setupChildViewControllers(vc2, titleText: "分类"))

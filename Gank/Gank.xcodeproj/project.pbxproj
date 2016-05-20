@@ -17,6 +17,9 @@
 		86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */; };
 		86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */; };
 		86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */; };
+		86BD62831CEDDA2300D1FEB6 /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD62821CEDDA2300D1FEB6 /* QCEveryDayGnakViewController.swift */; };
+		86BD62861CEE373100D1FEB6 /* QCEveryDayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD62841CEE373100D1FEB6 /* QCEveryDayGankCell.swift */; };
+		86BD62871CEE373100D1FEB6 /* QCEveryDayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62851CEE373100D1FEB6 /* QCEveryDayGankCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBarController.swift; sourceTree = "<group>"; };
 		86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBar.swift; sourceTree = "<group>"; };
 		86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCTabBar.xib; sourceTree = "<group>"; };
+		86BD62821CEDDA2300D1FEB6 /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = ../../../../WaterLayout/WaterLayout/WaterLayout/QCEveryDayGnakViewController.swift; sourceTree = "<group>"; };
+		86BD62841CEE373100D1FEB6 /* QCEveryDayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGankCell.swift; path = ../../../../WaterLayout/WaterLayout/WaterLayout/QCEveryDayGankCell.swift; sourceTree = "<group>"; };
+		86BD62851CEE373100D1FEB6 /* QCEveryDayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEveryDayGankCell.xib; path = ../../../../WaterLayout/WaterLayout/WaterLayout/QCEveryDayGankCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,7 @@
 		86BD620A1CEB27B600D1FEB6 /* Gank */ = {
 			isa = PBXGroup;
 			children = (
-				86BD62391CEB29F200D1FEB6 /* Comment */,
+				86BD62391CEB29F200D1FEB6 /* EveryDayGank */,
 				86BD623A1CEB29F200D1FEB6 /* Sort */,
 				86BD623B1CEB29F200D1FEB6 /* Welfare */,
 				86BD623C1CEB2A0200D1FEB6 /* Other */,
@@ -135,10 +141,14 @@
 			path = GankUITests;
 			sourceTree = "<group>";
 		};
-		86BD62391CEB29F200D1FEB6 /* Comment */ = {
+		86BD62391CEB29F200D1FEB6 /* EveryDayGank */ = {
 			isa = PBXGroup;
 			children = (
+				86BD62821CEDDA2300D1FEB6 /* QCEveryDayGnakViewController.swift */,
+				86BD62841CEE373100D1FEB6 /* QCEveryDayGankCell.swift */,
+				86BD62851CEE373100D1FEB6 /* QCEveryDayGankCell.xib */,
 			);
+			name = EveryDayGank;
 			path = Comment;
 			sourceTree = "<group>";
 		};
@@ -283,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
+				86BD62871CEE373100D1FEB6 /* QCEveryDayGankCell.xib in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
@@ -313,6 +324,8 @@
 				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
+				86BD62861CEE373100D1FEB6 /* QCEveryDayGankCell.swift in Sources */,
+				86BD62831CEDDA2300D1FEB6 /* QCEveryDayGnakViewController.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +551,7 @@
 				86BD62321CEB27B600D1FEB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86BD62331CEB27B600D1FEB6 /* Build configuration list for PBXNativeTarget "GankTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +560,7 @@
 				86BD62351CEB27B600D1FEB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86BD62361CEB27B600D1FEB6 /* Build configuration list for PBXNativeTarget "GankUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +569,7 @@
 				86BD62381CEB27B600D1FEB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
