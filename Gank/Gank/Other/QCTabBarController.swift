@@ -26,9 +26,9 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         vc2.view.backgroundColor = UIColor.orangeColor()
         self.addChildViewController(self.setupChildViewControllers(vc2, titleText: "分类"))
 
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = UIColor.blueColor()
-        self.addChildViewController(self.setupChildViewControllers(vc3, titleText: "福利"))
+        let welfareVC = WelfareViewController()
+        welfareVC.view.backgroundColor = UIColor.whiteColor()
+        self.addChildViewController(self.setupChildViewControllers(welfareVC, titleText: "福利"))
 
 
 

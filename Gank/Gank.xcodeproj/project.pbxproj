@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */; };
+		8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951D1CF32A2100C79531 /* WelfareViewController.swift */; };
+		862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */; };
+		862595221CF3358F00C79531 /* UIView+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595211CF3358F00C79531 /* UIView+QC.swift */; };
+		862595241CF33F7C00C79531 /* WelfarreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595231CF33F7C00C79531 /* WelfarreModel.swift */; };
+		862595261CF3419D00C79531 /* Alamofire+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595251CF3419D00C79531 /* Alamofire+QC.swift */; };
+		8625952A1CF3450300C79531 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595291CF3450300C79531 /* URLs.swift */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
 		86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620D1CEB27B600D1FEB6 /* ViewController.swift */; };
 		86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD620F1CEB27B600D1FEB6 /* Main.storyboard */; };
@@ -46,6 +52,12 @@
 /* Begin PBXFileReference section */
 		2F9091BAEA8D432BB0CCE95F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = Gank/EveryDayGank/QCEveryDayGnakViewController.swift; sourceTree = SOURCE_ROOT; };
+		8625951D1CF32A2100C79531 /* WelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareViewController.swift; sourceTree = "<group>"; };
+		8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCCollectionLayout.swift; sourceTree = "<group>"; };
+		862595211CF3358F00C79531 /* UIView+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+QC.swift"; sourceTree = "<group>"; };
+		862595231CF33F7C00C79531 /* WelfarreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfarreModel.swift; sourceTree = "<group>"; };
+		862595251CF3419D00C79531 /* Alamofire+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+QC.swift"; sourceTree = "<group>"; };
+		862595291CF3450300C79531 /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BD620D1CEB27B600D1FEB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +124,23 @@
 				2F9091BAEA8D432BB0CCE95F /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		862595271CF341A300C79531 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				862595251CF3419D00C79531 /* Alamofire+QC.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		862595281CF344E500C79531 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				86C8D26E1CEF152E00133FF5 /* Constants.swift */,
+				862595291CF3450300C79531 /* URLs.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		86BD61FF1CEB27B600D1FEB6 = {
@@ -193,6 +222,9 @@
 		86BD623B1CEB29F200D1FEB6 /* Welfare */ = {
 			isa = PBXGroup;
 			children = (
+				8625951D1CF32A2100C79531 /* WelfareViewController.swift */,
+				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
+				862595231CF33F7C00C79531 /* WelfarreModel.swift */,
 			);
 			path = Welfare;
 			sourceTree = "<group>";
@@ -203,6 +235,7 @@
 				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
 				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
 				86C8D2721CEF170D00133FF5 /* Extensions */,
+				862595271CF341A300C79531 /* Network */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -219,8 +252,9 @@
 		86C8D2721CEF170D00133FF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				86C8D26E1CEF152E00133FF5 /* Constants.swift */,
+				862595281CF344E500C79531 /* Constants */,
 				86C8D2701CEF170400133FF5 /* UIColor+QC.swift */,
+				862595211CF3358F00C79531 /* UIView+QC.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -413,14 +447,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862595241CF33F7C00C79531 /* WelfarreModel.swift in Sources */,
 				86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */,
+				862595261CF3419D00C79531 /* Alamofire+QC.swift in Sources */,
+				862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */,
+				8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */,
 				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
+				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
