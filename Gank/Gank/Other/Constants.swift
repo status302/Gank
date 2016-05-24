@@ -15,7 +15,7 @@ struct Constants {
     static let everydayGankCellID = "everydayGankCellID"
 
     // MARK: - WealfareVC
-    static let welfareCellID = "welfareCellID"
+    static let welfareCellID = "WelfareCollectionViewCellID"
 
 
     // MARK: - CollectionView Layout

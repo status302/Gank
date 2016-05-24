@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4724A468AE69BC895E02804B /* Pods_Gank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */; };
 		860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */; };
 		8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951D1CF32A2100C79531 /* WelfareViewController.swift */; };
 		862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */; };
 		862595221CF3358F00C79531 /* UIView+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595211CF3358F00C79531 /* UIView+QC.swift */; };
-		862595241CF33F7C00C79531 /* WelfarreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595231CF33F7C00C79531 /* WelfarreModel.swift */; };
-		862595261CF3419D00C79531 /* Alamofire+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595251CF3419D00C79531 /* Alamofire+QC.swift */; };
 		8625952A1CF3450300C79531 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595291CF3450300C79531 /* URLs.swift */; };
+		8625952D1CF45ECF00C79531 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625952C1CF45ECF00C79531 /* Result.swift */; };
+		8625952F1CF45ED900C79531 /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625952E1CF45ED900C79531 /* RootClass.swift */; };
+		862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595301CF4626A00C79531 /* AlamofireManager.swift */; };
+		862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */; };
+		862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */; };
+		864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
 		86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620D1CEB27B600D1FEB6 /* ViewController.swift */; };
 		86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD620F1CEB27B600D1FEB6 /* Main.storyboard */; };
@@ -29,7 +34,6 @@
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
 		86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */; };
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
-		C244F086BD3669CEFB5EFD3C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9091BAEA8D432BB0CCE95F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +54,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 		2F9091BAEA8D432BB0CCE95F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = Gank/EveryDayGank/QCEveryDayGnakViewController.swift; sourceTree = SOURCE_ROOT; };
 		8625951D1CF32A2100C79531 /* WelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareViewController.swift; sourceTree = "<group>"; };
 		8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCCollectionLayout.swift; sourceTree = "<group>"; };
 		862595211CF3358F00C79531 /* UIView+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+QC.swift"; sourceTree = "<group>"; };
-		862595231CF33F7C00C79531 /* WelfarreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfarreModel.swift; sourceTree = "<group>"; };
-		862595251CF3419D00C79531 /* Alamofire+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+QC.swift"; sourceTree = "<group>"; };
 		862595291CF3450300C79531 /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		8625952C1CF45ECF00C79531 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		8625952E1CF45ED900C79531 /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
+		862595301CF4626A00C79531 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareCollectionViewCell.swift; sourceTree = "<group>"; };
+		862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelfareCollectionViewCell.xib; sourceTree = "<group>"; };
+		864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareFlowLayout.swift; sourceTree = "<group>"; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BD620D1CEB27B600D1FEB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,8 +88,8 @@
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEverydayGankCell.swift; path = Gank/EveryDayGank/QCEverydayGankCell.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
-		C9FED13E2D1C14C167539003 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D1488B38953081ADBE4B3B08 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C244F086BD3669CEFB5EFD3C /* Pods.framework in Frameworks */,
+				4724A468AE69BC895E02804B /* Pods_Gank.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,11 +118,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		016C02B4D48EB62802B5D4C5 /* Pods */ = {
+		1BD8B0D677E4DAE313816CE1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D1488B38953081ADBE4B3B08 /* Pods.debug.xcconfig */,
-				C9FED13E2D1C14C167539003 /* Pods.release.xcconfig */,
+				209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */,
+				DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -122,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9091BAEA8D432BB0CCE95F /* Pods.framework */,
+				A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,7 +139,7 @@
 		862595271CF341A300C79531 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				862595251CF3419D00C79531 /* Alamofire+QC.swift */,
+				862595301CF4626A00C79531 /* AlamofireManager.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -143,6 +153,15 @@
 			name = Constants;
 			sourceTree = "<group>";
 		};
+		8625952B1CF45EBD00C79531 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8625952C1CF45ECF00C79531 /* Result.swift */,
+				8625952E1CF45ED900C79531 /* RootClass.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		86BD61FF1CEB27B600D1FEB6 = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +169,8 @@
 				86BD621F1CEB27B600D1FEB6 /* GankTests */,
 				86BD622A1CEB27B600D1FEB6 /* GankUITests */,
 				86BD62091CEB27B600D1FEB6 /* Products */,
-				016C02B4D48EB62802B5D4C5 /* Pods */,
 				75D20887D8D350C0C5117EDB /* Frameworks */,
+				1BD8B0D677E4DAE313816CE1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,8 +242,11 @@
 			isa = PBXGroup;
 			children = (
 				8625951D1CF32A2100C79531 /* WelfareViewController.swift */,
+				864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */,
 				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
-				862595231CF33F7C00C79531 /* WelfarreModel.swift */,
+				862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */,
+				862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */,
+				8625952B1CF45EBD00C79531 /* Model */,
 			);
 			path = Welfare;
 			sourceTree = "<group>";
@@ -266,12 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86BD62301CEB27B600D1FEB6 /* Build configuration list for PBXNativeTarget "Gank" */;
 			buildPhases = (
-				D2DF092471013B06AA724960 /* Check Pods Manifest.lock */,
+				AEF9504B18EE7A625B514A70 /* 📦 Check Pods Manifest.lock */,
 				86BD62041CEB27B600D1FEB6 /* Sources */,
 				86BD62051CEB27B600D1FEB6 /* Frameworks */,
 				86BD62061CEB27B600D1FEB6 /* Resources */,
-				A6701DFEE03E4080917D980D /* Embed Pods Frameworks */,
-				635F66B5380550D34C290E3E /* Copy Pods Resources */,
+				1181358C3B6F40A7B3BFCC61 /* 📦 Embed Pods Frameworks */,
+				FE447F0817A429A3855CA21C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -375,6 +397,7 @@
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
+				862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,49 +418,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		635F66B5380550D34C290E3E /* Copy Pods Resources */ = {
+		1181358C3B6F40A7B3BFCC61 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A6701DFEE03E4080917D980D /* Embed Pods Frameworks */ = {
+		AEF9504B18EE7A625B514A70 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D2DF092471013B06AA724960 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FE447F0817A429A3855CA21C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -447,21 +470,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				862595241CF33F7C00C79531 /* WelfarreModel.swift in Sources */,
 				86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */,
-				862595261CF3419D00C79531 /* Alamofire+QC.swift in Sources */,
 				862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */,
 				8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */,
+				8625952F1CF45ED900C79531 /* RootClass.swift in Sources */,
 				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
+				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
+				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
+				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +627,7 @@
 		};
 		86BD62311CEB27B600D1FEB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1488B38953081ADBE4B3B08 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Gank/Info.plist;
@@ -613,7 +639,7 @@
 		};
 		86BD62321CEB27B600D1FEB6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9FED13E2D1C14C167539003 /* Pods.release.xcconfig */;
+			baseConfigurationReference = DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Gank/Info.plist;
