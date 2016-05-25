@@ -32,13 +32,20 @@ class WelfareViewController: UIViewController {
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSizeMake(Constants.Screen_width / 2, 300)
+        let width = Constants.Screen_width*0.5 - 2.0
+        layout.itemSize = CGSizeMake( width, width)
+        layout.minimumLineSpacing = 2.0
+        layout.minimumInteritemSpacing = 2.0
+        
 
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
+        collectionView.backgroundColor = UIColor.whiteColor()
+
+        collectionView.contentInset = UIEdgeInsetsZero
+
         collectionView.dataSource = self
 
-//        collectionView.backgroundColor = UIColor.redColor()
 
 //        collectionView.registerClass(WelfareCollectionViewCell.self, forCellWithReuseIdentifier: Constants.welfareCellID)
         collectionView.registerNib(UINib.init(nibName: "WelfareCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.welfareCellID)
@@ -58,9 +65,7 @@ extension WelfareViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.welfareCellID, forIndexPath: indexPath) as! WelfareCollectionViewCell
 
-        if let url = NSURL(string: results[indexPath.row].url) {
-            cell.meiziImageView.kf_setImageWithURL(url)
-        }
+        cell.result = results[indexPath.row]
 
         return cell
     }

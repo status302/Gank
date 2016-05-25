@@ -18,7 +18,11 @@ class WelfareCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    var result: Result! {
+        didSet {
+            meiziImageView.kf_setImageWithURL(NSURL(string: result.url)!)
+        }
+    }
     // MARK: - lazy
     lazy var welfareViewCell: WelfareCollectionViewCell = {
         let welfareViewCell = NSBundle.mainBundle().loadNibNamed("WelfareCollectionViewCell", owner: nil, options: nil).first as! WelfareCollectionViewCell
