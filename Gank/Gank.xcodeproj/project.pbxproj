@@ -19,6 +19,8 @@
 		862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */; };
 		862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */; };
 		864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */; };
+		864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2B1CF820F100C5569A /* Sort.storyboard */; };
+		864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A2D1CF823C400C5569A /* SortViewController.swift */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
 		86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620D1CEB27B600D1FEB6 /* ViewController.swift */; };
 		86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD620F1CEB27B600D1FEB6 /* Main.storyboard */; };
@@ -67,6 +69,8 @@
 		862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareCollectionViewCell.swift; sourceTree = "<group>"; };
 		862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelfareCollectionViewCell.xib; sourceTree = "<group>"; };
 		864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareFlowLayout.swift; sourceTree = "<group>"; };
+		864B2A2B1CF820F100C5569A /* Sort.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sort.storyboard; sourceTree = "<group>"; };
+		864B2A2D1CF823C400C5569A /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BD620D1CEB27B600D1FEB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 		86BD623A1CEB29F200D1FEB6 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
+				864B2A2B1CF820F100C5569A /* Sort.storyboard */,
+				864B2A2D1CF823C400C5569A /* SortViewController.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
+				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
@@ -484,6 +491,7 @@
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,

@@ -50,4 +50,16 @@ extension UIView {
             self.frame = frame
         }
     }
+        /// 返回view的size
+    public var size: CGSize {
+        get {
+            return self.frame.size
+        }
+
+        set {
+            var frame = self.frame
+            frame.size = newValue
+            self.frame = frame
+        }
+    }
 }

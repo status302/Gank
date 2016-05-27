@@ -22,9 +22,14 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         let everydayGankVC = QCEveryDayGnakViewController()
         everydayGankVC.view.backgroundColor = UIColor.redColor()
         self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "干货"))
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = UIColor.orangeColor()
-        self.addChildViewController(self.setupChildViewControllers(vc2, titleText: "分类"))
+        let sb = UIStoryboard(name: "Sort", bundle: nil)
+        guard let sortVC = sb.instantiateInitialViewController() else {
+            return
+        }
+
+        sortVC.view.backgroundColor = UIColor.orangeColor()
+        sortVC.title = "分类"
+        self.addChildViewController(sortVC)
 
         let welfareVC = WelfareViewController()
         welfareVC.view.backgroundColor = UIColor.whiteColor()
