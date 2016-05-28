@@ -15,7 +15,7 @@ class SortViewController: UIViewController {
 
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
-        let titles = ["Android","iOS","休息视频","拓展资源","前端","福利","Android","iOS"]
+        let titles = ["Android","iOS","休息视频","拓展资源","前端","福利"]
         return titles
     }()
     // MARK: - Properties
@@ -36,34 +36,43 @@ class SortViewController: UIViewController {
      根据stirng来计算UIButton的size
      */
     func buttonSize(str: String) -> CGSize? {
-        return (str as NSString).boundingRectWithSize(headScrollView.size, options: NSStringDrawingOptions.init(rawValue: 0), attributes: [NSFontAttributeName: UIFont.systemFontOfSize(25)], context: nil).size
+        return (str as NSString).boundingRectWithSize(headScrollView.size, options: NSStringDrawingOptions.init(rawValue: 0), attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18)], context: nil).size
     }
 
     private func setupHeadView() {
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
+        var widths = [CGFloat]()
+        var xs = [CGFloat]()
         var headWidth: CGFloat = 0.0
         for title in titles {
             let size = buttonSize(title)
-            headWidth += size!.width
+            headWidth += (size!.width + 20)
+            xs.append(headWidth)
+            widths.append(size!.width)
             print("\(size)")
         }
+        xs.insert(5, atIndex: 0)
 
-        headScrollView.contentSize = CGSizeMake(headWidth + CGFloat(titles.count)*10.0, 0)
-        print("\(headScrollView.contentSize)")
+        headScrollView.contentSize = CGSizeMake(headWidth, 0)
 
-        var btnWidth: CGFloat = 0.0
         for (index, title) in titles.enumerate() {
             let button = UIButton(type: .Custom)
             button.setTitle(title, forState: .Normal)
             button.setTitle(title, forState: .Disabled)
+
+//            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+            button.titleLabel?.textAlignment = .Center
+
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             button.setTitleColor(UIColor.redColor(), forState: .Disabled)
-//            button.titleLabel?.font = UIFont.systemFontOfSize(15)
-            button.sizeToFit()
-            button.x = btnWidth
+            button.titleLabel?.font = UIFont.systemFontOfSize(18)
+
+            button.frame = CGRectMake(xs[index], 0, widths[index] + 20, headScrollView.height)
             button.addTarget(self, action: #selector(SortViewController.didClickHeadButton(_:)), forControlEvents: .TouchUpInside)
+
             headScrollView.addSubview(button)
-            btnWidth += button.width
             if index == 0 {
                 button.enabled = false
                 disabledButton = button
@@ -96,4 +105,11 @@ class SortViewController: UIViewController {
     }
     */
 
+}
+
+extension SortViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let offsetX = scrollView.contentOffset.x
+        print("offsetX is : \(offsetX)")
+    }
 }

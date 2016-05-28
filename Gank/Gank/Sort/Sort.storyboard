@@ -20,10 +20,12 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c0-MD-iZA">
                                 <rect key="frame" x="0.0" y="64" width="600" height="36"/>
-                                <color key="backgroundColor" red="0.50381207120000004" green="0.9361297448" blue="0.584551245" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="lAh-mR-FdO"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="pHI-fv-qCI" id="Tad-bN-5rK"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
