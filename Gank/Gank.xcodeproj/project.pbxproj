@@ -21,6 +21,8 @@
 		864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */; };
 		864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2B1CF820F100C5569A /* Sort.storyboard */; };
 		864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A2D1CF823C400C5569A /* SortViewController.swift */; };
+		864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */; };
+		864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
 		86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620D1CEB27B600D1FEB6 /* ViewController.swift */; };
 		86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD620F1CEB27B600D1FEB6 /* Main.storyboard */; };
@@ -71,6 +73,8 @@
 		864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareFlowLayout.swift; sourceTree = "<group>"; };
 		864B2A2B1CF820F100C5569A /* Sort.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sort.storyboard; sourceTree = "<group>"; };
 		864B2A2D1CF823C400C5569A /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster 1.4.otf"; sourceTree = "<group>"; };
+		864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFPHaiBaoW12-GB.ttf"; sourceTree = "<group>"; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BD620D1CEB27B600D1FEB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +264,8 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
+				864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */,
 				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
 				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
 				86C8D2721CEF170D00133FF5 /* Extensions */,
@@ -398,6 +404,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
+				864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,

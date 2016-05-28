@@ -22,11 +22,23 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
         Alamofire.request(.GET, "http://gank.io/api/day/2016/05/20", parameters: nil, encoding: .URL, headers: nil).responseJSON { (response) in
             if let json = response.result.value {
-                print("\(json["results"])")
+
             }
         }
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // 设置导航栏透明
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 
+    }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 设置导航栏为nil
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
     }
 
     override func didReceiveMemoryWarning() {

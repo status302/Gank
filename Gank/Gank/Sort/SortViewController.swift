@@ -111,5 +111,10 @@ extension SortViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         print("offsetX is : \(offsetX)")
+
+        // 待处理顶部view的滚动问题
+        if (offsetX / Constants.Screen_width) < Constants.Screen_width * 0.5 {
+
+        }
     }
 }

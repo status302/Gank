@@ -21,7 +21,7 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
 
         let everydayGankVC = QCEveryDayGnakViewController()
         everydayGankVC.view.backgroundColor = UIColor.redColor()
-        self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "干货"))
+        self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "每日一Gank"))
         let sb = UIStoryboard(name: "Sort", bundle: nil)
         guard let sortVC = sb.instantiateInitialViewController() else {
             return
@@ -39,11 +39,13 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
 
     }
 
-
-
     func setupChildViewControllers(vc: UIViewController, titleText: String) -> UIViewController {
         let navigation = UINavigationController()
-        vc.navigationItem.title = titleText
+        let titlelabel = UILabel()
+        titlelabel.text = titleText
+        titlelabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 18)
+        titlelabel.sizeToFit()
+        vc.navigationItem.titleView = titlelabel
         navigation.addChildViewController(vc)
         return navigation
     }
