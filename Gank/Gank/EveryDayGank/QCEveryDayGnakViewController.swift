@@ -8,8 +8,11 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +22,18 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         self.view.addSubview(self.collectionView)
 
         // Alamofire
-
-        Alamofire.request(.GET, "http://gank.io/api/day/2016/05/20", parameters: nil, encoding: .URL, headers: nil).responseJSON { (response) in
-            if let json = response.result.value {
-
+        AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
+            guard let root = rootClass else {
+                print("没有获取到数据")
+                return
             }
+
+            self.results = root.results
+            self.collectionView.reloadData()
         }
+        
+
+
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,36 +55,47 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - private function
+    func loadMoreData() {
+        print("添加了加载更多数据")
+    }
 
+    // MARK: - lazy
     lazy var collectionView: QCCollectionView = {
         let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionViewLayout())
 
         collectionView.dataSource = self
         collectionView.delegate = self
 
+        // background color
+        collectionView.backgroundColor = UIColor.orangeColor()
+
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+
+        collectionView.pagingEnabled = true
+
         return collectionView
 
     }()
+
+    lazy var results = [Result]()
+
+
     
 }
 
 extension QCEveryDayGnakViewController {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return results.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.everydayGankCellID, forIndexPath: indexPath) as UICollectionViewCell
-        let labelTag = 10
-        var label = cell.contentView.viewWithTag(labelTag) as? UILabel
-        if label == nil {
-            label = UILabel()
-            label?.tag = labelTag
-            cell.contentView.addSubview(label!)
-        }
-        label?.text = "\(indexPath.row)"
-        label?.sizeToFit()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
+        if let url = NSURL(string: results[indexPath.item].url) {
 
-        cell.backgroundColor = UIColor.randomColor()
+            cell.imageView.kf_setImageWithURL(url)
+        }
+
         return cell
     }
 }

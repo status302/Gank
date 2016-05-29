@@ -152,13 +152,13 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
-		862595281CF344E500C79531 /* Constants */ = {
+		862595281CF344E500C79531 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				86C8D26E1CEF152E00133FF5 /* Constants.swift */,
 				862595291CF3450300C79531 /* URLs.swift */,
 			);
-			name = Constants;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		8625952B1CF45EBD00C79531 /* Model */ = {
@@ -286,7 +286,7 @@
 		86C8D2721CEF170D00133FF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				862595281CF344E500C79531 /* Constants */,
+				862595281CF344E500C79531 /* Common */,
 				86C8D2701CEF170400133FF5 /* UIColor+QC.swift */,
 				862595211CF3358F00C79531 /* UIView+QC.swift */,
 			);

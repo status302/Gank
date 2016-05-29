@@ -23,6 +23,8 @@ struct Constants {
     static let CollectionViewLayoutColumnMargin: CGFloat = 10.0
     static let CollectionViewLayoutRowMargin: CGFloat = 10.0
     static let CollectionViewLayoutEdgeInsets = UIEdgeInsets(top: 20.0, left: 8.0, bottom: 0.0, right: 8.0)
+    static let CollectionViewLayoutCellHeight: CGFloat = Constants.Screen_height - 160.0
+    static let CollectionViewLayoutCellWidth: CGFloat = Constants.Screen_width - 80.0
 }
 
 
