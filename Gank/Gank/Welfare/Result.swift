@@ -20,6 +20,7 @@ struct Result {
     var used: Bool!
     var who: String!
 
+
     init(fromDictionary dictionary: NSDictionary) {
 
         id = dictionary["_id"] as? String
@@ -31,5 +32,7 @@ struct Result {
         url = dictionary["url"] as? String
         used = dictionary["used"] as? Bool
         who = dictionary["who"] as? String
+
+
     }
 }

@@ -30,6 +30,19 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
             self.results = root.results
             self.collectionView.reloadData()
+
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
+            let formatter2 = NSDateFormatter()
+            formatter2.dateFormat = "yyyy-MM-dd"
+
+            let createTime = formatter.dateFromString(self.results[1].createdAt!)
+            print("创建的时间为：\(createTime)")
+            let dateStr = formatter2.stringFromDate(createTime!)
+            print("创建时间的字符为：\(dateStr)")
+
+
         }
         
 
@@ -78,9 +91,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         return collectionView
 
     }()
-
+    lazy var createString = String()
     lazy var results = [Result]()
-
 
     
 }
@@ -92,9 +104,20 @@ extension QCEveryDayGnakViewController {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
         if let url = NSURL(string: results[indexPath.item].url) {
-
             cell.imageView.kf_setImageWithURL(url)
         }
+        // 处理时间
+        let formatterToDate = NSDateFormatter()
+        formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let str = results[indexPath.item].createdAt
+        let createTime = formatterToDate.dateFromString(str)
+
+        let formatterToString = NSDateFormatter()
+        formatterToString.dateFormat = "yyyy/MM/dd"
+//        self.createString = formatterToString.stringFromDate(createTime!)
+        cell.timeLabel.text = "#" + formatterToString.stringFromDate(createTime!) + "#"
+
+        cell.sourceLabel.text = "来源：" + results[indexPath.item].who
 
         return cell
     }

@@ -11,9 +11,15 @@ import UIKit
 class QCEverydayGankCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        timeLabel.textColor = UIColor.whiteColor()
+        timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 14)
+        sourceLabel.textColor = UIColor.whiteColor()
+        sourceLabel.font = timeLabel.font
     }
 
 }
