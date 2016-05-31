@@ -9,13 +9,39 @@
 import UIKit
 import Kingfisher
 
+
 class WelfareViewController: UIViewController {
+
+
+    var isAlpha = false
 
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "refresh"), highlightedImage: nil, target: self, action: #selector(refreshBarButtonDidClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refreshBarButtonDidClick))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
+
         view.addSubview(collectionView)
+
+        // 加载数据
+        loadData()
+
+
+    }
+    // private functions
+    @objc private func refreshBarButtonDidClick() {
+        print("did click refresh button")
+
+        loadData()
+
+    }
+
+    private func loadData() {
+        // 每次加载数据之前都要将数据置空
+        results.removeAll()
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -24,7 +50,7 @@ class WelfareViewController: UIViewController {
 
             self.results = root.results
             self.collectionView.reloadData()
-        }
+    }
 
     }
 
@@ -32,11 +58,11 @@ class WelfareViewController: UIViewController {
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let width = Constants.Screen_width*0.5 - 2.0
+        let width = Constants.Screen_width*0.5 - 1.0
         layout.itemSize = CGSizeMake( width, width)
-        layout.minimumLineSpacing = 2.0
-        layout.minimumInteritemSpacing = 2.0
-        
+        layout.minimumLineSpacing = 1.0
+        layout.minimumInteritemSpacing = 1.0
+
 
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
@@ -45,6 +71,8 @@ class WelfareViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsetsZero
 
         collectionView.dataSource = self
+
+        collectionView.delegate = self
 
 
 //        collectionView.registerClass(WelfareCollectionViewCell.self, forCellWithReuseIdentifier: Constants.welfareCellID)
@@ -68,5 +96,36 @@ extension WelfareViewController: UICollectionViewDataSource {
         cell.result = results[indexPath.row]
 
         return cell
+    }
+}
+
+extension WelfareViewController: UICollectionViewDelegate {
+
+
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        print("shouldSelectItemAtIndexPath")
+
+
+
+        return true
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        print("didSelectItemAtIndexPath")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
+
+        UIView.animateWithDuration(0.3) {
+            cell.alphaView.alpha = 0.5
+        }
+    }
+
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        print("didHighlightItemAtIndexPath")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
+
+        UIView.animateWithDuration(0.15) {
+            cell.alphaView.alpha = 0.0
+        }
     }
 }

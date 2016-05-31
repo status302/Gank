@@ -11,16 +11,19 @@ import UIKit
 class WelfareCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var meiziImageView: UIImageView!
-
-
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var alphaView: UIView!
 
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        descriptionLabel.textColor = UIColor.whiteColor()
     }
     var result: Result! {
         didSet {
             meiziImageView.kf_setImageWithURL(NSURL(string: result.url)!)
+            descriptionLabel.text = "#" + result.desc
         }
     }
     // MARK: - lazy
@@ -28,4 +31,5 @@ class WelfareCollectionViewCell: UICollectionViewCell {
         let welfareViewCell = NSBundle.mainBundle().loadNibNamed("WelfareCollectionViewCell", owner: nil, options: nil).first as! WelfareCollectionViewCell
         return welfareViewCell
     }()
+    
 }

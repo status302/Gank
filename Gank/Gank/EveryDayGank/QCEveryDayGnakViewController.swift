@@ -21,6 +21,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
         self.view.addSubview(self.collectionView)
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bar_eye"), highlightedImage: UIImage(named: "bar_eye_highlighted"), target: self, action: #selector(didClickRightBarButton))
+
         // Alamofire
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -73,9 +75,13 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         print("添加了加载更多数据")
     }
 
+    @objc private func didClickRightBarButton() {
+        print("didClickRightBarButton")
+    }
+
     // MARK: - lazy
     lazy var collectionView: QCCollectionView = {
-        let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionViewLayout())
+        let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionLayout())
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -86,7 +92,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
-        collectionView.pagingEnabled = true
+//        collectionView.pagingEnabled = true
 
         return collectionView
 

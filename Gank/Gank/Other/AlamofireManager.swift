@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import PKHUD
 
 class AlamofireManager {
     typealias CompletedHandler = (rootClass: RootClass?)->Void
@@ -33,7 +34,9 @@ class AlamofireManager {
         } catch {
             print("error occur")
         }
+
 */
+        HUD.flash(.LabeledProgress(title: "", subtitle: "正在玩命加载ing"))
         let requestResult = Alamofire.request(.GET, strURL, parameters: nil, encoding: .URL, headers: nil)
         requestResult.responseJSON { (response) in
             guard let json = response.result.value else {
@@ -45,6 +48,7 @@ class AlamofireManager {
             // 处理json
             let model = RootClass(fromDictionary: json as! NSDictionary)
             completedHandler(rootClass: model)
+            HUD.hide()
         }
     }
 }
