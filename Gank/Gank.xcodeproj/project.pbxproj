@@ -42,6 +42,8 @@
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
 		86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */; };
 		86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */; };
+		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
+		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
+		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
+		86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowWelfareViewController.xib; sourceTree = "<group>"; };
 		A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				8625951D1CF32A2100C79531 /* WelfareViewController.swift */,
+				86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */,
+				86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */,
 				864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */,
 				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
 				862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */,
@@ -432,6 +438,7 @@
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
+				86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */,
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
 				86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */,
@@ -530,6 +537,7 @@
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
+				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

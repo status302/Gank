@@ -76,13 +76,12 @@ class WelfareViewController: UIViewController {
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
 
-
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
         collectionView.backgroundColor = UIColor.whiteColor()
 
         let refreshController = UIRefreshControl()
-        
+
         refreshController.addTarget(self, action: #selector(WelfareViewController.refreshBarButtonDidClick), forControlEvents: .ValueChanged)
 
 
@@ -91,14 +90,11 @@ class WelfareViewController: UIViewController {
 
         collectionView.contentInset = UIEdgeInsetsZero
 
-
-
         collectionView.dataSource = self
 
         collectionView.delegate = self
 
-
-//        collectionView.registerClass(WelfareCollectionViewCell.self, forCellWithReuseIdentifier: Constants.welfareCellID)
+        // 从nib中加载cell
         collectionView.registerNib(UINib.init(nibName: "WelfareCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.welfareCellID)
 
         return collectionView
@@ -133,7 +129,11 @@ extension WelfareViewController: UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-
+        let showWealfareVC = ShowWelfareViewController()
+        showWealfareVC.result = self.results[indexPath.item]
+        self.presentViewController(showWealfareVC, animated: true) {
+            print("已经成功-------------")
+        }
     }
 
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
