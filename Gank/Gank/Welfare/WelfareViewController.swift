@@ -12,25 +12,38 @@ import Kingfisher
 
 class WelfareViewController: UIViewController {
 
-
-    var isAlpha = false
-
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "refresh"), highlightedImage: nil, target: self, action: #selector(refreshBarButtonDidClick))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refreshBarButtonDidClick))
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
 
         view.addSubview(collectionView)
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
         // 加载数据
         loadData()
 
+    }
+
+    override func viewWillAppear(animated: Bool) {
+         super.viewWillAppear(animated)
+        /**
+         * 隐藏navigationBar
+         */
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
 
     }
+
     // private functions
     @objc private func refreshBarButtonDidClick() {
         print("did click refresh button")
@@ -59,7 +72,7 @@ class WelfareViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width = Constants.Screen_width*0.5 - 1.0
-        layout.itemSize = CGSizeMake( width, width)
+        layout.itemSize = CGSizeMake(width, width)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
 
@@ -68,7 +81,17 @@ class WelfareViewController: UIViewController {
 
         collectionView.backgroundColor = UIColor.whiteColor()
 
+        let refreshController = UIRefreshControl()
+        
+        refreshController.addTarget(self, action: #selector(WelfareViewController.refreshBarButtonDidClick), forControlEvents: .ValueChanged)
+
+
+
+        collectionView.addSubview(refreshController)
+
         collectionView.contentInset = UIEdgeInsetsZero
+
+
 
         collectionView.dataSource = self
 
@@ -105,19 +128,12 @@ extension WelfareViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         print("shouldSelectItemAtIndexPath")
 
-
-
         return true
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        print("didSelectItemAtIndexPath")
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
 
-        UIView.animateWithDuration(0.3) {
-            cell.alphaView.alpha = 0.5
-        }
     }
 
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -127,5 +143,24 @@ extension WelfareViewController: UICollectionViewDelegate {
         UIView.animateWithDuration(0.15) {
             cell.alphaView.alpha = 0.0
         }
+    }
+
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
+
+        UIView.animateWithDuration(0.3) {
+            cell.alphaView.alpha = 0.5
+        }
+    }
+
+}
+extension WelfareViewController {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        print("-----scrollView contentOffset.y is : \(scrollView.contentOffset.y)")
+
+        let radio:CGFloat = abs(scrollView.contentOffset.y / 60.0)
+//        refreshView.alpha = radio
+        view.layoutIfNeeded()
+
     }
 }

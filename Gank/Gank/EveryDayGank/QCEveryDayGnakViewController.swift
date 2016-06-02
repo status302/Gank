@@ -12,8 +12,6 @@ import Kingfisher
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +79,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
     // MARK: - lazy
     lazy var collectionView: QCCollectionView = {
-        let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionLayout())
+        let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionViewLayout())
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -99,6 +97,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
     }()
     lazy var createString = String()
     lazy var results = [Result]()
+
+    let animation = CABasicAnimation()
 
     
 }

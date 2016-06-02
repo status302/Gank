@@ -28,6 +28,11 @@ class SortViewController: UIViewController {
 
 
         setupHeadView()
+
+        //test code
+        let pullView = PullToRefreshView.refreshView()
+        pullView.frame = CGRectMake(10,200 , 100, 40)
+        view.addSubview(pullView)
     }
 
     // MARK: - private functions
