@@ -8,10 +8,12 @@
 
 import UIKit
 import Kingfisher
+import PKHUD
 
 
 class WelfareViewController: UIViewController {
 
+    var page: Int = 1
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +50,17 @@ class WelfareViewController: UIViewController {
     @objc private func refreshBarButtonDidClick() {
         print("did click refresh button")
 
-        loadData()
+        HUD.flash(.Label("哈哈哈，分享进行时"), delay: 1.2)
 
     }
 
     private func loadData() {
         // 每次加载数据之前都要将数据置空
         results.removeAll()
+        page = 1
+        AlamofireManager.sharedInstance.page = page
+
+        AlamofireManager.sharedInstance.type = URLType.welfare
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -63,8 +69,23 @@ class WelfareViewController: UIViewController {
 
             self.results = root.results
             self.collectionView.reloadData()
-    }
+        }
 
+    }
+    func loadMoreData() {
+        AlamofireManager.sharedInstance.page = page
+
+        AlamofireManager.sharedInstance.type = URLType.welfare
+
+        AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
+            guard let root = rootClass else {
+                return
+            }
+            for result in root.results {
+                self.results.append(result)
+            }
+            self.collectionView.reloadData()
+        }
     }
 
     // MARK: - lazy
@@ -112,6 +133,16 @@ extension WelfareViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.welfareCellID, forIndexPath: indexPath) as! WelfareCollectionViewCell
 
+        if indexPath.item == (results.count-1) {
+            if page < 5 {
+                page += 1
+                self.loadMoreData()
+            } else {
+                print("没有更多福利了。")
+                HUD.flash(.LabeledError(title: "", subtitle: "没有更多福利了！"), delay: 1.3)
+            }
+
+        }
         cell.result = results[indexPath.row]
 
         return cell
@@ -153,14 +184,4 @@ extension WelfareViewController: UICollectionViewDelegate {
         }
     }
 
-}
-extension WelfareViewController {
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        print("-----scrollView contentOffset.y is : \(scrollView.contentOffset.y)")
-
-        let radio:CGFloat = abs(scrollView.contentOffset.y / 60.0)
-//        refreshView.alpha = radio
-        view.layoutIfNeeded()
-
-    }
 }

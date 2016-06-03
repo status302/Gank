@@ -15,29 +15,25 @@ class AlamofireManager {
 
     static let sharedInstance = AlamofireManager()
 
+    var urlStr: String = ""
+
+    var type: URLType? {
+        didSet {
+            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/1"
+        }
+    }
+
+    var page: Int = 1 {
+        didSet {
+            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/" + "\(page)"
+        }
+    }
+
 
     func fetchDataForWelfare(completedHandler: CompletedHandler) {
-        let strURL = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/1"
-//        print(strURL)
 
-/*
-        do {
-            let strResult = try NSString(contentsOfURL: NSURL(string: strURL)!, encoding: NSUTF8StringEncoding)
-            let data = strResult.dataUsingEncoding(NSUTF8StringEncoding)
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
-                let model = RootClass(fromDictionary: json as! NSDictionary)
-                completedHandler(rootClass: model)
-            } catch {
-                print("json has some error")
-            }
-        } catch {
-            print("error occur")
-        }
-
-*/
         HUD.flash(.LabeledProgress(title: "", subtitle: "正在玩命加载ing"))
-        let requestResult = Alamofire.request(.GET, strURL, parameters: nil, encoding: .URL, headers: nil)
+        let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
         requestResult.responseJSON { (response) in
             guard let json = response.result.value else {
                 print("error occur")

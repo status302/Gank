@@ -22,6 +22,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bar_eye"), highlightedImage: UIImage(named: "bar_eye_highlighted"), target: self, action: #selector(didClickRightBarButton))
 
         // Alamofire
+        AlamofireManager.sharedInstance.type = URLType.welfare
+
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
                 print("没有获取到数据")
@@ -128,4 +130,3 @@ extension QCEveryDayGnakViewController {
         return cell
     }
 }
-
