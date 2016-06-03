@@ -17,6 +17,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
         // Do any additional setup after loading the view.
 
+        self.automaticallyAdjustsScrollViewInsets = false
+
         self.view.addSubview(self.collectionView)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bar_eye"), highlightedImage: UIImage(named: "bar_eye_highlighted"), target: self, action: #selector(didClickRightBarButton))
@@ -87,12 +89,12 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.delegate = self
 
         // background color
-        collectionView.backgroundColor = UIColor.orangeColor()
+        collectionView.backgroundColor = Constants.backgroundColor
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
-//        collectionView.pagingEnabled = true
+        collectionView.contentInset = UIEdgeInsetsMake(40, 0, 0, 0)
 
         return collectionView
 

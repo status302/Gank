@@ -23,20 +23,34 @@ class SortViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-
+        view.backgroundColor = Constants.backgroundColor
 
         setupHeadView()
 
-        //test code
-        let pullView = PullToRefreshView.refreshView()
-        pullView.frame = CGRectMake(10,200 , 100, 40)
-        view.addSubview(pullView)
+        self.setupNav()
+
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        /**
+         *  隐藏状态栏
+         */
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+//
     // MARK: - private functions
 
+    private func setupNav() {
+
+        let titleLabel = UILabel()
+        titleLabel.text = "干货分类"
+        titleLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 18)
+        titleLabel.sizeToFit()
+        titleLabel.tintColor = UIColor.blackColor()
+        navigationItem.titleView = titleLabel
+    }
     /**
      根据stirng来计算UIButton的size
      */
@@ -98,26 +112,15 @@ class SortViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
-extension SortViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let offsetX = scrollView.contentOffset.x
-        print("offsetX is : \(offsetX)")
-
-        // 待处理顶部view的滚动问题
-
-    }
-}
+//extension SortViewController: UIScrollViewDelegate {
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        let offsetX = scrollView.contentOffset.x
+//        print("offsetX is : \(offsetX)")
+//
+//        // 待处理顶部view的滚动问题
+//
+//    }
+//}

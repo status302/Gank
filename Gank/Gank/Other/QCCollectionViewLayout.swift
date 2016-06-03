@@ -32,39 +32,11 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
         return true
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let attrs = super.layoutAttributesForElementsInRect(rect) else {
-            return nil
-        }
 
-        // 取出每一个属性
-        for (index, attr) in attrs.enumerate() {
-            // 对每一个attr进行操作
-
-
-
-        }
-
-        return attrs
+    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
+        print("\(proposedContentOffset.y)")
+        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
     }
-
-//    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
-//        var rect = CGRect()
-//        rect.origin = proposedContentOffset
-//        rect.size = self.collectionView!.bounds.size
-//        let attrs = super.layoutAttributesForElementsInRect(rect)
-//        var x: CGFloat = 0
-//        var y: CGFloat = 0
-//        for (index, attr) in attrs!.enumerate() {
-//            x = proposedContentOffset.x - CGFloat(index*180)
-//            y = proposedContentOffset.y
-//        }
-//
-//        return CGPointMake(x, y)
-//
-//    }
-
-    lazy var attrs = [UICollectionViewLayoutAttributes]?()
 }
 
 class QCCollectionView: UICollectionView {
@@ -72,7 +44,9 @@ class QCCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
 
         self.backgroundColor = UIColor.whiteColor()
-//        registerClass(QCEverydayGankCell.self, forCellWithReuseIdentifier: Constants.everydayGankCellID)
+        /**
+         *  从nib中加载cell
+         */
         registerNib(UINib(nibName: "QCEverydayGankCell", bundle: nil), forCellWithReuseIdentifier: Constants.everydayGankCellID)
     }
     

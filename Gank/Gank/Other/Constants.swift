@@ -26,7 +26,7 @@ struct Constants {
     static let CollectionViewLayoutCellHeight: CGFloat = Constants.Screen_height - 160.0
     static let CollectionViewLayoutCellWidth: CGFloat = Constants.Screen_width - 80.0
 
-
+    static let backgroundColor = UIColor.orangeColor()
 }
 
 //

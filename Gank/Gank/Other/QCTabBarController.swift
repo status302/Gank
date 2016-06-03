@@ -22,21 +22,19 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         let everydayGankVC = QCEveryDayGnakViewController()
         everydayGankVC.view.backgroundColor = UIColor.redColor()
         self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "每日一Gank"))
+
+        /// 添加sortVC
         let sb = UIStoryboard(name: "Sort", bundle: nil)
         guard let sortVC = sb.instantiateInitialViewController() else {
             return
         }
-
-        sortVC.view.backgroundColor = UIColor.orangeColor()
-        sortVC.title = "分类"
+        
         self.addChildViewController(sortVC)
 
+        // 添加WelfareVC
         let welfareVC = WelfareViewController()
         welfareVC.view.backgroundColor = UIColor.whiteColor()
         self.addChildViewController(setupChildViewControllers(welfareVC, titleText: "福利"))
-//        self.addChildViewController(welfareVC)
-
-
 
     }
 

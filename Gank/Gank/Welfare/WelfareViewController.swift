@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import PKHUD
+import SKPhotoBrowser
 
 
 class WelfareViewController: UIViewController {
@@ -33,11 +34,13 @@ class WelfareViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
          super.viewWillAppear(animated)
+
         /**
          * 隐藏navigationBar
          */
-//        navigationController?.navigationBar.shadowImage = UIImage()
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -50,7 +53,7 @@ class WelfareViewController: UIViewController {
     @objc private func refreshBarButtonDidClick() {
         print("did click refresh button")
 
-        HUD.flash(.Label("哈哈哈，分享进行时"), delay: 1.2)
+        HUD.flash(.Label("哈哈哈，分享还没做好~"), delay: 1.2)
 
     }
 
@@ -99,7 +102,7 @@ class WelfareViewController: UIViewController {
 
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = Constants.backgroundColor
 
         let refreshController = UIRefreshControl()
 
@@ -138,7 +141,6 @@ extension WelfareViewController: UICollectionViewDataSource {
                 page += 1
                 self.loadMoreData()
             } else {
-                print("没有更多福利了。")
                 HUD.flash(.LabeledError(title: "", subtitle: "没有更多福利了！"), delay: 1.3)
             }
 
@@ -153,7 +155,6 @@ extension WelfareViewController: UICollectionViewDelegate {
 
 
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        print("shouldSelectItemAtIndexPath")
 
         return true
     }
@@ -162,13 +163,10 @@ extension WelfareViewController: UICollectionViewDelegate {
 
         let showWealfareVC = ShowWelfareViewController()
         showWealfareVC.result = self.results[indexPath.item]
-        self.presentViewController(showWealfareVC, animated: true) {
-            print("已经成功-------------")
-        }
+        self.presentViewController(showWealfareVC, animated: true) {}
     }
 
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        print("didHighlightItemAtIndexPath")
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
 
         UIView.animateWithDuration(0.15) {

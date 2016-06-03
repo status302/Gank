@@ -6,5 +6,5 @@ target “Gank” do
     pod 'Kingfisher', '~> 2.4'
     pod 'Alamofire', '~> 3.4'
     pod "PKHUD"
-    pod 'SKPhotoBrowser'
+    pod 'SKPhotoBrowser', '~> 1.8.6'
 end

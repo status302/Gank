@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import PKHUD
 
 class ShowWelfareViewController: UIViewController {
 
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     var result: Result?
-
+    weak var imageView: UIImageView?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,15 +32,63 @@ class ShowWelfareViewController: UIViewController {
         imageView.contentMode = .ScaleAspectFit
         if imageViewHeight < Constants.Screen_height {
             imageView.center.y = UIScreen.mainScreen().bounds.height * 0.5
+            self.scrollView.contentSize = CGSizeMake(0, Constants.Screen_height + 5)
         } else {
+            self.scrollView.contentSize = CGSizeMake(0, imageViewHeight)
+
         }
         imageView.image = image!
+        imageView.userInteractionEnabled = true
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didClickDismissButton(_:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognizer(_:)))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureToSavePhoto))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.addGestureRecognizer(pinchGesture)
+        imageView.addGestureRecognizer(longGesture)
+//        imageView.addGestureRecognizer(panGesture)
 
-        self.scrollView.contentSize = CGSizeMake(0, imageViewHeight)
+
+
         self.scrollView.addSubview(imageView)
 
+        self.imageView = imageView
+
+
+        // scrollView 
+        self.scrollView.minimumZoomScale = 0.5
+        self.scrollView.maximumZoomScale =  1.5
+        self.scrollView.delegate = self
 
     }
+
+//    @objc private func panGestureRecognizer(gesture: UIPanGestureRecognizer) {
+//
+//
+//    }
+    /**
+     *  实现放大缩小
+     */
+    @objc private func pinchGestureRecognizer(gesture: UIPinchGestureRecognizer) {
+
+    }
+    /**
+     *  实现长按保存图片
+     */
+    @objc private func longGestureToSavePhoto() {
+
+        UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(image), nil)
+
+    }
+
+    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+        HUD.flash(.LabeledSuccess(title: "", subtitle: "保存图片成功"), delay: 0.4)
+
+    }
+
+
+    //  - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -48,6 +97,9 @@ class ShowWelfareViewController: UIViewController {
 
 
     }
+    /**
+     *  单击或者点击dismiss按钮取消图片
+     */
     @IBAction func didClickDismissButton(sender: AnyObject) {
 
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -56,6 +108,59 @@ class ShowWelfareViewController: UIViewController {
 //        }
     }
 
+   /* public func panGestureRecognized(sender: UIPanGestureRecognizer) {
+        backgroundView.hidden = true
+        let scrollView = pageDisplayedAtIndex(currentPageIndex)
+
+        let viewHeight = scrollView.frame.size.height
+        let viewHalfHeight = viewHeight/2
+
+        var translatedPoint = sender.translationInView(self.view)
+
+        // gesture began
+        if sender.state == .Began {
+            firstX = scrollView.center.x
+            firstY = scrollView.center.y
+
+            senderViewForAnimation?.hidden = (currentPageIndex == initialPageIndex)
+
+            isDraggingPhoto = true
+            setNeedsStatusBarAppearanceUpdate()
+        }
+
+        translatedPoint = CGPoint(x: firstX, y: firstY + translatedPoint.y)
+        scrollView.center = translatedPoint
+
+        let minOffset = viewHalfHeight / 4
+        let offset = 1 - (scrollView.center.y > viewHalfHeight ? scrollView.center.y - viewHalfHeight : -(scrollView.center.y - viewHalfHeight)) / viewHalfHeight
+        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(max(0.7, offset))
+
+        // gesture end
+        if sender.state == .Ended {
+            if scrollView.center.y > viewHalfHeight + minOffset || scrollView.center.y < viewHalfHeight - minOffset {
+                backgroundView.backgroundColor = self.view.backgroundColor
+                determineAndClose()
+                return
+            } else {
+                // Continue Showing View
+                isDraggingPhoto = false
+                setNeedsStatusBarAppearanceUpdate()
+
+                let velocityY: CGFloat = CGFloat(self.animationDuration) * sender.velocityInView(self.view).y
+                let finalX: CGFloat = firstX
+                let finalY: CGFloat = viewHalfHeight
+
+                let animationDuration = Double(abs(velocityY) * 0.0002 + 0.2)
+
+                UIView.beginAnimations(nil, context: nil)
+                UIView.setAnimationDuration(animationDuration)
+                UIView.setAnimationCurve(UIViewAnimationCurve.EaseIn)
+                view.backgroundColor = UIColor.blackColor()
+                scrollView.center = CGPoint(x: finalX, y: finalY)
+                UIView.commitAnimations()
+            }
+        }
+    }*/
     @IBAction func dismissVC(segue: UIStoryboardSegue) {
 
     }
@@ -75,4 +180,10 @@ class ShowWelfareViewController: UIViewController {
     }
     */
 
+}
+
+extension ShowWelfareViewController: UIScrollViewDelegate {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
 }
