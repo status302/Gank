@@ -43,20 +43,43 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
 
-        return self.attrs
+        return super.layoutAttributesForElementsInRect(rect)
     }
 
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
 
         let attr = super.layoutAttributesForItemAtIndexPath(indexPath)
 
-        if indexPath.item != 0{
-            var center = attr!.center
-            center.x += CGFloat(60 * indexPath.item)
-            attr!.center = center
-        }
+//        if indexPath.item != 0{
+//            var center = attr!.center
+//            center.x += CGFloat(60 * indexPath.item)
+//            attr!.center = center
+//        }
 
         return attr
+    }
+
+    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+
+        print("targetContentOffsetForProposedContentOffset")
+
+        // 显示出来的frame
+        var contentFrame = CGRectZero
+        contentFrame.origin = proposedContentOffset
+        contentFrame.size = self.collectionView!.frame.size
+
+        let attrs = self.layoutAttributesForElementsInRect(contentFrame)
+        let collectionViewCenterX = proposedContentOffset.x + collectionView!.bounds.width * 0.5
+
+        var minCenterX = CGFloat.max
+
+        for attr in attrs! {
+            if abs(attr.center.x - collectionViewCenterX) < abs(minCenterX) {
+                minCenterX = attr.center.x - collectionViewCenterX
+            }
+
+        }
+        return CGPointMake(proposedContentOffset.x + minCenterX, proposedContentOffset.y)
     }
 
     override func collectionViewContentSize() -> CGSize {
@@ -64,7 +87,7 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
             return CGSizeMake(1000, 0)
         }
 
-        return CGSizeMake(CGFloat(itemCount) * Constants.Screen_width, 0)
+        return CGSizeMake(CGFloat(itemCount - 1) * 20 + CGFloat(itemCount + 1) * itemSize.width + 80 , 0)
     }
     lazy var attrs = [UICollectionViewLayoutAttributes]()
 }

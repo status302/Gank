@@ -18,6 +18,8 @@
 		862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595301CF4626A00C79531 /* AlamofireManager.swift */; };
 		862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */; };
 		862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */; };
+		8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631EE311D08697700661AE0 /* CustomRefreshControl.swift */; };
+		8631EE341D08697700661AE0 /* RefreshContents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8631EE321D08697700661AE0 /* RefreshContents.xib */; };
 		864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */; };
 		864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2B1CF820F100C5569A /* Sort.storyboard */; };
 		864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A2D1CF823C400C5569A /* SortViewController.swift */; };
@@ -76,6 +78,8 @@
 		862595301CF4626A00C79531 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareCollectionViewCell.swift; sourceTree = "<group>"; };
 		862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelfareCollectionViewCell.xib; sourceTree = "<group>"; };
+		8631EE311D08697700661AE0 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
+		8631EE321D08697700661AE0 /* RefreshContents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshContents.xib; sourceTree = "<group>"; };
 		864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareFlowLayout.swift; sourceTree = "<group>"; };
 		864B2A2B1CF820F100C5569A /* Sort.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sort.storyboard; sourceTree = "<group>"; };
 		864B2A2D1CF823C400C5569A /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
 				864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */,
 				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
+				8631EE311D08697700661AE0 /* CustomRefreshControl.swift */,
+				8631EE321D08697700661AE0 /* RefreshContents.xib */,
 				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
 				862595281CF344E500C79531 /* Common */,
 				86C8D2721CEF170D00133FF5 /* Extensions */,
@@ -437,6 +443,7 @@
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
+				8631EE341D08697700661AE0 /* RefreshContents.xib in Resources */,
 				86BD62131CEB27B600D1FEB6 /* Assets.xcassets in Resources */,
 				86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */,
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
@@ -531,6 +538,7 @@
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
+				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,

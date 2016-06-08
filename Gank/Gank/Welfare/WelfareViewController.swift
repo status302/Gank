@@ -14,8 +14,11 @@ import SKPhotoBrowser
 
 class WelfareViewController: UIViewController {
 
+    var customRefresh: CustomRefreshControl!
     var page: Int = 1
     // MARK: - View life cycle
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +27,10 @@ class WelfareViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
 
         view.addSubview(collectionView)
+
+        customRefresh = CustomRefreshControl()
+
+        collectionView.addSubview(customRefresh)
 
         self.automaticallyAdjustsScrollViewInsets = false
 
@@ -104,13 +111,13 @@ class WelfareViewController: UIViewController {
 
         collectionView.backgroundColor = Constants.backgroundColor
 
-        let refreshController = UIRefreshControl()
-
-        refreshController.addTarget(self, action: #selector(WelfareViewController.refreshBarButtonDidClick), forControlEvents: .ValueChanged)
-
-
-
-        collectionView.addSubview(refreshController)
+//        let refreshController = UIRefreshControl()
+//
+//        refreshController.addTarget(self, action: #selector(WelfareViewController.refreshBarButtonDidClick), forControlEvents: .ValueChanged)
+//
+//
+//
+//        collectionView.addSubview(refreshController)
 
         collectionView.contentInset = UIEdgeInsetsZero
 
@@ -182,4 +189,14 @@ extension WelfareViewController: UICollectionViewDelegate {
         }
     }
 
+}
+
+extension WelfareViewController {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if customRefresh.refreshing {
+            if !customRefresh.isAnimating {
+               customRefresh.startAnimation()
+            }
+        }
+    }
 }

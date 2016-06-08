@@ -12,6 +12,8 @@ import Kingfisher
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.automaticallyAdjustsScrollViewInsets = false
 
         self.view.addSubview(self.collectionView)
+
+        
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bar_eye"), highlightedImage: UIImage(named: "bar_eye_highlighted"), target: self, action: #selector(didClickRightBarButton))
 
@@ -103,7 +107,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //
 //        collectionView.addSubview(refreshView)
 
-        collectionView.pagingEnabled = true
+
+        collectionView.pagingEnabled = false
 
         return collectionView
 
@@ -147,3 +152,5 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         print("did select item : \(indexPath.item)")
     }
 }
+
+
