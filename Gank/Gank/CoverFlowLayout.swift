@@ -14,6 +14,24 @@ class CoverFlowLayout: UICollectionViewFlowLayout {
     var maxCoverDegree: CGFloat = 30.0
     var coverDensity: CGFloat = 0.25
 
+    override func prepareLayout() {
+        super.prepareLayout()
+
+        itemSize = CGSizeMake(Constants.CollectionViewLayoutCellWidth, Constants.CollectionViewLayoutCellHeight)
+        // 表示竖直方向cell与cell之间的距离
+//        minimumLineSpacing = 20.0
+        // 表示水平方向cell与cell之间的距离
+//        minimumInteritemSpacing = 20.0
+
+//        sectionInset = UIEdgeInsetsMake(0, 40.0, 40.0, 40.0)
+        // 规定只能水平方向移动
+        scrollDirection = .Horizontal
+
+        // setup attrs
+        
+        
+    }
+
     /**
      告诉layout对象cell的bounds需要更新了。
 
@@ -66,7 +84,7 @@ class CoverFlowLayout: UICollectionViewFlowLayout {
      - returns: 返回结果为collectionView ContentSize
      */
     override func collectionViewContentSize() -> CGSize {
-        return CGSize(width: collectionView!.bounds.width * CGFloat(collectionView!.numberOfItemsInSection(0)), height: collectionView!.bounds.height)
+        return CGSize(width: collectionView!.bounds.width * CGFloat(collectionView!.numberOfItemsInSection(0)), height: 0)
     }
 }
 

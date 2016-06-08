@@ -25,6 +25,15 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
 
         // setup attrs
 
+        attrs.removeAll()
+        guard let itemCount = collectionView?.numberOfItemsInSection(0) else {
+            return
+        }
+        for index in 0 ..< itemCount {
+            let indexPath = NSIndexPath(forItem: index, inSection: 0)
+            let attr = self.layoutAttributesForItemAtIndexPath(indexPath)
+            attrs.append(attr!)
+        }
 
     }
 
@@ -32,12 +41,34 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
         return true
     }
 
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
 
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
-        print("\(proposedContentOffset.y)")
-        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
+        return self.attrs
     }
+
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+
+        let attr = super.layoutAttributesForItemAtIndexPath(indexPath)
+
+        if indexPath.item != 0{
+            var center = attr!.center
+            center.x += CGFloat(60 * indexPath.item)
+            attr!.center = center
+        }
+
+        return attr
+    }
+
+    override func collectionViewContentSize() -> CGSize {
+        guard let itemCount = collectionView?.numberOfItemsInSection(0) else {
+            return CGSizeMake(1000, 0)
+        }
+
+        return CGSizeMake(CGFloat(itemCount) * Constants.Screen_width, 0)
+    }
+    lazy var attrs = [UICollectionViewLayoutAttributes]()
 }
+
 
 class QCCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {

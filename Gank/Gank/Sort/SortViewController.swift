@@ -15,7 +15,7 @@ class SortViewController: UIViewController {
 
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
-        let titles = ["Android","iOS","休息视频","拓展资源","前端","福利"]
+        let titles = ["Android","iOS","休息视频","拓展资源","前端","福利", "随机"]
         return titles
     }()
     // MARK: - Properties

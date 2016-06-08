@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +83,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
 
     // MARK: - lazy
     lazy var collectionView: QCCollectionView = {
+
         let collectionView: QCCollectionView = QCCollectionView(frame: self.view.bounds, collectionViewLayout: QCCollectionViewLayout())
 
         collectionView.dataSource = self
@@ -94,7 +95,15 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
-        collectionView.contentInset = UIEdgeInsetsMake(40, 0, 0, 0)
+        collectionView.contentInset = UIEdgeInsetsMake(44, 0, 40, 0)
+
+        // add refreshController 
+//        let refreshView = UIRefreshControl()
+//        refreshView.addTarget(self, action: #selector(didClickRightBarButton), forControlEvents: .ValueChanged)
+//
+//        collectionView.addSubview(refreshView)
+
+        collectionView.pagingEnabled = true
 
         return collectionView
 
@@ -130,5 +139,11 @@ extension QCEveryDayGnakViewController {
         cell.sourceLabel.text = "来源：" + results[indexPath.item].who
 
         return cell
+    }
+}
+
+extension QCEveryDayGnakViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("did select item : \(indexPath.item)")
     }
 }
