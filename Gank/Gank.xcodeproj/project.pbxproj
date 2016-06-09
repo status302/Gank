@@ -275,8 +275,6 @@
 				86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */,
 				864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */,
 				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
-				862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */,
-				862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */,
 				86F1BA751CFF20E900C1A61F /* View */,
 				8625952B1CF45EBD00C79531 /* Model */,
 			);
@@ -321,6 +319,8 @@
 		86F1BA751CFF20E900C1A61F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */,
+				862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */,
 				86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */,
 				86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */,
 			);

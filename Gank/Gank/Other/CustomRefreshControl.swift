@@ -10,45 +10,44 @@ import UIKit
 
 class CustomRefreshControl: UIRefreshControl {
 
+    func startAnimation() {
+        if !isAnimating {
+            setupAnimationToRetota()
+        }
+    }
+
+    func endAnimation() {
+        if self.refreshing {
+            self.endRefreshing()
+        }
+    }
+
     override init() {
         super.init()
-        
+
         backgroundColor = UIColor.clearColor()
         tintColor = UIColor.clearColor()
 
         loadCustomView()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+
     }
 
     private var customView: UIView!
     private var labelsArray = [UILabel]()
-
+    /// 表示当前显示颜色的序列
     private var currentColorIndex = 0
+    /// 表示当前显示label的序列
     private var currentLabelIndex = 0
 
-    var isAnimating = false
+    private var isAnimating = false
 
-    var timer: NSTimer!
-
-    func doTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(4.0, target: self, selector: #selector(endWork), userInfo: nil, repeats: true)
-    }
-
-    func endWork() {
-        endRefreshing()
-        timer.invalidate()
-        timer = nil
-    }
-
-    func startAnimation() {
-        setupAnimationToRetota()
-        doTimer()
-    }
-
-
+    /**
+     *  加载nib上的view
+     */
     private func loadCustomView() {
         let customContents = NSBundle.mainBundle().loadNibNamed("RefreshContents", owner: nil, options: nil)
 
@@ -60,8 +59,10 @@ class CustomRefreshControl: UIRefreshControl {
         }
         self.addSubview(customView)
     }
-
-    func setupAnimationToRetota() {
+    /**
+     * 旋转动画的启动
+     */
+    private func setupAnimationToRetota() {
 
         isAnimating = true
 
@@ -77,8 +78,10 @@ class CustomRefreshControl: UIRefreshControl {
                 }
         }
     }
-
-    func setupAnimationScaleAndChangeColor() {
+    /**
+     *  放大和复位动画的启动
+     */
+    private func setupAnimationScaleAndChangeColor() {
         UIView.animateWithDuration(0.25, delay: 0, options: .CurveLinear, animations: {
             self.labelsArray[0].transform = CGAffineTransformMakeScale(1.5, 1.5)
             self.labelsArray[1].transform = CGAffineTransformMakeScale(1.5, 1.5)
@@ -114,7 +117,12 @@ class CustomRefreshControl: UIRefreshControl {
             })
         }
     }
-    func getNextColor() -> UIColor {
+    /**
+     label字体颜色的数组
+
+     - returns: 字体颜色
+     */
+    private func getNextColor() -> UIColor {
         var colorsArray = [UIColor.redColor(), UIColor.blueColor(), UIColor.magentaColor(),
                             UIColor.brownColor(), UIColor.greenColor(), UIColor.lightGrayColor(),
                         UIColor.orangeColor()]

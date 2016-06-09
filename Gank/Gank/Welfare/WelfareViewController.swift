@@ -77,8 +77,13 @@ class WelfareViewController: UIViewController {
                 return
             }
 
-            self.results = root.results
+//            self.results = root.results
+            for result in root.results {
+                self.results.append(result)
+            }
+            self.customRefresh.endAnimation()
             self.collectionView.reloadData()
+
         }
 
     }
@@ -110,14 +115,6 @@ class WelfareViewController: UIViewController {
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
         collectionView.backgroundColor = Constants.backgroundColor
-
-//        let refreshController = UIRefreshControl()
-//
-//        refreshController.addTarget(self, action: #selector(WelfareViewController.refreshBarButtonDidClick), forControlEvents: .ValueChanged)
-//
-//
-//
-//        collectionView.addSubview(refreshController)
 
         collectionView.contentInset = UIEdgeInsetsZero
 
@@ -194,9 +191,9 @@ extension WelfareViewController: UICollectionViewDelegate {
 extension WelfareViewController {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if customRefresh.refreshing {
-            if !customRefresh.isAnimating {
-               customRefresh.startAnimation()
-            }
+            customRefresh.startAnimation()
+            self.loadData()
+
         }
     }
 }

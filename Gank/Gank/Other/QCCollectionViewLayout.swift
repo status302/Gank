@@ -19,7 +19,7 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
         // 表示水平方向cell与cell之间的距离
         minimumInteritemSpacing = 20.0
 
-        sectionInset = UIEdgeInsetsMake(0, 40.0, 40.0, 40.0)
+        sectionInset = UIEdgeInsetsMake(20, 40.0, 40.0, 40.0)
         // 规定只能水平方向移动
         scrollDirection = .Horizontal
 
