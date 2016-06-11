@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (3.4.0)
+  - Kingfisher (2.4.1)
+  - PKHUD (3.1.0)
+  - SKPhotoBrowser (1.8.6)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - Kingfisher (~> 2.4)
+  - PKHUD
+  - SKPhotoBrowser (~> 1.8.6)
+
+SPEC CHECKSUMS:
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
+  SKPhotoBrowser: 2fa59b851b04358b186c811ca9e2b4aa4945aa33
+
+PODFILE CHECKSUM: a6048ffe9fdf2c1a35bfb7345bd31ed00bef5070
+
+COCOAPODS: 1.0.0
