@@ -18,16 +18,85 @@ class SortViewController: UIViewController {
         let titles = ["Android","iOS","休息视频","拓展资源","前端","福利", "随机"]
         return titles
     }()
+
+
+    /// contentScrollView
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+
+        scrollView.delegate = self
+
+        scrollView.contentSize = CGSizeMake(Constants.Screen_width * CGFloat(self.childViewControllers.count), 0)
+
+        scrollView.frame = self.view.bounds
+
+        let top = self.headScrollView.y
+        scrollView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+
+        scrollView.pagingEnabled = true
+
+        scrollView.backgroundColor = UIColor.clearColor()
+
+        return scrollView
+    }()
+    /**
+     添加子控制器到该VC中
+     */
+    func setupChildVCs() {
+        /// AndroidVC
+        let androidVC = QCTopicViewController()
+        androidVC.type = URLType.android
+        addChildViewController(androidVC)
+        /// iOSVC
+        let iosVC = QCTopicViewController()
+        iosVC.type = URLType.iOS
+        addChildViewController(iosVC)
+        /// 休息视频
+        let sleepVC = QCTopicViewController()
+        sleepVC.type = URLType.sleep
+        addChildViewController(sleepVC)
+        /// resourse VC
+        let resourseVC = QCTopicViewController()
+        resourseVC.type = URLType.resourse
+        addChildViewController(resourseVC)
+
+        let frontEnd = QCTopicViewController()
+        frontEnd.type = URLType.front_end
+        addChildViewController(frontEnd)
+
+        let welfareVC = QCTopicViewController()
+        welfareVC.type = URLType.welfare
+        addChildViewController(welfareVC)
+
+        let randomVC = QCTopicViewController()
+        randomVC.type = URLType.all
+        addChildViewController(randomVC)
+
+    }
     // MARK: - Properties
     var disabledButton: UIButton!
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.backgroundColor
+        self.automaticallyAdjustsScrollViewInsets = false
+
+
 
         setupHeadView()
 
         self.setupNav()
+
+        /**
+         处理子VC相关的
+         */
+
+        self.setupChildVCs()
+
+        view.insertSubview(scrollView, belowSubview: headScrollView)
+
+        self.scrollViewDidEndScrollingAnimation(scrollView)
 
     }
 
@@ -38,8 +107,12 @@ class SortViewController: UIViewController {
          */
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        /**
+         headScrollView background
+         */
+        headScrollView.backgroundColor = UIColor.orangeColor()
     }
-//
+    //
     // MARK: - private functions
 
     private func setupNav() {
@@ -81,18 +154,20 @@ class SortViewController: UIViewController {
             button.setTitle(title, forState: .Normal)
             button.setTitle(title, forState: .Disabled)
 
-//            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+            //            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
             button.titleLabel?.textAlignment = .Center
 
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             button.setTitleColor(UIColor.redColor(), forState: .Disabled)
             button.titleLabel?.font = UIFont.systemFontOfSize(18)
 
+            button.tag = 1000*index
             button.frame = CGRectMake(xs[index], 0, widths[index] + 20, headScrollView.height)
             button.addTarget(self, action: #selector(SortViewController.didClickHeadButton(_:)), forControlEvents: .TouchUpInside)
 
             headScrollView.addSubview(button)
             if index == 0 {
+                //                didClickHeadButton(button)
                 button.enabled = false
                 disabledButton = button
             }
@@ -106,6 +181,11 @@ class SortViewController: UIViewController {
 
         // 在这里处理应该显示哪一个view
 
+        var offset = scrollView.contentOffset
+        offset.x = CGFloat(sender.tag / 1000) * self.scrollView.width
+
+        scrollView.setContentOffset(offset, animated: true)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,12 +195,42 @@ class SortViewController: UIViewController {
 
 }
 
-//extension SortViewController: UIScrollViewDelegate {
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        let offsetX = scrollView.contentOffset.x
-//        print("offsetX is : \(offsetX)")
-//
-//        // 待处理顶部view的滚动问题
-//
-//    }
-//}
+extension SortViewController: UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        scrollViewDidEndScrollingAnimation(scrollView)
+
+        let index = Int(scrollView.contentOffset.x / scrollView.width)
+
+        var buttons = [UIButton]()
+
+        for button in headScrollView.subviews where button.isKindOfClass(UIControl.self) {
+            buttons.append(button as! UIButton)
+        }
+        didClickHeadButton(buttons[index])
+
+    }
+
+
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x / scrollView.width)
+
+        let vc = self.childViewControllers[index] as! QCTopicViewController
+
+        vc.view.x = scrollView.contentOffset.x
+        vc.view.y = 0
+        vc.view.height = scrollView.height
+        vc.view.width = scrollView.width
+        
+        vc.tableView.contentInset = UIEdgeInsetsMake(self.headScrollView.height, 0, 98, 0)
+
+        vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset
+
+        if !vc.view.isDescendantOfView(scrollView) {
+            scrollView.addSubview(vc.view)
+            print("----------------scrollViewDidEndScrollingAnimation-------------------")
+        }
+
+
+    }
+}

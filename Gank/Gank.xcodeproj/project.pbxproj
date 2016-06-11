@@ -42,6 +42,7 @@
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
 		86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */; };
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
+		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */; };
 		86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
@@ -108,6 +109,7 @@
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEverydayGankCell.swift; path = Gank/EveryDayGank/QCEverydayGankCell.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
+		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
@@ -188,6 +190,23 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		86A19F981D09623E007CE5D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		86A19F991D096247007CE5D5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				864B2A2B1CF820F100C5569A /* Sort.storyboard */,
+				864B2A2D1CF823C400C5569A /* SortViewController.swift */,
+				86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		86BD61FF1CEB27B600D1FEB6 = {
 			isa = PBXGroup;
 			children = (
@@ -261,8 +280,8 @@
 		86BD623A1CEB29F200D1FEB6 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
-				864B2A2B1CF820F100C5569A /* Sort.storyboard */,
-				864B2A2D1CF823C400C5569A /* SortViewController.swift */,
+				86A19F981D09623E007CE5D5 /* View */,
+				86A19F991D096247007CE5D5 /* Controller */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -544,6 +563,7 @@
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
+				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,
 			);
