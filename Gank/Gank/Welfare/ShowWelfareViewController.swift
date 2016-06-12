@@ -65,6 +65,10 @@ class ShowWelfareViewController: UIViewController {
         self.scrollView.maximumZoomScale =  1.5
         self.scrollView.delegate = self
 
+        // ActionView
+        actionView = QCActionView()
+        actionView?.items = ["分享", "保存图片"]
+
     }
 
     /**
@@ -78,7 +82,7 @@ class ShowWelfareViewController: UIViewController {
      */
     @objc private func longGestureToSavePhoto(recognizer: UILongPressGestureRecognizer) {
 
-        actionView = QCActionView()
+
         if recognizer.state == .Began {
 
             actionView?.showActionView({ (index) in

@@ -162,7 +162,7 @@ extension WelfareViewController: UICollectionViewDelegate {
 
         return true
     }
-
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         let showWealfareVC = ShowWelfareViewController()
@@ -173,7 +173,7 @@ extension WelfareViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
 
-        UIView.animateWithDuration(0.15) {
+        UIView.animateWithDuration(0.09) {
             cell.alphaView.alpha = 0.0
         }
     }
@@ -181,7 +181,7 @@ extension WelfareViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
 
-        UIView.animateWithDuration(0.3) {
+        UIView.animateWithDuration(0.09) {
             cell.alphaView.alpha = 0.5
         }
     }

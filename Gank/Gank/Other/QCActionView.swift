@@ -18,6 +18,11 @@ import UIKit
 
 class QCActionView: UIView {
 
+    var items = [String]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     typealias CompletedHandler = (index:Int)-> Void
 
     override func layoutSubviews() {
@@ -115,7 +120,7 @@ class QCActionView: UIView {
 extension QCActionView: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
+            return items.count
         } else {
             return 1
         }
@@ -127,11 +132,12 @@ extension QCActionView: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellID) as! ActionViewSelectedCell
         if indexPath.section == 0 {
-            if indexPath.item == 0 {
-                cell.titleLabel.text = "分享"
-            } else {
-                cell.titleLabel.text = "保存"
-            }
+            cell.titleLabel.text = items[indexPath.row]
+//            if indexPath.item == 0 {
+//                cell.titleLabel.text = "分享"
+//            } else {
+//                cell.titleLabel.text = "保存"
+//            }
         }else {
             cell.textLabel?.textColor = UIColor.redColor()
             cell.titleLabel.text = "取消"
