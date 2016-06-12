@@ -226,9 +226,9 @@ extension SortViewController: UIScrollViewDelegate {
 
         vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset
 
+        // 该方法可以判断vc.view 是否为scrollView的子view
         if !vc.view.isDescendantOfView(scrollView) {
             scrollView.addSubview(vc.view)
-            print("----------------scrollViewDidEndScrollingAnimation-------------------")
         }
 
 

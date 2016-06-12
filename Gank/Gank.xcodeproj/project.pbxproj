@@ -27,6 +27,8 @@
 		864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */; };
 		864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */; };
 		867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */; };
+		86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B9551D0C650900A17399 /* DetailViewController.swift */; };
+		86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A6B9561D0C650900A17399 /* DetailViewController.xib */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
 		86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620D1CEB27B600D1FEB6 /* ViewController.swift */; };
 		86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BD620F1CEB27B600D1FEB6 /* Main.storyboard */; };
@@ -88,6 +90,8 @@
 		864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFPHaiBaoW12-GB.ttf"; sourceTree = "<group>"; };
 		864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+QC.swift"; sourceTree = "<group>"; };
 		867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlowLayout.swift; sourceTree = "<group>"; };
+		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BD620D1CEB27B600D1FEB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,69 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		86A6B9521D0C641E00A17399 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */,
+				86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		86A6B9531D0C642B00A17399 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		86A6B9541D0C643100A17399 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */,
+				86A6B9551D0C650900A17399 /* DetailViewController.swift */,
+				86A6B9561D0C650900A17399 /* DetailViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		86A6B9591D0CF1E600A17399 /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				8631EE311D08697700661AE0 /* CustomRefreshControl.swift */,
+				8631EE321D08697700661AE0 /* RefreshContents.xib */,
+			);
+			name = RefreshControl;
+			sourceTree = "<group>";
+		};
+		86A6B95A1D0CF1F200A17399 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
+				864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
+		86A6B95B1D0CF1FB00A17399 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
+			);
+			name = TabBarController;
+			sourceTree = "<group>";
+		};
+		86A6B95C1D0CF22800A17399 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8625951D1CF32A2100C79531 /* WelfareViewController.swift */,
+				86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */,
+				86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		86BD61FF1CEB27B600D1FEB6 = {
 			isa = PBXGroup;
 			children = (
@@ -268,10 +335,9 @@
 		86BD62391CEB29F200D1FEB6 /* EveryDayGank */ = {
 			isa = PBXGroup;
 			children = (
-				860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */,
-				86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */,
-				86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */,
-				86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */,
+				86A6B9541D0C643100A17399 /* Controller */,
+				86A6B9531D0C642B00A17399 /* Layout */,
+				86A6B9521D0C641E00A17399 /* View */,
 			);
 			name = EveryDayGank;
 			path = Comment;
@@ -289,9 +355,7 @@
 		86BD623B1CEB29F200D1FEB6 /* Welfare */ = {
 			isa = PBXGroup;
 			children = (
-				8625951D1CF32A2100C79531 /* WelfareViewController.swift */,
-				86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */,
-				86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */,
+				86A6B95C1D0CF22800A17399 /* Controller */,
 				864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */,
 				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
 				86F1BA751CFF20E900C1A61F /* View */,
@@ -303,11 +367,9 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
-				864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */,
-				86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */,
-				8631EE311D08697700661AE0 /* CustomRefreshControl.swift */,
-				8631EE321D08697700661AE0 /* RefreshContents.xib */,
+				86A6B95A1D0CF1F200A17399 /* Font */,
+				86A6B95B1D0CF1FB00A17399 /* TabBarController */,
+				86A6B9591D0CF1E600A17399 /* RefreshControl */,
 				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
 				862595281CF344E500C79531 /* Common */,
 				86C8D2721CEF170D00133FF5 /* Extensions */,
@@ -458,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
+				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
 				864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
@@ -554,6 +617,7 @@
 				867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
+				86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */,
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,

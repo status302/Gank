@@ -150,6 +150,25 @@ extension QCEveryDayGnakViewController {
 extension QCEveryDayGnakViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("did select item : \(indexPath.item)")
+        /**
+         *  把时间传给下一个VC
+         */
+
+        let desVC = DetailViewController()
+
+        // 处理时间
+        let formatterToDate = NSDateFormatter()
+        formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let str = results[indexPath.item].createdAt
+        let createTime = formatterToDate.dateFromString(str)
+
+        let formatterToString = NSDateFormatter()
+        formatterToString.dateFormat = "yyyy/MM/dd"
+        //        self.createString = formatterToString.stringFromDate(createTime!)
+        print(formatterToString.stringFromDate(createTime!))
+        desVC.dateString = formatterToString.stringFromDate(createTime!)
+
+        navigationController?.pushViewController(desVC, animated: true)
     }
 }
 
