@@ -26,6 +26,7 @@
 		864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */; };
 		864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */; };
 		864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */; };
+		8676CD301D0DA845006E860F /* QCActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676CD2F1D0DA845006E860F /* QCActionView.swift */; };
 		867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */; };
 		86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B9551D0C650900A17399 /* DetailViewController.swift */; };
 		86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A6B9561D0C650900A17399 /* DetailViewController.xib */; };
@@ -89,6 +90,7 @@
 		864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster 1.4.otf"; sourceTree = "<group>"; };
 		864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFPHaiBaoW12-GB.ttf"; sourceTree = "<group>"; };
 		864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+QC.swift"; sourceTree = "<group>"; };
+		8676CD2F1D0DA845006E860F /* QCActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCActionView.swift; sourceTree = "<group>"; };
 		867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlowLayout.swift; sourceTree = "<group>"; };
 		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -192,6 +194,14 @@
 				8625952E1CF45ED900C79531 /* RootClass.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8676CD2E1D0DA832006E860F /* ActionView */ = {
+			isa = PBXGroup;
+			children = (
+				8676CD2F1D0DA845006E860F /* QCActionView.swift */,
+			);
+			name = ActionView;
 			sourceTree = "<group>";
 		};
 		86A19F981D09623E007CE5D5 /* View */ = {
@@ -368,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				86A6B95A1D0CF1F200A17399 /* Font */,
+				8676CD2E1D0DA832006E860F /* ActionView */,
 				86A6B95B1D0CF1FB00A17399 /* TabBarController */,
 				86A6B9591D0CF1E600A17399 /* RefreshControl */,
 				86BD62431CEB2C0E00D1FEB6 /* QCTabBar */,
@@ -612,6 +623,7 @@
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
+				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */,

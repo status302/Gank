@@ -15,6 +15,9 @@ class ShowWelfareViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var result: Result?
     weak var imageView: UIImageView?
+
+    var actionView: QCActionView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,14 +42,16 @@ class ShowWelfareViewController: UIViewController {
         }
         imageView.image = image!
         imageView.userInteractionEnabled = true
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer))
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didClickDismissButton(_:)))
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognizer(_:)))
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureToSavePhoto))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureToSavePhoto(_:)))
+        longGesture.minimumPressDuration = 0.8
+
+        
         imageView.addGestureRecognizer(tapGesture)
         imageView.addGestureRecognizer(pinchGesture)
         imageView.addGestureRecognizer(longGesture)
-//        imageView.addGestureRecognizer(panGesture)
 
 
 
@@ -62,10 +67,6 @@ class ShowWelfareViewController: UIViewController {
 
     }
 
-//    @objc private func panGestureRecognizer(gesture: UIPanGestureRecognizer) {
-//
-//
-//    }
     /**
      *  实现放大缩小
      */
@@ -75,9 +76,22 @@ class ShowWelfareViewController: UIViewController {
     /**
      *  实现长按保存图片
      */
-    @objc private func longGestureToSavePhoto() {
+    @objc private func longGestureToSavePhoto(recognizer: UILongPressGestureRecognizer) {
 
-        UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(image), nil)
+        actionView = QCActionView()
+        if recognizer.state == .Began {
+
+            actionView?.showActionView({ (index) in
+                if index == 0 {
+                    HUD.flash(.Label("分享正在做呢！"), delay: 0.5)
+                } else {
+                    // 保存图片
+                    UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.image), nil)
+                }
+            })
+        }
+
+//        UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(image), nil)
 
     }
 
