@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
             urlString = "http://gank.io/api/day/" + dateString
         }
     }
-
+    lazy var results = [Result]()
     var urlString: String! {
         didSet {
             // 开始网络请求
@@ -36,12 +36,15 @@ class DetailViewController: UIViewController {
                     return
                 }
 
-                print(json as! NSDictionary)
+//                print(json as! NSDictionary)
 
-
+                let root = EverydayRootClass(fromDictionary: json as! NSDictionary)
+                for catefory in root.categories {
+                    print(root.results[catefory])
+                }
             }
-
         }
+
     }
 
     // MARK: - View Life Cycle
@@ -49,6 +52,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -57,6 +61,10 @@ class DetailViewController: UIViewController {
         //透明状态栏
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+
+    @IBAction func dismiss(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
+class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource,UIViewControllerTransitioningDelegate {
 
 
 
@@ -116,6 +116,14 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     lazy var createString = String()
     lazy var results = [Result]()
 
+    lazy var destVC: DetailViewController = {
+
+        let destVC = DetailViewController()
+        destVC.transitioningDelegate = self
+        destVC.modalPresentationStyle = .FullScreen 
+        return destVC
+    }()
+
     let animation = CABasicAnimation()
 
     
@@ -154,7 +162,7 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
          *  把时间传给下一个VC
          */
 
-        let desVC = DetailViewController()
+//        let desVC = DetailViewController()
 
         // 处理时间
         let formatterToDate = NSDateFormatter()
@@ -166,10 +174,15 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         formatterToString.dateFormat = "yyyy/MM/dd"
         //        self.createString = formatterToString.stringFromDate(createTime!)
         print(formatterToString.stringFromDate(createTime!))
-        desVC.dateString = formatterToString.stringFromDate(createTime!)
+        self.destVC.dateString = formatterToString.stringFromDate(createTime!)
 
-        navigationController?.pushViewController(desVC, animated: true)
+        presentViewController(self.destVC, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(self.destVC, animated: true)
     }
 }
-
+//extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
+//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return ScaleTransition()
+//    }
+//}
 

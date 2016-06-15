@@ -45,11 +45,15 @@
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
 		86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */; };
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
+		86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */; };
+		86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D21D11355C0029EE75 /* EverydayResult.swift */; };
+		86D7F2D51D115C7A0029EE75 /* EverydayTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D41D115C7A0029EE75 /* EverydayTopic.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */; };
 		86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
+		86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,12 +119,16 @@
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEverydayGankCell.swift; path = Gank/EveryDayGank/QCEverydayGankCell.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
+		86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryRootClass.swift; sourceTree = SOURCE_ROOT; };
+		86D7F2D21D11355C0029EE75 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
+		86D7F2D41D115C7A0029EE75 /* EverydayTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayTopic.swift; sourceTree = SOURCE_ROOT; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
 		86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowWelfareViewController.xib; sourceTree = "<group>"; };
+		86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTransition.swift; sourceTree = "<group>"; };
 		A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -345,6 +353,7 @@
 		86BD62391CEB29F200D1FEB6 /* EveryDayGank */ = {
 			isa = PBXGroup;
 			children = (
+				86D7F2CF1D1133B00029EE75 /* Model */,
 				86A6B9541D0C643100A17399 /* Controller */,
 				86A6B9531D0C642B00A17399 /* Layout */,
 				86A6B9521D0C641E00A17399 /* View */,
@@ -377,6 +386,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86F8B6961D105A660028B5B7 /* Transition */,
 				86A6B95A1D0CF1F200A17399 /* Font */,
 				8676CD2E1D0DA832006E860F /* ActionView */,
 				86A6B95B1D0CF1FB00A17399 /* TabBarController */,
@@ -408,6 +418,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		86D7F2CF1D1133B00029EE75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */,
+				86D7F2D21D11355C0029EE75 /* EverydayResult.swift */,
+				86D7F2D41D115C7A0029EE75 /* EverydayTopic.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		86F1BA751CFF20E900C1A61F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +437,14 @@
 				86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		86F8B6961D105A660028B5B7 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -623,6 +651,7 @@
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
+				86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */,
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
@@ -634,14 +663,17 @@
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
+				86D7F2D51D115C7A0029EE75 /* EverydayTopic.swift in Sources */,
 				86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
+				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
 				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,
+				86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

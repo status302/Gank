@@ -9,16 +9,14 @@
 import UIKit
 import Kingfisher
 import PKHUD
-import SKPhotoBrowser
 
 
-class WelfareViewController: UIViewController {
+class WelfareViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     var customRefresh: CustomRefreshControl!
     var page: Int = 1
+
     // MARK: - View life cycle
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
