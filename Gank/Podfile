@@ -7,4 +7,5 @@ target “Gank” do
     pod 'Alamofire', '~> 3.4'
     pod "PKHUD"
     pod 'SKPhotoBrowser', '~> 1.8.6'
+    pod 'SnapKit', '~> 0.30.0.beta1'
 end

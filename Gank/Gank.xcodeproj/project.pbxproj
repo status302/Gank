@@ -40,6 +40,8 @@
 		86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */; };
 		86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */; };
 		86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */; };
+		86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C45E541D12F17E0015AEA4 /* CategoryCell.swift */; };
+		86C45E571D12F1A00015AEA4 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C45E561D12F1A00015AEA4 /* DetailCell.swift */; };
 		86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D26E1CEF152E00133FF5 /* Constants.swift */; };
 		86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2701CEF170400133FF5 /* UIColor+QC.swift */; };
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
@@ -114,6 +116,8 @@
 		86BD623D1CEB2A1C00D1FEB6 /* QCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBarController.swift; sourceTree = "<group>"; };
 		86BD623F1CEB2B1F00D1FEB6 /* QCTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTabBar.swift; sourceTree = "<group>"; };
 		86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCTabBar.xib; sourceTree = "<group>"; };
+		86C45E541D12F17E0015AEA4 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = SOURCE_ROOT; };
+		86C45E561D12F1A00015AEA4 /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = SOURCE_ROOT; };
 		86C8D26E1CEF152E00133FF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C8D2701CEF170400133FF5 /* UIColor+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+QC.swift"; sourceTree = "<group>"; };
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
@@ -234,6 +238,8 @@
 			children = (
 				86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */,
 				86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */,
+				86C45E541D12F17E0015AEA4 /* CategoryCell.swift */,
+				86C45E561D12F1A00015AEA4 /* DetailCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */,
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
+				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
@@ -665,6 +672,7 @@
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				86D7F2D51D115C7A0029EE75 /* EverydayTopic.swift in Sources */,
 				86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */,
+				86C45E571D12F1A00015AEA4 /* DetailCell.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,

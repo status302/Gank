@@ -20,6 +20,27 @@ import PKHUD
  
  */
 
+/***
+    QQ列表的展开效果：
+    1. 设置tableView的类型为Grouped
+    2. 和点击相关的方法：
+        1. willSelect
+        2. didSelect
+        3. willDeselect
+        4. diddeselect
+        
+        点击事件的发生顺序：
+            willSelect
+            willDeselect
+            didDeselect
+            didSelect
+ 
+        删除和添加cell的方法是：
+            insertRowsAtIndexPaths
+            deleteRowsAtIndexPaths
+
+ */
+
 class DetailViewController: UIViewController {
 
     typealias CompletedHandler = (rootClass: EverydayRootClass?)->(Void)
@@ -40,6 +61,7 @@ class DetailViewController: UIViewController {
         }
     }
     let originOffsetY = -1 * UIScreen.mainScreen().bounds.height * 0.66
+
     // MARK: - Lazy
     lazy var imageView :UIImageView = {
         let imageView = UIImageView()
@@ -51,9 +73,12 @@ class DetailViewController: UIViewController {
     lazy var tableView: UITableView = {
 
         let tableView: UITableView = UITableView()
-        
+
         tableView.frame = UIScreen.mainScreen().bounds
         tableView.contentInset = UIEdgeInsetsMake(self.imageView.height, 0, 0, 0)
+        tableView.separatorStyle = .None
+
+        tableView.sectionHeaderHeight = 0
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,6 +96,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 暂时隐藏scrollView
+        self.scrollView.hidden = true
+
         // Do any additional setup after loading the view.
 
         self.automaticallyAdjustsScrollViewInsets = false
@@ -83,16 +111,17 @@ class DetailViewController: UIViewController {
         /**
          添加tableView
          */
-        scrollView.addSubview(tableView)
+        view.addSubview(tableView)
 
         /**
          添加一个imageView到scrollView上
          */
 
-        self.scrollView.addSubview(imageView)
+        view.addSubview(imageView)
 
 
-        scrollView.contentSize = tableView.contentSize
+
+//        scrollView.contentSize = tableView.contentSize
 
     }
 
@@ -160,11 +189,41 @@ class DetailViewController: UIViewController {
 
 
 extension DetailViewController: UITableViewDelegate {
+    /**
+        1.
+     */
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        // 在这里
+
+    }
+
+    /**
+    3.
+    */
+    func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
+    }
+
+    /**
+        2.
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+
+    }
+
+    /**
+        4.
+     */
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
 
 }
 extension DetailViewController: UITableViewDataSource {
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return categories.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,6 +234,7 @@ extension DetailViewController: UITableViewDataSource {
         cell.textLabel?.text = "hahahaha"
         return cell
     }
+
 }
 extension DetailViewController {
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -182,12 +242,13 @@ extension DetailViewController {
 
         let delta = contentOffsetY - originOffsetY
 
-        var height = UIScreen.mainScreen().bounds.height * 0.66 - delta
-        if height <= 64 {
-            height = 64.0
+        var height = UIScreen.mainScreen().bounds.height * 0.66 - delta * 0.5
+        if height <= 100 {
+            height = 100.0
         }
+        imageView.y = -delta * 0.5
         imageView.height = height
-//        self.view.layoutIfNeeded()
+
 
     }
 }
