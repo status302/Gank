@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource,UIViewControllerTransitioningDelegate {
+class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
 
 
@@ -119,8 +119,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     lazy var destVC: DetailViewController = {
 
         let destVC = DetailViewController()
-        destVC.transitioningDelegate = self
-        destVC.modalPresentationStyle = .FullScreen 
         return destVC
     }()
 
@@ -175,6 +173,7 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         //        self.createString = formatterToString.stringFromDate(createTime!)
         print(formatterToString.stringFromDate(createTime!))
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
+//        self.destVC.imageUrl = self.results[indexPath.item].url
 
         presentViewController(self.destVC, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(self.destVC, animated: true)

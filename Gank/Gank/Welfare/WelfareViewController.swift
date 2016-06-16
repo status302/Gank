@@ -11,7 +11,7 @@ import Kingfisher
 import PKHUD
 
 
-class WelfareViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class WelfareViewController: UIViewController {
 
     var customRefresh: CustomRefreshControl!
     var page: Int = 1
