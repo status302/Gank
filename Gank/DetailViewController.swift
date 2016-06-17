@@ -75,7 +75,7 @@ class DetailViewController: UIViewController {
         let tableView: UITableView = UITableView()
 
         tableView.frame = UIScreen.mainScreen().bounds
-        tableView.contentInset = UIEdgeInsetsMake(self.imageView.height, 0, 0, 0)
+        tableView.contentInset = UIEdgeInsets(top: self.imageView.height, left: 0, bottom: 36, right: 0)
         tableView.separatorStyle = .None
 
         tableView.sectionHeaderHeight = 0
@@ -90,14 +90,11 @@ class DetailViewController: UIViewController {
     }()
 
     // MARK: - Outlets
-    @IBOutlet weak var scrollView: UIScrollView!
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 暂时隐藏scrollView
-        self.scrollView.hidden = true
 
         // Do any additional setup after loading the view.
 
@@ -111,14 +108,15 @@ class DetailViewController: UIViewController {
         /**
          添加tableView
          */
-        view.addSubview(tableView)
+//        view.addSubview(tableView)
+        view.insertSubview(tableView, atIndex: 0)
 
         /**
          添加一个imageView到scrollView上
          */
 
-        view.addSubview(imageView)
-
+//        view.addSubview(imageView)
+        view.insertSubview(imageView, aboveSubview: tableView)
 
 
 //        scrollView.contentSize = tableView.contentSize
@@ -187,13 +185,14 @@ class DetailViewController: UIViewController {
     }
 }
 
-
 extension DetailViewController: UITableViewDelegate {
     /**
         1.
      */
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        // 在这里
+        // 返回的indexPath表示即将要选中的indexPath
+
+        return indexPath
 
     }
 
@@ -201,14 +200,20 @@ extension DetailViewController: UITableViewDelegate {
     3.
     */
     func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        
+        // 返回的indexPath表示即将被取消选中的indexPath
+        return indexPath
     }
 
     /**
         2.
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        tableView.beginUpdates()
+        // 模拟只添加一行数据
+        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+        categories.insert("hahahahha", atIndex: indexPath.row + 1)
+        tableView.reloadData()
+        tableView.endUpdates()
 
     }
 
@@ -217,21 +222,25 @@ extension DetailViewController: UITableViewDelegate {
      */
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 
+
     }
 
 }
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categories.count
+        return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+
+        var extra = 0
+
+        return categories.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
-        cell.textLabel?.text = "hahahaha"
+        cell.textLabel?.text = categories[indexPath.row]
         return cell
     }
 
@@ -241,14 +250,17 @@ extension DetailViewController {
         let contentOffsetY = scrollView.contentOffset.y
 
         let delta = contentOffsetY - originOffsetY
-
         var height = UIScreen.mainScreen().bounds.height * 0.66 - delta * 0.5
         if height <= 100 {
             height = 100.0
         }
-        imageView.y = -delta * 0.5
+
+        if delta < 0 {
+            imageView.y = 0.0001
+        } else {
+            imageView.y = -delta * 0.5
+        }
+
         imageView.height = height
-
-
     }
 }

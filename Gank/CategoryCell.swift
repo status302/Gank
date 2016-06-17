@@ -11,4 +11,23 @@ import SnapKit
 
 class CategoryCell: UITableViewCell {
 
+
+    var isSelected: Bool?
+    var category: EverydayCategory? {
+        didSet {
+            self.textLabel?.text = category?.category
+        }
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

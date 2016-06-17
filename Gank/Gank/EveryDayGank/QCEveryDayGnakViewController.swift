@@ -139,7 +139,7 @@ extension QCEveryDayGnakViewController {
         // 处理时间
         let formatterToDate = NSDateFormatter()
         formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let str = results[indexPath.item].createdAt
+        let str = results[indexPath.item].publishedAt
         let createTime = formatterToDate.dateFromString(str)
 
         let formatterToString = NSDateFormatter()
@@ -165,7 +165,7 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         // 处理时间
         let formatterToDate = NSDateFormatter()
         formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let str = results[indexPath.item].createdAt
+        let str = results[indexPath.item].publishedAt
         let createTime = formatterToDate.dateFromString(str)
 
         let formatterToString = NSDateFormatter()
@@ -175,8 +175,8 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
 //        self.destVC.imageUrl = self.results[indexPath.item].url
 
-        presentViewController(self.destVC, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(self.destVC, animated: true)
+//        presentViewController(self.destVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(self.destVC, animated: true)
     }
 }
 //extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
