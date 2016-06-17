@@ -154,7 +154,6 @@ class SortViewController: UIViewController {
             button.setTitle(title, forState: .Normal)
             button.setTitle(title, forState: .Disabled)
 
-            //            button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
             button.titleLabel?.textAlignment = .Center
 
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -218,11 +217,9 @@ extension SortViewController: UIScrollViewDelegate {
         let vc = self.childViewControllers[index] as! QCTopicViewController
 
         vc.view.x = scrollView.contentOffset.x
-        vc.view.y = 0
+        vc.view.y = self.headScrollView.height
         vc.view.height = scrollView.height
         vc.view.width = scrollView.width
-        
-        vc.tableView.contentInset = UIEdgeInsetsMake(self.headScrollView.height, 0, 98, 0)
 
         vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset
 

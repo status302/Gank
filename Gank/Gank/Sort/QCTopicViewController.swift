@@ -49,12 +49,12 @@ class QCTopicViewController: UITableViewController {
             completedHandler(root: modal)
         }
     }
-
+    // MARK: - Lazy
     /**
      数据： results
      */
     lazy var results = [Result]()
-
+    lazy var customRefreshControl = CustomRefreshControl()
 
     func loadData() {
         results.removeAll()
@@ -76,8 +76,16 @@ class QCTopicViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+        self.automaticallyAdjustsScrollViewInsets = false
 
         loadData()
+
+        view.addSubview(self.customRefreshControl)
+        customRefreshControl.addTarget(self, action: #selector(loadMoreData), forControlEvents: UIControlEvents.TouchUpInside)
+
+    }
+
+    func loadMoreData() {
 
     }
 }
@@ -97,3 +105,11 @@ extension QCTopicViewController {
     }
 
 }
+//
+//extension QCTopicViewController {
+//    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        if customRefreshControl.refreshing {
+//            customRefreshControl.beginRefreshing()
+//        }
+//    }
+//}
