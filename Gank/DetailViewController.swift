@@ -54,6 +54,7 @@ class DetailViewController: UIViewController {
     }
     lazy var results = [String:[EverydayResult]]()
     lazy var categories = [String]()
+
     var urlString = String()
     var imageUrl = String() {
         didSet {
@@ -72,18 +73,14 @@ class DetailViewController: UIViewController {
 
     lazy var tableView: UITableView = {
 
-        let tableView: UITableView = UITableView()
+        let tableView: UITableView = UITableView(frame: CGRect.zero, style: .Grouped)
 
         tableView.frame = UIScreen.mainScreen().bounds
         tableView.contentInset = UIEdgeInsets(top: self.imageView.height, left: 0, bottom: 36, right: 0)
         tableView.separatorStyle = .None
 
-        tableView.sectionHeaderHeight = 0
-
         tableView.delegate = self
         tableView.dataSource = self
-
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "detailCell")
 
         return tableView
 
@@ -133,6 +130,7 @@ class DetailViewController: UIViewController {
 
             self.results = root.results
             self.categories = root.categories
+
             self.tableView.reloadData()
             finishedLoad(finished: true)
         }
@@ -186,63 +184,51 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: UITableViewDelegate {
-    /**
-        1.
-     */
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        // 返回的indexPath表示即将要选中的indexPath
 
-        return indexPath
-
+    // 设置header和footer的高度
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.00001
     }
 
-    /**
-    3.
-    */
-    func tableView(tableView: UITableView, willDeselectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        // 返回的indexPath表示即将被取消选中的indexPath
-        return indexPath
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let category = categories[indexPath.section]
+        let result = results[category]![indexPath.row]
+        return result.cellHeight
     }
-
-    /**
-        2.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.beginUpdates()
-        // 模拟只添加一行数据
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
-        categories.insert("hahahahha", atIndex: indexPath.row + 1)
-        tableView.reloadData()
-        tableView.endUpdates()
-
-    }
-
-    /**
-        4.
-     */
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-
-
-    }
-
 }
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return categories.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        var extra = 0
-
-        return categories.count
+        let category = categories[section]
+        return results[category]!.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath)
-        cell.textLabel?.text = categories[indexPath.row]
+
+        let identifier: String = "detailCellID"
+        let cell = CategoryCell(style: .Default, reuseIdentifier: identifier)
+
+        let category = categories[indexPath.section]
+        cell.everydayResult = results[category]![indexPath.row]
+
+//        cell.titleLabel?.text = results[category]![indexPath.row].desc
+//        cell.timeLabel.text = results[category]![indexPath.row].publishedAt
+//        cell.fromLabel.text = results[category]![indexPath.row].who
+
         return cell
     }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categories[section]
+    }
+
 
 }
 extension DetailViewController {

@@ -144,8 +144,28 @@ extension QCEveryDayGnakViewController {
 
         let formatterToString = NSDateFormatter()
         formatterToString.dateFormat = "yyyy/MM/dd"
-//        self.createString = formatterToString.stringFromDate(createTime!)
-        cell.timeLabel.text = "#" + formatterToString.stringFromDate(createTime!) + "#"
+
+        // 处理日期 
+        var timeStr: String!
+
+        let components = NSDate().deltaFromDate(createTime!)
+        if components.year == 0 {
+            if components.month == 0 {
+                if components.day == 0 {
+                    timeStr = "今天"
+                } else if components.day == 1 {
+                    timeStr = "昨天"
+                } else if components.day == 2 {
+                    timeStr = "前天"
+                } else {
+                    timeStr = "\(components.day)天前"
+                }
+            } else {
+                timeStr = formatterToString.stringFromDate(createTime!)
+            }
+        }
+
+        cell.timeLabel.text = "#" + timeStr + "#"
 
         cell.sourceLabel.text = "来源：" + results[indexPath.item].who
 
