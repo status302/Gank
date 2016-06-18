@@ -221,6 +221,8 @@ extension SortViewController: UIScrollViewDelegate {
         vc.view.height = scrollView.height
         vc.view.width = scrollView.width
 
+
+        vc.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 64 + 36 + 36, right: 0)
         vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset
 
         // 该方法可以判断vc.view 是否为scrollView的子view

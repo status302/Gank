@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import PKHUD
 
 class QCTopicViewController: UITableViewController {
 
@@ -53,8 +54,6 @@ class QCTopicViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-//        loadData()
     }
 
     /**
@@ -81,7 +80,17 @@ class QCTopicViewController: UITableViewController {
     }
 
     func loadMoreData() {
+        alamofireManager.fectchTopicData(urlStr) { (rootClass) in
+            guard let root = rootClass else {
+                HUD.flash(.LabeledError(title: "加载数据失败", subtitle: ""), delay: 0.5)
+                return
+            }
+            for result in root.results {
+                self.results.append(result)
+            }
+            self.tableView.reloadData()
 
+        }
     }
 }
 extension QCTopicViewController {
@@ -95,10 +104,19 @@ extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellID", forIndexPath: indexPath)
+
+        if indexPath.row == results.count-1 {
+            if page < 5 {
+                page += 1
+                loadMoreData()
+            } else {
+                HUD.flash(.LabeledError(title: "没有更多数据了", subtitle: ""), delay: 0.5)
+            }
+        }
         cell.textLabel?.text = results[indexPath.row].desc
+
         return cell
     }
-
 }
 
 extension QCTopicViewController {
