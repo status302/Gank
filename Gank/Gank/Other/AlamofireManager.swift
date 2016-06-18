@@ -47,4 +47,24 @@ class AlamofireManager {
             HUD.hide()
         }
     }
+
+    /**
+     网络请求
+
+     - parameter completedHandler: 得到数据后待处理的闭包。root: 包含数据的RootClass的实例
+     */
+    func fectchTopicData(urlString: String, completedHandler: CompletedHandler) {
+        let dataRequest = Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL, headers: nil)
+
+        dataRequest.responseJSON { (response) in
+            guard let json = response.result.value else {
+                print("error occurs")
+                completedHandler(rootClass: nil)
+                return
+            }
+
+            let modal = RootClass(fromDictionary: json as! NSDictionary)
+            completedHandler(rootClass: modal)
+        }
+    }
 }

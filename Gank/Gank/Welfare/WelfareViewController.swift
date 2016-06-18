@@ -75,7 +75,6 @@ class WelfareViewController: UIViewController {
                 return
             }
 
-//            self.results = root.results
             for result in root.results {
                 self.results.append(result)
             }
