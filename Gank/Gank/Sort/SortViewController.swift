@@ -185,6 +185,18 @@ class SortViewController: UIViewController {
 
         scrollView.setContentOffset(offset, animated: true)
 
+        print("按钮的centerX为：\(sender.centerX)， headView的ContentSize为：\(headScrollView.contentSize.width)")
+
+        if (sender.centerX > Constants.Screen_width * 0.5) && ((headScrollView.contentSize.width - sender.centerX) > Constants.Screen_width * 0.5) {
+            UIView.animateWithDuration(0.2, animations: { 
+                self.headScrollView.contentOffset.x = sender.centerX - Constants.Screen_width * 0.5
+            })
+        } else {
+//            UIView.animateWithDuration(0.2, animations: { 
+//                self.headScrollView.contentOffset.x = 0
+//            })
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

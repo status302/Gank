@@ -62,4 +62,25 @@ extension UIView {
             self.frame = frame
         }
     }
-}
+
+    public var centerX: CGFloat {
+        get {
+            return self.center.x
+        }
+        set {
+            var center = self.center
+            center.x = newValue
+            self.center = center
+        }
+    }
+    public var centerY: CGFloat {
+        get {
+            return self.center.y
+        }
+        set {
+            var center = self.center
+            center.y = newValue
+            self.center = center
+        }
+    }
+ }

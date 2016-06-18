@@ -41,7 +41,7 @@ class QCTopicViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellID")
 
         self.automaticallyAdjustsScrollViewInsets = false
 
@@ -54,6 +54,8 @@ class QCTopicViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.separatorStyle = .None
+
     }
 
     /**
@@ -103,8 +105,9 @@ extension QCTopicViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellID", forIndexPath: indexPath)
 
+        let cellID = "topicCellID"
+        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
         if indexPath.row == results.count-1 {
             if page < 5 {
                 page += 1
@@ -113,9 +116,14 @@ extension QCTopicViewController {
                 HUD.flash(.LabeledError(title: "没有更多数据了", subtitle: ""), delay: 0.5)
             }
         }
-        cell.textLabel?.text = results[indexPath.row].desc
+//        cell.textLabel?.text = results[indexPath.row].desc
+        cell.result = results[indexPath.row]
 
         return cell
+    }
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return results[indexPath.row].cellHeight
     }
 }
 

@@ -42,6 +42,7 @@
 		86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */; };
 		86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C45E541D12F17E0015AEA4 /* CategoryCell.swift */; };
 		86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5C8DD1D142D010046744D /* NSDate+QC.swift */; };
+		86C5C8E01D14ED960046744D /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5C8DF1D14ED960046744D /* SortCell.swift */; };
 		86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D26E1CEF152E00133FF5 /* Constants.swift */; };
 		86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2701CEF170400133FF5 /* UIColor+QC.swift */; };
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
@@ -117,6 +118,7 @@
 		86BD62411CEB2BF200D1FEB6 /* QCTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCTabBar.xib; sourceTree = "<group>"; };
 		86C45E541D12F17E0015AEA4 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = SOURCE_ROOT; };
 		86C5C8DD1D142D010046744D /* NSDate+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+QC.swift"; sourceTree = "<group>"; };
+		86C5C8DF1D14ED960046744D /* SortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		86C8D26E1CEF152E00133FF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		86C8D2701CEF170400133FF5 /* UIColor+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+QC.swift"; sourceTree = "<group>"; };
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
@@ -217,6 +219,7 @@
 		86A19F981D09623E007CE5D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				86C5C8DF1D14ED960046744D /* SortCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
+				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
