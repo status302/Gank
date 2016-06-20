@@ -37,6 +37,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
             }
 
             self.results = root.results
+            self.results.sortInPlace({ (r1, r2) -> Bool in
+                r1.publishedAt > r2.publishedAt //
+            })
             self.collectionView.reloadData()
 
             let formatter = NSDateFormatter()

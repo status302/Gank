@@ -82,8 +82,6 @@ class SortViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         self.automaticallyAdjustsScrollViewInsets = false
 
-
-
         setupHeadView()
 
         self.setupNav()
@@ -196,7 +194,6 @@ class SortViewController: UIViewController {
 //                self.headScrollView.contentOffset.x = 0
 //            })
         }
-
     }
 
     override func didReceiveMemoryWarning() {
