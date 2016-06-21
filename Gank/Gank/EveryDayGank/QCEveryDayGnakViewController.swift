@@ -67,13 +67,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     @objc private func loadData() {
         UIView.animateWithDuration(0.5, delay: 0, options: .Repeat, animations: {
             self.rightButton?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        }) { (finished) in
-
-        }
-
-
-
-
+        }) { (finished) in  }
 
         let rotationAnimation = CABasicAnimation()
         rotationAnimation.keyPath = "transform.rotation"

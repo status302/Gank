@@ -102,7 +102,10 @@ class DetailViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @objc private func sharedButtonClicked() {
-
+        let sharedImage = imageView.image
+        let activityVC = UIActivityViewController(activityItems: ["哈哈, ","我是来测试的","我来自Gank.io客户端", sharedImage!, "今天的干货地址为\(urlString)"], applicationActivities: nil)
+//        activityVC.excludedActivityTypes = [UIActivityTypePostToFacebook]
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
 
     @objc private func showImage() {

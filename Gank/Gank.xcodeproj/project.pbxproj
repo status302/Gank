@@ -30,6 +30,7 @@
 		867DB3571D1925D7002FC378 /* Baloo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 867DB3561D1925D7002FC378 /* Baloo-Regular.ttf */; };
 		867DB3591D19517A002FC378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DB3581D19517A002FC378 /* Assets.xcassets */; };
 		867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */; };
+		86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */; };
 		86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B9551D0C650900A17399 /* DetailViewController.swift */; };
 		86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A6B9561D0C650900A17399 /* DetailViewController.xib */; };
 		86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */; };
@@ -101,6 +102,7 @@
 		867DB3561D1925D7002FC378 /* Baloo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo-Regular.ttf"; sourceTree = "<group>"; };
 		867DB3581D19517A002FC378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867E21171CFDE42900EF72D9 /* CoverFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverFlowLayout.swift; sourceTree = "<group>"; };
+		86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		86BD62081CEB27B600D1FEB6 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +236,15 @@
 				86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		86A1FDBC1D1982890055BBA5 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */,
+			);
+			name = Activity;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		86A6B9521D0C641E00A17399 /* View */ = {
@@ -395,6 +406,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86A1FDBC1D1982890055BBA5 /* Activity */,
 				86F8B6961D105A660028B5B7 /* Transition */,
 				86A6B95A1D0CF1F200A17399 /* Font */,
 				8676CD2E1D0DA832006E860F /* ActionView */,
@@ -681,6 +693,7 @@
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 				86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */,
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
+				86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,

@@ -77,6 +77,8 @@ class ShowWelfareViewController: UIViewController {
 
     }
 
+
+    // MARK: - Actions
     /**
      *  实现放大缩小
      */
@@ -91,14 +93,7 @@ class ShowWelfareViewController: UIViewController {
 
         if recognizer.state == .Began {
 
-            actionView?.showActionView({ (index) in
-                if index == 0 {
-                    HUD.flash(.Label("分享正在做呢！"), delay: 0.5)
-                } else {
-                    // 保存图片
-                    UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.savedImage), nil)
-                }
-            })
+            moreButtonClicked(self)
         }
 
 //        UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(image), nil)
@@ -110,6 +105,19 @@ class ShowWelfareViewController: UIViewController {
 
     }
 
+    @IBAction func moreButtonClicked(sender: AnyObject) {
+        actionView?.showActionView({ (index) in
+            if index == 0 {
+                let activityVC = UIActivityViewController(activityItems: [self.imageView!.image!], applicationActivities: nil)
+
+                self.presentViewController(activityVC, animated: true, completion: nil)
+            } else {
+                // 保存图片
+                UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.savedImage), nil)
+            }
+        })
+
+    }
 
     //  - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
 
@@ -127,82 +135,12 @@ class ShowWelfareViewController: UIViewController {
     @IBAction func didClickDismissButton(sender: AnyObject) {
 
         self.dismissViewControllerAnimated(true, completion: nil)
-//        self.dismissViewControllerAnimated(true) {
-//            print("已经退出----")
-//        }
     }
 
-   /* public func panGestureRecognized(sender: UIPanGestureRecognizer) {
-        backgroundView.hidden = true
-        let scrollView = pageDisplayedAtIndex(currentPageIndex)
-
-        let viewHeight = scrollView.frame.size.height
-        let viewHalfHeight = viewHeight/2
-
-        var translatedPoint = sender.translationInView(self.view)
-
-        // gesture began
-        if sender.state == .Began {
-            firstX = scrollView.center.x
-            firstY = scrollView.center.y
-
-            senderViewForAnimation?.hidden = (currentPageIndex == initialPageIndex)
-
-            isDraggingPhoto = true
-            setNeedsStatusBarAppearanceUpdate()
-        }
-
-        translatedPoint = CGPoint(x: firstX, y: firstY + translatedPoint.y)
-        scrollView.center = translatedPoint
-
-        let minOffset = viewHalfHeight / 4
-        let offset = 1 - (scrollView.center.y > viewHalfHeight ? scrollView.center.y - viewHalfHeight : -(scrollView.center.y - viewHalfHeight)) / viewHalfHeight
-        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(max(0.7, offset))
-
-        // gesture end
-        if sender.state == .Ended {
-            if scrollView.center.y > viewHalfHeight + minOffset || scrollView.center.y < viewHalfHeight - minOffset {
-                backgroundView.backgroundColor = self.view.backgroundColor
-                determineAndClose()
-                return
-            } else {
-                // Continue Showing View
-                isDraggingPhoto = false
-                setNeedsStatusBarAppearanceUpdate()
-
-                let velocityY: CGFloat = CGFloat(self.animationDuration) * sender.velocityInView(self.view).y
-                let finalX: CGFloat = firstX
-                let finalY: CGFloat = viewHalfHeight
-
-                let animationDuration = Double(abs(velocityY) * 0.0002 + 0.2)
-
-                UIView.beginAnimations(nil, context: nil)
-                UIView.setAnimationDuration(animationDuration)
-                UIView.setAnimationCurve(UIViewAnimationCurve.EaseIn)
-                view.backgroundColor = UIColor.blackColor()
-                scrollView.center = CGPoint(x: finalX, y: finalY)
-                UIView.commitAnimations()
-            }
-        }
-    }*/
-    @IBAction func dismissVC(segue: UIStoryboardSegue) {
-
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
