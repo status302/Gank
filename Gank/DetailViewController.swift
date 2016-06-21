@@ -98,6 +98,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var shadowImageView: UIImageView!
 
     // MARK: - Private functions
+    @objc private func back() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    @objc private func sharedButtonClicked() {
+
+    }
+
     @objc private func showImage() {
         let showImageVC = ShowWelfareViewController()
 
@@ -114,7 +121,23 @@ class DetailViewController: UIViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
 
+//        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
+
+        let rightButton = UIButton(type: .System)
+        rightButton.width = 22
+        rightButton.height = 33
+        rightButton.setImage(UIImage(named: "icon_share"), forState: .Normal)
+        rightButton.contentMode = .ScaleAspectFill
+
+        rightButton.tintColor = UIColor.blackColor()
+        rightButton.addTarget(self, action: #selector(sharedButtonClicked), forControlEvents: .TouchUpInside)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+
+        
     }
+
 
     private func setupSubviews() {
         /**

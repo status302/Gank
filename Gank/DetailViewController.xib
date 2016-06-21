@@ -22,7 +22,7 @@
                         <constraint firstAttribute="height" constant="80" id="hMr-Ly-J4G"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-XF-BUg">
+                <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-XF-BUg">
                     <rect key="frame" x="556" y="30" width="24" height="33"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="Rqj-mN-ze1"/>
@@ -30,7 +30,7 @@
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="icon_share"/>
-                    <state key="highlighted" image="icon_share_highlighted"/>
+                    <state key="highlighted" image="icon_share"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -46,7 +46,6 @@
     </objects>
     <resources>
         <image name="icon_share" width="48" height="66"/>
-        <image name="icon_share_highlighted" width="48" height="66"/>
         <image name="top_shadow" width="375" height="80"/>
     </resources>
 </document>

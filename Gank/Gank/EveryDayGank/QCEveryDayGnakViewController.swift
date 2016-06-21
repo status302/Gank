@@ -12,7 +12,7 @@ import Kingfisher
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
-
+    weak var rightButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,18 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.automaticallyAdjustsScrollViewInsets = false
 
         self.view.addSubview(self.collectionView)
+        /// 添加刷新控件
+        let rightView = UIButton(frame: CGRect.zero)
 
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "refresh"), highlightedImage: UIImage(named: "refresh"), target: self, action: #selector(loadData))
+        rightView.setImage(UIImage(named: "refresh"), forState: .Normal)
+        rightView.setImage(UIImage(named: "refresh_highlighted"), forState: .Highlighted)
 
+        rightView.tintColor = UIColor.blackColor()
+
+        rightView.sizeToFit()
+        rightView.addTarget(self, action: #selector(loadData), forControlEvents: .TouchUpInside)
+        rightButton = rightView
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
 
         loadData()
         
@@ -57,13 +65,32 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         print("添加了加载更多数据")
     }
     @objc private func loadData() {
+        UIView.animateWithDuration(0.5, delay: 0, options: .Repeat, animations: {
+            self.rightButton?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        }) { (finished) in
 
-        self.results.removeAll()
+        }
 
-        
 
+
+
+
+        let rotationAnimation = CABasicAnimation()
+        rotationAnimation.keyPath = "transform.rotation"
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = M_PI
+        rotationAnimation.duration = 0.5
+
+        rotationAnimation.repeatCount = MAXFLOAT
+
+        self.rightButton?.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
         // Alamofire
         AlamofireManager.sharedInstance.type = URLType.welfare
+
+        /// 模拟网络延迟
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.results.removeAll()
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -76,10 +103,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
                 r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
             })
             self.collectionView.reloadData()
-
-
+            self.rightButton?.layer.removeAllAnimations()
             
-            
+        }
+
         }
     }
 
