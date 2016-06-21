@@ -21,8 +21,8 @@ class QCCollectionLayout: UICollectionViewLayout {
         /**
          *  init columnHeights
          */
-        for _ in 0 ..< Constants.CollectionViewLayoutColumnCount {
-            columnHeights.append(Constants.CollectionViewLayoutEdgeInsets.top)
+        for _ in 0 ..< Common.CollectionViewLayoutColumnCount {
+            columnHeights.append(Common.CollectionViewLayoutEdgeInsets.top)
         }
 
 
@@ -57,7 +57,7 @@ class QCCollectionLayout: UICollectionViewLayout {
 
         let collectionViewWidth = self.collectionView?.width
 
-        let width = collectionViewWidth! / CGFloat(Constants.CollectionViewLayoutColumnCount)
+        let width = collectionViewWidth! / CGFloat(Common.CollectionViewLayoutColumnCount)
         
         var columnNumber = 0
         var minHeight = CGFloat(MAXFLOAT)
@@ -69,9 +69,9 @@ class QCCollectionLayout: UICollectionViewLayout {
         }
 
         let height: CGFloat = 300.0
-        let x = Constants.CollectionViewLayoutEdgeInsets.left + CGFloat(columnNumber)*(Constants.CollectionViewLayoutRowMargin + width)
+        let x = Common.CollectionViewLayoutEdgeInsets.left + CGFloat(columnNumber)*(Common.CollectionViewLayoutRowMargin + width)
 
-        let y = minHeight + Constants.CollectionViewLayoutColumnMargin
+        let y = minHeight + Common.CollectionViewLayoutColumnMargin
 
         attr.frame = CGRectMake(x, y, width, height)
 

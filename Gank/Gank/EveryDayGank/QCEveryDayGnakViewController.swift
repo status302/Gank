@@ -38,7 +38,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
             self.results = root.results
             self.results.sortInPlace({ (r1, r2) -> Bool in
-                r1.publishedAt > r2.publishedAt //
+                r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
             })
             self.collectionView.reloadData()
 
@@ -97,19 +97,12 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         collectionView.delegate = self
 
         // background color
-        collectionView.backgroundColor = Constants.backgroundColor
+        collectionView.backgroundColor = Common.backgroundColor
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
         collectionView.contentInset = UIEdgeInsetsMake(44, 0, 40, 0)
-
-        // add refreshController 
-//        let refreshView = UIRefreshControl()
-//        refreshView.addTarget(self, action: #selector(didClickRightBarButton), forControlEvents: .ValueChanged)
-//
-//        collectionView.addSubview(refreshView)
-
 
         collectionView.pagingEnabled = false
 
@@ -135,7 +128,7 @@ extension QCEveryDayGnakViewController {
         return results.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
         if let url = NSURL(string: results[indexPath.item].url) {
             cell.imageView.kf_setImageWithURL(url)
         }

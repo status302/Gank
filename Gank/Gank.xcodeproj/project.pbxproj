@@ -43,7 +43,7 @@
 		86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C45E541D12F17E0015AEA4 /* CategoryCell.swift */; };
 		86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5C8DD1D142D010046744D /* NSDate+QC.swift */; };
 		86C5C8E01D14ED960046744D /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5C8DF1D14ED960046744D /* SortCell.swift */; };
-		86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D26E1CEF152E00133FF5 /* Constants.swift */; };
+		86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D26E1CEF152E00133FF5 /* Common.swift */; };
 		86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2701CEF170400133FF5 /* UIColor+QC.swift */; };
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
 		86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */; };
@@ -119,7 +119,7 @@
 		86C45E541D12F17E0015AEA4 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = SOURCE_ROOT; };
 		86C5C8DD1D142D010046744D /* NSDate+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+QC.swift"; sourceTree = "<group>"; };
 		86C5C8DF1D14ED960046744D /* SortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
-		86C8D26E1CEF152E00133FF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		86C8D26E1CEF152E00133FF5 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		86C8D2701CEF170400133FF5 /* UIColor+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+QC.swift"; sourceTree = "<group>"; };
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEverydayGankCell.swift; path = Gank/EveryDayGank/QCEverydayGankCell.swift; sourceTree = SOURCE_ROOT; };
@@ -193,7 +193,7 @@
 		862595281CF344E500C79531 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				86C8D26E1CEF152E00133FF5 /* Constants.swift */,
+				86C8D26E1CEF152E00133FF5 /* Common.swift */,
 				862595291CF3450300C79531 /* URLs.swift */,
 			);
 			name = Common;
@@ -685,7 +685,7 @@
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,
-				86C8D26F1CEF152E00133FF5 /* Constants.swift in Sources */,
+				86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */,
 				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,

@@ -30,12 +30,12 @@ class ShowWelfareViewController: UIViewController {
         let width = image?.size.width
         let height = image?.size.height
 
-        let imageViewHeight = Constants.Screen_width / width! * height!
-        let imageView = UIImageView(frame: CGRectMake(0, 0, Constants.Screen_width, imageViewHeight))
+        let imageViewHeight = Common.Screen_width / width! * height!
+        let imageView = UIImageView(frame: CGRectMake(0, 0, Common.Screen_width, imageViewHeight))
         imageView.contentMode = .ScaleAspectFit
-        if imageViewHeight < Constants.Screen_height {
+        if imageViewHeight < Common.Screen_height {
             imageView.center.y = UIScreen.mainScreen().bounds.height * 0.5
-            self.scrollView.contentSize = CGSizeMake(0, Constants.Screen_height + 5)
+            self.scrollView.contentSize = CGSizeMake(0, Common.Screen_height + 5)
         } else {
             self.scrollView.contentSize = CGSizeMake(0, imageViewHeight)
 

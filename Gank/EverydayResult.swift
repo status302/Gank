@@ -39,7 +39,7 @@ struct EverydayResult {
         publishedTime = dateToString(publishedAt)
 
         /// 设置字符的高度
-        let width = Constants.Screen_width - 50
+        let width = Common.Screen_width - 50
         let height = CGFloat.max
         let size = (desc as NSString).boundingRectWithSize(CGSize(width: width, height: height), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(12)], context: nil).size
 

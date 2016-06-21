@@ -56,7 +56,7 @@ struct Result {
 
     func stringToSize(fontSize: CGFloat, str: NSString)-> CGSize {
         let height = CGFloat.max
-        let width = Constants.Screen_width - 50.0
+        let width = Common.Screen_width - 50.0
         let size = str.boundingRectWithSize(CGSize(width: width, height: height), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)], context: nil).size
         return size
     }

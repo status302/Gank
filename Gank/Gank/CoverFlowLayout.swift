@@ -17,7 +17,7 @@ class CoverFlowLayout: UICollectionViewFlowLayout {
     override func prepareLayout() {
         super.prepareLayout()
 
-        itemSize = CGSizeMake(Constants.CollectionViewLayoutCellWidth, Constants.CollectionViewLayoutCellHeight)
+        itemSize = CGSizeMake(Common.CollectionViewLayoutCellWidth, Common.CollectionViewLayoutCellHeight)
         // 表示竖直方向cell与cell之间的距离
 //        minimumLineSpacing = 20.0
         // 表示水平方向cell与cell之间的距离

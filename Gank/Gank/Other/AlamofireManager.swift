@@ -13,7 +13,9 @@ import PKHUD
 class AlamofireManager {
     typealias CompletedHandler = (rootClass: RootClass?)->Void
 
+    // 创建一个单例
     static let sharedInstance = AlamofireManager()
+
 
     var urlStr: String = ""
 
@@ -36,7 +38,8 @@ class AlamofireManager {
         let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
         requestResult.responseJSON { (response) in
             guard let json = response.result.value else {
-                print("error occur")
+                print("\(response.debugDescription)")
+                HUD.hide()
                 completedHandler(rootClass: nil)
                 return
             }

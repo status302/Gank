@@ -56,7 +56,8 @@ class WelfareViewController: UIViewController {
 
     // private functions
     @objc private func refreshBarButtonDidClick() {
-        print("did click refresh button")
+        collectionView.setContentOffset(CGPoint(x: 0, y: self.customRefresh.height), animated: true)
+        self.scrollViewDidEndDecelerating(collectionView)
 
         HUD.flash(.Label("哈哈哈，分享还没做好~"), delay: 1.2)
 
@@ -104,14 +105,14 @@ class WelfareViewController: UIViewController {
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let width = Constants.Screen_width*0.5 - 1.0
+        let width = Common.Screen_width*0.5 - 1.0
         layout.itemSize = CGSizeMake(width, width)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
 
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = Constants.backgroundColor
+        collectionView.backgroundColor = Common.backgroundColor
 
         collectionView.contentInset = UIEdgeInsetsZero
 
@@ -120,7 +121,7 @@ class WelfareViewController: UIViewController {
         collectionView.delegate = self
 
         // 从nib中加载cell
-        collectionView.registerNib(UINib.init(nibName: "WelfareCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.welfareCellID)
+        collectionView.registerNib(UINib.init(nibName: "WelfareCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Common.welfareCellID)
 
         return collectionView
     }()
@@ -135,7 +136,7 @@ extension WelfareViewController: UICollectionViewDataSource {
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.welfareCellID, forIndexPath: indexPath) as! WelfareCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.welfareCellID, forIndexPath: indexPath) as! WelfareCollectionViewCell
 
         if indexPath.item == (results.count-1) {
             if page < 5 {

@@ -26,7 +26,7 @@ class SortViewController: UIViewController {
 
         scrollView.delegate = self
 
-        scrollView.contentSize = CGSizeMake(Constants.Screen_width * CGFloat(self.childViewControllers.count), 0)
+        scrollView.contentSize = CGSizeMake(Common.Screen_width * CGFloat(self.childViewControllers.count), 0)
 
         scrollView.frame = self.view.bounds
 
@@ -79,7 +79,7 @@ class SortViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Constants.backgroundColor
+        view.backgroundColor = Common.backgroundColor
         self.automaticallyAdjustsScrollViewInsets = false
 
         setupHeadView()
@@ -185,9 +185,9 @@ class SortViewController: UIViewController {
 
         print("按钮的centerX为：\(sender.centerX)， headView的ContentSize为：\(headScrollView.contentSize.width)")
 
-        if (sender.centerX > Constants.Screen_width * 0.5) && ((headScrollView.contentSize.width - sender.centerX) > Constants.Screen_width * 0.5) {
+        if (sender.centerX > Common.Screen_width * 0.5) && ((headScrollView.contentSize.width - sender.centerX) > Common.Screen_width * 0.5) {
             UIView.animateWithDuration(0.2, animations: { 
-                self.headScrollView.contentOffset.x = sender.centerX - Constants.Screen_width * 0.5
+                self.headScrollView.contentOffset.x = sender.centerX - Common.Screen_width * 0.5
             })
         } else {
 //            UIView.animateWithDuration(0.2, animations: { 
