@@ -41,27 +41,7 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
         return true
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-
-        return super.layoutAttributesForElementsInRect(rect)
-    }
-
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-
-        let attr = super.layoutAttributesForItemAtIndexPath(indexPath)
-
-//        if indexPath.item != 0{
-//            var center = attr!.center
-//            center.x += CGFloat(60 * indexPath.item)
-//            attr!.center = center
-//        }
-
-        return attr
-    }
-
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-
-        print("targetContentOffsetForProposedContentOffset")
 
         // 显示出来的frame
         var contentFrame = CGRectZero
@@ -77,8 +57,8 @@ class QCCollectionViewLayout: UICollectionViewFlowLayout {
             if abs(attr.center.x - collectionViewCenterX) < abs(minCenterX) {
                 minCenterX = attr.center.x - collectionViewCenterX
             }
-
         }
+
         return CGPointMake(proposedContentOffset.x + minCenterX, proposedContentOffset.y)
     }
 

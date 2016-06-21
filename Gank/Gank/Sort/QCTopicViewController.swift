@@ -116,7 +116,7 @@ extension QCTopicViewController {
                 HUD.flash(.LabeledError(title: "没有更多数据了", subtitle: ""), delay: 0.5)
             }
         }
-//        cell.textLabel?.text = results[indexPath.row].desc
+
         cell.result = results[indexPath.row]
 
         return cell

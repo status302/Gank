@@ -56,7 +56,7 @@ class WelfareViewController: UIViewController {
 
     // private functions
     @objc private func refreshBarButtonDidClick() {
-        collectionView.setContentOffset(CGPoint(x: 0, y: self.customRefresh.height), animated: true)
+        collectionView.setContentOffset(CGPoint(x: 0, y: -64-60), animated: true)
         self.scrollViewDidEndDecelerating(collectionView)
 
         HUD.flash(.Label("哈哈哈，分享还没做好~"), delay: 1.2)
@@ -79,6 +79,7 @@ class WelfareViewController: UIViewController {
             for result in root.results {
                 self.results.append(result)
             }
+
             self.customRefresh.endAnimation()
             self.collectionView.reloadData()
 
@@ -88,7 +89,9 @@ class WelfareViewController: UIViewController {
     func loadMoreData() {
         AlamofireManager.sharedInstance.page = page
 
-        AlamofireManager.sharedInstance.type = URLType.welfare
+        print("正在加载第\(AlamofireManager.sharedInstance.page)页数据")
+
+//        AlamofireManager.sharedInstance.type = URLType.welfare
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -97,6 +100,7 @@ class WelfareViewController: UIViewController {
             for result in root.results {
                 self.results.append(result)
             }
+
             self.collectionView.reloadData()
         }
     }
@@ -112,7 +116,7 @@ class WelfareViewController: UIViewController {
 
         let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
 
-        collectionView.backgroundColor = Common.backgroundColor
+        collectionView.backgroundColor = Common.navigationBarBackgroundColor
 
         collectionView.contentInset = UIEdgeInsetsZero
 

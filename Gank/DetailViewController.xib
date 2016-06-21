@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Gank" customModuleProvider="target">
             <connections>
+                <outlet property="sharedButton" destination="NX1-XF-BUg" id="MXT-yi-b8z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,16 +16,37 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-XF-BUg">
-                    <rect key="frame" x="538" y="40" width="22" height="22"/>
+                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="gVX-yL-aMl">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="hMr-Ly-J4G"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-XF-BUg">
+                    <rect key="frame" x="556" y="30" width="24" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="Rqj-mN-ze1"/>
+                        <constraint firstAttribute="height" constant="33" id="TtZ-Gu-pqM"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="icon_share"/>
+                    <state key="highlighted" image="icon_share_highlighted"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NX1-XF-BUg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="aNt-O8-s3T"/>
-                <constraint firstAttribute="trailing" secondItem="NX1-XF-BUg" secondAttribute="trailing" constant="40" id="eQK-nF-dDp"/>
+                <constraint firstItem="gVX-yL-aMl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="VaF-lk-vvI"/>
+                <constraint firstItem="NX1-XF-BUg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="aNt-O8-s3T"/>
+                <constraint firstAttribute="trailing" secondItem="NX1-XF-BUg" secondAttribute="trailing" constant="20" id="eQK-nF-dDp"/>
+                <constraint firstItem="gVX-yL-aMl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vCL-oa-LjY"/>
+                <constraint firstAttribute="trailing" secondItem="gVX-yL-aMl" secondAttribute="trailing" id="vFp-I9-Rra"/>
             </constraints>
             <point key="canvasLocation" x="-38" y="231"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_share" width="48" height="66"/>
+        <image name="icon_share_highlighted" width="48" height="66"/>
+        <image name="top_shadow" width="375" height="80"/>
+    </resources>
 </document>

@@ -79,7 +79,7 @@ class SortViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Common.backgroundColor
+        view.backgroundColor = Common.navigationBarBackgroundColor
         self.automaticallyAdjustsScrollViewInsets = false
 
         setupHeadView()
@@ -141,7 +141,6 @@ class SortViewController: UIViewController {
             headWidth += (size!.width + 20)
             xs.append(headWidth)
             widths.append(size!.width)
-            print("\(size)")
         }
         xs.insert(5, atIndex: 0)
 
@@ -182,8 +181,6 @@ class SortViewController: UIViewController {
         offset.x = CGFloat(sender.tag / 1000) * self.scrollView.width
 
         scrollView.setContentOffset(offset, animated: true)
-
-        print("按钮的centerX为：\(sender.centerX)， headView的ContentSize为：\(headScrollView.contentSize.width)")
 
         if (sender.centerX > Common.Screen_width * 0.5) && ((headScrollView.contentSize.width - sender.centerX) > Common.Screen_width * 0.5) {
             UIView.animateWithDuration(0.2, animations: { 

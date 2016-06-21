@@ -68,6 +68,13 @@ class DetailViewController: UIViewController {
         let imageView = UIImageView()
         imageView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 0.66)
         imageView.contentMode = UIViewContentMode.ScaleToFill
+
+//        imageView.userInteractionEnabled = true
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage))
+        imageView.addGestureRecognizer(tapGesture)
+
+
         return imageView
     }()
 
@@ -87,6 +94,16 @@ class DetailViewController: UIViewController {
     }()
 
     // MARK: - Outlets
+    @IBOutlet weak var sharedButton: UIButton!
+    @IBOutlet weak var shadowImageView: UIImageView!
+
+    // MARK: - Private functions
+    @objc private func showImage() {
+        let showImageVC = ShowWelfareViewController()
+
+        showImageVC.imageUrl = self.imageUrl
+        self.presentViewController(showImageVC, animated: true, completion: nil)
+    }
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -97,26 +114,19 @@ class DetailViewController: UIViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
 
-
-
     }
 
     private func setupSubviews() {
         /**
          添加tableView
          */
-//        view.addSubview(tableView)
         view.insertSubview(tableView, atIndex: 0)
 
         /**
          添加一个imageView到scrollView上
          */
 
-//        view.addSubview(imageView)
         view.insertSubview(imageView, aboveSubview: tableView)
-
-
-//        scrollView.contentSize = tableView.contentSize
 
     }
 
@@ -170,6 +180,8 @@ class DetailViewController: UIViewController {
             }
         }
 
+//        self.tableView.reloadData()
+
 
     }
     override func viewWillDisappear(animated: Bool) {
@@ -218,10 +230,6 @@ extension DetailViewController: UITableViewDataSource {
 
         let category = categories[indexPath.section]
         cell.everydayResult = results[category]![indexPath.row]
-
-//        cell.titleLabel?.text = results[category]![indexPath.row].desc
-//        cell.timeLabel.text = results[category]![indexPath.row].publishedAt
-//        cell.fromLabel.text = results[category]![indexPath.row].who
 
         return cell
     }

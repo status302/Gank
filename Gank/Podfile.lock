@@ -1,8 +1,5 @@
 PODS:
   - Alamofire (3.4.0)
-  - ChameleonFramework/Default (2.1.0)
-  - ChameleonFramework/Swift (2.1.0):
-    - ChameleonFramework/Default
   - Kingfisher (2.4.1)
   - PKHUD (3.1.0)
   - SKPhotoBrowser (1.8.6)
@@ -10,7 +7,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - ChameleonFramework/Swift
   - Kingfisher (~> 2.4)
   - PKHUD
   - SKPhotoBrowser (~> 1.8.6)
@@ -18,12 +14,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SKPhotoBrowser: 2fa59b851b04358b186c811ca9e2b4aa4945aa33
   SnapKit: 732e8cad7910a1cb812c5c1fb58f231d7a3b49e8
 
-PODFILE CHECKSUM: 4eba00516f44d1a8476e8e56c4bb6306f124fca4
+PODFILE CHECKSUM: 0b22d8f9b50195eab4af2eb1928a33f55f7590ed
 
 COCOAPODS: 1.0.0

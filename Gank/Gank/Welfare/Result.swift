@@ -31,6 +31,8 @@ struct Result {
     var timeLabelHeight: CGFloat!
     var cellHeight: CGFloat!
 
+    var publishedString: String!
+
     init(fromDictionary dictionary: NSDictionary) {
 
         id = dictionary["_id"] as? String
@@ -44,17 +46,44 @@ struct Result {
         who = dictionary["who"] as? String ?? "daimajia"
         page = 1
 
-//        descLabelHeight = stringToSize(desc as NSString).height
-//        timeLabelHeight = stringToSize(publishedAt as NSString).height
 
         descLabelHeight = stringToSize(12, str: desc as NSString).height
         timeLabelHeight = stringToSize(10, str: publishedAt as NSString).height
         cellHeight = descLabelHeight + timeLabelHeight + 30
 
 
+        publishedString = self.dateToString(publishedAt)
     }
 
-    func stringToSize(fontSize: CGFloat, str: NSString)-> CGSize {
+
+    private func dateToString(dateStr: String) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"
+        let newDate = formatter.dateFromString(dateStr)
+
+        let formatter2 = NSDateFormatter()
+        formatter2.dateFormat = "yyyy-MM-dd"
+
+        let newDateStr: String = formatter2.stringFromDate(newDate!)
+
+        let components = NSDate().deltaFromDate(newDate!)
+        if components.year == 0 {
+            if components.month == 0 {
+                if components.day == 0 {
+                    return "今天"
+                } else if components.day == 1 {
+                    return "昨天"
+                } else if components.day == 2 {
+                    return "前天"
+                } else {
+                    return "\(components.day)天前"
+                }
+            }
+        }
+        return newDateStr
+    }
+
+    private func stringToSize(fontSize: CGFloat, str: NSString)-> CGSize {
         let height = CGFloat.max
         let width = Common.Screen_width - 50.0
         let size = str.boundingRectWithSize(CGSize(width: width, height: height), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)], context: nil).size

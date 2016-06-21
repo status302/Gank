@@ -5,14 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Lobster 1.4.otf">
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
-            <string>Lobster1.4</string>
+        <mutableArray key="Baloo-Regular.ttf">
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
+            <string>Baloo-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -28,7 +28,7 @@
                         <constraint firstAttribute="width" constant="20" id="6Xj-VQ-M5O"/>
                         <constraint firstAttribute="height" constant="30" id="Mzb-JO-Kn7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" constant="30" id="AlX-6P-D3x"/>
                         <constraint firstAttribute="width" constant="20" id="pmq-cS-4h6"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -48,7 +48,7 @@
                         <constraint firstAttribute="height" constant="30" id="5zy-CU-11U"/>
                         <constraint firstAttribute="width" constant="20" id="ASF-PN-jY9"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -58,7 +58,7 @@
                         <constraint firstAttribute="width" constant="20" id="e02-6e-OJY"/>
                         <constraint firstAttribute="height" constant="30" id="zbw-ll-DzG"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -68,7 +68,7 @@
                         <constraint firstAttribute="height" constant="30" id="Ow2-jC-nGz"/>
                         <constraint firstAttribute="width" constant="20" id="VlL-mn-1QP"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -78,7 +78,7 @@
                         <constraint firstAttribute="height" constant="30" id="2E0-Ur-YT3"/>
                         <constraint firstAttribute="width" constant="20" id="Yxa-BU-CQp"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -88,7 +88,7 @@
                         <constraint firstAttribute="height" constant="30" id="hnZ-2Y-aZU"/>
                         <constraint firstAttribute="width" constant="20" id="vLC-JZ-ail"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Lobster1.4" family="Lobster 1.4" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Baloo-Regular" family="Baloo" pointSize="22"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

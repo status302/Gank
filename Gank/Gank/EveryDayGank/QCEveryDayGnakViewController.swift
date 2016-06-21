@@ -24,37 +24,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.view.addSubview(self.collectionView)
 
         
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "bar_eye"), highlightedImage: UIImage(named: "bar_eye_highlighted"), target: self, action: #selector(didClickRightBarButton))
-
-        // Alamofire
-        AlamofireManager.sharedInstance.type = URLType.welfare
-
-        AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
-            guard let root = rootClass else {
-                print("没有获取到数据")
-                return
-            }
-
-            self.results = root.results
-            self.results.sortInPlace({ (r1, r2) -> Bool in
-                r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
-            })
-            self.collectionView.reloadData()
-
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-
-            let formatter2 = NSDateFormatter()
-            formatter2.dateFormat = "yyyy-MM-dd"
-
-            let createTime = formatter.dateFromString(self.results[1].createdAt!)
-            print("创建的时间为：\(createTime)")
-            let dateStr = formatter2.stringFromDate(createTime!)
-            print("创建时间的字符为：\(dateStr)")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "refresh"), highlightedImage: UIImage(named: "refresh"), target: self, action: #selector(loadData))
 
 
-        }
+        loadData()
         
 
 
@@ -83,9 +56,36 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     func loadMoreData() {
         print("添加了加载更多数据")
     }
+    @objc private func loadData() {
+
+        self.results.removeAll()
+
+        
+
+        // Alamofire
+        AlamofireManager.sharedInstance.type = URLType.welfare
+
+        AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
+            guard let root = rootClass else {
+                print("没有获取到数据")
+                return
+            }
+
+            self.results = root.results
+            self.results.sortInPlace({ (r1, r2) -> Bool in
+                r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
+            })
+            self.collectionView.reloadData()
+
+
+            
+            
+        }
+    }
 
     @objc private func didClickRightBarButton() {
-        print("didClickRightBarButton")
+        /// 重新加载数据
+        self.loadData()
     }
 
     // MARK: - lazy
@@ -97,7 +97,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         collectionView.delegate = self
 
         // background color
-        collectionView.backgroundColor = Common.backgroundColor
+        collectionView.backgroundColor = Common.navigationBarBackgroundColor
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
@@ -117,9 +117,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         let destVC = DetailViewController()
         return destVC
     }()
-
-    let animation = CABasicAnimation()
-
     
 }
 
@@ -171,12 +168,9 @@ extension QCEveryDayGnakViewController {
 
 extension QCEveryDayGnakViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("did select item : \(indexPath.item)")
         /**
          *  把时间传给下一个VC
          */
-
-//        let desVC = DetailViewController()
 
         // 处理时间
         let formatterToDate = NSDateFormatter()
@@ -186,18 +180,9 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
 
         let formatterToString = NSDateFormatter()
         formatterToString.dateFormat = "yyyy/MM/dd"
-        //        self.createString = formatterToString.stringFromDate(createTime!)
-        print(formatterToString.stringFromDate(createTime!))
+        
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
-//        self.destVC.imageUrl = self.results[indexPath.item].url
-
-//        presentViewController(self.destVC, animated: true, completion: nil)
         self.navigationController?.pushViewController(self.destVC, animated: true)
     }
 }
-//extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
-//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return ScaleTransition()
-//    }
-//}
 

@@ -44,8 +44,6 @@ class QCTabBar: UIView {
      */
 
     @IBAction func tabBarButtonDidClicked(sender: UIButton) {
-        print("button's tag is : \(sender.tag)")
-
         guard selectedButton != sender else {
             return
         }

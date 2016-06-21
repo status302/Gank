@@ -26,7 +26,11 @@ struct Common {
     static let CollectionViewLayoutCellHeight: CGFloat = Common.Screen_height - 160.0
     static let CollectionViewLayoutCellWidth: CGFloat = Common.Screen_width - 80.0
 
-    static let backgroundColor = UIColor.orangeColor()
+}
+
+extension Common {
+    static let navigationBarBackgroundColor = UIColor.orangeColor()
+    static let globalBackgroundColor = UIColor.greenColor()
 }
 
 //

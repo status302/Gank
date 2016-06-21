@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置kingfisher的最大缓存空间
         let cache = KingfisherManager.sharedManager.cache
         cache.maxMemoryCost = 30 * 1024 * 1024
+        cache.maxDiskCacheSize = 30 * 1024 * 1024
 
         return true
     }

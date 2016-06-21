@@ -13,24 +13,30 @@ class ShowWelfareViewController: UIViewController {
 
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     var result: Result?
     weak var imageView: UIImageView?
+    var image: UIImage!
+    var imageUrl: String! {
+        didSet {
+            let imageData = NSData(contentsOfURL: NSURL(string: imageUrl)!)
+            image = UIImage(data: imageData!)
+        }
+    }
 
     var actionView: QCActionView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var image: UIImage?
 
         if let result = result  {
-            let imageData = NSData(contentsOfURL: NSURL(string: result.url)!)
-            image = UIImage(data: imageData!)
+            imageUrl = result.url
         }
-        let width = image?.size.width
-        let height = image?.size.height
+        let width = image.size.width
+        let height = image.size.height
 
-        let imageViewHeight = Common.Screen_width / width! * height!
+        let imageViewHeight = Common.Screen_width / width * height
         let imageView = UIImageView(frame: CGRectMake(0, 0, Common.Screen_width, imageViewHeight))
         imageView.contentMode = .ScaleAspectFit
         if imageViewHeight < Common.Screen_height {
@@ -90,7 +96,7 @@ class ShowWelfareViewController: UIViewController {
                     HUD.flash(.Label("分享正在做呢！"), delay: 0.5)
                 } else {
                     // 保存图片
-                    UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.image), nil)
+                    UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.savedImage), nil)
                 }
             })
         }
@@ -99,7 +105,7 @@ class ShowWelfareViewController: UIViewController {
 
     }
 
-    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+    func savedImage(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
         HUD.flash(.LabeledSuccess(title: "", subtitle: "保存图片成功"), delay: 0.4)
 
     }
