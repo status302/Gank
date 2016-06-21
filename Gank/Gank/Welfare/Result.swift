@@ -47,7 +47,7 @@ struct Result {
         page = 1
 
 
-        descLabelHeight = stringToSize(12, str: desc as NSString).height
+        descLabelHeight = stringToSize(14, str: desc as NSString).height
         timeLabelHeight = stringToSize(10, str: publishedAt as NSString).height
         cellHeight = descLabelHeight + timeLabelHeight + 30
 

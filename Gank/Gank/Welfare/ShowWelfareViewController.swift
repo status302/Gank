@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import Kingfisher
 
 class ShowWelfareViewController: UIViewController {
 
@@ -69,7 +70,7 @@ class ShowWelfareViewController: UIViewController {
         // scrollView 
         self.scrollView.minimumZoomScale = 0.5
         self.scrollView.maximumZoomScale =  1.5
-        self.scrollView.delegate = self
+
 
         // ActionView
         actionView = QCActionView()
@@ -90,9 +91,7 @@ class ShowWelfareViewController: UIViewController {
      */
     @objc private func longGestureToSavePhoto(recognizer: UILongPressGestureRecognizer) {
 
-
         if recognizer.state == .Began {
-
             moreButtonClicked(self)
         }
 
@@ -106,6 +105,7 @@ class ShowWelfareViewController: UIViewController {
     }
 
     @IBAction func moreButtonClicked(sender: AnyObject) {
+
         actionView?.showActionView({ (index) in
             if index == 0 {
                 let activityVC = UIActivityViewController(activityItems: [self.imageView!.image!], applicationActivities: nil)
@@ -116,6 +116,7 @@ class ShowWelfareViewController: UIViewController {
                 UIImageWriteToSavedPhotosAlbum(self.imageView!.image!, self, #selector(self.savedImage), nil)
             }
         })
+
 
     }
 
@@ -144,8 +145,3 @@ class ShowWelfareViewController: UIViewController {
 
 }
 
-extension ShowWelfareViewController: UIScrollViewDelegate {
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return self.imageView
-    }
-}

@@ -16,13 +16,29 @@ class WelfareViewController: UIViewController {
     var customRefresh: CustomRefreshControl!
     var page: Int = 1
 
+
+    weak var rightButton: UIButton?
+
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refreshBarButtonDidClick))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refreshBarButtonDidClick))
+//
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
+        /// 添加刷新控件
+        let rightView = UIButton(frame: CGRect.zero)
+
+        rightView.setImage(UIImage(named: "refresh"), forState: .Normal)
+        rightView.setImage(UIImage(named: "refresh_highlighted"), forState: .Highlighted)
+
+        rightView.tintColor = UIColor.blackColor()
+
+        rightView.sizeToFit()
+        rightView.addTarget(self, action: #selector(loadData), forControlEvents: .TouchUpInside)
+        rightButton = rightView
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
 
         view.addSubview(collectionView)
 
@@ -63,7 +79,7 @@ class WelfareViewController: UIViewController {
 
     }
 
-    private func loadData() {
+    @objc private func loadData() {
         // 每次加载数据之前都要将数据置空
         results.removeAll()
         page = 1

@@ -107,7 +107,7 @@ class QCActionView: UIView {
         self.tableView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.height, UIScreen.mainScreen().bounds.width, Constants.tableViewCellHeight * 3 + 5.0)
 
         self.hidden = false
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             self.tableView.frame.origin.y = UIScreen.mainScreen().bounds.height - self.tableView.frame.size.height
             }) { (finished) in
                 // 回调处理

@@ -49,7 +49,7 @@ class SortCell: UITableViewCell {
         }
 
         descLabel = UILabel(frame: CGRect.zero)
-        descLabel.font = UIFont.systemFontOfSize(12)
+        descLabel.font = UIFont.systemFontOfSize(14)
         descLabel.textColor = UIColor.blackColor()
         descLabel.numberOfLines = 0
         descLabel.sizeToFit()
@@ -58,6 +58,7 @@ class SortCell: UITableViewCell {
 
         descLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(10)
+            make.right.equalTo(self.snp.right).offset(-10)
             make.left.equalTo(iconImageView.snp.right).offset(10)
         }
 
