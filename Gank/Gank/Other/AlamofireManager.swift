@@ -31,6 +31,9 @@ class AlamofireManager {
         }
     }
 
+    var alamofireNetworkReachablityManager = NetworkReachabilityManager()
+
+
 
     func fetchDataForWelfare(completedHandler: CompletedHandler) {
 

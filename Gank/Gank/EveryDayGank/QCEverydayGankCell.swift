@@ -13,6 +13,14 @@ class QCEverydayGankCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var desLabel: UILabel!
+
+
+    var everydayResult: EverydayResult! {
+        didSet {
+
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

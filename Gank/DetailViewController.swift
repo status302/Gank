@@ -255,7 +255,12 @@ extension DetailViewController: UITableViewDataSource {
         let cell = CategoryCell(style: .Default, reuseIdentifier: identifier)
 
         let category = categories[indexPath.section]
-        cell.everydayResult = results[category]![indexPath.row]
+//        cell.everydayResult = results[category]![indexPath.row]
+        guard let catResults  = results[category] else {
+            return cell
+        }
+
+        cell.everydayResult = catResults[indexPath.row]
 
         return cell
     }

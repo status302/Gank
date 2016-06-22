@@ -48,7 +48,6 @@ class QCTopicViewController: UITableViewController {
 
         view.addSubview(self.customRefreshControl)
 
-        loadData()
 
     }
 
@@ -56,6 +55,7 @@ class QCTopicViewController: UITableViewController {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .None
 
+        loadData()
     }
 
     /**
@@ -82,6 +82,8 @@ class QCTopicViewController: UITableViewController {
     }
 
     func loadMoreData() {
+        print("url string is : \(urlStr)")
+
         alamofireManager.fectchTopicData(urlStr) { (rootClass) in
             guard let root = rootClass else {
                 HUD.flash(.LabeledError(title: "加载数据失败", subtitle: ""), delay: 0.5)
@@ -116,8 +118,12 @@ extension QCTopicViewController {
                 HUD.flash(.LabeledError(title: "没有更多数据了", subtitle: ""), delay: 0.5)
             }
         }
-
-        cell.result = results[indexPath.row]
+        /**
+         *  避免数组越界
+         */
+        if results.count > 0 {
+            cell.result = results[indexPath.row]
+        }
 
         return cell
     }

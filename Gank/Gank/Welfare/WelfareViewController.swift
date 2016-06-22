@@ -80,6 +80,12 @@ class WelfareViewController: UIViewController {
     }
 
     @objc private func loadData() {
+
+        if abs(collectionView.contentOffset.y) > 0 {
+            print("\(collectionView.contentOffset.y)")
+            collectionView.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
+        }
+
         // 每次加载数据之前都要将数据置空
         results.removeAll()
         page = 1
@@ -103,11 +109,10 @@ class WelfareViewController: UIViewController {
 
     }
     func loadMoreData() {
+        AlamofireManager.sharedInstance.type = URLType.welfare
+
         AlamofireManager.sharedInstance.page = page
 
-        print("正在加载第\(AlamofireManager.sharedInstance.page)页数据")
-
-//        AlamofireManager.sharedInstance.type = URLType.welfare
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
@@ -134,7 +139,7 @@ class WelfareViewController: UIViewController {
 
         collectionView.backgroundColor = Common.navigationBarBackgroundColor
 
-        collectionView.contentInset = UIEdgeInsetsZero
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -36, right: 0)
 
         collectionView.dataSource = self
 
@@ -151,6 +156,7 @@ class WelfareViewController: UIViewController {
 }
 // MARK: - UICollectionViewDataSource
 extension WelfareViewController: UICollectionViewDataSource {
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
     }
@@ -165,9 +171,14 @@ extension WelfareViewController: UICollectionViewDataSource {
             } else {
                 HUD.flash(.LabeledError(title: "", subtitle: "没有更多福利了！"), delay: 1.3)
             }
-
         }
-        cell.result = results[indexPath.row]
+        
+        /**
+         *  避免数组越界
+         */
+        if results.count > 0 {
+            cell.result = results[indexPath.row]
+        }
 
         return cell
     }

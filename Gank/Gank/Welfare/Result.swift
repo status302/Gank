@@ -38,7 +38,7 @@ struct Result {
         id = dictionary["_id"] as? String
         createdAt = dictionary["createdAt"] as? String ?? ""
         desc = dictionary["desc"] as? String
-        publishedAt = dictionary["publishedAt"] as? String ?? ""
+        publishedAt = dictionary["publishedAt"] as? String ?? "2016-06-21T11:57:00.0Z"
         source = dictionary["source"] as? String
         type = dictionary["type"] as? String
         url = dictionary["url"] as? String
@@ -52,20 +52,24 @@ struct Result {
         cellHeight = descLabelHeight + timeLabelHeight + 30
 
 
-        publishedString = self.dateToString(publishedAt)
+//        publishedString = self.dateToString(publishedAt)
     }
 
 
-    private func dateToString(dateStr: String) -> String {
+    internal func dateToString(dateStr: String) -> String {
+
+        ///  "publishedAt": "2016-06-16T12:19:00.930Z"
+
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"
         let newDate = formatter.dateFromString(dateStr)
-
         let formatter2 = NSDateFormatter()
         formatter2.dateFormat = "yyyy-MM-dd"
 
-        let newDateStr: String = formatter2.stringFromDate(newDate!)
-
+        guard let new = newDate else {
+            return dateStr
+        }
+        let newDateStr: String = formatter2.stringFromDate(new)
         let components = NSDate().deltaFromDate(newDate!)
         if components.year == 0 {
             if components.month == 0 {
@@ -81,6 +85,7 @@ struct Result {
             }
         }
         return newDateStr
+
     }
 
     private func stringToSize(fontSize: CGFloat, str: NSString)-> CGSize {

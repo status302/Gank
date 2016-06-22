@@ -13,7 +13,9 @@ class SortCell: UITableViewCell {
     var result: Result! {
         didSet {
             descLabel.text = result.desc
-            timeLabel.text = result.publishedString
+//            timeLabel.text = result.publishedString
+            timeLabel.text = result.dateToString(result.publishedAt)
+
             fromLabel.text = result.who
         }
     }
