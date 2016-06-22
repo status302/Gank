@@ -13,10 +13,9 @@ class SortCell: UITableViewCell {
     var result: Result! {
         didSet {
             descLabel.text = result.desc
-//            timeLabel.text = result.publishedString
             timeLabel.text = result.dateToString(result.publishedAt)
-
             fromLabel.text = result.who
+            typeLabel.text = result.type
         }
     }
 
@@ -26,6 +25,8 @@ class SortCell: UITableViewCell {
     var timeLabel: UILabel!
     var fromLabel: UILabel!
     var lineView: UIView!
+    var typeTagImageView: UIImageView!
+    var typeLabel: UILabel!
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -100,6 +101,28 @@ class SortCell: UITableViewCell {
             make.bottom.equalTo(self.snp.bottom)
         }
 
+        typeTagImageView = UIImageView(image: UIImage(named: "type_tag"))
+        typeTagImageView.frame = CGRect.zero
+        self.addSubview(typeTagImageView)
+
+        typeTagImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(fromLabel.snp.right).offset(10)
+            make.width.equalTo(8)
+            make.height.equalTo(8)
+            make.centerY.equalTo(fromLabel.snp.centerY)
+        }
+
+        typeLabel = UILabel(frame: CGRect.zero)
+        typeLabel.font = fromLabel.font
+        typeLabel.textColor = fromLabel.textColor
+        typeLabel.numberOfLines = 0
+        typeLabel.sizeToFit()
+        addSubview(typeLabel)
+
+        typeLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(fromLabel.snp.centerY)
+            make.left.equalTo(typeTagImageView.snp.right).offset(5)
+        }
 
     }
 

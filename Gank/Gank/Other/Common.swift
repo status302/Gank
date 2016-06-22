@@ -38,6 +38,7 @@ enum URLType: String{
     case welfare = "福利"
     case android = "Android"
     case iOS = "iOS"
+    case App = "App"
     case sleep = "休息视频"
     case resourse = "拓展资源"
     case front_end = "前端"

@@ -37,20 +37,18 @@ class AlamofireManager {
 
     func fetchDataForWelfare(completedHandler: CompletedHandler) {
 
-        HUD.flash(.LabeledProgress(title: "", subtitle: "正在玩命加载ing"))
+
         let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
         requestResult.responseJSON { (response) in
             guard let json = response.result.value else {
                 print("\(response.debugDescription)")
-                HUD.hide()
                 completedHandler(rootClass: nil)
                 return
             }
-
             // 处理json
             let model = RootClass(fromDictionary: json as! NSDictionary)
             completedHandler(rootClass: model)
-            HUD.hide()
+
         }
     }
 

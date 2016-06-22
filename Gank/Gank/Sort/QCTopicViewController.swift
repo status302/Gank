@@ -62,11 +62,13 @@ class QCTopicViewController: UITableViewController {
      获取数据
      */
     func loadData() {
+        page = 1
         results.removeAll()
+        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
         alamofireManager.fectchTopicData(urlStr) { (rootClass) in
             guard let root = rootClass else {
-                print("QCTopicViewController加载数据失败")
-                
+                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
+                HUD.hide()
                 return
             }
 
@@ -76,17 +78,18 @@ class QCTopicViewController: UITableViewController {
 
             self.customRefreshControl.endAnimation()
 
-            print("成功加载数据")
             self.tableView.reloadData()
+
+            HUD.hide()
         }
     }
 
     func loadMoreData() {
-        print("url string is : \(urlStr)")
+
 
         alamofireManager.fectchTopicData(urlStr) { (rootClass) in
             guard let root = rootClass else {
-                HUD.flash(.LabeledError(title: "加载数据失败", subtitle: ""), delay: 0.5)
+                HUD.flash(.LabeledError(title: "加载数据失败", subtitle: ""), delay: 1.0)
                 return
             }
             for result in root.results {
@@ -129,7 +132,12 @@ extension QCTopicViewController {
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return results[indexPath.row].cellHeight
+        if results.count > 0 {
+            return results[indexPath.row].cellHeight
+        }else {
+            return 56.0
+        }
+
     }
 }
 

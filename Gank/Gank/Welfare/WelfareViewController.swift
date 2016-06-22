@@ -82,7 +82,7 @@ class WelfareViewController: UIViewController {
     @objc private func loadData() {
 
         if abs(collectionView.contentOffset.y) > 0 {
-            print("\(collectionView.contentOffset.y)")
+
             collectionView.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
         }
 
@@ -93,8 +93,12 @@ class WelfareViewController: UIViewController {
 
         AlamofireManager.sharedInstance.type = URLType.welfare
 
+        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
+                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
+                HUD.hide()
+
                 return
             }
 
@@ -105,17 +109,22 @@ class WelfareViewController: UIViewController {
             self.customRefresh.endAnimation()
             self.collectionView.reloadData()
 
+            HUD.hide()
         }
 
     }
     func loadMoreData() {
+
         AlamofireManager.sharedInstance.type = URLType.welfare
 
         AlamofireManager.sharedInstance.page = page
-
+        
+        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
+                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
+                HUD.hide()
                 return
             }
             for result in root.results {
@@ -123,6 +132,8 @@ class WelfareViewController: UIViewController {
             }
 
             self.collectionView.reloadData()
+            HUD.hide()
+
         }
     }
 

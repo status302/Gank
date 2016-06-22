@@ -15,7 +15,7 @@ class SortViewController: UIViewController {
 
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
-        let titles = ["Android","iOS","休息视频","拓展资源","前端","福利", "随机"]
+        let titles = ["All","Android","iOS", "App", "休息视频","拓展资源","前端","福利", "随机"]
         return titles
     }()
 
@@ -43,6 +43,12 @@ class SortViewController: UIViewController {
      添加子控制器到该VC中
      */
     func setupChildVCs() {
+
+         /// AllVC
+        let allVC = QCTopicViewController()
+        allVC.type = URLType.all
+        addChildViewController(allVC)
+
         /// AndroidVC
         let androidVC = QCTopicViewController()
         androidVC.type = URLType.android
@@ -51,23 +57,33 @@ class SortViewController: UIViewController {
         let iosVC = QCTopicViewController()
         iosVC.type = URLType.iOS
         addChildViewController(iosVC)
+
+        /// App
+        let appVC = QCTopicViewController()
+        appVC.type = URLType.App
+        addChildViewController(appVC)
+
         /// 休息视频
         let sleepVC = QCTopicViewController()
         sleepVC.type = URLType.sleep
         addChildViewController(sleepVC)
+
         /// resourse VC
         let resourseVC = QCTopicViewController()
         resourseVC.type = URLType.resourse
         addChildViewController(resourseVC)
 
+        /// 前端
         let frontEnd = QCTopicViewController()
         frontEnd.type = URLType.front_end
         addChildViewController(frontEnd)
 
+        /// 福利
         let welfareVC = QCTopicViewController()
         welfareVC.type = URLType.welfare
         addChildViewController(welfareVC)
 
+        /// 随机
         let randomVC = QCTopicViewController()
         randomVC.type = URLType.all
         addChildViewController(randomVC)

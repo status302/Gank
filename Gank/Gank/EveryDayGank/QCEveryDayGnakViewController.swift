@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import Kingfisher
+import PKHUD
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
@@ -82,13 +81,17 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         AlamofireManager.sharedInstance.type = URLType.welfare
 
         /// 模拟网络延迟
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))
-        dispatch_after(time, dispatch_get_main_queue()) {
-            self.results.removeAll()
+//        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))
+//        dispatch_after(time, dispatch_get_main_queue()) {
+        //        }
+
+        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
+        self.results.removeAll()
 
         AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
             guard let root = rootClass else {
-                print("没有获取到数据")
+                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
+                HUD.hide()
                 return
             }
 
@@ -98,8 +101,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
             })
             self.collectionView.reloadData()
             self.rightButton?.layer.removeAllAnimations()
-            
-        }
+            /**
+             隐藏蒙版
+             */
+            HUD.hide()
 
         }
     }
@@ -161,7 +166,7 @@ extension QCEveryDayGnakViewController {
 extension QCEveryDayGnakViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /**
-         *  把时间传给下一个VC
+         *  把时间以 yyyy/MM/dd 形式传给下一个VC
          */
 
         // 处理时间

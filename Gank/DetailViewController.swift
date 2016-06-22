@@ -238,7 +238,11 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let category = categories[indexPath.section]
-        let result = results[category]![indexPath.row]
+                /// 避免空值
+        guard let catResult = results[category] else {
+            return 56
+        }
+        let result = catResult[indexPath.row]
         return result.cellHeight
     }
 }
