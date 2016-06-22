@@ -14,20 +14,23 @@ class QCEverydayGankCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
-    @IBOutlet weak var desLabel: UILabel!
-
 
     var result: Result! {
         didSet {
             let url = NSURL(string: result.url)!
             imageView.kf_setImageWithURL(url)
-            timeLabel.text = result.publishedString
+            timeLabel.text = result.dateToString(result.publishedAt)
             sourceLabel.text = result.who
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
+        timeLabel.textColor = UIColor.whiteColor()
+        sourceLabel.font = timeLabel.font
+        sourceLabel.textColor = timeLabel.textColor
+
     }
 
 }

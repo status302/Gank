@@ -23,10 +23,6 @@ class WelfareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refreshBarButtonDidClick))
-//
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(refreshBarButtonDidClick))
-
         /// 添加刷新控件
         let rightView = UIButton(frame: CGRect.zero)
 
@@ -131,6 +127,10 @@ class WelfareViewController: UIViewController {
                 self.results.append(result)
             }
 
+            self.results.sortInPlace({ (r1, r2) -> Bool in
+                r1.publishedAt > r2.publishedAt
+            })
+            
             self.collectionView.reloadData()
             HUD.hide()
 

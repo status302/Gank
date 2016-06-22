@@ -177,16 +177,21 @@ class DetailViewController: UIViewController {
     }
 
     private func fetchDataManager(completedHandler: CompletedHandler) {
-        HUD.flash(.LabeledProgress(title: "正在玩命加载中", subtitle: ""))
+        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
         Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL, headers: nil).responseJSON { (response) in
             guard let json = response.result.value else {
                 completedHandler(rootClass: nil)
+                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
+                HUD.hide()
                 return
             }
 
             let model = EverydayRootClass(fromDictionary: json as! NSDictionary)
 
             completedHandler(rootClass: model)
+            /**
+             隐藏蒙版
+             */
             HUD.hide()
 
         }
