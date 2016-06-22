@@ -142,46 +142,17 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 }
 
 extension QCEveryDayGnakViewController {
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
     }
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
-        if let url = NSURL(string: results[indexPath.item].url) {
-            cell.imageView.kf_setImageWithURL(url)
+
+        if results.count > 0 {
+            cell.result = self.results[indexPath.item]
         }
-        // 处理时间
-        let formatterToDate = NSDateFormatter()
-        formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let str = results[indexPath.item].publishedAt
-        let createTime = formatterToDate.dateFromString(str)
-
-        let formatterToString = NSDateFormatter()
-        formatterToString.dateFormat = "yyyy/MM/dd"
-
-        // 处理日期 
-        var timeStr: String!
-
-        let components = NSDate().deltaFromDate(createTime!)
-        if components.year == 0 {
-            if components.month == 0 {
-                if components.day == 0 {
-                    timeStr = "今天"
-                } else if components.day == 1 {
-                    timeStr = "昨天"
-                } else if components.day == 2 {
-                    timeStr = "前天"
-                } else {
-                    timeStr = "\(components.day)天前"
-                }
-            } else {
-                timeStr = formatterToString.stringFromDate(createTime!)
-            }
-        }
-
-        cell.timeLabel.text = "#" + timeStr + "#"
-
-        cell.sourceLabel.text = "来源：" + results[indexPath.item].who
 
         return cell
     }

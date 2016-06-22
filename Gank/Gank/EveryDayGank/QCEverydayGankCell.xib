@@ -28,23 +28,14 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6Z-eB-vse">
-                        <rect key="frame" x="8" y="353" width="240" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="58w-Fh-atA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="19V-99-4Q1"/>
-                <constraint firstItem="Tm8-c2-ZfH" firstAttribute="top" secondItem="y6Z-eB-vse" secondAttribute="bottom" id="3t6-Gi-SXY"/>
                 <constraint firstAttribute="bottom" secondItem="58w-Fh-atA" secondAttribute="bottom" id="Glr-nU-fu8"/>
                 <constraint firstAttribute="trailing" secondItem="58w-Fh-atA" secondAttribute="trailing" id="LhL-nQ-jAr"/>
                 <constraint firstAttribute="bottom" secondItem="Tm8-c2-ZfH" secondAttribute="bottom" constant="8" id="UCR-Bb-w8r"/>
-                <constraint firstItem="y6Z-eB-vse" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="asf-6L-aEk"/>
-                <constraint firstAttribute="trailing" secondItem="y6Z-eB-vse" secondAttribute="trailing" constant="8" id="cDd-sh-LQA"/>
                 <constraint firstItem="58w-Fh-atA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k7x-8b-anp"/>
                 <constraint firstItem="xJW-5l-S7f" firstAttribute="leading" secondItem="Tm8-c2-ZfH" secondAttribute="trailing" constant="15" id="lFv-yZ-7v3"/>
                 <constraint firstItem="Tm8-c2-ZfH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="us7-eW-5Y0"/>
@@ -52,7 +43,6 @@
             </constraints>
             <size key="customSize" width="256" height="403"/>
             <connections>
-                <outlet property="desLabel" destination="y6Z-eB-vse" id="BAC-bk-M4F"/>
                 <outlet property="imageView" destination="58w-Fh-atA" id="jvU-b6-LPU"/>
                 <outlet property="sourceLabel" destination="xJW-5l-S7f" id="IvR-5p-8xU"/>
                 <outlet property="timeLabel" destination="Tm8-c2-ZfH" id="mN7-ml-uP7"/>

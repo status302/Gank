@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class QCEverydayGankCell: UICollectionViewCell {
 
@@ -16,18 +17,17 @@ class QCEverydayGankCell: UICollectionViewCell {
     @IBOutlet weak var desLabel: UILabel!
 
 
-    var everydayResult: EverydayResult! {
+    var result: Result! {
         didSet {
-
+            let url = NSURL(string: result.url)!
+            imageView.kf_setImageWithURL(url)
+            timeLabel.text = result.publishedString
+            sourceLabel.text = result.who
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        timeLabel.textColor = UIColor.blackColor()
-        timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 14)
-        sourceLabel.textColor = timeLabel.textColor
-        sourceLabel.font = timeLabel.font
     }
 
 }

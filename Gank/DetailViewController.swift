@@ -167,6 +167,10 @@ class DetailViewController: UIViewController {
             self.results = root.results
             self.categories = root.categories
 
+            self.categories.sortInPlace({ (c1, c2) -> Bool in
+                c1 < c2
+            })
+
             self.tableView.reloadData()
             finishedLoad(finished: true)
         }

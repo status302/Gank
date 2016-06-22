@@ -61,7 +61,12 @@ struct EverydayResult {
         let formatter2 = NSDateFormatter()
         formatter2.dateFormat = "yyyy-MM-dd"
 
-        let newDateStr: String = formatter2.stringFromDate(newDate!)
+        /// 避免nil
+        guard let new = newDate else {
+            return dateStr
+        }
+
+        let newDateStr: String = formatter2.stringFromDate(new)
 
         let components = NSDate().deltaFromDate(newDate!)
         if components.year == 0 {
