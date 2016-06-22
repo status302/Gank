@@ -22,7 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.backgroundColor = UIColor.whiteColor()
 
-        window?.rootViewController = QCTabBarController()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateInitialViewController()
+        window?.rootViewController = vc
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 3))
+        dispatch_after(time, dispatch_get_main_queue()) { 
+
+            self.window?.rootViewController = QCTabBarController()
+        }
 
         window?.makeKeyAndVisible()
 
