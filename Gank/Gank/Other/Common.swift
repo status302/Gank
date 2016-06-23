@@ -29,7 +29,7 @@ struct Common {
 }
 
 extension Common {
-    static let navigationBarBackgroundColor = UIColor.orangeColor()
+    static let navigationBarBackgroundColor = UIColor(red: 255/255, green: 224/255, blue: 102/255, alpha: 1.0)
     static let globalBackgroundColor = UIColor.greenColor()
 }
 

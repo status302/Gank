@@ -5,6 +5,7 @@
 //  Created by 程庆春 on 16/5/17.
 //  Copyright © 2016年 qiuncheng.com. All rights reserved.
 //
+//  启动动画的设置
 
 import UIKit
 
@@ -23,8 +24,11 @@ class ViewController: UIViewController {
             rotationAnimation.fromValue = 0
             rotationAnimation.toValue = M_PI * 2
             rotationAnimation.duration = 1
-            rotationAnimation.repeatCount = MAXFLOAT
+            rotationAnimation.repeatCount = 2
 
+            rotationAnimation.removedOnCompletion = true
+            rotationAnimation.delegate = self
+            
             self.iconImageView.layer.addAnimation(rotationAnimation, forKey: "transform.ratotion")
         }
 
@@ -41,5 +45,22 @@ class ViewController: UIViewController {
     }
 
 
+}
+
+extension ViewController {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        UIView.animateWithDuration(0.5, animations: { 
+            self.iconImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+        }) {
+            (finished) in
+            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .CurveLinear, animations: {
+
+                self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, 100, 100)
+                }, completion: {
+                    (finished) in
+
+            })
+        }
+    }
 }
 

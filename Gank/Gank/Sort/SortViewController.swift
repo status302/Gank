@@ -124,7 +124,7 @@ class SortViewController: UIViewController {
         /**
          headScrollView background
          */
-        headScrollView.backgroundColor = UIColor.orangeColor()
+        headScrollView.backgroundColor = Common.navigationBarBackgroundColor
     }
     //
     // MARK: - private functions

@@ -128,7 +128,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
 
-        collectionView.contentInset = UIEdgeInsetsMake(44, 0, 40, 0)
+        collectionView.contentInset = UIEdgeInsetsMake(64, 0, 40, 0)
 
         collectionView.pagingEnabled = false
 

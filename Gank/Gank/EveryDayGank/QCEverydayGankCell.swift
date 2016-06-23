@@ -30,7 +30,9 @@ class QCEverydayGankCell: UICollectionViewCell {
         timeLabel.textColor = UIColor.whiteColor()
         sourceLabel.font = timeLabel.font
         sourceLabel.textColor = timeLabel.textColor
-
+    }
+    override func layoutSubviews() {
+        
     }
 
 }
