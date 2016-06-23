@@ -78,6 +78,11 @@ class ShowWelfareViewController: UIViewController {
 
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.imageView?.removeFromSuperview()
+    }
+
 
     // MARK: - Actions
     /**

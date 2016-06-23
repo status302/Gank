@@ -197,12 +197,6 @@ extension WelfareViewController: UICollectionViewDataSource {
 
 extension WelfareViewController: UICollectionViewDelegate {
 
-
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-
-        return true
-    }
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         let showWealfareVC = ShowWelfareViewController()

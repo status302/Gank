@@ -210,13 +210,15 @@ class DetailViewController: UIViewController {
         loadData { (finished) in
             if finished {
                 self.imageUrl = self.results["福利"]![0].url
-
             }
         }
 
 //        self.tableView.reloadData()
 
 
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)

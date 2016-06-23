@@ -42,10 +42,10 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="9Hw-vB-xQE"/>
-                                    <barButtonItem id="6Ec-ZC-yFm">
+                                    <barButtonItem title="Reload" id="6Ec-ZC-yFm">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="reloadBarButtonClicked:" destination="pg3-ks-i6h" id="lzU-bc-b0e"/>
+                                            <action selector="reloadBarButtonClicked:" destination="pg3-ks-i6h" id="8UM-ud-dDo"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

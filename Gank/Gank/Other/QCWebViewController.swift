@@ -20,16 +20,39 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var reloadBarButton: UIBarButtonItem!
 
-    var progressView: UIProgressView!
+    lazy var progressView: UIProgressView = {
+        let progressView: UIProgressView = UIProgressView(progressViewStyle: .Default)
+
+        progressView.trackTintColor = UIColor.lightGrayColor()
+        progressView.progressTintColor = UIColor.blackColor()
+
+        return progressView
+    }()
 
     var isLoading: Bool = false {  // 表示 webView 是否在加载ing
         didSet {
             if isLoading { // 设置reloading 的图标为 X
-                reloadBarButton.image = UIImage(named: "stop")
-                view.layoutIfNeeded()
+
+                reloadBarButton.title = "Stop"
+
+//                let stopButton = UIButton(type: .System)
+//                stopButton.imageView?.image = UIImage(named: "stop")
+//                stopButton.tintColor = UIColor.blackColor()
+//                stopButton.sizeToFit()
+//                stopButton.addTarget(self, action: #selector(reloadBarButtonClicked(_:)), forControlEvents: .TouchUpInside)
+//                reloadBarButton.customView = stopButton
+//
+//                reloadBarButton.width = stopButton.width
             } else { // 设置reloading 的图标为 G
-                reloadBarButton.image = UIImage(named: "reload")
-                print("web view is not loading!")
+                reloadBarButton.title = "Reload"
+                
+//                let reloadButton = UIButton(type: .System)
+//                reloadButton.imageView?.image = UIImage(named: "reload")
+//                reloadButton.sizeToFit()
+//                reloadButton.tintColor = UIColor.blackColor()
+//                reloadButton.addTarget(self, action: #selector(reloadBarButtonClicked(_:)), forControlEvents: .TouchUpInside)
+//                reloadBarButton.customView = reloadButton
+//                reloadBarButton.width = reloadButton.width
             }
         }
     }
@@ -46,7 +69,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
     required init?(coder aDecoder: NSCoder) {
 
         webView = WKWebView(frame: CGRect.zero)
-        progressView = UIProgressView(progressViewStyle: .Default)
+//        progressView = UIProgressView(progressViewStyle: .Default)
 
         super.init(coder: aDecoder)
     }
@@ -82,12 +105,27 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
 
+
+        /// 设置NavigationBar的分享按键
+        let rightButton = UIButton(type: .System)
+        rightButton.width = 22
+        rightButton.height = 33
+        rightButton.setImage(UIImage(named: "icon_share"), forState: .Normal)
+        rightButton.contentMode = .ScaleAspectFill
+
+        rightButton.tintColor = UIColor.blackColor()
+        rightButton.addTarget(self, action: #selector(sharedButtonClicked), forControlEvents: .TouchUpInside)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+
+
     }
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
         self.webView.stopLoading()
+        self.webView.removeFromSuperview()
     }
 
     // MARK: - Actions
@@ -99,8 +137,27 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         webView.goForward()
     }
     @IBAction func openInSafiriBarButtonClicked(sender: AnyObject) {
+        if let URL = NSURL(string: self.url) {
+            UIApplication.sharedApplication().openURL(URL)
+        }
     }
     @IBAction func reloadBarButtonClicked(sender: AnyObject) {
+
+        if isLoading {
+            webView.stopLoading()
+            isLoading = false
+        } else {
+            webView.reload()
+            isLoading = true
+        }
+    }
+    // MARK: - Private functions 
+    @objc private func sharedButtonClicked() {
+        if let sharedUrl = NSURL(string: self.url) {
+            let activityVC = UIActivityViewController(activityItems: [sharedUrl], applicationActivities: nil)
+
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
 
     // MARK: - KVO

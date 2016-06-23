@@ -55,8 +55,6 @@
 		86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */; };
 		86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D21D11355C0029EE75 /* EverydayResult.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
-		86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */; };
-		86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
 		86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */; };
@@ -136,8 +134,6 @@
 		86D7F2D21D11355C0029EE75 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
-		86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PullToRefreshView.xib; sourceTree = "<group>"; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
 		86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowWelfareViewController.xib; sourceTree = "<group>"; };
 		86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTransition.swift; sourceTree = "<group>"; };
@@ -476,8 +472,6 @@
 			children = (
 				862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */,
 				862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */,
-				86F1BA761CFF213100C1A61F /* PullToRefreshView.swift */,
-				86F1BA781CFF226D00C1A61F /* PullToRefreshView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -613,7 +607,6 @@
 				86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */,
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
-				86F1BA791CFF226D00C1A61F /* PullToRefreshView.xib in Resources */,
 				862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */,
 				867DB3571D1925D7002FC378 /* Baloo-Regular.ttf in Resources */,
 			);
@@ -713,7 +706,6 @@
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
-				86F1BA771CFF213100C1A61F /* PullToRefreshView.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
@@ -866,10 +858,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gank/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiuncheng.Gank;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -879,10 +874,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gank/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiuncheng.Gank;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

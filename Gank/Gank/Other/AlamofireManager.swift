@@ -18,16 +18,17 @@ class AlamofireManager {
 
 
     var urlStr: String = ""
+    
 
     var type: URLType? {
         didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/\(page)"
+            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/\(page)"
         }
     }
 
     var page: Int = 1 {
         didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/" + "\(page)"
+            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/" + "\(page)"
         }
     }
 

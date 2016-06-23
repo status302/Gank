@@ -33,6 +33,10 @@ extension Common {
     static let globalBackgroundColor = UIColor.greenColor()
 }
 
+extension Common {
+    static let countOnePage:Int = 10
+}
+
 //
 enum URLType: String{
     case welfare = "福利"

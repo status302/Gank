@@ -37,8 +37,6 @@ class QCActionView: UIView {
         tableView.frame = CGRectMake(x, y, width, height)
     }
 
-
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -96,15 +94,14 @@ class QCActionView: UIView {
         static let cellID = "cellID"
         static let tableViewCellHeight:CGFloat = 56
     }
-//    func showItemBlocks(itemBlock: ItemBlock, selectedBlock: SelectedBlock) {
-//
-//    }
 
     func showActionView(completedHandler: CompletedHandler) {
         let window = UIApplication.sharedApplication().keyWindow
         window?.addSubview(self)
 
         self.tableView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.height, UIScreen.mainScreen().bounds.width, Constants.tableViewCellHeight * 3 + 5.0)
+
+        self.tableView.reloadData() // 避免上次点击的标示这次还在
 
         self.hidden = false
         UIView.animateWithDuration(0.3, animations: {
@@ -114,7 +111,6 @@ class QCActionView: UIView {
                 self.completedHandler = completedHandler
         }
     }
-
 }
 
 extension QCActionView: UITableViewDataSource {
@@ -133,11 +129,6 @@ extension QCActionView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellID) as! ActionViewSelectedCell
         if indexPath.section == 0 {
             cell.titleLabel.text = items[indexPath.row]
-//            if indexPath.item == 0 {
-//                cell.titleLabel.text = "分享"
-//            } else {
-//                cell.titleLabel.text = "保存"
-//            }
         }else {
             cell.textLabel?.textColor = UIColor.redColor()
             cell.titleLabel.text = "取消"
