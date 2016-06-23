@@ -142,6 +142,18 @@ extension QCTopicViewController {
 }
 
 extension QCTopicViewController {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let result = results[indexPath.row]
+        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+
+        webVC.url = result.url
+
+        self.navigationController?.pushViewController(webVC, animated: true)
+
+    }
+}
+
+extension QCTopicViewController {
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if customRefreshControl.refreshing {
             customRefreshControl.startAnimation()

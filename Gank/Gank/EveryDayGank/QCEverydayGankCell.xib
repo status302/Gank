@@ -16,9 +16,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="58w-Fh-atA">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="537"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cellBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HOO-cw-1Tw">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="537"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm8-c2-ZfH">
                         <rect key="frame" x="27" y="508" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -44,14 +41,10 @@
             <constraints>
                 <constraint firstItem="58w-Fh-atA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="19V-99-4Q1"/>
                 <constraint firstAttribute="bottom" secondItem="58w-Fh-atA" secondAttribute="bottom" id="Glr-nU-fu8"/>
-                <constraint firstItem="HOO-cw-1Tw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="H8F-Rv-Jzz"/>
                 <constraint firstItem="Tm8-c2-ZfH" firstAttribute="leading" secondItem="Hpc-J7-nUt" secondAttribute="trailing" constant="3" id="LRp-8S-W0U"/>
                 <constraint firstAttribute="trailing" secondItem="58w-Fh-atA" secondAttribute="trailing" id="LhL-nQ-jAr"/>
-                <constraint firstItem="HOO-cw-1Tw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Lt4-PL-zTE"/>
                 <constraint firstItem="Tm8-c2-ZfH" firstAttribute="centerY" secondItem="Hpc-J7-nUt" secondAttribute="centerY" id="Ojy-S9-cT1"/>
-                <constraint firstAttribute="trailing" secondItem="HOO-cw-1Tw" secondAttribute="trailing" id="Swh-2b-Bxo"/>
                 <constraint firstItem="Hpc-J7-nUt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Tml-Mu-vwR"/>
-                <constraint firstAttribute="bottom" secondItem="HOO-cw-1Tw" secondAttribute="bottom" id="U8X-ip-EDz"/>
                 <constraint firstAttribute="bottom" secondItem="Tm8-c2-ZfH" secondAttribute="bottom" constant="8" id="UCR-Bb-w8r"/>
                 <constraint firstItem="58w-Fh-atA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="k7x-8b-anp"/>
                 <constraint firstItem="xJW-5l-S7f" firstAttribute="leading" secondItem="Tm8-c2-ZfH" secondAttribute="trailing" constant="15" id="lFv-yZ-7v3"/>
@@ -75,7 +68,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="cellBackground" width="270" height="420"/>
         <image name="time_white" width="24" height="24"/>
     </resources>
 </document>

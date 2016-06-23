@@ -209,7 +209,6 @@ class DetailViewController: UIViewController {
 
         loadData { (finished) in
             if finished {
-//                print(self.results["福利"]![0].url)
                 self.imageUrl = self.results["福利"]![0].url
 
             }
@@ -223,6 +222,8 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         self.imageView.image = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = nil
     }
 
     @IBAction func dismiss(sender: UIButton) {
@@ -249,6 +250,23 @@ extension DetailViewController: UITableViewDelegate {
         }
         let result = catResult[indexPath.row]
         return result.cellHeight
+    }
+    /**
+     *  选中cell的操作
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let category = categories[indexPath.section]
+
+        guard let catResult = results[category] else {
+            return
+        }
+
+        let result = catResult[indexPath.row]
+
+        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+        webVC.url =  result.url
+
+        self.navigationController?.pushViewController(webVC, animated: true)
     }
 }
 extension DetailViewController: UITableViewDataSource {
@@ -283,6 +301,7 @@ extension DetailViewController: UITableViewDataSource {
 
 
 }
+
 extension DetailViewController {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let contentOffsetY = scrollView.contentOffset.y

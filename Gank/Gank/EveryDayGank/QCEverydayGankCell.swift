@@ -26,6 +26,9 @@ class QCEverydayGankCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        imageView.contentMode = .ScaleToFill
+        
         timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
         timeLabel.textColor = UIColor.whiteColor()
         sourceLabel.font = timeLabel.font

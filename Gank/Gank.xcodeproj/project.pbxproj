@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4724A468AE69BC895E02804B /* Pods_Gank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */; };
 		860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */; };
+		861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EC68C1D1B9593001452A4 /* QCWebViewController.swift */; };
+		861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EC6901D1B99CD001452A4 /* QCWebViewController.storyboard */; };
 		8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951D1CF32A2100C79531 /* WelfareViewController.swift */; };
 		862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */; };
 		862595221CF3358F00C79531 /* UIView+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595211CF3358F00C79531 /* UIView+QC.swift */; };
@@ -81,6 +83,8 @@
 		209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 		2F9091BAEA8D432BB0CCE95F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = Gank/EveryDayGank/QCEveryDayGnakViewController.swift; sourceTree = SOURCE_ROOT; };
+		861EC68C1D1B9593001452A4 /* QCWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCWebViewController.swift; sourceTree = "<group>"; };
+		861EC6901D1B99CD001452A4 /* QCWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QCWebViewController.storyboard; sourceTree = "<group>"; };
 		8625951D1CF32A2100C79531 /* WelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareViewController.swift; sourceTree = "<group>"; };
 		8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCCollectionLayout.swift; sourceTree = "<group>"; };
 		862595211CF3358F00C79531 /* UIView+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+QC.swift"; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 				A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		861EC6921D1B9B04001452A4 /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				861EC68C1D1B9593001452A4 /* QCWebViewController.swift */,
+				861EC6901D1B99CD001452A4 /* QCWebViewController.storyboard */,
+			);
+			name = WebViewController;
 			sourceTree = "<group>";
 		};
 		862595271CF341A300C79531 /* Network */ = {
@@ -406,6 +419,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				861EC6921D1B9B04001452A4 /* WebViewController */,
 				86A1FDBC1D1982890055BBA5 /* Activity */,
 				86F8B6961D105A660028B5B7 /* Transition */,
 				86A6B95A1D0CF1F200A17399 /* Font */,
@@ -589,6 +603,7 @@
 			files = (
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
 				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
+				861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */,
 				864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				867DB3591D19517A002FC378 /* Assets.xcassets in Resources */,
@@ -690,6 +705,7 @@
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				867E21181CFDE42900EF72D9 /* CoverFlowLayout.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
+				861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 				86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */,
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
