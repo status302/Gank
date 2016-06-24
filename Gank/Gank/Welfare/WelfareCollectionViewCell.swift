@@ -19,6 +19,7 @@ class WelfareCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         descriptionLabel.textColor = UIColor.whiteColor()
+        descriptionLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
     }
     var result: Result! {
         didSet {

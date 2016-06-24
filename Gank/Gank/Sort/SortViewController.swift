@@ -200,15 +200,21 @@ class SortViewController: UIViewController {
         offset.x = CGFloat(sender.tag / 1000) * self.scrollView.width
 
         scrollView.setContentOffset(offset, animated: true)
-
+        /**
+         *  滚动每一个title与其vc对齐
+         */
         if (sender.centerX > Common.Screen_width * 0.5) && ((headScrollView.contentSize.width - sender.centerX) > Common.Screen_width * 0.5) {
             UIView.animateWithDuration(0.2, animations: { 
                 self.headScrollView.contentOffset.x = sender.centerX - Common.Screen_width * 0.5
             })
-        } else {
-//            UIView.animateWithDuration(0.2, animations: { 
-//                self.headScrollView.contentOffset.x = 0
-//            })
+        } else if sender.centerX < Common.Screen_width * 0.5{
+            UIView.animateWithDuration(0.2, animations: {
+                self.headScrollView.contentOffset.x = 0
+            })
+        } else if (headScrollView.contentSize.width - sender.centerX) < Common.Screen_width * 0.5{
+            UIView.animateWithDuration(0.2, animations: {
+                self.headScrollView.contentOffset.x = self.headScrollView.contentSize.width - Common.Screen_width
+            })
         }
     }
 

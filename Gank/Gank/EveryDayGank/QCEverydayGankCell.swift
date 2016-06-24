@@ -17,22 +17,24 @@ class QCEverydayGankCell: UICollectionViewCell {
 
     var result: Result! {
         didSet {
-            let url = NSURL(string: result.url)!
-            imageView.kf_setImageWithURL(url)
             timeLabel.text = result.dateToString(result.publishedAt)
             sourceLabel.text = result.who
+            
+            let url = NSURL(string: result.url)!
+            imageView.kf_setImageWithURL(url)
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
-        imageView.contentMode = .ScaleToFill
-        
         timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
         timeLabel.textColor = UIColor.whiteColor()
         sourceLabel.font = timeLabel.font
         sourceLabel.textColor = timeLabel.textColor
+
+        imageView.contentMode = .ScaleToFill
+
     }
     override func layoutSubviews() {
         
