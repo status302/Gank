@@ -126,6 +126,9 @@ class SortViewController: UIViewController {
          */
         headScrollView.backgroundColor = Common.navigationBarBackgroundColor
     }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     //
     // MARK: - private functions
 

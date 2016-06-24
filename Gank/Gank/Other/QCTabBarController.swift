@@ -20,7 +20,7 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         self.tabBar.addSubview(tabBarView)
 
         let everydayGankVC = QCEveryDayGnakViewController()
-        everydayGankVC.view.backgroundColor = UIColor.redColor()
+        everydayGankVC.view.backgroundColor = Common.navigationBarBackgroundColor
         self.addChildViewController(self.setupChildViewControllers(everydayGankVC, titleText: "每日一Gank"))
 
         /// 添加sortVC
@@ -33,8 +33,12 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
 
         // 添加WelfareVC
         let welfareVC = WelfareViewController()
-        welfareVC.view.backgroundColor = UIColor.whiteColor()
+        welfareVC.view.backgroundColor = Common.navigationBarBackgroundColor
         self.addChildViewController(setupChildViewControllers(welfareVC, titleText: "福利"))
+    }
+
+    override func loadView() {
+        super.loadView()
 
     }
 
@@ -49,6 +53,7 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
         return navigation
     }
 
+    
     // 懒加载tabBarView
     private lazy var tabBarView: QCTabBar = {
         let tabbarView = QCTabBar.tabbar()

@@ -119,12 +119,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        
         // Do any additional setup after loading the view.
 
         self.automaticallyAdjustsScrollViewInsets = false
 
-//        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
 
         let rightButton = UIButton(type: .System)
@@ -138,7 +137,7 @@ class DetailViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
 
-        
+
     }
 
 
@@ -219,6 +218,8 @@ class DetailViewController: UIViewController {
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+
+
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -226,6 +227,7 @@ class DetailViewController: UIViewController {
         self.imageView.image = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = nil
+
     }
 
     @IBAction func dismiss(sender: UIButton) {
@@ -264,10 +266,10 @@ extension DetailViewController: UITableViewDelegate {
         }
 
         let result = catResult[indexPath.row]
-
-        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateViewControllerWithIdentifier("QCWebViewController") as! QCWebViewController
         webVC.url =  result.url
 
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(webVC, animated: true)
     }
 }
@@ -322,4 +324,8 @@ extension DetailViewController {
 
         imageView.height = height
     }
+}
+
+extension DetailViewController: UINavigationControllerDelegate {
+
 }

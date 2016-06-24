@@ -52,6 +52,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         // 设置导航栏为nil
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -179,7 +180,9 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         formatterToString.dateFormat = "yyyy/MM/dd"
         
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(self.destVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 }
 

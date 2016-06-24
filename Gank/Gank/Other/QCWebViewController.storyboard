@@ -9,7 +9,7 @@
         <!--Web View Controller-->
         <scene sceneID="2IA-9P-tqd">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="pg3-ks-i6h" customClass="QCWebViewController" customModule="Gank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QCWebViewController" id="pg3-ks-i6h" customClass="QCWebViewController" customModule="Gank" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pg9-Ec-hPG"/>
                         <viewControllerLayoutGuide type="bottom" id="RjO-9r-jtD"/>
@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynA-Dn-5i7">
-                                <rect key="frame" x="-4" y="623" width="383" height="44"/>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ynA-Dn-5i7">
+                                <rect key="frame" x="-8" y="623" width="391" height="44"/>
                                 <items>
                                     <barButtonItem title="back" id="yoe-i9-aOh">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,22 +53,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ynA-Dn-5i7" firstAttribute="leading" secondItem="wFl-yg-aBi" secondAttribute="leadingMargin" constant="-20" id="X5a-g7-JQW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ynA-Dn-5i7" secondAttribute="trailing" constant="-20" id="mND-jF-0Ha"/>
-                            <constraint firstItem="RjO-9r-jtD" firstAttribute="top" secondItem="ynA-Dn-5i7" secondAttribute="bottom" id="zvA-SB-CUy"/>
+                            <constraint firstItem="RjO-9r-jtD" firstAttribute="top" secondItem="ynA-Dn-5i7" secondAttribute="bottom" id="80s-8x-TdW">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="ynA-Dn-5i7" secondAttribute="trailing" constant="-24" id="Dgx-FZ-mVa"/>
+                            <constraint firstItem="ynA-Dn-5i7" firstAttribute="leading" secondItem="wFl-yg-aBi" secondAttribute="leadingMargin" constant="-24" id="zXS-Tp-lGv"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backBarButton" destination="yoe-i9-aOh" id="QWp-0l-DFP"/>
                         <outlet property="forwardBarButton" destination="tyG-DC-ECm" id="gGT-In-QqP"/>
                         <outlet property="openInSafiriBarButton" destination="KgA-V8-iNd" id="dSI-iQ-yti"/>
                         <outlet property="reloadBarButton" destination="6Ec-ZC-yFm" id="hgu-wW-Z1B"/>
+                        <outlet property="toolbar" destination="ynA-Dn-5i7" id="CMm-Kt-edq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiJ-Sj-Eeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410" y="376"/>
+            <point key="canvasLocation" x="1326.75" y="375.5"/>
         </scene>
     </scenes>
 </document>

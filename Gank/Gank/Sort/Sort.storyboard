@@ -32,7 +32,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Gfc-kL-vwc" secondAttribute="trailing" constant="-20" id="hBm-4P-2gE"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="nZa-WS-WwY"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="headScrollView" destination="Gfc-kL-vwc" id="RvT-Qx-lO5"/>
                     </connections>
@@ -45,6 +47,7 @@
         <scene sceneID="eq5-7P-Mv9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ll6-57-UMf" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ycT-7y-lYP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

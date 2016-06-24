@@ -20,6 +20,20 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var reloadBarButton: UIBarButtonItem!
 
+    @IBOutlet weak var toolbar: UIToolbar! {
+        didSet {
+            for view in toolbar.subviews {
+                if view.bounds.height < 2 {
+                    if let view = view as? UIImageView {
+                        view.removeFromSuperview()
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+
     lazy var progressView: UIProgressView = {
         let progressView: UIProgressView = UIProgressView(progressViewStyle: .Default)
 
@@ -73,12 +87,19 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
         super.init(coder: aDecoder)
     }
+
+    override func loadView() {
+        self.navigationController?.toolbar.removeFromSuperview()
+        super.loadView()
+//        self.hidesBottomBarWhenPushed = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
        webView.translatesAutoresizingMaskIntoConstraints = false
+
 
         webView.navigationDelegate = self
 //        view.addSubview(webView)
@@ -118,9 +139,11 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
 
-
     }
-
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.hidesBottomBarWhenPushed = false
+    }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 

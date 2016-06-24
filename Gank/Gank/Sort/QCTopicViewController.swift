@@ -57,6 +57,9 @@ class QCTopicViewController: UITableViewController {
 
         loadData()
     }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
 
     /**
      获取数据
@@ -144,12 +147,12 @@ extension QCTopicViewController {
 extension QCTopicViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let result = results[indexPath.row]
-        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateViewControllerWithIdentifier("QCWebViewController") as! QCWebViewController
 
         webVC.url = result.url
 
         self.navigationController?.pushViewController(webVC, animated: true)
-
+        
     }
 }
 
