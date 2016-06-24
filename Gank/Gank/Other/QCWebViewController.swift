@@ -49,24 +49,9 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
                 reloadBarButton.title = "Stop"
 
-//                let stopButton = UIButton(type: .System)
-//                stopButton.imageView?.image = UIImage(named: "stop")
-//                stopButton.tintColor = UIColor.blackColor()
-//                stopButton.sizeToFit()
-//                stopButton.addTarget(self, action: #selector(reloadBarButtonClicked(_:)), forControlEvents: .TouchUpInside)
-//                reloadBarButton.customView = stopButton
-//
-//                reloadBarButton.width = stopButton.width
             } else { // 设置reloading 的图标为 G
                 reloadBarButton.title = "Reload"
-                
-//                let reloadButton = UIButton(type: .System)
-//                reloadButton.imageView?.image = UIImage(named: "reload")
-//                reloadButton.sizeToFit()
-//                reloadButton.tintColor = UIColor.blackColor()
-//                reloadButton.addTarget(self, action: #selector(reloadBarButtonClicked(_:)), forControlEvents: .TouchUpInside)
-//                reloadBarButton.customView = reloadButton
-//                reloadBarButton.width = reloadButton.width
+
             }
         }
     }
@@ -126,6 +111,8 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
 
+        ///设置navigationBar的返回按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
 
         /// 设置NavigationBar的分享按键
         let rightButton = UIButton(type: .System)
@@ -182,17 +169,18 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
             self.presentViewController(activityVC, animated: true, completion: nil)
         }
     }
+    @objc func back() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     // MARK: - KVO
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "loading" {
-            print("loading")
             backBarButton.enabled = webView.canGoBack
             forwardBarButton.enabled = webView.canGoForward
 
         } else if keyPath == "estimatedProgress" {
             progressView.hidden = (webView.estimatedProgress == 1.0)
-            print("\(webView.estimatedProgress)")
             progressView.setProgress(Float(webView.estimatedProgress), animated: true)
         }
     }
@@ -209,7 +197,6 @@ extension QCWebViewController {
     }
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         isLoading = false
-        print("hahhaha\(webView.estimatedProgress)")
         progressView.setProgress(0, animated: true)
     }
 }
