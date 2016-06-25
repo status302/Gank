@@ -95,6 +95,9 @@ class SortViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.tabBarController?.delegate = self
+
         view.backgroundColor = Common.navigationBarBackgroundColor
         self.automaticallyAdjustsScrollViewInsets = false
 
@@ -128,6 +131,12 @@ class SortViewController: UIViewController {
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = nil
     }
     //
     // MARK: - private functions
@@ -261,6 +270,9 @@ extension SortViewController: UIScrollViewDelegate {
             scrollView.addSubview(vc.view)
         }
 
-
     }
+}
+
+extension SortViewController: UITabBarControllerDelegate {
+    
 }

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import PKHUD
 
-class QCTopicViewController: UITableViewController {
+class QCTopicViewController: UITableViewController, UIViewControllerTransitioningDelegate {
 
 
     // MARK: - URL相关
@@ -147,12 +147,17 @@ extension QCTopicViewController {
 extension QCTopicViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let result = results[indexPath.row]
-        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateViewControllerWithIdentifier("QCWebViewController") as! QCWebViewController
-
+        let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+        
         webVC.url = result.url
 
+//        webVC.transitioningDelegate = self
+
+//        webVC.modalPresentationStyle = .FullScreen
+
         self.navigationController?.pushViewController(webVC, animated: true)
-        
+//        self.presentViewController(webVC, animated: true, completion: nil)
+
     }
 }
 
@@ -162,5 +167,14 @@ extension QCTopicViewController {
             customRefreshControl.startAnimation()
             self.loadData()
         }
+    }
+}
+
+extension QCTopicViewController {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideTransitionAnimator()
+    }
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideTransitionAnimator()
     }
 }

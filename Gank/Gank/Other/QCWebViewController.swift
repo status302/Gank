@@ -12,6 +12,7 @@ import SnapKit
 
 class QCWebViewController: UIViewController, WKNavigationDelegate {
 
+    // MARK: Outlets and properties
     @IBOutlet weak var backBarButton: UIBarButtonItem!
 
     @IBOutlet weak var forwardBarButton: UIBarButtonItem!
@@ -20,20 +21,33 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var reloadBarButton: UIBarButtonItem!
 
-    @IBOutlet weak var toolbar: UIToolbar! {
+    @IBOutlet weak var toolbar: UIToolbar!
+    
+    var isLoading: Bool = false {  // 表示 webView 是否在加载ing
         didSet {
-            for view in toolbar.subviews {
-                if view.bounds.height < 2 {
-                    if let view = view as? UIImageView {
-                        view.removeFromSuperview()
-                        break
-                    }
-                }
+            if isLoading { // 设置reloading 的图标为 X
+
+                UIView.animateWithDuration(0.1, animations: {
+
+                    self.reloadBarButton.image = UIImage(named: "network_cancel")
+                })
+
+            } else { // 设置reloading 的图标为 G
+                UIView.animateWithDuration(0.1, animations: {
+                    self.reloadBarButton.image = UIImage(named: "network_refresh")
+                })
+
             }
         }
     }
-    
-
+    var url: String! {
+        didSet {
+            let URL = NSURL(string: url)
+            let request = NSURLRequest(URL: URL!)
+            webView.loadRequest(request)
+        }
+    }
+    // MARK: Lazy
     lazy var progressView: UIProgressView = {
         let progressView: UIProgressView = UIProgressView(progressViewStyle: .Default)
 
@@ -43,59 +57,43 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         return progressView
     }()
 
-    var isLoading: Bool = false {  // 表示 webView 是否在加载ing
-        didSet {
-            if isLoading { // 设置reloading 的图标为 X
+    lazy var webView: WKWebView = {
+        let conf = WKWebViewConfiguration()
+        let webView = WKWebView(frame: CGRect.zero, configuration: conf)
+        webView.allowsBackForwardNavigationGestures = true
+        webView.allowsLinkPreview = false
 
-                reloadBarButton.title = "Stop"
+        webView.navigationDelegate = self
 
-            } else { // 设置reloading 的图标为 G
-                reloadBarButton.title = "Reload"
+        webView.translatesAutoresizingMaskIntoConstraints = false
 
-            }
-        }
-    }
-    var webView: WKWebView!
-    var url: String! {
-        didSet {
-            let URL = NSURL(string: url)
-            let request = NSURLRequest(URL: URL!)
-            webView.loadRequest(request)
-        }
-    }
+
+        return webView
+    }()
+
 
 
     required init?(coder aDecoder: NSCoder) {
-
-        webView = WKWebView(frame: CGRect.zero)
-//        progressView = UIProgressView(progressViewStyle: .Default)
-
         super.init(coder: aDecoder)
     }
 
     override func loadView() {
-        self.navigationController?.toolbar.removeFromSuperview()
+        if self.navigationController?.toolbar != nil {
+            self.navigationController?.toolbar.hidden = true
+        }
         super.loadView()
-//        self.hidesBottomBarWhenPushed = true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
-       webView.translatesAutoresizingMaskIntoConstraints = false
-
-
-        webView.navigationDelegate = self
-//        view.addSubview(webView)
         view.insertSubview(webView, atIndex: 0)
 
         webView.snp.makeConstraints { (make) in
             make.width.equalTo(view.snp.width)
             make.height.equalTo(view.snp.height).offset(-44)
         }
-
-
 
         view.insertSubview(progressView, aboveSubview: webView)
 
@@ -105,11 +103,13 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
             make.top.equalTo(view.snp.top).offset(64)
         }
 
-        backBarButton.enabled = false
-        forwardBarButton.enabled = false
-
+        // MARK: Add Observer
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
+        webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
+
+        backBarButton.enabled = false
+        forwardBarButton.enabled = false
 
         ///设置navigationBar的返回按钮
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
@@ -182,11 +182,14 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         } else if keyPath == "estimatedProgress" {
             progressView.hidden = (webView.estimatedProgress == 1.0)
             progressView.setProgress(Float(webView.estimatedProgress), animated: true)
+        } else if keyPath == "title"{
+            title = webView.title
         }
     }
     deinit {
         webView.removeObserver(self, forKeyPath: "loading")
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.removeObserver(self, forKeyPath: "title")
     }
 }
 extension QCWebViewController {
