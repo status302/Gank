@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -14,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fju-Q0-jsr">
-                                <rect key="frame" x="240" y="240" width="120" height="120"/>
+                                <rect key="frame" x="127" y="243" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="9CI-KS-eAK"/>
                                     <constraint firstAttribute="height" constant="120" id="dFw-aS-9g6"/>
@@ -30,15 +29,43 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gp-oI-gAG">
+                                <rect key="frame" x="179" y="138" width="15.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gank.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugu-yu-iFU">
+                                <rect key="frame" x="158" y="586" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG5-TB-4JO">
+                                <rect key="frame" x="152" y="100" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fju-Q0-jsr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HCp-OM-R6w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ugu-yu-iFU" secondAttribute="bottom" constant="60" id="2g5-21-QIp"/>
+                            <constraint firstItem="rG5-TB-4JO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bR-Zz-wEz"/>
+                            <constraint firstItem="Ugu-yu-iFU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="COe-Ip-5FA"/>
+                            <constraint firstItem="rG5-TB-4JO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="FLA-rM-iSN"/>
+                            <constraint firstItem="6gp-oI-gAG" firstAttribute="centerX" secondItem="rG5-TB-4JO" secondAttribute="centerX" id="G65-ve-fuV"/>
+                            <constraint firstItem="fju-Q0-jsr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="HCp-OM-R6w"/>
                             <constraint firstItem="fju-Q0-jsr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RrE-h1-ckJ"/>
+                            <constraint firstItem="6gp-oI-gAG" firstAttribute="top" secondItem="rG5-TB-4JO" secondAttribute="bottom" constant="17" id="pdy-tE-mdm"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="gankLabel" destination="Ugu-yu-iFU" id="W5g-4x-1Ro"/>
                         <outlet property="iconImageView" destination="fju-Q0-jsr" id="dp7-c1-nRi"/>
+                        <outlet property="toLabel" destination="6gp-oI-gAG" id="uai-VP-TcR"/>
+                        <outlet property="welcomeLabel" destination="rG5-TB-4JO" id="e4K-XP-v7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

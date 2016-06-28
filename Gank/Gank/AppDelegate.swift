@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateInitialViewController()
         window?.rootViewController = vc
+
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 5))
         dispatch_after(time, dispatch_get_main_queue()) { 
 

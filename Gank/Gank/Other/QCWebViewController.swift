@@ -67,6 +67,10 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
         webView.translatesAutoresizingMaskIntoConstraints = false
 
+        /**
+         *  这句话添加上去就会导致程序的崩溃
+         */
+//        webView.scrollView.delegate = self
 
         return webView
     }()
@@ -201,5 +205,11 @@ extension QCWebViewController {
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         isLoading = false
         progressView.setProgress(0, animated: true)
+    }
+}
+
+extension QCWebViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+        
     }
 }
