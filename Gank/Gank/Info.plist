@@ -29,9 +29,9 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Baloo-Regular.ttf</string>
 		<string>Lobster1.4.otf</string>
 		<string>DFPHaiBaoW12-GB.ttf</string>
+		<string>ZapfinoExtraLT-Two.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

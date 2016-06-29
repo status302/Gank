@@ -114,6 +114,8 @@ class SortViewController: UIViewController {
         view.insertSubview(scrollView, belowSubview: headScrollView)
 
         self.scrollViewDidEndScrollingAnimation(scrollView)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil,action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
 
     }
 
@@ -160,6 +162,7 @@ class SortViewController: UIViewController {
     private func setupHeadView() {
 
         self.automaticallyAdjustsScrollViewInsets = false
+        headScrollView.showsHorizontalScrollIndicator = false
 
         var widths = [CGFloat]()
         var xs = [CGFloat]()

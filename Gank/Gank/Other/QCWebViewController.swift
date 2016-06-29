@@ -116,7 +116,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         forwardBarButton.enabled = false
 
         ///设置navigationBar的返回按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
+//        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
 
         /// 设置NavigationBar的分享按键
         let rightButton = UIButton(type: .System)
@@ -128,7 +128,9 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         rightButton.tintColor = UIColor.blackColor()
         rightButton.addTarget(self, action: #selector(sharedButtonClicked), forControlEvents: .TouchUpInside)
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: rightButton)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+
 
     }
     override func viewWillDisappear(animated: Bool) {

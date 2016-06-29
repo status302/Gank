@@ -124,7 +124,8 @@ class DetailViewController: UIViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
+        navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), highlightedImage: UIImage(named: "back_highlighted"), target: self, action: #selector(back))
 
         let rightButton = UIButton(type: .System)
         rightButton.width = 22
@@ -134,10 +135,10 @@ class DetailViewController: UIViewController {
 
         rightButton.tintColor = UIColor.blackColor()
         rightButton.addTarget(self, action: #selector(sharedButtonClicked), forControlEvents: .TouchUpInside)
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
 
-
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
 
 

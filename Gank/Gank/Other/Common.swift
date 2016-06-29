@@ -36,6 +36,18 @@ extension Common {
 extension Common {
     static let countOnePage:Int = 10
 }
+extension UIFont {
+    internal class func font_lobster(fontName: String = "Lobster1.4", size: CGFloat) -> UIFont? {
+        return UIFont(name: fontName, size: size)
+    }
+    internal class func font_dfphaib(fontName: String = "DFPHaiBaoW12-GB", size: CGFloat) -> UIFont? {
+        return UIFont(name: fontName, size: size)
+    }
+    internal class func font_heart(fontName: String = "ZapfinoExtraLT-Two", size: CGFloat) -> UIFont? {
+        return UIFont(name: fontName, size: size)
+    }
+
+}
 
 //
 enum URLType: String{

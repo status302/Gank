@@ -34,6 +34,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         rightButton = rightView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
 
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+
         loadData()
         
 

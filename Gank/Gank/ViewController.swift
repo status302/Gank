@@ -15,7 +15,6 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: LTMorphingLabel!
     @IBOutlet weak var toLabel: LTMorphingLabel!
-    @IBOutlet weak var gankLabel: LTMorphingLabel!
 
     @IBOutlet weak var gankView: UIView!
     @IBOutlet weak var drawableView: UIView!
@@ -28,7 +27,7 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        welcomeLabel.font = UIFont(name: "Baloo-Regular", size: 38)
+        welcomeLabel.font = UIFont.font_heart(size: 56)
         welcomeLabel.textColor = UIColor.yellowColor()
         welcomeLabel.alpha = 1.0
         welcomeLabel.text = ""
@@ -41,13 +40,6 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         toLabel.textColor = welcomeLabel.textColor
         toLabel.alpha = 1.0
         toLabel.text = ""
-
-        gankLabel.font = welcomeLabel.font
-        gankLabel.textColor = welcomeLabel.textColor
-        gankLabel.alpha = 0.0
-//        gankLabel.text = ""
-
-
 
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.5))
         dispatch_after(time, dispatch_get_main_queue()) {

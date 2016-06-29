@@ -35,12 +35,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gank.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugu-yu-iFU" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                <rect key="frame" x="158" y="586" width="58" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG5-TB-4JO" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                 <rect key="frame" x="152" y="100" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -66,9 +60,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ugu-yu-iFU" secondAttribute="bottom" constant="60" id="2g5-21-QIp"/>
                             <constraint firstItem="rG5-TB-4JO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bR-Zz-wEz"/>
-                            <constraint firstItem="Ugu-yu-iFU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="COe-Ip-5FA"/>
                             <constraint firstItem="rG5-TB-4JO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="FLA-rM-iSN"/>
                             <constraint firstItem="aV5-w1-NLa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FPD-CW-o91"/>
                             <constraint firstItem="6gp-oI-gAG" firstAttribute="centerX" secondItem="rG5-TB-4JO" secondAttribute="centerX" id="G65-ve-fuV"/>
@@ -83,7 +75,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="drawableView" destination="rtM-MZ-qCr" id="BPN-GQ-WNW"/>
-                        <outlet property="gankLabel" destination="Ugu-yu-iFU" id="W5g-4x-1Ro"/>
                         <outlet property="gankView" destination="aV5-w1-NLa" id="OwR-ZP-icZ"/>
                         <outlet property="iconImageView" destination="fju-Q0-jsr" id="dp7-c1-nRi"/>
                         <outlet property="toLabel" destination="6gp-oI-gAG" id="uai-VP-TcR"/>
