@@ -34,7 +34,7 @@ extension Common {
 }
 
 extension Common {
-    static let countOnePage:Int = 10
+    static let countOnePage:Int = 15
 }
 extension UIFont {
     internal class func font_lobster(fontName: String = "Lobster1.4", size: CGFloat) -> UIFont? {

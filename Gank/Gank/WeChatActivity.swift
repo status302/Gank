@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import MonkeyKing
 
 
-final class WeChatActivity: AnyActivity {
+final class WeChatActivity: UIActivity{
     enum Type {
         case Session
         case Timeline
@@ -20,7 +19,7 @@ final class WeChatActivity: AnyActivity {
 //            case .Session:
 //                return
 //            default:
-//                <#code#>
+//                
 //            }
 //        }
     }

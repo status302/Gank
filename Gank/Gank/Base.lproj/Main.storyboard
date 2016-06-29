@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fju-Q0-jsr">
-                                <rect key="frame" x="127" y="243" width="120" height="120"/>
+                                <rect key="frame" x="100" y="194" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="9CI-KS-eAK"/>
                                     <constraint firstAttribute="height" constant="120" id="dFw-aS-9g6"/>
@@ -30,19 +30,19 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gp-oI-gAG" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                <rect key="frame" x="179" y="151" width="15.5" height="21"/>
+                                <rect key="frame" x="151" y="141" width="15.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG5-TB-4JO" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                <rect key="frame" x="152" y="100" width="71" height="21"/>
+                                <rect key="frame" x="124" y="100" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtM-MZ-qCr">
-                                <rect key="frame" x="187" y="180" width="0.0" height="44"/>
+                                <rect key="frame" x="159" y="170" width="0.0" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="dAD-g4-PJ2"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aV5-w1-NLa">
-                                <rect key="frame" x="187" y="576" width="0.0" height="42"/>
+                                <rect key="frame" x="160" y="477" width="0.0" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="7v5-Nm-Zrf"/>
@@ -68,11 +68,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aV5-w1-NLa" secondAttribute="bottom" constant="49" id="QKe-aS-pPs"/>
                             <constraint firstItem="fju-Q0-jsr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RrE-h1-ckJ"/>
                             <constraint firstItem="rtM-MZ-qCr" firstAttribute="top" secondItem="6gp-oI-gAG" secondAttribute="bottom" constant="8" id="ogg-SU-FKq"/>
-                            <constraint firstItem="6gp-oI-gAG" firstAttribute="top" secondItem="rG5-TB-4JO" secondAttribute="bottom" constant="30" id="pdy-tE-mdm"/>
+                            <constraint firstItem="6gp-oI-gAG" firstAttribute="top" secondItem="rG5-TB-4JO" secondAttribute="bottom" constant="20" id="pdy-tE-mdm"/>
                             <constraint firstItem="rtM-MZ-qCr" firstAttribute="centerX" secondItem="6gp-oI-gAG" secondAttribute="centerX" id="usN-Ft-JST"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="drawableView" destination="rtM-MZ-qCr" id="BPN-GQ-WNW"/>
                         <outlet property="gankView" destination="aV5-w1-NLa" id="OwR-ZP-icZ"/>

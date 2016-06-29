@@ -130,8 +130,13 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
         navigationItem.rightBarButtonItem  = UIBarButtonItem(customView: rightButton)
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+    }
 
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
