@@ -10,12 +10,19 @@
 import UIKit
 import LTMorphingLabel
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, QCTextAnimatorDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var gankLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: LTMorphingLabel!
+    @IBOutlet weak var toLabel: LTMorphingLabel!
+    @IBOutlet weak var gankLabel: LTMorphingLabel!
+
+    @IBOutlet weak var gankView: UIView!
+    @IBOutlet weak var drawableView: UIView!
+
+    var textAnimator: QCTextAnimator?
+    var choseFontName: String = "Lobster1.4"
+    var isTextAnimating = false // 用来记录textAnimator的状态
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +31,29 @@ class ViewController: UIViewController {
         welcomeLabel.font = UIFont(name: "Baloo-Regular", size: 38)
         welcomeLabel.textColor = UIColor.yellowColor()
         welcomeLabel.alpha = 1.0
+        welcomeLabel.text = ""
+        let effect = LTMorphingEffect.Sparkle
+        welcomeLabel.morphingEffect = effect
+        welcomeLabel.text = "Welcome"
+        
 
         toLabel.font = welcomeLabel.font
         toLabel.textColor = welcomeLabel.textColor
-        toLabel.alpha = 0.0
+        toLabel.alpha = 1.0
+        toLabel.text = ""
 
         gankLabel.font = welcomeLabel.font
         gankLabel.textColor = welcomeLabel.textColor
         gankLabel.alpha = 0.0
+//        gankLabel.text = ""
 
 
 
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.5))
         dispatch_after(time, dispatch_get_main_queue()) {
+
+            self.startTextAnimator()
+
             let rotationAnimation = CABasicAnimation()
             rotationAnimation.keyPath = "transform.rotation"
             rotationAnimation.fromValue = 0
@@ -56,43 +73,65 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        initTextAnimator()
+    }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
 
         self.iconImageView.layer.removeAllAnimations()
+        textAnimator = nil
+    }
+    func initTextAnimator() {
+        textAnimator = QCTextAnimator(referenceView: gankView)
+        textAnimator?.delegate = self
+        updateTextAnimator()
+    }
+    func updateTextAnimator() {
+        textAnimator?.textToAnimate = "Gank.io"
+    }
+    func startTextAnimator() {
+
+        textAnimator?.startAnimation()
+    }
+    func stopTextAnimator() {
+        textAnimator?.stopAnimation()
     }
 
-
+    func labelChangeText(label:UILabel, text: String) {
+        label.text = text
+    }
 }
 
 extension ViewController {
 
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    /*    UIView.animateWithDuration(0.5, animations: {
-            self.iconImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-            self.toLabel.alpha = 1.0
-        }) {
-            (finished) in
-            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .CurveLinear, animations: {
-
-                self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, 100, 100)
-                }, completion: {
-                    (finished) in
-                    self.gankLabel.alpha = 1.0
-            })
-        }*/
 
         UIView.animateKeyframesWithDuration(1.5, delay: 0, options: [.CalculationModeLinear], animations: {
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 1.5 * 0.1666666, animations: {
                 self.iconImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-                self.toLabel.alpha = 1.0
+                let effect = LTMorphingEffect.Fall
+                self.toLabel.morphingEffect = effect
+                self.toLabel.text = "to"
             })
             UIView.addKeyframeWithRelativeStartTime(1.5 * 0.1666666, relativeDuration: 1.5 * 0.8333333, animations: {
                 self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, 100, 100)
+                self.toLabel.transform = CGAffineTransformMakeTranslation(0, 80)
             })
             }) { (finished) in
-                self.gankLabel.alpha = 1.0
+//                self.gankLabel.alpha = 1.0
         }
     }
 }
 
+extension ViewController {
+    func animateDidStart(textAnimator: QCTextAnimator, animatorDidStart animator: CAAnimation) {
+        isTextAnimating = true
+    }
+    func animateDidStop(textAnimator: QCTextAnimator, animatorDidStop animator: CAAnimation) {
+        isTextAnimating = false
+    }
+
+}

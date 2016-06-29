@@ -30,7 +30,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Baloo-Regular.ttf</string>
-		<string>Lobster 1.4.otf</string>
+		<string>Lobster1.4.otf</string>
 		<string>DFPHaiBaoW12-GB.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

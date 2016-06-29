@@ -23,10 +23,11 @@
 		862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */; };
 		8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631EE311D08697700661AE0 /* CustomRefreshControl.swift */; };
 		8631EE341D08697700661AE0 /* RefreshContents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8631EE321D08697700661AE0 /* RefreshContents.xib */; };
+		864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B08681D22A5C70009E49F /* QCTextAnimator.swift */; };
 		864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */; };
 		864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2B1CF820F100C5569A /* Sort.storyboard */; };
 		864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A2D1CF823C400C5569A /* SortViewController.swift */; };
-		864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */; };
+		864B2A301CF9F01100C5569A /* Lobster1.4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A2F1CF9EFD900C5569A /* Lobster1.4.otf */; };
 		864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */; };
 		864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */; };
 		8676CD301D0DA845006E860F /* QCActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676CD2F1D0DA845006E860F /* QCActionView.swift */; };
@@ -97,10 +98,11 @@
 		862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelfareCollectionViewCell.xib; sourceTree = "<group>"; };
 		8631EE311D08697700661AE0 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
 		8631EE321D08697700661AE0 /* RefreshContents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshContents.xib; sourceTree = "<group>"; };
+		864B08681D22A5C70009E49F /* QCTextAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTextAnimator.swift; sourceTree = "<group>"; };
 		864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareFlowLayout.swift; sourceTree = "<group>"; };
 		864B2A2B1CF820F100C5569A /* Sort.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sort.storyboard; sourceTree = "<group>"; };
 		864B2A2D1CF823C400C5569A /* SortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
-		864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster 1.4.otf"; sourceTree = "<group>"; };
+		864B2A2F1CF9EFD900C5569A /* Lobster1.4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lobster1.4.otf; sourceTree = "<group>"; };
 		864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DFPHaiBaoW12-GB.ttf"; sourceTree = "<group>"; };
 		864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+QC.swift"; sourceTree = "<group>"; };
 		8676CD2F1D0DA845006E860F /* QCActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCActionView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		864B08671D22A5A90009E49F /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				864B08681D22A5C70009E49F /* QCTextAnimator.swift */,
+			);
+			name = Animator;
+			sourceTree = "<group>";
+		};
 		8676CD2E1D0DA832006E860F /* ActionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +320,7 @@
 			children = (
 				867DB3561D1925D7002FC378 /* Baloo-Regular.ttf */,
 				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
-				864B2A2F1CF9EFD900C5569A /* Lobster 1.4.otf */,
+				864B2A2F1CF9EFD900C5569A /* Lobster1.4.otf */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -439,6 +449,7 @@
 				862595281CF344E500C79531 /* Common */,
 				86C8D2721CEF170D00133FF5 /* Extensions */,
 				862595271CF341A300C79531 /* Network */,
+				864B08671D22A5A90009E49F /* Animator */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -612,7 +623,7 @@
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
 				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
 				861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */,
-				864B2A301CF9F01100C5569A /* Lobster 1.4.otf in Resources */,
+				864B2A301CF9F01100C5569A /* Lobster1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				867DB3591D19517A002FC378 /* Assets.xcassets in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
@@ -723,6 +734,7 @@
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
+				864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */,
