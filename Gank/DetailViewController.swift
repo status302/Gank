@@ -130,7 +130,8 @@ class DetailViewController: UIViewController {
         let rightButton = UIButton(type: .System)
         rightButton.width = 22
         rightButton.height = 33
-        rightButton.setImage(UIImage(named: "icon_share"), forState: .Normal)
+        rightButton.setImage(UIImage(named: "share"), forState: .Normal)
+        rightButton.setImage(UIImage(named: "share_highlighted"), forState: .Highlighted)
         rightButton.contentMode = .ScaleAspectFill
 
         rightButton.tintColor = UIColor.blackColor()

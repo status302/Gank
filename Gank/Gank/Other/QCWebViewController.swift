@@ -27,14 +27,14 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         didSet {
             if isLoading { // 设置reloading 的图标为 X
 
-                UIView.animateWithDuration(0.1, animations: {
+                UIView.animateWithDuration(0.0889, animations: {
 
-                    self.reloadBarButton.image = UIImage(named: "network_cancel")
+                    self.reloadBarButton.image = UIImage(named: "cancel")
                 })
 
             } else { // 设置reloading 的图标为 G
-                UIView.animateWithDuration(0.1, animations: {
-                    self.reloadBarButton.image = UIImage(named: "network_refresh")
+                UIView.animateWithDuration(0.0889, animations: {
+                    self.reloadBarButton.image = UIImage(named: "networking_refresh")
                 })
 
             }
@@ -122,7 +122,8 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         let rightButton = UIButton(type: .System)
         rightButton.width = 22
         rightButton.height = 33
-        rightButton.setImage(UIImage(named: "icon_share"), forState: .Normal)
+        rightButton.setImage(UIImage(named: "share"), forState: .Normal)
+        rightButton.setImage(UIImage(named: "share_highlighted"), forState: .Highlighted)
         rightButton.contentMode = .ScaleAspectFill
 
         rightButton.tintColor = UIColor.blackColor()

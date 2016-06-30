@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class QCEverydayGankCell: UICollectionViewCell {
 
@@ -15,6 +16,7 @@ class QCEverydayGankCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
 
+    @IBOutlet weak var labelsstackView: UIStackView!
     var result: Result! {
         didSet {
             timeLabel.text = result.dateToString(result.publishedAt)
@@ -27,6 +29,19 @@ class QCEverydayGankCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        for view in self.subviews {
+            if view.isDescendantOfView(UIStackView()) {
+                view.removeFromSuperview()
+            }
+            self.insertSubview(labelsstackView, aboveSubview: imageView)
+            labelsstackView.snp.makeConstraints(closure: { (make) in
+                make.left.equalTo(self.snp.left).offset(10)
+                make.bottom.equalTo(self.snp.bottom).offset(-10)
+            })
+        }
+
+
 
         timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
         timeLabel.textColor = UIColor.whiteColor()

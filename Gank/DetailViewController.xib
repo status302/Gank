@@ -28,8 +28,8 @@
                         <constraint firstAttribute="height" constant="33" id="TtZ-Gu-pqM"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="icon_share"/>
-                    <state key="highlighted" image="icon_share"/>
+                    <state key="normal" image="share"/>
+                    <state key="highlighted" image="share"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -44,7 +44,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_share" width="48" height="66"/>
+        <image name="share" width="20" height="27"/>
         <image name="top_shadow" width="375" height="80"/>
     </resources>
 </document>

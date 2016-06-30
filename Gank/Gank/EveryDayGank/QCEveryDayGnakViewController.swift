@@ -37,6 +37,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
+
         loadData()
         
 
@@ -64,6 +66,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
 
     // MARK: - private function
+
+    func showSettingButtonCicked() {
+        // 在这里显示设置
+    }
     func loadMoreData() {
         print("添加了加载更多数据")
     }

@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fju-Q0-jsr">
-                                <rect key="frame" x="100" y="194" width="120" height="120"/>
+                                <rect key="frame" x="130" y="224" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="9CI-KS-eAK"/>
-                                    <constraint firstAttribute="height" constant="120" id="dFw-aS-9g6"/>
+                                    <constraint firstAttribute="width" constant="60" id="9CI-KS-eAK"/>
+                                    <constraint firstAttribute="height" constant="60" id="dFw-aS-9g6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

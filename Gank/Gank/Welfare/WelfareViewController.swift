@@ -81,6 +81,16 @@ class WelfareViewController: UIViewController {
 
             collectionView.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
         }
+        // 添加旋转动画
+        let rotationAnimation = CABasicAnimation()
+        rotationAnimation.keyPath = "transform.rotation"
+        rotationAnimation.fromValue = 0
+        rotationAnimation.toValue = M_PI
+        rotationAnimation.duration = 0.5
+
+        rotationAnimation.repeatCount = MAXFLOAT
+
+        self.rightButton?.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
 
         // 每次加载数据之前都要将数据置空
         results.removeAll()
@@ -104,6 +114,7 @@ class WelfareViewController: UIViewController {
 
             self.customRefresh.endAnimation()
             self.collectionView.reloadData()
+            self.rightButton?.layer.removeAllAnimations()
 
             HUD.hide()
         }
