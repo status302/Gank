@@ -107,6 +107,7 @@
 		864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+QC.swift"; sourceTree = "<group>"; };
 		8676CD2F1D0DA845006E860F /* QCActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCActionView.swift; sourceTree = "<group>"; };
 		867DB3581D19517A002FC378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		869A65EC1D24F1F6000DB0B6 /* Gank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gank-Bridging-Header.h"; sourceTree = "<group>"; };
 		86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -376,6 +377,7 @@
 				86BD620F1CEB27B600D1FEB6 /* Main.storyboard */,
 				86BD62141CEB27B600D1FEB6 /* LaunchScreen.storyboard */,
 				86BD62171CEB27B600D1FEB6 /* Info.plist */,
+				869A65EC1D24F1F6000DB0B6 /* Gank-Bridging-Header.h */,
 			);
 			path = Gank;
 			sourceTree = "<group>";
@@ -881,6 +883,7 @@
 			baseConfigurationReference = 209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gank/Info.plist;
@@ -889,6 +892,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiuncheng.gank.io;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gank/Gank-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -897,6 +902,7 @@
 			baseConfigurationReference = DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gank/Info.plist;
@@ -905,6 +911,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiuncheng.gank.io;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gank/Gank-Bridging-Header.h";
 			};
 			name = Release;
 		};
