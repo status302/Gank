@@ -48,6 +48,19 @@ extension UIFont {
     }
 
 }
+extension Common {
+    struct WeChat {
+        
+        internal static let appID = ""
+        internal static let sessionType = ""
+        internal static let sessionTitle = NSLocalizedString("WeChat session", comment: "")
+        internal static let sessionImage = UIImage(named: "wechat_session")
+
+        internal static let timeLineType = ""
+        internal static let timeLineTitle = NSLocalizedString("WeChat timeLine", comment: "")
+        internal static let timeLineImage = UIImage(named: "wechat_timeline")
+    }
+}
 
 //
 enum URLType: String{
