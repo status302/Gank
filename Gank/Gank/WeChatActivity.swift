@@ -44,7 +44,8 @@ final class WeChatActivity: AnyActivity {
     }
 
     init(type: Type, message: MonkeyKing.Message, completionHandler: MonkeyKing.SharedCompletionHandler) {
-        super.init(type: type.type, title: type.title, image: type.image, message: message, completionHandler: completionHandler)
+        MonkeyKing.registerAccount(.WeChat(appID: Common.WeChat.appID, appKey:"")) // 并不知道这里的appKey有什么用处
+        super.init(type: type.type, title: type.title, image: type.image, message: message,     completionHandler: completionHandler)
     }
 }
 

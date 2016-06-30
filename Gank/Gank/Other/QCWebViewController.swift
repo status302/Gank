@@ -183,8 +183,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
             return
         }
 
-        let info = MonkeyKing.Info(title: NSLocalizedString("#来自Gank#", comment: ""),
-                                   description: NSLocalizedString("", comment: ""), thumbnail: nil, media: MonkeyKing.Media.URL(sharedUrl))
+        let info = MonkeyKing.Info(title: NSLocalizedString("来自Gank, 一款追求极致的干货集中营客户端", comment: ""), description: NSLocalizedString("\(webView.title!)", comment: ""), thumbnail: UIImage(named: "icon"), media: MonkeyKing.Media.URL(sharedUrl))
 
         let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
 
@@ -198,7 +197,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         }
 
         let activityVC = UIActivityViewController(activityItems: [sharedUrl], applicationActivities: [wechatSession, wechatTimeLine])
-
+        activityVC.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypeMessage, UIActivityTypeMail]
         self.presentViewController(activityVC, animated: true, completion: nil)
     }
     @objc func back() {

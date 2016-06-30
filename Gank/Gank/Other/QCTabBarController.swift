@@ -43,13 +43,12 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
     }
 
     func setupChildViewControllers(vc: UIViewController, titleText: String) -> UIViewController {
-        let navigation = UINavigationController()
+        let navigation = UINavigationController(rootViewController: vc)
         let titlelabel = UILabel()
         titlelabel.text = titleText
-        titlelabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 18)
+        titlelabel.font = UIFont.font_dfphaib(size: 18)
         titlelabel.sizeToFit()
         vc.navigationItem.titleView = titlelabel
-        navigation.addChildViewController(vc)
         return navigation
     }
 
