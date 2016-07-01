@@ -33,6 +33,7 @@
 		864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B2A351CFDD7C400C5569A /* UIBarButtonItem+QC.swift */; };
 		8676CD301D0DA845006E860F /* QCActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676CD2F1D0DA845006E860F /* QCActionView.swift */; };
 		867DB3591D19517A002FC378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DB3581D19517A002FC378 /* Assets.xcassets */; };
+		869A65F11D250B7D000DB0B6 /* Activities.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869A65F01D250B7D000DB0B6 /* Activities.xcassets */; };
 		86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */; };
 		86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B9551D0C650900A17399 /* DetailViewController.swift */; };
 		86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A6B9561D0C650900A17399 /* DetailViewController.xib */; };
@@ -108,6 +109,7 @@
 		8676CD2F1D0DA845006E860F /* QCActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCActionView.swift; sourceTree = "<group>"; };
 		867DB3581D19517A002FC378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		869A65EC1D24F1F6000DB0B6 /* Gank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gank-Bridging-Header.h"; sourceTree = "<group>"; };
+		869A65F01D250B7D000DB0B6 /* Activities.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Activities.xcassets; sourceTree = "<group>"; };
 		86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -250,6 +252,13 @@
 			name = ActionView;
 			sourceTree = "<group>";
 		};
+		869A65F21D253584000DB0B6 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Nav;
+			sourceTree = "<group>";
+		};
 		86A19F981D09623E007CE5D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +382,7 @@
 				86BD623C1CEB2A0200D1FEB6 /* Other */,
 				86BD620B1CEB27B600D1FEB6 /* AppDelegate.swift */,
 				867DB3581D19517A002FC378 /* Assets.xcassets */,
+				869A65F01D250B7D000DB0B6 /* Activities.xcassets */,
 				86BD620D1CEB27B600D1FEB6 /* ViewController.swift */,
 				86BD620F1CEB27B600D1FEB6 /* Main.storyboard */,
 				86BD62141CEB27B600D1FEB6 /* LaunchScreen.storyboard */,
@@ -436,6 +446,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				869A65F21D253584000DB0B6 /* Nav */,
 				861EC6921D1B9B04001452A4 /* WebViewController */,
 				86A1FDBC1D1982890055BBA5 /* Activity */,
 				86F8B6961D105A660028B5B7 /* Transition */,
@@ -462,13 +473,6 @@
 			name = QCTabBar;
 			sourceTree = "<group>";
 		};
-		86C5C8DC1D13CDE60046744D /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TableView;
-			sourceTree = "<group>";
-		};
 		86C8D2721CEF170D00133FF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +487,6 @@
 		86D7F2CF1D1133B00029EE75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86C5C8DC1D13CDE60046744D /* TableView */,
 				86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */,
 				86D7F2D21D11355C0029EE75 /* EverydayResult.swift */,
 			);
@@ -619,6 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869A65F11D250B7D000DB0B6 /* Activities.xcassets in Resources */,
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
 				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
 				861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */,

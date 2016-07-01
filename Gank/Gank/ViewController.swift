@@ -23,6 +23,8 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
     var choseFontName: String = "Lobster1.4"
     var isTextAnimating = false // 用来记录textAnimator的状态
 
+    var iconImageViewY: CGFloat? // 记录iconImageView的初始y值
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,6 +42,8 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         toLabel.textColor = welcomeLabel.textColor
         toLabel.alpha = 1.0
         toLabel.text = ""
+
+        iconImageViewY = iconImageView.y
 
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.5))
         dispatch_after(time, dispatch_get_main_queue()) {
@@ -110,10 +114,12 @@ extension ViewController {
             })
             UIView.addKeyframeWithRelativeStartTime(1.5 * 0.1666666, relativeDuration: 1.5 * 0.8333333, animations: {
                 self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, 100, 100)
-                self.toLabel.transform = CGAffineTransformMakeTranslation(0, 80)
+                if let y = self.iconImageViewY {
+                    self.toLabel.transform = CGAffineTransformMakeTranslation(0, (y + 100 - self.welcomeLabel.y) / 2)
+                }
             })
             }) { (finished) in
-//                self.gankLabel.alpha = 1.0
+
         }
     }
 }

@@ -7,21 +7,45 @@
 //
 
 import UIKit
+import MonkeyKing
 
 
-final class WeChatActivity: UIActivity{
+final class WeChatActivity: AnyActivity {
     enum Type {
         case Session
         case Timeline
 
-//        var type: String {
-//            switch self {
-//            case .Session:
-//                return
-//            default:
-//                
-//            }
-//        }
+        var type: String {
+            switch self {
+            case .Session:
+                return Common.WeChat.sessionType
+            case .Timeline:
+                return Common.WeChat.timeLineType
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .Session:
+                return Common.WeChat.sessionTitle
+            case .Timeline:
+                return Common.WeChat.timeLineTitle
+            }
+        }
+
+        var image: UIImage {
+            switch self {
+            case .Session:
+                return Common.WeChat.sessionImage!
+            case .Timeline:
+                return Common.WeChat.timeLineImage!
+            }
+        }
+    }
+
+    init(type: Type, message: MonkeyKing.Message, completionHandler: MonkeyKing.SharedCompletionHandler) {
+        MonkeyKing.registerAccount(.WeChat(appID: Common.WeChat.appID, appKey:"")) // 并不知道这里的appKey有什么用处
+        super.init(type: type.type, title: type.title, image: type.image, message: message,     completionHandler: completionHandler)
     }
 }
 

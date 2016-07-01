@@ -9,6 +9,7 @@
 import UIKit
 import PKHUD
 import Kingfisher
+import MonkeyKing
 
 class ShowWelfareViewController: UIViewController {
 
@@ -113,7 +114,22 @@ class ShowWelfareViewController: UIViewController {
 
         actionView?.showActionView({ (index) in
             if index == 0 {
-                let activityVC = UIActivityViewController(activityItems: [self.imageView!.image!], applicationActivities: nil)
+                guard let image = self.imageView?.image else {
+                    return
+                }
+                let info = MonkeyKing.Info(title: NSLocalizedString("来自Gank, 一款追求极致的干货集中营客户端", comment: ""), description: NSLocalizedString("", comment: ""), thumbnail: image, media: MonkeyKing.Media.Image(image))
+                let wechatSession = MonkeyKing.Message.WeChat(.Session(info: info))
+                let sessionActivity = WeChatActivity(type: .Session, message: wechatSession, completionHandler: { (result) in
+                    print("success shared to wechat")
+                })
+
+                let wechatTimeline = MonkeyKing.Message.WeChat(.Timeline(info: info))
+                let timelineActivity = WeChatActivity(type: .Timeline, message: wechatTimeline, completionHandler: { (result) in
+                    print("success shared to wechat")
+                })
+
+                let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: [sessionActivity, timelineActivity])
+                activityVC.excludedActivityTypes = [UIActivityTypeMail,UIActivityTypePrint]
 
                 self.presentViewController(activityVC, animated: true, completion: nil)
             } else {

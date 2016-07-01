@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import SnapKit
+import MonkeyKing
 
 class QCWebViewController: UIViewController, WKNavigationDelegate {
 
@@ -58,10 +59,20 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
     }()
 
     lazy var webView: WKWebView = {
-        let conf = WKWebViewConfiguration()
+        let conf = WKWebViewConfiguration()  // 配置webView
+        conf.allowsAirPlayForMediaPlayback = true
+        conf.allowsPictureInPictureMediaPlayback = false
+        conf.allowsInlineMediaPlayback = false
+        conf.requiresUserActionForMediaPlayback = true
+        conf.suppressesIncrementalRendering = false
+
+        let pref = WKPreferences()
+        pref.minimumFontSize = 12
+        conf.preferences = pref
+
         let webView = WKWebView(frame: CGRect.zero, configuration: conf)
         webView.allowsBackForwardNavigationGestures = true
-        webView.allowsLinkPreview = false
+        webView.allowsLinkPreview = true
 
         webView.navigationDelegate = self
 
@@ -174,12 +185,30 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         }
     }
     // MARK: - Private functions 
+    /**
+       分享
+     */
     @objc private func sharedButtonClicked() {
-        if let sharedUrl = NSURL(string: self.url) {
-            let activityVC = UIActivityViewController(activityItems: [sharedUrl], applicationActivities: nil)
-
-            self.presentViewController(activityVC, animated: true, completion: nil)
+        guard let sharedUrl = NSURL(string: self.url) else {
+            return
         }
+
+        let info = MonkeyKing.Info(title: NSLocalizedString("来自Gank, 一款追求极致的干货集中营客户端", comment: ""), description: NSLocalizedString("\(webView.title!)", comment: ""), thumbnail: UIImage(named: "icon"), media: MonkeyKing.Media.URL(sharedUrl))
+
+        let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
+
+        let wechatSession = WeChatActivity(type: .Session, message: sessionMessage) { (result) in
+            print("success in share to wechat session")
+        }
+
+        let timeLineMessage = MonkeyKing.Message.WeChat(.Timeline(info: info))
+        let wechatTimeLine = WeChatActivity(type: .Timeline, message: timeLineMessage) { (result) in
+            print("success in share to wechat timeline")
+        }
+
+        let activityVC = UIActivityViewController(activityItems: [sharedUrl], applicationActivities: [wechatSession, wechatTimeLine])
+        activityVC.excludedActivityTypes = [UIActivityTypePrint, UIActivityTypeMessage, UIActivityTypeMail]
+        self.presentViewController(activityVC, animated: true, completion: nil)
     }
     @objc func back() {
         self.navigationController?.popViewControllerAnimated(true)
