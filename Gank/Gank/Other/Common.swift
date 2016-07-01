@@ -26,6 +26,11 @@ struct Common {
     static let CollectionViewLayoutCellHeight: CGFloat = Common.Screen_height - 160.0
     static let CollectionViewLayoutCellWidth: CGFloat = Common.Screen_width - 80.0
 
+
+    // MARK: - headScrollViewButtonScaleRate
+    static let headScrollViewButtonScaleRate: CGFloat = 1.111
+    static let headScrollViewButtonTitleFontSize: CGFloat = 16
+
 }
 
 extension Common {
@@ -36,18 +41,7 @@ extension Common {
 extension Common {
     static let countOnePage:Int = 15
 }
-extension UIFont {
-    internal class func font_lobster(fontName: String = "Lobster1.4", size: CGFloat) -> UIFont? {
-        return UIFont(name: fontName, size: size)
-    }
-    internal class func font_dfphaib(fontName: String = "DFPHaiBaoW12-GB", size: CGFloat) -> UIFont? {
-        return UIFont(name: fontName, size: size)
-    }
-    internal class func font_heart(fontName: String = "ZapfinoExtraLT-Two", size: CGFloat) -> UIFont? {
-        return UIFont(name: fontName, size: size)
-    }
 
-}
 extension Common {
     struct WeChat {
         

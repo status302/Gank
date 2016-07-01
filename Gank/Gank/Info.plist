@@ -48,6 +48,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Roboto-Bold.ttf</string>
 		<string>Lobster1.4.otf</string>
 		<string>DFPHaiBaoW12-GB.ttf</string>
 		<string>ZapfinoExtraLT-Two.otf</string>

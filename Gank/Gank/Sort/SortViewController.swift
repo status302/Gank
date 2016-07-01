@@ -13,9 +13,11 @@ class SortViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var headScrollView: UIScrollView!
 
+    let headTitleFont = UIFont.font_roboto_bold(size: Common.headScrollViewButtonTitleFontSize) ?? UIFont.systemFontOfSize(Common.headScrollViewButtonTitleFontSize)
+
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
-        let titles = ["All","Android","iOS", "App", "休息视频","拓展资源","前端","福利", "随机"]
+        let titles = ["全部","Android","iOS", "App", "休息视频","拓展资源","前端","福利", "随机"]
         return titles
     }()
 
@@ -147,7 +149,7 @@ class SortViewController: UIViewController {
 
         let titleLabel = UILabel()
         titleLabel.text = "干货分类"
-        titleLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 18)
+        titleLabel.font = UIFont.font_dfphaib(size: 18)
         titleLabel.sizeToFit()
         titleLabel.tintColor = UIColor.blackColor()
         navigationItem.titleView = titleLabel
@@ -156,7 +158,8 @@ class SortViewController: UIViewController {
      根据stirng来计算UIButton的size
      */
     func buttonSize(str: String) -> CGSize? {
-        return (str as NSString).boundingRectWithSize(headScrollView.size, options: NSStringDrawingOptions.init(rawValue: 0), attributes: [NSFontAttributeName: UIFont.systemFontOfSize(18)], context: nil).size
+
+        return (str as NSString).boundingRectWithSize(headScrollView.size, options: NSStringDrawingOptions.init(rawValue: 0), attributes: [NSFontAttributeName: headTitleFont], context: nil).size
     }
 
     private func setupHeadView() {
@@ -186,7 +189,7 @@ class SortViewController: UIViewController {
 
             button.setTitleColor(UIColor.blackColor(), forState: .Normal)
             button.setTitleColor(UIColor.redColor(), forState: .Disabled)
-            button.titleLabel?.font = UIFont.systemFontOfSize(18)
+            button.titleLabel?.font = headTitleFont // UIFont.systemFontOfSize(18)
 
             button.tag = 1000*index
             button.frame = CGRectMake(xs[index], 0, widths[index] + 20, headScrollView.height)
@@ -196,7 +199,11 @@ class SortViewController: UIViewController {
             if index == 0 {
                 //                didClickHeadButton(button)
                 button.enabled = false
+                UIView.animateWithDuration(0.1, animations: { 
+                    button.transform = CGAffineTransformMakeScale(Common.headScrollViewButtonScaleRate, Common.headScrollViewButtonScaleRate)
+                })
                 disabledButton = button
+
             }
         }
 
@@ -204,6 +211,10 @@ class SortViewController: UIViewController {
     @objc private func didClickHeadButton(sender: UIButton) {
         disabledButton.enabled = true
         sender.enabled = false
+        UIView.animateWithDuration(0.1) { 
+            self.disabledButton.transform = CGAffineTransformIdentity
+            sender.transform = CGAffineTransformMakeScale(Common.headScrollViewButtonScaleRate, Common.headScrollViewButtonScaleRate)
+        }
         disabledButton = sender
 
         // 在这里处理应该显示哪一个view

@@ -57,6 +57,8 @@
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
 		86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */; };
 		86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D21D11355C0029EE75 /* EverydayResult.swift */; };
+		86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */; };
+		86D90C001D26295F00FC64AA /* GKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90BFF1D26295F00FC64AA /* GKFont.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
@@ -139,6 +141,8 @@
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
 		86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryRootClass.swift; sourceTree = SOURCE_ROOT; };
 		86D7F2D21D11355C0029EE75 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
+		86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		86D90BFF1D26295F00FC64AA /* GKFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKFont.swift; sourceTree = "<group>"; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
@@ -252,13 +256,6 @@
 			name = ActionView;
 			sourceTree = "<group>";
 		};
-		869A65F21D253584000DB0B6 /* Nav */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Nav;
-			sourceTree = "<group>";
-		};
 		86A19F981D09623E007CE5D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,9 +323,11 @@
 		86A6B95A1D0CF1F200A17399 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */,
 				861CEDC91D23A44F00A82916 /* ZapfinoExtraLT-Two.otf */,
 				864B2A331CF9F34E00C5569A /* DFPHaiBaoW12-GB.ttf */,
 				864B2A2F1CF9EFD900C5569A /* Lobster1.4.otf */,
+				86D90BFF1D26295F00FC64AA /* GKFont.swift */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -446,7 +445,6 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				869A65F21D253584000DB0B6 /* Nav */,
 				861EC6921D1B9B04001452A4 /* WebViewController */,
 				86A1FDBC1D1982890055BBA5 /* Activity */,
 				86F8B6961D105A660028B5B7 /* Transition */,
@@ -636,6 +634,7 @@
 				86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */,
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
 				862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */,
+				86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */,
 				861CEDCA1D23A44F00A82916 /* ZapfinoExtraLT-Two.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +741,7 @@
 				86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */,
 				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
+				86D90C001D26295F00FC64AA /* GKFont.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,
 				86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */,
 				86C3040E1D1E50E400854571 /* SlideTransitionAnimator.swift in Sources */,

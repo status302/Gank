@@ -43,7 +43,7 @@ class QCEverydayGankCell: UICollectionViewCell {
 
 
 
-        timeLabel.font = UIFont(name: "DFPHaiBaoW12-GB", size: 12)
+        timeLabel.font = UIFont.font_dfphaib(size: 12) //UIFont(name: "DFPHaiBaoW12-GB", size: 12)
         timeLabel.textColor = UIColor.whiteColor()
         sourceLabel.font = timeLabel.font
         sourceLabel.textColor = timeLabel.textColor
