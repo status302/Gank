@@ -59,10 +59,20 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
     }()
 
     lazy var webView: WKWebView = {
-        let conf = WKWebViewConfiguration()
+        let conf = WKWebViewConfiguration()  // 配置webView
+        conf.allowsAirPlayForMediaPlayback = true
+        conf.allowsPictureInPictureMediaPlayback = false
+        conf.allowsInlineMediaPlayback = false
+        conf.requiresUserActionForMediaPlayback = true
+        conf.suppressesIncrementalRendering = false
+
+        let pref = WKPreferences()
+        pref.minimumFontSize = 12
+        conf.preferences = pref
+
         let webView = WKWebView(frame: CGRect.zero, configuration: conf)
         webView.allowsBackForwardNavigationGestures = true
-        webView.allowsLinkPreview = false
+        webView.allowsLinkPreview = true
 
         webView.navigationDelegate = self
 

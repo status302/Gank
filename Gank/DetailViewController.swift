@@ -70,8 +70,6 @@ class DetailViewController: UIViewController {
         imageView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 0.66)
         imageView.contentMode = UIViewContentMode.ScaleToFill
 
-//        imageView.userInteractionEnabled = true
-
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showImage))
         imageView.addGestureRecognizer(tapGesture)
 
@@ -107,7 +105,12 @@ class DetailViewController: UIViewController {
         guard let sharedImage = imageView.image else {
             return
         }
-        let info = MonkeyKing.Info(title: NSLocalizedString("来自Gank, 一款追求极致的干货集中营客户端", comment: ""), description: NSLocalizedString("", comment: ""), thumbnail: UIImage(named: "icon"), media: MonkeyKing.Media.URL(NSURL(string: urlString)!))
+        let todayUrlStr = "http://gank.io/day/" + dateString
+        guard let todayUrl = NSURL(string: todayUrlStr) else {
+            return
+        }
+
+        let info = MonkeyKing.Info(title: NSLocalizedString("来自Gank, 一款追求极致的干货集中营客户端", comment: ""), description: NSLocalizedString("", comment: ""), thumbnail: UIImage(named: "icon"), media: MonkeyKing.Media.URL(todayUrl))
 
         let sessionMessage = MonkeyKing.Message.WeChat(.Session(info: info))
 
@@ -120,7 +123,7 @@ class DetailViewController: UIViewController {
             print("success in share to wechat timeline")
         }
 
-        let activityVC = UIActivityViewController(activityItems: [sharedImage], applicationActivities: [wechatSession, wechatTimeLine])
+        let activityVC = UIActivityViewController(activityItems: [sharedImage, todayUrlStr], applicationActivities: [wechatSession, wechatTimeLine])
         activityVC.excludedActivityTypes = [UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePrint]
 
         self.presentViewController(activityVC, animated: true, completion: nil)
