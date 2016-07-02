@@ -12,6 +12,7 @@ import PKHUD
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
     weak var rightButton: UIButton?
+    lazy var settingAnimator = GKShowSettingAnimator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,11 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
     func showSettingButtonCicked() {
         // 在这里显示设置
+        let settingVC = GKSettingViewController()
+        settingVC.transitioningDelegate = settingAnimator
+        settingVC.modalPresentationStyle = .Custom
+        
+        self.presentViewController(settingVC, animated: true, completion: nil)
     }
     func loadMoreData() {
         print("添加了加载更多数据")
@@ -190,8 +196,15 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
         self.hidesBottomBarWhenPushed = true
+
         self.navigationController?.pushViewController(self.destVC, animated: true)
         self.hidesBottomBarWhenPushed = false
+    }
+}
+
+extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return GKShowSettingAnimator()
     }
 }
 

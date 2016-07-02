@@ -59,6 +59,9 @@
 		86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D21D11355C0029EE75 /* EverydayResult.swift */; };
 		86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */; };
 		86D90C001D26295F00FC64AA /* GKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90BFF1D26295F00FC64AA /* GKFont.swift */; };
+		86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */; };
+		86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */; };
+		86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
@@ -143,6 +146,9 @@
 		86D7F2D21D11355C0029EE75 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
 		86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		86D90BFF1D26295F00FC64AA /* GKFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKFont.swift; sourceTree = "<group>"; };
+		86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
+		86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingViewController.xib; sourceTree = "<group>"; };
+		86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKShowSettingAnimator.swift; sourceTree = "<group>"; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +451,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86D90C011D26B4AC00FC64AA /* Setting */,
 				861EC6921D1B9B04001452A4 /* WebViewController */,
 				86A1FDBC1D1982890055BBA5 /* Activity */,
 				86F8B6961D105A660028B5B7 /* Transition */,
@@ -491,6 +498,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		86D90C011D26B4AC00FC64AA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */,
+				86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		86F1BA751CFF20E900C1A61F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +521,7 @@
 			children = (
 				86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */,
 				86C3040D1D1E50E400854571 /* SlideTransitionAnimator.swift */,
+				86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -627,6 +644,7 @@
 				864B2A301CF9F01100C5569A /* Lobster1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				867DB3591D19517A002FC378 /* Assets.xcassets in Resources */,
+				86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				8631EE341D08697700661AE0 /* RefreshContents.xib in Resources */,
@@ -721,6 +739,7 @@
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
+				86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */,
 				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
@@ -735,6 +754,7 @@
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
+				86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */,
 				864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
 				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,

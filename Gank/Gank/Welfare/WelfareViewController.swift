@@ -11,11 +11,11 @@ import Kingfisher
 import PKHUD
 
 
-class WelfareViewController: UIViewController {
+class WelfareViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     var customRefresh: CustomRefreshControl!
     var page: Int = 1
-
+    var indexPath: NSIndexPath?  /// 用了记录点击了哪一个 indexPath
 
     weak var rightButton: UIButton?
 
@@ -209,9 +209,14 @@ extension WelfareViewController: UICollectionViewDataSource {
 extension WelfareViewController: UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+        self.indexPath = indexPath
         let showWealfareVC = ShowWelfareViewController()
         showWealfareVC.result = self.results[indexPath.item]
+//        let modalDelegate = ScaleTransition()
+//        showWealfareVC.transitioningDelegate = modalDelegate
+//        showWealfareVC.modalPresentationStyle = .Custom
+        showWealfareVC.modalTransitionStyle = .PartialCurl
+
         self.presentViewController(showWealfareVC, animated: true) {}
     }
 
