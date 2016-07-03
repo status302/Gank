@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 class GKShowSettingAnimator: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     var isPresenting: Bool = true /// 用来标识是否为present：  true 为present   false 为dismiss
 }
@@ -84,3 +84,4 @@ extension GKShowSettingAnimator {
     }
 
 }
+ */

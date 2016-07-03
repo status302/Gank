@@ -12,7 +12,9 @@ import PKHUD
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
     weak var rightButton: UIButton?
-    lazy var settingAnimator = GKShowSettingAnimator()
+//    lazy var settingAnimator = GKShowSettingAnimator()
+//    var setting: GKSettingViewController?
+//    var isSettingShowing = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,11 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
 
         loadData()
-        
 
-
+//        setting = GKSettingViewController()
+//        self.addChildViewController(setting!)
+//        setting?.view.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+//        view.addSubview(setting!.view)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,6 +55,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 
+//        setting?.view.frame = view.bounds
+//        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -70,11 +76,23 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
     func showSettingButtonCicked() {
         // 在这里显示设置
-        let settingVC = GKSettingViewController()
-        settingVC.transitioningDelegate = settingAnimator
-        settingVC.modalPresentationStyle = .Custom
-        
-        self.presentViewController(settingVC, animated: true, completion: nil)
+//        let settingVC = GKSettingViewController()
+//        settingVC.transitioningDelegate = settingAnimator
+//        settingVC.modalPresentationStyle = .Custom
+
+//        self.presentViewController(settingVC, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(settingVC, animated: true)
+//        isSettingShowing = !isSettingShowing
+//        if isSettingShowing {
+//            UIView.animateWithDuration(0.8) {
+//                self.setting?.view.transform = CGAffineTransformIdentity
+//            }
+//        } else {
+//            UIView.animateWithDuration(0.8, animations: { 
+//                self.setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
+//            })
+//        }
+
     }
     func loadMoreData() {
         print("添加了加载更多数据")
@@ -202,9 +220,9 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
     }
 }
 
-extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return GKShowSettingAnimator()
-    }
-}
+//extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
+//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return GKShowSettingAnimator()
+//    }
+//}
 
