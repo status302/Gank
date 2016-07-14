@@ -9,10 +9,12 @@
 import UIKit
 import Kingfisher
 import PKHUD
+import SnapKit
 
 
 class WelfareViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
+    var noticeView: QCNoticeView!
     var customRefresh: CustomRefreshControl!
     var page: Int = 1
     var indexPath: NSIndexPath?  /// 用了记录点击了哪一个 indexPath
@@ -44,8 +46,14 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
         self.automaticallyAdjustsScrollViewInsets = false
 
+        // show notice View
+        let noticeView = QCNoticeView.loadNoticeView()
+        noticeView.delegate = self
+        self.view.addSubview(noticeView)
+        self.noticeView = noticeView
         // 加载数据
         loadData()
+
 
     }
 
@@ -57,6 +65,15 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
          */
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+
+        // set noticeView
+
+        noticeView.snp.makeConstraints(closure: { (make) in
+            make.leading.equalTo(self.view.snp.leading)
+            make.top.equalTo(self.view.snp.top).offset(128)
+            make.width.equalTo(self.view.snp.width)
+            make.height.equalTo(200)
+        })
 
     }
     override func viewWillLayoutSubviews() {
@@ -70,9 +87,6 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
     @objc private func refreshBarButtonDidClick() {
         collectionView.setContentOffset(CGPoint(x: 0, y: -64-60), animated: true)
         self.scrollViewDidEndDecelerating(collectionView)
-
-        HUD.flash(.Label("哈哈哈，分享还没做好~"), delay: 1.2)
-
     }
 
     @objc private func loadData() {
@@ -104,10 +118,13 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
             guard let root = rootClass else {
                 HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
                 HUD.hide()
-
+                self.rightButton!.layer.removeAllAnimations()
+                self.noticeView.setNoticeViewShow({ (finished) in
+                })
                 return
             }
-
+            self.noticeView.setNoticeViewHidden({ (finished) in
+            })
             for result in root.results {
                 self.results.append(result)
             }
@@ -132,6 +149,7 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
             guard let root = rootClass else {
                 HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
                 HUD.hide()
+                self.rightButton?.layer.removeAllAnimations()
                 return
             }
             for result in root.results {
@@ -212,10 +230,6 @@ extension WelfareViewController: UICollectionViewDelegate {
         self.indexPath = indexPath
         let showWealfareVC = ShowWelfareViewController()
         showWealfareVC.result = self.results[indexPath.item]
-//        let modalDelegate = ScaleTransition()
-//        showWealfareVC.transitioningDelegate = modalDelegate
-//        showWealfareVC.modalPresentationStyle = .Custom
-        showWealfareVC.modalTransitionStyle = .PartialCurl
 
         self.presentViewController(showWealfareVC, animated: true) {}
     }
@@ -245,5 +259,10 @@ extension WelfareViewController {
             self.loadData()
 
         }
+    }
+}
+extension WelfareViewController: QCNoticeViewDelegate {
+    func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
+        loadData()
     }
 }

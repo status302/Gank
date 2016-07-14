@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import SnapKit
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
@@ -15,6 +16,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //    lazy var settingAnimator = GKShowSettingAnimator()
 //    var setting: GKSettingViewController?
 //    var isSettingShowing = false
+    var nView: QCNoticeView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
 
         loadData()
 
@@ -48,6 +50,20 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //        self.addChildViewController(setting!)
 //        setting?.view.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
 //        view.addSubview(setting!.view)
+
+
+        // show notice View 
+        let noticeView = QCNoticeView.loadNoticeView()
+        noticeView.delegate = self
+        self.view.addSubview(noticeView)
+
+        noticeView.snp.makeConstraints(closure: { (make) in
+            make.left.equalTo(self.view.snp.left)
+            make.right.equalTo(self.view.snp.right)
+            make.top.equalTo(self.view.snp.top).offset(128)
+            make.height.equalTo(200)
+        })
+        nView = noticeView
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -126,9 +142,15 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
             guard let root = rootClass else {
                 HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
                 HUD.hide()
+                self.rightButton?.layer.removeAllAnimations()
+
+                self.nView.setNoticeViewShow({ (finished) -> (Void) in
+                })
                 return
             }
 
+            self.nView.setNoticeViewHidden({ (finished) -> (Void) in
+            })
             self.results = root.results
             self.results.sortInPlace({ (r1, r2) -> Bool in
                 r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
@@ -220,6 +242,12 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
     }
 }
 
+
+extension QCEveryDayGnakViewController: QCNoticeViewDelegate {
+    func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
+        self.loadData()
+    }
+}
 //extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
 //    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 //        return GKShowSettingAnimator()

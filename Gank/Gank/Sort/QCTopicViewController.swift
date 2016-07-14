@@ -9,10 +9,11 @@
 import UIKit
 import Alamofire
 import PKHUD
+import SnapKit
 
 class QCTopicViewController: UITableViewController, UIViewControllerTransitioningDelegate {
 
-
+    var noticeView: QCNoticeView!
     // MARK: - URL相关
 
 //    typealias CompletedHandler = (root: RootClass?) -> Void
@@ -48,17 +49,31 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
         view.addSubview(self.customRefreshControl)
 
+        // show notice View
+        let noticeView = QCNoticeView.loadNoticeView()
+        noticeView.delegate = self
 
+        self.view.addSubview(noticeView)
+        noticeView.snp.makeConstraints(closure: { (make) in
+            make.leading.equalTo(self.view.snp.leading)
+            make.top.equalTo(self.view.snp.top).offset(128)
+            make.width.equalTo(self.view.snp.width)
+            make.height.equalTo(200)
+        })
+        self.noticeView = noticeView
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .None
 
+
         loadData()
+
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        self.noticeView.removeFromSuperview()
     }
 
     /**
@@ -72,9 +87,15 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
             guard let root = rootClass else {
                 HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
                 HUD.hide()
+                self.noticeView.setNoticeViewShow(){
+                    (finished) in
+                }
                 return
             }
 
+            self.noticeView.setNoticeViewHidden() {
+                (finished) in
+            }
             for result in root.results {
                 self.results.append(result)
             }
@@ -176,5 +197,10 @@ extension QCTopicViewController {
     }
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return SlideTransitionAnimator()
+    }
+}
+extension QCTopicViewController: QCNoticeViewDelegate {
+    func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
+        loadData()
     }
 }

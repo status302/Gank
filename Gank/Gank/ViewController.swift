@@ -14,16 +14,16 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var welcomeLabel: LTMorphingLabel!
-    @IBOutlet weak var toLabel: LTMorphingLabel!
 
     @IBOutlet weak var gankView: UIView!
-    @IBOutlet weak var drawableView: UIView!
 
     var textAnimator: QCTextAnimator?
     var choseFontName: String = "Lobster1.4"
     var isTextAnimating = false // 用来记录textAnimator的状态
 
     var iconImageViewY: CGFloat? // 记录iconImageView的初始y值
+
+    var distanceTransform: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +36,9 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         let effect = LTMorphingEffect.Sparkle
         welcomeLabel.morphingEffect = effect
         welcomeLabel.text = "Welcome"
-        
-
-        toLabel.font = welcomeLabel.font
-        toLabel.textColor = welcomeLabel.textColor
-        toLabel.alpha = 1.0
-        toLabel.text = ""
 
         iconImageViewY = iconImageView.y
+        distanceTransform = (gankView.y - self.iconImageView.y - iconImageView.height) * 0.5
 
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.5))
         dispatch_after(time, dispatch_get_main_queue()) {
@@ -108,15 +103,9 @@ extension ViewController {
         UIView.animateKeyframesWithDuration(1.5, delay: 0, options: [.CalculationModeLinear], animations: {
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 1.5 * 0.1666666, animations: {
                 self.iconImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-                let effect = LTMorphingEffect.Fall
-                self.toLabel.morphingEffect = effect
-                self.toLabel.text = "to"
             })
             UIView.addKeyframeWithRelativeStartTime(1.5 * 0.1666666, relativeDuration: 1.5 * 0.8333333, animations: {
-                self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, 100, 100)
-                if let y = self.iconImageViewY {
-                    self.toLabel.transform = CGAffineTransformMakeTranslation(0, (y + 100 - self.welcomeLabel.y) / 2)
-                }
+                self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, self.distanceTransform!, self.distanceTransform!)
             })
             }) { (finished) in
 

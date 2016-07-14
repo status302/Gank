@@ -62,6 +62,9 @@
 		86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */; };
 		86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */; };
 		86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */; };
+		86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */; };
+		86E31F4B1D2CF389004ABD29 /* QCNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */; };
+		86E31F4D1D2CFDE0004ABD29 /* QCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
@@ -149,6 +152,9 @@
 		86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
 		86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingViewController.xib; sourceTree = "<group>"; };
 		86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKShowSettingAnimator.swift; sourceTree = "<group>"; };
+		86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCNoticeView.swift; sourceTree = "<group>"; };
+		86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCNoticeView.xib; sourceTree = "<group>"; };
+		86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCColor.swift; sourceTree = "<group>"; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
@@ -451,6 +457,8 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */,
+				86E31F471D2CF362004ABD29 /* NoticeView */,
 				86D90C011D26B4AC00FC64AA /* Setting */,
 				861EC6921D1B9B04001452A4 /* WebViewController */,
 				86A1FDBC1D1982890055BBA5 /* Activity */,
@@ -505,6 +513,15 @@
 				86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		86E31F471D2CF362004ABD29 /* NoticeView */ = {
+			isa = PBXGroup;
+			children = (
+				86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */,
+				86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */,
+			);
+			name = NoticeView;
 			sourceTree = "<group>";
 		};
 		86F1BA751CFF20E900C1A61F /* View */ = {
@@ -641,6 +658,7 @@
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
 				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
 				861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */,
+				86E31F4B1D2CF389004ABD29 /* QCNoticeView.xib in Resources */,
 				864B2A301CF9F01100C5569A /* Lobster1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				867DB3591D19517A002FC378 /* Assets.xcassets in Resources */,
@@ -732,6 +750,7 @@
 				8625952F1CF45ED900C79531 /* RootClass.swift in Sources */,
 				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
+				86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */,
 				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */,
@@ -754,6 +773,7 @@
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
+				86E31F4D1D2CFDE0004ABD29 /* QCColor.swift in Sources */,
 				86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */,
 				864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
@@ -918,6 +938,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Gank/Gank-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -936,6 +957,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Gank/Gank-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
