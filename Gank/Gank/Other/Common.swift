@@ -31,6 +31,14 @@ struct Common {
     static let headScrollViewButtonScaleRate: CGFloat = 1.111
     static let headScrollViewButtonTitleFontSize: CGFloat = 16
 
+    // urls 
+     static let manImageURLs = ["http://7xk67j.com1.z0.glb.clouddn.com/images%20%281%29.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/images.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-2.jpg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg"]
+
+    static func getRandomUrl(index: Int) -> NSURL? {
+//        let randomNumber = Int(arc4random_uniform(4))
+        return NSURL(string: manImageURLs[index])
+    }
+
 }
 
 extension Common {
@@ -69,3 +77,12 @@ enum URLType: String{
 
 }
 
+extension Common {
+    static let isSimulator: Bool = {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }()
+}

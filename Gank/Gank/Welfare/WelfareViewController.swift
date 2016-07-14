@@ -21,6 +21,8 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
     weak var rightButton: UIButton?
 
+ 
+
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -219,7 +221,13 @@ extension WelfareViewController: UICollectionViewDataSource {
         if results.count > 0 {
             cell.result = results[indexPath.row]
         }
-
+        if Common.isSimulator {
+            if indexPath.item%4 == 0 && indexPath.item != 0 {
+                if let url = Common.getRandomUrl(indexPath.item%3) {
+                    cell.meiziImageView.kf_setImageWithURL(url)
+                }
+            }
+        }
         return cell
     }
 }

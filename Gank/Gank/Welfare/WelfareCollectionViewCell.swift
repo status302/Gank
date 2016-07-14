@@ -32,5 +32,7 @@ class WelfareCollectionViewCell: UICollectionViewCell {
         let welfareViewCell = NSBundle.mainBundle().loadNibNamed("WelfareCollectionViewCell", owner: nil, options: nil).first as! WelfareCollectionViewCell
         return welfareViewCell
     }()
+
+    var manImageURLs = ["http://7xk67j.com1.z0.glb.clouddn.com/images%20%281%29.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/images.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-2.jpg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg"]
     
 }

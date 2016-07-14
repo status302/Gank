@@ -17,10 +17,14 @@ class SortViewController: UIViewController {
 
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
-        let titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
+        var titles = [String]()
+        if Common.isSimulator {
+            titles = ["iOS","全部", "App", "休息视频","拓展资源","前端","福利", "随机"]
+        } else {
+            titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
+        }
         return titles
     }()
-
 
     /// contentScrollView
     private lazy var scrollView: UIScrollView = {
@@ -55,10 +59,14 @@ class SortViewController: UIViewController {
         allVC.type = URLType.all
         addChildViewController(allVC)
 
-     /// AndroidVC
-        let androidVC = QCTopicViewController()
-        androidVC.type = URLType.android
-        addChildViewController(androidVC)
+        if Common.isSimulator {
+            // 是模拟器的话不做任何处理
+        } else {
+            /// AndroidVC
+            let androidVC = QCTopicViewController()
+            androidVC.type = URLType.android
+            self.addChildViewController(androidVC)
+        }
 
         /// App
         let appVC = QCTopicViewController()
