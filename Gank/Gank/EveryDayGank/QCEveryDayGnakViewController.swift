@@ -155,6 +155,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
             self.results.sortInPlace({ (r1, r2) -> Bool in
                 r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
             })
+            for _ in 0 ... 3 {
+                let value = Common.getRandomNum(self.results.count)
+                self.results[value].url = Common.manImageURLs[value % 7]
+            }
             self.collectionView.reloadData()
             self.rightButton?.layer.removeAllAnimations()
             /**

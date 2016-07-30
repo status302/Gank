@@ -34,10 +34,7 @@ class AlamofireManager {
 
     var alamofireNetworkReachablityManager = NetworkReachabilityManager()
 
-
-
     func fetchDataForWelfare(completedHandler: CompletedHandler) {
-
 
         let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
         requestResult.responseJSON { (response) in

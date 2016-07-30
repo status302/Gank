@@ -32,7 +32,13 @@ struct Common {
     static let headScrollViewButtonTitleFontSize: CGFloat = 16
 
     // urls 
-     static let manImageURLs = ["http://7xk67j.com1.z0.glb.clouddn.com/images%20%281%29.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/images.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-2.jpg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg"]
+     static let manImageURLs = ["http://7xk67j.com1.z0.glb.clouddn.com/images%20%281%29.jpeg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/images.jpeg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-2.jpg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg",
+                                "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg"]
 
     static func getRandomUrl(index: Int) -> NSURL? {
 //        let randomNumber = Int(arc4random_uniform(4))
@@ -85,4 +91,10 @@ extension Common {
         #endif
         return isSim
     }()
+}
+
+extension Common {
+    static func getRandomNum(maxNum: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(maxNum)))
+    }
 }
