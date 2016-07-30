@@ -18,11 +18,11 @@ class SortViewController: UIViewController {
     // MARK: - lazy Variales
     private lazy var titles: [String] = {
         var titles = [String]()
-        if Common.isSimulator {
+//        if Common.isSimulator {
             titles = ["iOS","全部", "App", "休息视频","拓展资源","前端","福利", "随机"]
-        } else {
-            titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
-        }
+//        } else {
+//            titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
+//        }
         return titles
     }()
 
@@ -59,6 +59,7 @@ class SortViewController: UIViewController {
         allVC.type = URLType.all
         addChildViewController(allVC)
 
+        /*
         if Common.isSimulator {
             // 是模拟器的话不做任何处理
         } else {
@@ -67,6 +68,7 @@ class SortViewController: UIViewController {
             androidVC.type = URLType.android
             self.addChildViewController(androidVC)
         }
+         */
 
         /// App
         let appVC = QCTopicViewController()

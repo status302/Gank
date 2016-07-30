@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4724A468AE69BC895E02804B /* Pods_Gank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */; };
 		860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */; };
+		860B145B1D4CDDD300C12EC9 /* QCPassAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B145A1D4CDDD300C12EC9 /* QCPassAppService.swift */; };
 		861CEDCA1D23A44F00A82916 /* ZapfinoExtraLT-Two.otf in Resources */ = {isa = PBXBuildFile; fileRef = 861CEDC91D23A44F00A82916 /* ZapfinoExtraLT-Two.otf */; };
 		861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EC68C1D1B9593001452A4 /* QCWebViewController.swift */; };
 		861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861EC6901D1B99CD001452A4 /* QCWebViewController.storyboard */; };
@@ -92,6 +93,7 @@
 		209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 		2F9091BAEA8D432BB0CCE95F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = Gank/EveryDayGank/QCEveryDayGnakViewController.swift; sourceTree = SOURCE_ROOT; };
+		860B145A1D4CDDD300C12EC9 /* QCPassAppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCPassAppService.swift; sourceTree = "<group>"; };
 		861CEDC91D23A44F00A82916 /* ZapfinoExtraLT-Two.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZapfinoExtraLT-Two.otf"; sourceTree = "<group>"; };
 		861EC68C1D1B9593001452A4 /* QCWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCWebViewController.swift; sourceTree = "<group>"; };
 		861EC6901D1B99CD001452A4 /* QCWebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QCWebViewController.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				862595301CF4626A00C79531 /* AlamofireManager.swift */,
+				860B145A1D4CDDD300C12EC9 /* QCPassAppService.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
+				860B145B1D4CDDD300C12EC9 /* QCPassAppService.swift in Sources */,
 				861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
 				86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */,
