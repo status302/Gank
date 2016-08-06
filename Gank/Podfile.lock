@@ -4,6 +4,11 @@ PODS:
   - LTMorphingLabel (0.2.0)
   - MonkeyKing (0.9.2)
   - PKHUD (3.1.0)
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
+  - RealmSwift (1.0.2):
+    - Realm (= 1.0.2)
   - SnapKit (0.30.0.beta1)
 
 DEPENDENCIES:
@@ -12,6 +17,7 @@ DEPENDENCIES:
   - LTMorphingLabel (~> 0.2.0)
   - MonkeyKing (~> 0.9.2)
   - PKHUD
+  - RealmSwift
   - SnapKit (~> 0.30.0.beta1)
 
 SPEC CHECKSUMS:
@@ -20,8 +26,10 @@ SPEC CHECKSUMS:
   LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
   MonkeyKing: 2cf420f9202a51714734374c97d96cf496e7ae2b
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
+  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   SnapKit: 732e8cad7910a1cb812c5c1fb58f231d7a3b49e8
 
-PODFILE CHECKSUM: 64d3bcca7ea841e5fcd5a9ed623bb2995c38a5b6
+PODFILE CHECKSUM: 86af10050fa0010404b8467f0cb20c6fa9dddec6
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
