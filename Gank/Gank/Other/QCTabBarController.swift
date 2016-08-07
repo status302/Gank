@@ -13,6 +13,8 @@ class QCTabBarController: UITabBarController, QCTabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.hidesBottomBarWhenPushed = true
+
         self.tabBarView.delegate = self
 
         //添加自定义的tabBar

@@ -35,6 +35,7 @@
 		8676CD301D0DA845006E860F /* QCActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8676CD2F1D0DA845006E860F /* QCActionView.swift */; };
 		867DB3591D19517A002FC378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867DB3581D19517A002FC378 /* Assets.xcassets */; };
 		869A65F11D250B7D000DB0B6 /* Activities.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869A65F01D250B7D000DB0B6 /* Activities.xcassets */; };
+		869D06D11D56210500A71030 /* SortResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D06D01D56210500A71030 /* SortResult.swift */; };
 		86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */; };
 		86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B9551D0C650900A17399 /* DetailViewController.swift */; };
 		86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86A6B9561D0C650900A17399 /* DetailViewController.xib */; };
@@ -120,6 +121,7 @@
 		867DB3581D19517A002FC378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		869A65EC1D24F1F6000DB0B6 /* Gank-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gank-Bridging-Header.h"; sourceTree = "<group>"; };
 		869A65F01D250B7D000DB0B6 /* Activities.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Activities.xcassets; sourceTree = "<group>"; };
+		869D06D01D56210500A71030 /* SortResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortResult.swift; sourceTree = "<group>"; };
 		86A1FDBD1D1982B00055BBA5 /* WeChatActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatActivity.swift; sourceTree = "<group>"; };
 		86A6B9551D0C650900A17399 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		86A6B9561D0C650900A17399 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -269,6 +271,13 @@
 				8676CD2F1D0DA845006E860F /* QCActionView.swift */,
 			);
 			name = ActionView;
+			sourceTree = "<group>";
+		};
+		869D06D21D5634ED00A71030 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		86A19F981D09623E007CE5D5 /* View */ = {
@@ -441,6 +450,7 @@
 			children = (
 				86A19F981D09623E007CE5D5 /* View */,
 				86A19F991D096247007CE5D5 /* Controller */,
+				869D06D01D56210500A71030 /* SortResult.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -460,6 +470,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				869D06D21D5634ED00A71030 /* Service */,
 				86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */,
 				86E31F471D2CF362004ABD29 /* NoticeView */,
 				86D90C011D26B4AC00FC64AA /* Setting */,
@@ -773,6 +784,7 @@
 				861EC7F81D1CDF38001452A4 /* QCNavigationController.swift in Sources */,
 				86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				869D06D11D56210500A71030 /* SortResult.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,

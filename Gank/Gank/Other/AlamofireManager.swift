@@ -9,20 +9,25 @@
 import Foundation
 import Alamofire
 import PKHUD
+import SwiftyJSON
+
 
 class AlamofireManager {
     typealias CompletedHandler = (rootClass: RootClass?)->Void
+
 
     // 创建一个单例
     static let sharedInstance = AlamofireManager()
 
 
     var urlStr: String = ""
+    var testUrlStr = "http://gank.io/api/data/Android/10/1"
     
 
     var type: URLType? {
         didSet {
             urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/\(page)"
+            testUrlStr = "http://gank.io/api/data/Android/10/1"
         }
     }
 
@@ -69,4 +74,58 @@ class AlamofireManager {
             completedHandler(rootClass: modal)
         }
     }
+
+}
+
+protocol FetchSortResultdelegate {
+    func fetchSuccess()
+    func fetchFalied()
+}
+class SortNetWorkManager: NSObject {
+    static let sortNetwordSharedInstance = SortNetWorkManager()
+    
+    var delegate: FetchSortResultdelegate?
+    /**
+     *  sort data
+     */
+    func fetchSortData(type: URLType) {
+        let status = NetworkReachabilityManager()?.isReachable
+        if status == false {
+            delegate?.fetchFalied()
+            return
+        }
+
+        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/100/1"
+        let request = Alamofire.request(.GET, urlString)
+
+        request.responseJSON { (response) in
+
+            guard let data = response.data else {
+                self.delegate?.fetchFalied()
+                return
+            }
+
+
+            let json = JSON(data: data)
+
+            if let error = json["error"].bool {
+                if error == true {
+                    self.delegate?.fetchFalied()
+                    return
+                }
+            }
+            if let root = response.result.value as? NSDictionary{
+
+                if let results = root["results"] as? NSArray {
+                    SortResult.parseFromArray(results)
+                }
+            } else {
+                self.delegate?.fetchFalied()
+                return
+            }
+
+            self.delegate?.fetchSuccess()
+        }
+    }
+
 }

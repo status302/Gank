@@ -11,6 +11,7 @@ import Alamofire
 import PKHUD
 import SnapKit
 
+
 class QCTopicViewController: UITableViewController, UIViewControllerTransitioningDelegate {
 
     var noticeView: QCNoticeView!
@@ -61,19 +62,28 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
             make.height.equalTo(200)
         })
         self.noticeView = noticeView
+        
+//        alamofireManager.type = URLType.android
+        let sortNetworkManager = SortNetWorkManager.sortNetwordSharedInstance
+        sortNetworkManager.fetchSortData(self.type!)
+        let resultA = SortResult.currentResult(10, type: self.type!.rawValue)
+        print(resultA.count)
+        print(resultA)
+
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .None
-
-
         loadData()
-
+        self.tabBarController?.tabBar.hidden = false
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.noticeView.removeFromSuperview()
+        if animated { // 表示push进去下一vc
+            self.tabBarController?.tabBar.hidden = true
+        }
     }
 
     /**

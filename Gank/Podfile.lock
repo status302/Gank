@@ -10,6 +10,7 @@ PODS:
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
   - SnapKit (0.30.0.beta1)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - PKHUD
   - RealmSwift
   - SnapKit (~> 0.30.0.beta1)
+  - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
@@ -29,7 +31,8 @@ SPEC CHECKSUMS:
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
   SnapKit: 732e8cad7910a1cb812c5c1fb58f231d7a3b49e8
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 86af10050fa0010404b8467f0cb20c6fa9dddec6
+PODFILE CHECKSUM: d1e590eb4a136cbcc5dbb8f5a13b689ab849486c
 
 COCOAPODS: 1.0.1

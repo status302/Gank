@@ -67,6 +67,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
         // 设置导航栏透明
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)

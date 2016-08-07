@@ -70,6 +70,12 @@ extension Common {
     }
 }
 
+extension Common {
+    struct URL {
+        static let baseURL = "http://gank.io/api"
+    }
+}
+
 //
 enum URLType: String{
     case welfare = "福利"
