@@ -19,6 +19,15 @@ class SortCell: UITableViewCell {
         }
     }
 
+    var sortResult: SortResult! {
+        didSet {
+            descLabel.text = sortResult.desc
+            timeLabel.text = sortResult.dateToString(sortResult.publishedAt!)
+            fromLabel.text = sortResult.who
+            typeLabel.text = sortResult.type
+        }
+    }
+
     // UIs
     var iconImageView: UIImageView!
     var descLabel: UILabel!

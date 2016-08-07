@@ -19,6 +19,7 @@ class SortResult: Object {
     dynamic var url: String?
     dynamic var used: String?
     dynamic var who: String?
+    dynamic var cellHeight: Float = 0.0
 
 
     class func currentResult(count: Int ,type: String) -> [SortResult]{
@@ -66,6 +67,10 @@ class SortResult: Object {
                 result.used = dict["url"] as? String
                 result.who = dict["who"] as? String
 
+                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+                result.cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+
             })
         } else {
             let result = SortResult()
@@ -94,5 +99,45 @@ class SortResult: Object {
             }
         }
         return true
+    }
+
+    // date
+    internal func dateToString(dateStr: String) -> String {
+
+        ///  "publishedAt": "2016-06-16T12:19:00.930Z"
+
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"
+        let newDate = formatter.dateFromString(dateStr)
+        let formatter2 = NSDateFormatter()
+        formatter2.dateFormat = "yyyy-MM-dd"
+
+        guard let new = newDate else {
+            return dateStr
+        }
+        let newDateStr: String = formatter2.stringFromDate(new)
+        let components = NSDate().deltaFromDate(newDate!)
+        if components.year == 0 {
+            if components.month == 0 {
+                if components.day == 0 {
+                    return "今天"
+                } else if components.day == 1 {
+                    return "昨天"
+                } else if components.day == 2 {
+                    return "前天"
+                } else {
+                    return "\(components.day)天前"
+                }
+            }
+        }
+        return newDateStr
+
+    }
+
+    class func stringToSize(fontSize: CGFloat, str: NSString)-> CGSize {
+        let height = CGFloat.max
+        let width = Common.Screen_width - 50.0
+        let size = str.boundingRectWithSize(CGSize(width: width, height: height), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)], context: nil).size
+        return size
     }
 }

@@ -83,25 +83,29 @@ protocol FetchSortResultdelegate {
 }
 class SortNetWorkManager: NSObject {
     static let sortNetwordSharedInstance = SortNetWorkManager()
-    
+
+    typealias CompletedHandler = Bool -> Void
+
     var delegate: FetchSortResultdelegate?
     /**
      *  sort data
      */
-    func fetchSortData(type: URLType) {
+    func fetchSortData(type: URLType, completed: CompletedHandler) {
         let status = NetworkReachabilityManager()?.isReachable
         if status == false {
             delegate?.fetchFalied()
+            completed(false)
             return
         }
 
-        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/100/1"
+        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/75/1"
         let request = Alamofire.request(.GET, urlString)
 
         request.responseJSON { (response) in
 
             guard let data = response.data else {
                 self.delegate?.fetchFalied()
+                completed(false)
                 return
             }
 
@@ -111,9 +115,11 @@ class SortNetWorkManager: NSObject {
             if let error = json["error"].bool {
                 if error == true {
                     self.delegate?.fetchFalied()
+                    completed(false)
                     return
                 }
             }
+
             if let root = response.result.value as? NSDictionary{
 
                 if let results = root["results"] as? NSArray {
@@ -121,10 +127,12 @@ class SortNetWorkManager: NSObject {
                 }
             } else {
                 self.delegate?.fetchFalied()
+                completed(false)
                 return
             }
 
             self.delegate?.fetchSuccess()
+            completed(true)
         }
     }
 
