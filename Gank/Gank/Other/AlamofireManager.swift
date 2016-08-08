@@ -90,7 +90,7 @@ class SortNetWorkManager: NSObject {
     /**
      *  sort data
      */
-    func fetchSortData(type: URLType, completed: CompletedHandler) {
+    func fetchSortData(type: URLType, page:Int, completed: CompletedHandler) {
         let status = NetworkReachabilityManager()?.isReachable
         if status == false {
             delegate?.fetchFalied()
@@ -98,7 +98,7 @@ class SortNetWorkManager: NSObject {
             return
         }
 
-        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/75/1"
+        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/12/\(page)"
         let request = Alamofire.request(.GET, urlString)
 
         request.responseJSON { (response) in
@@ -120,19 +120,32 @@ class SortNetWorkManager: NSObject {
                 }
             }
 
+            if type.rawValue == "all" {
+                if let allRoot = response.result.value as? NSDictionary{
+
+                    if let results = allRoot["results"] as? NSArray {
+                        SortResult.parseFromArray(results)
+                    }
+                    completed(true)
+                    self.delegate?.fetchSuccess()
+                } else {
+                    self.delegate?.fetchFalied()
+                    completed(false)
+                    return
+                }
+            }
             if let root = response.result.value as? NSDictionary{
 
                 if let results = root["results"] as? NSArray {
                     SortResult.parseFromArray(results)
                 }
+                completed(true)
+                self.delegate?.fetchSuccess()
             } else {
                 self.delegate?.fetchFalied()
                 completed(false)
                 return
             }
-
-            self.delegate?.fetchSuccess()
-            completed(true)
         }
     }
 

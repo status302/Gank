@@ -17,6 +17,7 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
     var sortResults = [SortResult]() {
         didSet {
+            self.tableView.reloadData()
             print(sortResults.count)
         }
     }
@@ -24,12 +25,12 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
     var type: URLType? {
         didSet {
-           self.loadDataFromRealm()
+           self.fetchData()
         }
     }
     var page: Int = 1 {
         didSet {
-            loadDataFromRealm()
+            self.fetchData()
         }
     }
 
@@ -47,14 +48,15 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
         loadDataFromRealm()
 
-//        sortNetworkManager.delegate = self
+        fetchData()
+        print("\(type) view controller !")
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .None
         self.tabBarController?.tabBar.hidden = false
-        fetchData()
+        page = 1
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -65,10 +67,13 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
     }
 
     private func fetchData() {
-        sortNetworkManager.fetchSortData(self.type!) {
+        sortNetworkManager.fetchSortData(self.type!, page: page) {
             finished in
-            self.customRefreshControl.endAnimation()
+            if self.customRefreshControl != nil {
+                self.customRefreshControl.endAnimation()
+            }
             self.loadDataFromRealm()
+            self.tableView.reloadData()
         }
     }
 
@@ -87,10 +92,10 @@ extension QCTopicViewController {
      */
     func loadDataFromRealm() {
         self.sortResults.removeAll()
+
         for result in SortResult.currentResult(15 * page, type: type!.rawValue) {
             self.sortResults.append(result)
         }
-        self.tableView.reloadData()
     }
 }
 
@@ -107,6 +112,7 @@ extension QCTopicViewController {
 
         let cellID = "topicCellID"
         let cell = SortCell(style: .Default, reuseIdentifier: cellID)
+
         if indexPath.row == sortResults.count - 1 {
             if page < 5 {
                 page += 1
@@ -115,13 +121,16 @@ extension QCTopicViewController {
             }
         }
         if sortResults.count > 0 {
-            cell.sortResult = sortResults[indexPath.row]
+            if cell.sortResult == nil {
+                cell.sortResult = sortResults[indexPath.row]
+            }
         }
 
         return cell
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
         if sortResults.count > 0 {
             return CGFloat(sortResults[indexPath.row].cellHeight)
         } else {
@@ -133,11 +142,10 @@ extension QCTopicViewController {
 
 extension QCTopicViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let sortResult = sortResults[indexPath.row]
         let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
+        let sortResult = sortResults[indexPath.row]
 
         webVC.url = sortResult.url
-
         self.navigationController?.pushViewController(webVC, animated: true)
 
     }

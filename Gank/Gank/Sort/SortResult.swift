@@ -30,10 +30,11 @@ class SortResult: Object {
         var resultArr = [SortResult]()
         
         for (index, result) in results.enumerate() {
-            if index > (count - 1) {
+            if index < count {
+                resultArr.append(result)
+            } else {
                 return resultArr
             }
-            resultArr.append(result)
         }
         return resultArr
     }

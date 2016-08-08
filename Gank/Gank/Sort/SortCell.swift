@@ -10,16 +10,14 @@ import UIKit
 import SnapKit
 
 class SortCell: UITableViewCell {
-    var result: Result! {
-        didSet {
-            descLabel.text = result.desc
-            timeLabel.text = result.dateToString(result.publishedAt)
-            fromLabel.text = result.who
-            typeLabel.text = result.type
-        }
-    }
 
     var sortResult: SortResult! {
+        willSet {
+            descLabel.text = nil
+            timeLabel.text = nil
+            fromLabel.text = nil
+            typeLabel.text = nil
+        }
         didSet {
             descLabel.text = sortResult.desc
             timeLabel.text = sortResult.dateToString(sortResult.publishedAt!)

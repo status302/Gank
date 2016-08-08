@@ -81,7 +81,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         /**
          *  这句话添加上去就会导致程序的崩溃
          */
-//        webView.scrollView.delegate = self
+        webView.scrollView.delegate = self
 
         return webView
     }()
@@ -146,6 +146,9 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.toolbar.backgroundColor = UIColor.clearColor()
+        self.toolbar.setShadowImage(UIImage(), forToolbarPosition: .Any)
+        self.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .Any, barMetrics: .Default)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -231,6 +234,7 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         webView.removeObserver(self, forKeyPath: "loading")
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.removeObserver(self, forKeyPath: "title")
+        self.webView.scrollView.delegate = nil
     }
 }
 extension QCWebViewController {
@@ -246,7 +250,19 @@ extension QCWebViewController {
 }
 
 extension QCWebViewController: UIScrollViewDelegate {
-    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-        
+//    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+//        UIView.animateWithDuration(0.5) {
+//            self.toolbar.transform = CGAffineTransformIdentity
+//        }
+//    }
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        UIView.animateWithDuration(0.5) {
+            self.toolbar.transform = CGAffineTransformIdentity
+        }
+    }
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        UIView.animateWithDuration(0.5) {
+            self.toolbar.transform = CGAffineTransformMakeTranslation(0, self.toolbar.height)
+        }
     }
 }
