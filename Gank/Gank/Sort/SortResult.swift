@@ -19,7 +19,7 @@ class SortResult: Object {
     dynamic var url: String?
     dynamic var used: String?
     dynamic var who: String?
-    dynamic var cellHeight: Float = 0.0
+//    dynamic var cellHeight: Float = 0.0
 
 
     class func currentResult(count: Int ,type: String) -> [SortResult]{
@@ -28,6 +28,7 @@ class SortResult: Object {
         let results = realm.objects(SortResult).filter("type == %@", type).sorted("publishedAt", ascending: false)
 
         var resultArr = [SortResult]()
+        resultArr.removeAll()
         
         for (index, result) in results.enumerate() {
             if index < count {
@@ -68,9 +69,9 @@ class SortResult: Object {
                 result.used = dict["url"] as? String
                 result.who = dict["who"] as? String
 
-                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
-                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
-                result.cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+//                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+//                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+//                result.cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
 
             })
         } else {
@@ -85,6 +86,9 @@ class SortResult: Object {
             result.url = dict["url"] as? String
             result.used = dict["url"] as? String
             result.who = dict["who"] as? String
+//            let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+//            let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+//            result.cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
 
             try! realm.write({ 
                 realm.add(result)

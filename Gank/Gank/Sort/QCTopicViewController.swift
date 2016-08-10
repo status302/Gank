@@ -18,19 +18,18 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
     var sortResults = [SortResult]() {
         didSet {
             self.tableView.reloadData()
-            print(sortResults.count)
         }
     }
     // MARK: - URL相关
 
     var type: URLType? {
         didSet {
-           self.fetchData()
+            self.tableView.reloadData()
         }
     }
     var page: Int = 1 {
         didSet {
-            self.fetchData()
+            fetchData()
         }
     }
 
@@ -50,6 +49,8 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
         fetchData()
         print("\(type) view controller !")
+
+        tableView.registerClass(SortCell.self, forCellReuseIdentifier: "topicCellID")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -91,11 +92,13 @@ extension QCTopicViewController {
     }
      */
     func loadDataFromRealm() {
-        self.sortResults.removeAll()
-
-        for result in SortResult.currentResult(15 * page, type: type!.rawValue) {
-            self.sortResults.append(result)
+        sortResults.removeAll()
+        tableView.reloadData()
+        let results = SortResult.currentResult(15 * page, type: type!.rawValue)
+        for result in results {
+            sortResults.append(result)
         }
+        tableView.reloadData()
     }
 }
 
@@ -111,7 +114,8 @@ extension QCTopicViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cellID = "topicCellID"
-        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
+//        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! SortCell
 
         if indexPath.row == sortResults.count - 1 {
             if page < 5 {
@@ -121,9 +125,7 @@ extension QCTopicViewController {
             }
         }
         if sortResults.count > 0 {
-            if cell.sortResult == nil {
-                cell.sortResult = sortResults[indexPath.row]
-            }
+            cell.sortResult = sortResults[indexPath.row]
         }
 
         return cell
@@ -132,7 +134,12 @@ extension QCTopicViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
         if sortResults.count > 0 {
-            return CGFloat(sortResults[indexPath.row].cellHeight)
+            let result = sortResults[indexPath.row]
+            let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+            let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+            let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+            
+            return CGFloat(cellHeight)
         } else {
             return 56.0
         }
