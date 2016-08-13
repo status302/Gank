@@ -19,7 +19,7 @@ class SortViewController: UIViewController {
     private lazy var titles: [String] = {
         var titles = [String]()
 //        if Common.isSimulator {
-            titles = ["iOS", "Android", "App", "休息视频","拓展资源","前端","福利"]
+            titles = ["All","iOS", "Android", "App", "休息视频","拓展资源","前端","福利"]
 //        } else {
 //            titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
 //        }
@@ -49,17 +49,19 @@ class SortViewController: UIViewController {
      添加子控制器到该VC中
      */
     func setupChildVCs() {
+
+        /// AllVC
+        let allVC = QCTopicViewController()
+        allVC.type = URLType.all
+        addChildViewController(allVC)
+        allVC.didMoveToParentViewController(self)
+
         /// iOSVC
         let iosVC = QCTopicViewController()
         iosVC.type = URLType.iOS
         addChildViewController(iosVC)
 //        iosVC.didMoveToParentViewController(self)
 
-         /// AllVC
-//        let allVC = QCTopicViewController()
-//        allVC.type = URLType.all
-//        addChildViewController(allVC)
-//        allVC.didMoveToParentViewController(self)
 
         /// AndroidVC
         let androidVC = QCTopicViewController()

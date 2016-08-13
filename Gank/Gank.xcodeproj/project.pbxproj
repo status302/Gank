@@ -71,6 +71,7 @@
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
 		86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */; };
+		86FEC3591D5F57F6001B65B7 /* AllResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC3581D5F57F6001B65B7 /* AllResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
 		86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowWelfareViewController.xib; sourceTree = "<group>"; };
 		86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTransition.swift; sourceTree = "<group>"; };
+		86FEC3581D5F57F6001B65B7 /* AllResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResult.swift; sourceTree = "<group>"; };
 		A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -451,6 +453,7 @@
 				86A19F981D09623E007CE5D5 /* View */,
 				86A19F991D096247007CE5D5 /* Controller */,
 				869D06D01D56210500A71030 /* SortResult.swift */,
+				86FEC3581D5F57F6001B65B7 /* AllResult.swift */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */,
 				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,
+				86FEC3591D5F57F6001B65B7 /* AllResult.swift in Sources */,
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 				86D90C001D26295F00FC64AA /* GKFont.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,

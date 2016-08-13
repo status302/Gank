@@ -128,7 +128,8 @@ class SortNetWorkManager: NSObject {
                 if let allRoot = response.result.value as? NSDictionary{
 
                     if let results = allRoot["results"] as? NSArray {
-                        SortResult.parseFromArray(results)
+//                        SortResult.parseFromArray(results)
+                        AllResult.parseFromArray(results)
                     }
                     completed(true)
                     self.delegate?.fetchSuccess()

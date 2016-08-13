@@ -20,11 +20,26 @@ class SortCell: UITableViewCell {
         }
         didSet {
             descLabel.text = sortResult.desc
-            timeLabel.text = sortResult.dateToString(sortResult.publishedAt!)
+            timeLabel.text = SortResult.dateToString(sortResult.publishedAt!)
             fromLabel.text = sortResult.who
             typeLabel.text = sortResult.type
         }
     }
+    var allResult: AllResult! {
+        willSet {
+            descLabel.text = nil
+            timeLabel.text = nil
+            fromLabel.text = nil
+            typeLabel.text = nil
+        }
+        didSet {
+            descLabel.text = allResult.desc
+            timeLabel.text = SortResult.dateToString(allResult.publishedAt!)
+            fromLabel.text = allResult.who
+            typeLabel.text = allResult.type
+        }
+    }
+
 
     // UIs
     var iconImageView: UIImageView!

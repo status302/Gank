@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         cache.maxMemoryCost = 30 * 1024 * 1024
         cache.maxDiskCacheSize = 30 * 1024 * 1024
 
+        self.realmSchemaMigration()
+
         return true
     }
 
@@ -63,7 +66,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    private func realmSchemaMigration() {
+        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { (migration, oldSchemaVersion) in
+            migration.enumerate(SortResult.className(), { (oldObject, newObject) in
+                if oldSchemaVersion < 1 {
+                    newObject!["isCollected"] = false
+                }
+            })
+        })
+        Realm.Configuration.defaultConfiguration = config
+    }
 
 }
 

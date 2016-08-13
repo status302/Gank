@@ -20,6 +20,11 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
             self.tableView.reloadData()
         }
     }
+    var allResults = [AllResult]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     // MARK: - URL相关
 
     var type: URLType? {
@@ -93,6 +98,14 @@ extension QCTopicViewController {
     func loadDataFromRealm() {
         sortResults.removeAll()
         tableView.reloadData()
+        if type == URLType.all {
+            let results = AllResult.currentAllResult(15 * page)
+            for result in results {
+                allResults.append(result)
+            }
+            tableView.reloadData()
+            return
+        }
         let results = SortResult.currentResult(15 * page, type: type!.rawValue)
         for result in results {
             sortResults.append(result)
@@ -104,6 +117,9 @@ extension QCTopicViewController {
 extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if type == URLType.all {
+            return allResults.count
+        }
         return sortResults.count
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -116,6 +132,18 @@ extension QCTopicViewController {
 //        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! SortCell
 
+        if type == URLType.all {
+            if indexPath.row == (allResults.count - 1) {
+                if page < 5 {
+                    page += 1
+                } else {
+                    HUD.flash(.LabeledError(title: "没有更多了。", subtitle: ""), delay: 0.8)
+                }
+            }
+            if allResults.count > 0 {
+                cell.allResult = allResults[indexPath.row]
+            }
+        }
         if indexPath.row == sortResults.count - 1 {
             if page < 5 {
                 page += 1
@@ -132,6 +160,16 @@ extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
+        if type == URLType.all {
+            if sortResults.count > 0 {
+                let result = allResults[indexPath.row]
+                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+                let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+
+                return CGFloat(cellHeight)
+            }
+        }
         if sortResults.count > 0 {
             let result = sortResults[indexPath.row]
             let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
@@ -142,16 +180,19 @@ extension QCTopicViewController {
         } else {
             return 56.0
         }
-
     }
 }
 
 extension QCTopicViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
-        let sortResult = sortResults[indexPath.row]
-
-        webVC.url = sortResult.url
+        if type == URLType.all {
+           let allResult = allResults[indexPath.row]
+            webVC.url = allResult.url
+        } else {
+            let sortResult = sortResults[indexPath.row]
+            webVC.url = sortResult.url
+        }
         self.navigationController?.pushViewController(webVC, animated: true)
 
     }

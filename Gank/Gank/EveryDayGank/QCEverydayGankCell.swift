@@ -20,7 +20,7 @@ class QCEverydayGankCell: UICollectionViewCell {
 //    var result: Result! {
     var result: SortResult! {
         didSet {
-            timeLabel.text = result.dateToString(result.publishedAt!)
+            timeLabel.text = SortResult.dateToString(result.publishedAt!)
             sourceLabel.text = result.who
             
             let url = NSURL(string: result.url!)!
