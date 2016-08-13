@@ -17,6 +17,12 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //    var setting: GKSettingViewController?
 //    var isSettingShowing = false
     var nView: QCNoticeView!
+    var welfareResult = [SortResult]()
+    var page: Int = 1 {
+        didSet {
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +50,8 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
 
-        loadData()
+//        loadData()
+        loadDataFromRealm()
 
 //        setting = GKSettingViewController()
 //        self.addChildViewController(setting!)
@@ -74,6 +81,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
 //        setting?.view.frame = view.bounds
 //        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
+        self.loadDataFromNetwork()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -81,7 +89,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         // 设置导航栏为nil
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,7 +98,23 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
 
     // MARK: - private function
-
+    func loadDataFromRealm() {
+        if welfareResult.count != 0 {
+            welfareResult.removeAll()
+        }
+        let currentResults = SortResult.currentResult(15, type: URLType.welfare.rawValue)
+        for result in currentResults {
+            welfareResult.append(result)
+        }
+        self.collectionView.reloadData()
+    }
+    func loadDataFromNetwork() {
+        SortNetWorkManager.sortNetwordSharedInstance.fetchSortData(.welfare, page: page) { (finished) in
+            if finished {
+                self.loadDataFromRealm()
+            }
+        }
+    }
     func showSettingButtonCicked() {
         // 在这里显示设置
 //        let settingVC = GKSettingViewController()
@@ -210,14 +234,18 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 extension QCEveryDayGnakViewController {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return results.count
+//        return results.count
+        return welfareResult.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
 
-        if results.count > 0 {
-            cell.result = self.results[indexPath.item]
+//        if results.count > 0 {
+//            cell.result = self.results[indexPath.item]
+//        }
+        if welfareResult.count > 0 {
+            cell.result = self.welfareResult[indexPath.item]
         }
 
         return cell
@@ -233,8 +261,9 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         // 处理时间
         let formatterToDate = NSDateFormatter()
         formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let str = results[indexPath.item].publishedAt
-        let createTime = formatterToDate.dateFromString(str)
+//        let str = results[indexPath.item].publishedAt
+        let str = welfareResult[indexPath.item].publishedAt
+        let createTime = formatterToDate.dateFromString(str!)
 
         let formatterToString = NSDateFormatter()
         formatterToString.dateFormat = "yyyy/MM/dd"
@@ -250,7 +279,8 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
 
 extension QCEveryDayGnakViewController: QCNoticeViewDelegate {
     func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
-        self.loadData()
+//        self.loadData()
+        self.loadDataFromRealm()
     }
 }
 //extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {

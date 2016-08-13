@@ -67,6 +67,7 @@ class DetailViewController: UIViewController {
     // MARK: - Lazy
     lazy var imageView :UIImageView = {
         let imageView = UIImageView()
+//        imageView.userInteractionEnabled = true
         imageView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 0.66)
         imageView.contentMode = UIViewContentMode.ScaleToFill
 
@@ -132,7 +133,8 @@ class DetailViewController: UIViewController {
     @objc private func showImage() {
         let showImageVC = ShowWelfareViewController()
 
-        showImageVC.imageUrl = self.imageUrl
+//        showImageVC.imageUrl = self.imageUrl
+        print("+++++++++++++++++++++++++++")
         self.presentViewController(showImageVC, animated: true, completion: nil)
     }
 

@@ -84,6 +84,10 @@ protocol FetchSortResultdelegate {
 class SortNetWorkManager: NSObject {
     static let sortNetwordSharedInstance = SortNetWorkManager()
 
+    var isRechalble: Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
+
     typealias CompletedHandler = Bool -> Void
 
     var delegate: FetchSortResultdelegate?

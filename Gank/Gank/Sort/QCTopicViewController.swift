@@ -48,7 +48,6 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
         loadDataFromRealm()
 
         fetchData()
-        print("\(type) view controller !")
 
         tableView.registerClass(SortCell.self, forCellReuseIdentifier: "topicCellID")
     }

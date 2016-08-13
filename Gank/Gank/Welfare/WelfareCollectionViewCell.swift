@@ -27,6 +27,13 @@ class WelfareCollectionViewCell: UICollectionViewCell {
             descriptionLabel.text = "#" + result.desc
         }
     }
+    var welfareResult: SortResult! {
+        didSet {
+            meiziImageView.kf_setImageWithURL(NSURL(string: welfareResult.url!)!)
+            descriptionLabel.text = "#" + welfareResult.desc!
+
+        }
+    }
     // MARK: - lazy
     lazy var welfareViewCell: WelfareCollectionViewCell = {
         let welfareViewCell = NSBundle.mainBundle().loadNibNamed("WelfareCollectionViewCell", owner: nil, options: nil).first as! WelfareCollectionViewCell

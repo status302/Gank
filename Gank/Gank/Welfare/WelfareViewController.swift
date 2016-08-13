@@ -16,12 +16,25 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
     var noticeView: QCNoticeView!
     var customRefresh: CustomRefreshControl!
-    var page: Int = 1
+    var page: Int = 1 {
+        didSet {
+//            self.collectionView.reloadData()
+        }
+    }
     var indexPath: NSIndexPath?  /// 用了记录点击了哪一个 indexPath
 
-    weak var rightButton: UIButton?
+    var welfareResults: [SortResult]! {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    var type: URLType! {
+        didSet {
+            loadDataFromRealm()
+        }
+    }
 
- 
+    weak var rightButton: UIButton?
 
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -36,7 +49,7 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
         rightView.tintColor = UIColor.blackColor()
 
         rightView.sizeToFit()
-        rightView.addTarget(self, action: #selector(loadData), forControlEvents: .TouchUpInside)
+        rightView.addTarget(self, action: #selector(fetchData), forControlEvents: .TouchUpInside)
         rightButton = rightView
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
 
@@ -54,9 +67,10 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
         self.view.addSubview(noticeView)
         self.noticeView = noticeView
         // 加载数据
-        loadData()
+//        loadData()
+        type = URLType.welfare
 
-
+        fetchData()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -83,6 +97,32 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
         self.collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
 
+    }
+
+    /**
+     load data form realm
+     */
+    private func loadDataFromRealm() {
+//        welfareResults.removeAll()
+        if welfareResults != nil {
+            welfareResults.removeAll()
+        }
+        var rs = [SortResult]()
+        let results = SortResult.currentResult(15 * page, type: type.rawValue)
+        for result in results {
+            rs.append(result)
+        }
+        self.welfareResults = rs
+    }
+    @objc private func fetchData() {
+        let manager = SortNetWorkManager.sortNetwordSharedInstance
+        manager.fetchSortData(type, page: page) { (finished) in
+            self.loadDataFromRealm()
+
+            if self.customRefresh.refreshing {
+                self.customRefresh.endAnimation()
+            }
+        }
     }
 
     // private functions
@@ -200,16 +240,18 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 extension WelfareViewController: UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return results.count
+        return welfareResults.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.welfareCellID, forIndexPath: indexPath) as! WelfareCollectionViewCell
 
-        if indexPath.item == (results.count-1) {
+        if indexPath.item == (welfareResults.count-1) {
             if page < 5 {
-                page += 1
-                self.loadMoreData()
+                if SortNetWorkManager.sortNetwordSharedInstance.isRechalble {
+                    page += 1
+                    fetchData()
+                }
             } else {
                 HUD.flash(.LabeledError(title: "", subtitle: "没有更多福利了！"), delay: 1.3)
             }
@@ -218,16 +260,19 @@ extension WelfareViewController: UICollectionViewDataSource {
         /**
          *  避免数组越界
          */
-        if results.count > 0 {
-            cell.result = results[indexPath.row]
+//        if results.count > 0 {
+//            cell.result = results[indexPath.row]
+//        }
+        if welfareResults.count > 0 {
+            cell.welfareResult = welfareResults[indexPath.row]
         }
 //        if Common.isSimulator {
-            if indexPath.item%4 == 0 && indexPath.item != 0 {
-                if let url = Common.getRandomUrl(indexPath.item%3) {
-                    cell.meiziImageView.kf_setImageWithURL(url)
-                }
-//            }
-        }
+//            if indexPath.item%4 == 0 && indexPath.item != 0 {
+//                if let url = Common.getRandomUrl(indexPath.item%3) {
+//                    cell.meiziImageView.kf_setImageWithURL(url)
+//                }
+////            }
+//        }
         return cell
     }
 }
@@ -235,10 +280,12 @@ extension WelfareViewController: UICollectionViewDataSource {
 extension WelfareViewController: UICollectionViewDelegate {
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! WelfareCollectionViewCell
         self.indexPath = indexPath
         let showWealfareVC = ShowWelfareViewController()
-        showWealfareVC.result = self.results[indexPath.item]
-
+//        showWealfareVC.result = self.results[indexPath.item]
+        showWealfareVC.result = self.welfareResults[indexPath.item]
+        showWealfareVC.imageSize = cell.meiziImageView.image?.size
         self.presentViewController(showWealfareVC, animated: true) {}
     }
 
@@ -264,13 +311,15 @@ extension WelfareViewController {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if customRefresh.refreshing {
             customRefresh.startAnimation()
-            self.loadData()
+//            self.loadData()
+            self.fetchData()
 
         }
     }
 }
 extension WelfareViewController: QCNoticeViewDelegate {
     func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
-        loadData()
+//        loadData()
+        self.fetchData()
     }
 }
