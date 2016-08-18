@@ -33,6 +33,7 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
             loadDataFromRealm()
         }
     }
+    private lazy var modalDelegate = ScaleTransition()
 
     weak var rightButton: UIButton?
 
@@ -212,6 +213,9 @@ extension WelfareViewController: UICollectionViewDelegate {
 //        showWealfareVC.result = self.results[indexPath.item]
         showWealfareVC.result = self.welfareResults[indexPath.item]
         showWealfareVC.imageSize = cell.meiziImageView.image?.size
+
+        showWealfareVC.transitioningDelegate = modalDelegate
+        showWealfareVC.modalPresentationStyle = .Custom
         self.presentViewController(showWealfareVC, animated: true) {}
     }
 
