@@ -12,69 +12,30 @@ import PKHUD
 import SwiftyJSON
 
 
-class AlamofireManager {
-    typealias CompletedHandler = (rootClass: RootClass?)->Void
+class DayNetworkService: NSObject {
+    typealias CompletedHandler = Bool -> Void
+    static let dayManager = DayNetworkService()
 
-
-    // 创建一个单例
-    static let sharedInstance = AlamofireManager()
-
-
-    var urlStr: String = ""
-    var testUrlStr = "http://gank.io/api/data/Android/10/1"
-    
-
-    var type: URLType? {
-        didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/\(page)"
-            testUrlStr = "http://gank.io/api/data/Android/10/1"
-        }
+    var isReachable: Bool {
+        return NetworkReachabilityManager()!.isReachable
     }
-
-    var page: Int = 1 {
-        didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/" + "\(page)"
+    func fetchDayData(url: String, completedHandler: CompletedHandler) {
+        let status = NetworkReachabilityManager()!.isReachable
+        if !status {
+            completedHandler(false)
         }
-    }
+        let request = Alamofire.request(.GET, url)
+        request.responseJSON { (response) in
 
-    var alamofireNetworkReachablityManager = NetworkReachabilityManager()
-
-    func fetchDataForWelfare(completedHandler: CompletedHandler) {
-
-        let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
-        requestResult.responseJSON { (response) in
-            guard let json = response.result.value else {
-                print("\(response.debugDescription)")
-                completedHandler(rootClass: nil)
+            guard let data = response.data else {
+                completedHandler(false)
                 return
             }
-            // 处理json
-            let model = RootClass(fromDictionary: json as! NSDictionary)
-            completedHandler(rootClass: model)
-
+            let json = JSON(data: data)
+            DayResult.parseFromDict(json.dictionaryValue, fUrl: url)
+            completedHandler(true)
         }
     }
-
-    /**
-     网络请求
-
-     - parameter completedHandler: 得到数据后待处理的闭包。root: 包含数据的RootClass的实例
-     */
-    func fectchTopicData(urlString: String, completedHandler: CompletedHandler) {
-        let dataRequest = Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL, headers: nil)
-
-        dataRequest.responseJSON { (response) in
-            guard let json = response.result.value else {
-                print("error occurs")
-                completedHandler(rootClass: nil)
-                return
-            }
-
-            let modal = RootClass(fromDictionary: json as! NSDictionary)
-            completedHandler(rootClass: modal)
-        }
-    }
-
 }
 
 protocol FetchSortResultdelegate {

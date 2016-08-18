@@ -103,7 +103,6 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
      load data form realm
      */
     private func loadDataFromRealm() {
-//        welfareResults.removeAll()
         if welfareResults != nil {
             welfareResults.removeAll()
         }
@@ -145,16 +144,18 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let width = Common.Screen_width*0.5 - 1.0
+        let width = Common.Screen_width * 0.5 - 1.0
         layout.itemSize = CGSizeMake(width, width)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
 
-        let collectionView: UICollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        let cFrame = CGRect(x: self.view.bounds.origin.x, y: self.view.bounds.origin.y, width: self.view.size.width, height: self.view.bounds.height - 36)
+
+        let collectionView: UICollectionView = UICollectionView(frame: cFrame, collectionViewLayout: layout)
 
         collectionView.backgroundColor = Common.navigationBarBackgroundColor
 
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -36, right: 0)
+        collectionView.contentInset = UIEdgeInsetsZero
 
         collectionView.dataSource = self
 
@@ -193,19 +194,11 @@ extension WelfareViewController: UICollectionViewDataSource {
         /**
          *  避免数组越界
          */
-//        if results.count > 0 {
-//            cell.result = results[indexPath.row]
-//        }
+
         if welfareResults.count > 0 {
             cell.welfareResult = welfareResults[indexPath.row]
         }
-//        if Common.isSimulator {
-//            if indexPath.item%4 == 0 && indexPath.item != 0 {
-//                if let url = Common.getRandomUrl(indexPath.item%3) {
-//                    cell.meiziImageView.kf_setImageWithURL(url)
-//                }
-////            }
-//        }
+
         return cell
     }
 }

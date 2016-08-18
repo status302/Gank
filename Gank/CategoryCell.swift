@@ -31,10 +31,10 @@ class CategoryCell: UITableViewCell {
     var timeHeight: CGFloat!
     var cellHeight: CGFloat!
 
-    var everydayResult: EverydayResult!  {
+    var everydayResult: CategoryResult!  {
         didSet {
             self.titleLabel?.text = everydayResult.desc
-            self.timeLabel.text = everydayResult.publishedTime
+            self.timeLabel.text = everydayResult.publishedAt
             self.fromLabel.text = everydayResult.who
         }
     }

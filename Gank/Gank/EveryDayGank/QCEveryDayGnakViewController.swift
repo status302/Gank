@@ -115,6 +115,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
     func loadDataFromNetwork() {
         self.raotateRightItem()
+        if !SortNetWorkManager.sortNetwordSharedInstance.isRechalble {
+            self.rightButton?.layer.removeAllAnimations()
+        }
         SortNetWorkManager.sortNetwordSharedInstance.fetchSortData(.welfare, page: page) { (finished) in
             if finished {
                 self.loadDataFromRealm()
@@ -223,6 +226,9 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         formatterToString.dateFormat = "yyyy/MM/dd"
         
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
+
+        let welfare = welfareResult[indexPath.row]
+        self.destVC.imageUrl = welfare.url!
         self.hidesBottomBarWhenPushed = true
 
         self.navigationController?.pushViewController(self.destVC, animated: true)
