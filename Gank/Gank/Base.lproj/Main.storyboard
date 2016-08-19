@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="fju-Q0-jsr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="240" translatesAutoresizingMaskIntoConstraints="NO" id="fju-Q0-jsr">
                                 <rect key="frame" x="130" y="224" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="9CI-KS-eAK"/>
@@ -29,12 +29,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG5-TB-4JO" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
-                                <rect key="frame" x="124" y="100" width="71" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aV5-w1-NLa">
                                 <rect key="frame" x="160" y="477" width="0.0" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,10 +38,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.077784186241610737" green="0.73815767283557054" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rG5-TB-4JO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bR-Zz-wEz"/>
-                            <constraint firstItem="rG5-TB-4JO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="FLA-rM-iSN"/>
                             <constraint firstItem="aV5-w1-NLa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FPD-CW-o91"/>
                             <constraint firstItem="fju-Q0-jsr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="HCp-OM-R6w"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aV5-w1-NLa" secondAttribute="bottom" constant="49" id="QKe-aS-pPs"/>
@@ -58,7 +50,6 @@
                     <connections>
                         <outlet property="gankView" destination="aV5-w1-NLa" id="OwR-ZP-icZ"/>
                         <outlet property="iconImageView" destination="fju-Q0-jsr" id="dp7-c1-nRi"/>
-                        <outlet property="welcomeLabel" destination="rG5-TB-4JO" id="e4K-XP-v7G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,6 +58,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="120" height="120"/>
+        <image name="240" width="231" height="230"/>
     </resources>
 </document>

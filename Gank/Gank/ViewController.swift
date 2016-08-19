@@ -8,12 +8,11 @@
 //  启动动画的设置
 
 import UIKit
-import LTMorphingLabel
 
 class ViewController: UIViewController, QCTextAnimatorDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var welcomeLabel: LTMorphingLabel!
+//    @IBOutlet weak var welcomeLabel: LTMorphingLabel!
 
     @IBOutlet weak var gankView: UIView!
 
@@ -29,13 +28,13 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        welcomeLabel.font = UIFont.font_heart(size: 56)
-        welcomeLabel.textColor = UIColor.yellowColor()
-        welcomeLabel.alpha = 1.0
-        welcomeLabel.text = ""
-        let effect = LTMorphingEffect.Sparkle
-        welcomeLabel.morphingEffect = effect
-        welcomeLabel.text = "Welcome"
+//        welcomeLabel.font = UIFont.font_heart(size: 56)
+//        welcomeLabel.textColor = UIColor.yellowColor()
+//        welcomeLabel.alpha = 1.0
+//        welcomeLabel.text = ""
+//        let effect = LTMorphingEffect.Sparkle
+//        welcomeLabel.morphingEffect = effect
+//        welcomeLabel.text = "Welcome"
 
         iconImageViewY = iconImageView.y
         distanceTransform = (gankView.y - self.iconImageView.y - iconImageView.height) * 0.5

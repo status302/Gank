@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "120 - iPhone.png",
+      "filename" : "240.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "120 - iPhone@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "120 - iPhone@3x.png",
       "scale" : "3x"
     }
   ],

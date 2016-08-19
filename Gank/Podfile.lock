@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (3.4.0)
   - Kingfisher (2.4.1)
-  - LTMorphingLabel (0.2.0)
   - MonkeyKing (0.9.2)
   - PKHUD (3.1.0)
   - Realm (1.0.2):
@@ -15,7 +14,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - Kingfisher (~> 2.4)
-  - LTMorphingLabel (~> 0.2.0)
   - MonkeyKing (~> 0.9.2)
   - PKHUD
   - RealmSwift
@@ -25,7 +23,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
-  LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
   MonkeyKing: 2cf420f9202a51714734374c97d96cf496e7ae2b
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
@@ -33,6 +30,6 @@ SPEC CHECKSUMS:
   SnapKit: 732e8cad7910a1cb812c5c1fb58f231d7a3b49e8
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: d1e590eb4a136cbcc5dbb8f5a13b689ab849486c
+PODFILE CHECKSUM: 03f448b6a6c8db829aba86b986306e3f88669d3c
 
 COCOAPODS: 1.0.1
