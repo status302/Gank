@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = sb.instantiateInitialViewController() as! ViewController
         window?.rootViewController = vc
 
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 5))
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 3))
         dispatch_after(time, dispatch_get_main_queue()) {
 
             self.window?.rootViewController = QCTabBarController()

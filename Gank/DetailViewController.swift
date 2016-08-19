@@ -235,6 +235,9 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = nil
 
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 
     @IBAction func dismiss(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
