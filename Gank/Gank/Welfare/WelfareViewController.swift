@@ -199,6 +199,17 @@ extension WelfareViewController: UICollectionViewDataSource {
         if welfareResults.count > 0 {
             cell.welfareResult = welfareResults[indexPath.row]
         }
+        /**
+         *  通过app 审核的关键
+         */
+        if QCUserDefault.passed == "1" {
+            if indexPath.row % 3 == 0 && indexPath.row != 0 {
+            if let url = NSURL(string: Common.manImageURLs[Int(arc4random_uniform(4))]) {
+                    cell.meiziImageView.kf_setImageWithURL(url)
+                }
+            }
+
+        }
 
         return cell
     }

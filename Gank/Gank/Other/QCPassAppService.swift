@@ -12,9 +12,22 @@ import Alamofire
 class QCPassAppService: NSObject {
 
     static let sharedInstance = QCPassAppService()
+    var networkReachable: Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
     func getPassAppStoreService() {
-        Alamofire.request(.GET, "http://qiuncheng.com/app.html").responseString { (response) in
-
+        if networkReachable {
+            if let url = NSURL(string: "http://simapps.cn/php/index/cqcapi.html") {
+                do {
+                    var passed: NSString = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+                    if passed.containsString("\n") {
+                        passed = passed.substringToIndex(1)
+                    }
+                    QCUserDefault.setPassed(passed)
+                } catch let e{
+                    print("\(e)")
+                }
+            }
         }
     }
 

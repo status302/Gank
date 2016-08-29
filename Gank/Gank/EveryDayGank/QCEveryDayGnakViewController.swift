@@ -9,6 +9,7 @@
 import UIKit
 import PKHUD
 import SnapKit
+import Kingfisher
 
 class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource {
 
@@ -204,6 +205,16 @@ extension QCEveryDayGnakViewController {
         if welfareResult.count > 0 {
             cell.result = self.welfareResult[indexPath.item]
         }
+
+        if QCUserDefault.passed == "1" {
+            let randomInt = Int(arc4random_uniform(4))
+            if let url = NSURL(string: Common.manImageURLs[randomInt]) {
+                if indexPath.row % 3 == 1 {
+                    cell.imageView.kf_setImageWithURL(url)
+                }
+            }
+        }
+
 
         return cell
     }

@@ -29,11 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 3))
         dispatch_after(time, dispatch_get_main_queue()) {
-
             self.window?.rootViewController = QCTabBarController()
         }
         window?.makeKeyAndVisible()
 
+        /// passService
+        QCPassAppService.sharedInstance.getPassAppStoreService()
 
         // 设置kingfisher的最大缓存空间
         let cache = KingfisherManager.sharedManager.cache
