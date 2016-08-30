@@ -18,8 +18,6 @@
 		862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */; };
 		862595221CF3358F00C79531 /* UIView+QC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595211CF3358F00C79531 /* UIView+QC.swift */; };
 		8625952A1CF3450300C79531 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595291CF3450300C79531 /* URLs.swift */; };
-		8625952D1CF45ECF00C79531 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625952C1CF45ECF00C79531 /* Result.swift */; };
-		8625952F1CF45ED900C79531 /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8625952E1CF45ED900C79531 /* RootClass.swift */; };
 		862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595301CF4626A00C79531 /* AlamofireManager.swift */; };
 		862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */; };
 		862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */; };
@@ -61,9 +59,9 @@
 		86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */; };
 		86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */; };
 		86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */; };
+		86E122841D748D7000E04739 /* QCUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E122831D748D7000E04739 /* QCUserDefault.swift */; };
 		86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */; };
 		86E31F4B1D2CF389004ABD29 /* QCNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */; };
-		86E31F4D1D2CFDE0004ABD29 /* QCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */; };
 		86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */; };
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
@@ -105,8 +103,6 @@
 		8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCCollectionLayout.swift; sourceTree = "<group>"; };
 		862595211CF3358F00C79531 /* UIView+QC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+QC.swift"; sourceTree = "<group>"; };
 		862595291CF3450300C79531 /* URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
-		8625952C1CF45ECF00C79531 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		8625952E1CF45ED900C79531 /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
 		862595301CF4626A00C79531 /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		862595321CF4682B00C79531 /* WelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelfareCollectionViewCell.swift; sourceTree = "<group>"; };
 		862595341CF4684300C79531 /* WelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelfareCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -155,9 +151,9 @@
 		86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
 		86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingViewController.xib; sourceTree = "<group>"; };
 		86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKShowSettingAnimator.swift; sourceTree = "<group>"; };
+		86E122831D748D7000E04739 /* QCUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCUserDefault.swift; sourceTree = "<group>"; };
 		86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCNoticeView.swift; sourceTree = "<group>"; };
 		86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCNoticeView.xib; sourceTree = "<group>"; };
-		86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCColor.swift; sourceTree = "<group>"; };
 		86E82DAC1D0917EE00BCB31B /* QCTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCTopicViewController.swift; sourceTree = "<group>"; };
 		86F1BA731CFEDE5200C1A61F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
@@ -248,17 +244,9 @@
 			children = (
 				86C8D26E1CEF152E00133FF5 /* Common.swift */,
 				862595291CF3450300C79531 /* URLs.swift */,
+				86E122831D748D7000E04739 /* QCUserDefault.swift */,
 			);
 			name = Common;
-			sourceTree = "<group>";
-		};
-		8625952B1CF45EBD00C79531 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8625952C1CF45ECF00C79531 /* Result.swift */,
-				8625952E1CF45ED900C79531 /* RootClass.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		864B08671D22A5A90009E49F /* Animator */ = {
@@ -465,7 +453,6 @@
 				864B2A1D1CF4A26D00C5569A /* WelfareFlowLayout.swift */,
 				8625951F1CF32B3300C79531 /* QCCollectionLayout.swift */,
 				86F1BA751CFF20E900C1A61F /* View */,
-				8625952B1CF45EBD00C79531 /* Model */,
 			);
 			path = Welfare;
 			sourceTree = "<group>";
@@ -474,7 +461,6 @@
 			isa = PBXGroup;
 			children = (
 				869D06D21D5634ED00A71030 /* Service */,
-				86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */,
 				86E31F471D2CF362004ABD29 /* NoticeView */,
 				86D90C011D26B4AC00FC64AA /* Setting */,
 				861EC6921D1B9B04001452A4 /* WebViewController */,
@@ -767,17 +753,16 @@
 				86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */,
 				862595201CF32B3300C79531 /* QCCollectionLayout.swift in Sources */,
 				8625951E1CF32A2100C79531 /* WelfareViewController.swift in Sources */,
-				8625952F1CF45ED900C79531 /* RootClass.swift in Sources */,
 				86BD623E1CEB2A1C00D1FEB6 /* QCTabBarController.swift in Sources */,
 				86BD62401CEB2B1F00D1FEB6 /* QCTabBar.swift in Sources */,
 				86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */,
-				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */,
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
 				86FEC3601D5F65F1001B65B7 /* EverydayResult.swift in Sources */,
 				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
+				86E122841D748D7000E04739 /* QCUserDefault.swift in Sources */,
 				86FEC35D1D5F65AA001B65B7 /* SortResult.swift in Sources */,
 				86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */,
 				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
@@ -798,7 +783,6 @@
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
-				86E31F4D1D2CFDE0004ABD29 /* QCColor.swift in Sources */,
 				86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */,
 				864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,

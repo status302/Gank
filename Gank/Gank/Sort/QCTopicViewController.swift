@@ -160,16 +160,7 @@ extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
-        if type == URLType.all {
-            if sortResults.count > 0 {
-                let result = allResults[indexPath.row]
-                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
-                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
-                let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
 
-                return CGFloat(cellHeight)
-            }
-        }
         if sortResults.count > 0 {
             let result = sortResults[indexPath.row]
             let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
@@ -177,9 +168,21 @@ extension QCTopicViewController {
             let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
             
             return CGFloat(cellHeight)
-        } else {
-            return 56.0
         }
+
+        if type == URLType.all {
+            if allResults.count > 0 {
+                let result = allResults[indexPath.row]
+                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+                let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+
+                return CGFloat(cellHeight)
+            } else {
+                return 56.0
+            }
+        }
+        return 0
     }
 }
 
