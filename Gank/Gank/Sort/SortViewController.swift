@@ -19,7 +19,7 @@ class SortViewController: UIViewController {
     private lazy var titles: [String] = {
         var titles = [String]()
 //        if Common.isSimulator {
-            titles = ["iOS","全部", "App", "休息视频","拓展资源","前端","福利", "随机"]
+            titles = ["All","iOS", "Android", "App", "休息视频","拓展资源","前端","福利"]
 //        } else {
 //            titles = ["iOS","全部", "安卓", "App", "休息视频","拓展资源","前端","福利", "随机"]
 //        }
@@ -49,56 +49,60 @@ class SortViewController: UIViewController {
      添加子控制器到该VC中
      */
     func setupChildVCs() {
+
+        /// AllVC
+        let allVC = QCTopicViewController()
+        allVC.type = URLType.all
+        addChildViewController(allVC)
+        allVC.didMoveToParentViewController(self)
+
         /// iOSVC
         let iosVC = QCTopicViewController()
         iosVC.type = URLType.iOS
         addChildViewController(iosVC)
+//        iosVC.didMoveToParentViewController(self)
 
-         /// AllVC
-        let allVC = QCTopicViewController()
-        allVC.type = URLType.all
-        addChildViewController(allVC)
 
-        /*
-        if Common.isSimulator {
-            // 是模拟器的话不做任何处理
-        } else {
-            /// AndroidVC
-            let androidVC = QCTopicViewController()
-            androidVC.type = URLType.android
-            self.addChildViewController(androidVC)
-        }
-         */
+        /// AndroidVC
+        let androidVC = QCTopicViewController()
+        androidVC.type = URLType.android
+        self.addChildViewController(androidVC)
 
         /// App
         let appVC = QCTopicViewController()
         appVC.type = URLType.App
         addChildViewController(appVC)
+//        appVC.didMoveToParentViewController(self)
 
         /// 休息视频
         let sleepVC = QCTopicViewController()
         sleepVC.type = URLType.sleep
         addChildViewController(sleepVC)
+//        appVC.didMoveToParentViewController(self)
 
         /// resourse VC
         let resourseVC = QCTopicViewController()
         resourseVC.type = URLType.resourse
         addChildViewController(resourseVC)
+//        resourseVC.didMoveToParentViewController(self)
 
         /// 前端
         let frontEnd = QCTopicViewController()
         frontEnd.type = URLType.front_end
         addChildViewController(frontEnd)
+//        frontEnd.didMoveToParentViewController(self)
 
         /// 福利
         let welfareVC = QCTopicViewController()
         welfareVC.type = URLType.welfare
         addChildViewController(welfareVC)
+//        welfareVC.didMoveToParentViewController(self)
 
         /// 随机
-        let randomVC = QCTopicViewController()
-        randomVC.type = URLType.all
-        addChildViewController(randomVC)
+//        let randomVC = QCTopicViewController()
+//        randomVC.type = URLType.all
+//        addChildViewController(randomVC)
+//        randomVC.didMoveToParentViewController(self)
 
     }
     // MARK: - Properties

@@ -11,123 +11,116 @@ import Alamofire
 import PKHUD
 import SnapKit
 
+
 class QCTopicViewController: UITableViewController, UIViewControllerTransitioningDelegate {
+    let sortNetworkManager = SortNetWorkManager.sortNetwordSharedInstance
 
-    var noticeView: QCNoticeView!
+    var sortResults = [SortResult]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    var allResults = [AllResult]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     // MARK: - URL相关
-
-//    typealias CompletedHandler = (root: RootClass?) -> Void
-    var urlStr: String = ""
 
     var type: URLType? {
         didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/1"
+            self.tableView.reloadData()
         }
     }
-
     var page: Int = 1 {
         didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/20/" + "\(page)"
+            fetchData()
         }
     }
 
     // MARK: - Lazy
-    /**
-     数据： results
-     */
-    lazy var results = [Result]()
-    lazy var customRefreshControl = CustomRefreshControl()
-    lazy var alamofireManager = AlamofireManager()
+
+    var customRefreshControl: CustomRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cellID")
-
         self.automaticallyAdjustsScrollViewInsets = false
 
-
+        customRefreshControl = CustomRefreshControl()
         view.addSubview(self.customRefreshControl)
 
-        // show notice View
-        let noticeView = QCNoticeView.loadNoticeView()
-        noticeView.delegate = self
+        loadDataFromRealm()
 
-        self.view.addSubview(noticeView)
-        noticeView.snp.makeConstraints(closure: { (make) in
-            make.leading.equalTo(self.view.snp.leading)
-            make.top.equalTo(self.view.snp.top).offset(128)
-            make.width.equalTo(self.view.snp.width)
-            make.height.equalTo(200)
-        })
-        self.noticeView = noticeView
+        fetchData()
+
+        tableView.registerClass(SortCell.self, forCellReuseIdentifier: "topicCellID")
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = .None
-
-
-        loadData()
-
+        self.tabBarController?.tabBar.hidden = false
+        page = 1
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.noticeView.removeFromSuperview()
+        if animated { // 表示push进去下一vc
+            self.tabBarController?.tabBar.hidden = true
+        }
+        self.customRefreshControl.endAnimation()
     }
 
-    /**
-     获取数据
+    private func fetchData() {
+        sortNetworkManager.fetchSortData(self.type!, page: page) {
+            finished in
+            if self.customRefreshControl != nil {
+                self.customRefreshControl.endAnimation()
+            }
+            self.loadDataFromRealm()
+            self.tableView.reloadData()
+        }
+    }
+
+}
+// MARK: - 这里用代理有点问题。所以不使用这个
+extension QCTopicViewController {
+    /*
+    func fetchSuccess() {
+        self.customRefreshControl.endAnimation()
+        loadDataFromRealm()
+    }
+    func fetchFalied() {
+        self.customRefreshControl.endAnimation()
+        loadDataFromRealm()
+    }
      */
-    func loadData() {
-        page = 1
-        results.removeAll()
-        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
-        alamofireManager.fectchTopicData(urlStr) { (rootClass) in
-            guard let root = rootClass else {
-                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
-                HUD.hide()
-                self.noticeView.setNoticeViewShow(){
-                    (finished) in
-                }
-                return
+    func loadDataFromRealm() {
+        sortResults.removeAll()
+        tableView.reloadData()
+        if type == URLType.all {
+            let results = AllResult.currentAllResult(15 * page)
+            for result in results {
+                allResults.append(result)
             }
-
-            self.noticeView.setNoticeViewHidden() {
-                (finished) in
-            }
-            for result in root.results {
-                self.results.append(result)
-            }
-
-            self.customRefreshControl.endAnimation()
-
-            self.tableView.reloadData()
-
-            HUD.hide()
+            tableView.reloadData()
+            return
         }
-    }
-
-    func loadMoreData() {
-
-
-        alamofireManager.fectchTopicData(urlStr) { (rootClass) in
-            guard let root = rootClass else {
-                HUD.flash(.LabeledError(title: "加载数据失败", subtitle: ""), delay: 1.0)
-                return
-            }
-            for result in root.results {
-                self.results.append(result)
-            }
-            self.tableView.reloadData()
-
+        let results = SortResult.currentResult(15 * page, type: type!.rawValue)
+        for result in results {
+            sortResults.append(result)
         }
+        tableView.reloadData()
     }
 }
+
 extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        if type == URLType.all {
+            return allResults.count
+        }
+        return sortResults.count
     }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -136,48 +129,71 @@ extension QCTopicViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cellID = "topicCellID"
-        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
-        if indexPath.row == results.count-1 {
-            if page < 5 {
-                page += 1
-                loadMoreData()
-            } else {
-                HUD.flash(.LabeledError(title: "没有更多数据了", subtitle: ""), delay: 0.5)
+//        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! SortCell
+
+        if type == URLType.all {
+            if indexPath.row == (allResults.count - 1) {
+                if page < 5 {
+                    page += 1
+                } else {
+                    HUD.flash(.LabeledError(title: "没有更多了。", subtitle: ""), delay: 0.8)
+                }
+            }
+            if allResults.count > 0 {
+                cell.allResult = allResults[indexPath.row]
             }
         }
-        /**
-         *  避免数组越界
-         */
-        if results.count > 0 {
-            cell.result = results[indexPath.row]
+        if indexPath.row == sortResults.count - 1 {
+            if page < 5 {
+                page += 1
+            } else {
+                HUD.flash(.LabeledError(title: "没有更多了。", subtitle: ""), delay: 0.8)
+            }
+        }
+        if sortResults.count > 0 {
+            cell.sortResult = sortResults[indexPath.row]
         }
 
         return cell
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if results.count > 0 {
-            return results[indexPath.row].cellHeight
-        }else {
+
+        if type == URLType.all {
+            if sortResults.count > 0 {
+                let result = allResults[indexPath.row]
+                let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+                let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+                let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+
+                return CGFloat(cellHeight)
+            }
+        }
+        if sortResults.count > 0 {
+            let result = sortResults[indexPath.row]
+            let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+            let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+            let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 30
+            
+            return CGFloat(cellHeight)
+        } else {
             return 56.0
         }
-
     }
 }
 
 extension QCTopicViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let result = results[indexPath.row]
         let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateInitialViewController() as! QCWebViewController
-        
-        webVC.url = result.url
-
-//        webVC.transitioningDelegate = self
-
-//        webVC.modalPresentationStyle = .FullScreen
-
+        if type == URLType.all {
+           let allResult = allResults[indexPath.row]
+            webVC.url = allResult.url
+        } else {
+            let sortResult = sortResults[indexPath.row]
+            webVC.url = sortResult.url
+        }
         self.navigationController?.pushViewController(webVC, animated: true)
-//        self.presentViewController(webVC, animated: true, completion: nil)
 
     }
 }
@@ -186,21 +202,7 @@ extension QCTopicViewController {
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if customRefreshControl.refreshing {
             customRefreshControl.startAnimation()
-            self.loadData()
+            fetchData()
         }
-    }
-}
-
-extension QCTopicViewController {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideTransitionAnimator()
-    }
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideTransitionAnimator()
-    }
-}
-extension QCTopicViewController: QCNoticeViewDelegate {
-    func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
-        loadData()
     }
 }

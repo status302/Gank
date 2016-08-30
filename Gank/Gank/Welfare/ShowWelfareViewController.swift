@@ -15,58 +15,45 @@ class ShowWelfareViewController: UIViewController {
 
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    
-    var result: Result?
-    weak var imageView: UIImageView?
-    var image: UIImage!
-    var imageUrl: String! {
-        didSet {
-            let imageData = NSData(contentsOfURL: NSURL(string: imageUrl)!)
-            image = UIImage(data: imageData!)
-        }
-    }
 
     var actionView: QCActionView?
+    
+    var result: SortResult?
+    var imageSize: CGSize?
+    var imageView: UIImageView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let imageSize = imageSize {
+            let width = imageSize.width
+            let height = imageSize.height
+            let imageViewHeight = Common.Screen_width / width * height
+            let imageView = UIImageView(frame: CGRectMake(0, 0, Common.Screen_width, imageViewHeight))
+            imageView.contentMode = .ScaleAspectFit
+            if imageViewHeight < Common.Screen_height {
+                imageView.center.y = UIScreen.mainScreen().bounds.height * 0.5
+                self.scrollView.contentSize = CGSizeMake(0, Common.Screen_height + 5)
+            } else {
+                self.scrollView.contentSize = CGSizeMake(0, imageViewHeight)
 
-        if let result = result  {
-            imageUrl = result.url
+            }
+            imageView.kf_setImageWithURL(NSURL(string: result!.url!)!)
+            imageView.userInteractionEnabled = true
+
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didClickDismissButton(_:)))
+            let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognizer(_:)))
+            let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureToSavePhoto(_:)))
+            longGesture.minimumPressDuration = 0.8
+
+
+            imageView.addGestureRecognizer(tapGesture)
+            imageView.addGestureRecognizer(pinchGesture)
+            imageView.addGestureRecognizer(longGesture)
+            
+            self.scrollView.addSubview(imageView)
+            self.imageView = imageView
         }
-        let width = image.size.width
-        let height = image.size.height
-
-        let imageViewHeight = Common.Screen_width / width * height
-        let imageView = UIImageView(frame: CGRectMake(0, 0, Common.Screen_width, imageViewHeight))
-        imageView.contentMode = .ScaleAspectFit
-        if imageViewHeight < Common.Screen_height {
-            imageView.center.y = UIScreen.mainScreen().bounds.height * 0.5
-            self.scrollView.contentSize = CGSizeMake(0, Common.Screen_height + 5)
-        } else {
-            self.scrollView.contentSize = CGSizeMake(0, imageViewHeight)
-
-        }
-        imageView.image = image!
-        imageView.userInteractionEnabled = true
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didClickDismissButton(_:)))
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchGestureRecognizer(_:)))
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGestureToSavePhoto(_:)))
-        longGesture.minimumPressDuration = 0.8
-
-        
-        imageView.addGestureRecognizer(tapGesture)
-        imageView.addGestureRecognizer(pinchGesture)
-        imageView.addGestureRecognizer(longGesture)
-
-
-
-        self.scrollView.addSubview(imageView)
-
-        self.imageView = imageView
-
 
         // scrollView 
         self.scrollView.minimumZoomScale = 0.5

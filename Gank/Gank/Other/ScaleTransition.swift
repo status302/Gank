@@ -13,17 +13,23 @@ class ScaleTransition: NSObject, UIViewControllerAnimatedTransitioning {
     var isPresenting: Bool = true
 
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval{
-        return 0.3
+        return 0.20
     }
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        if isPresenting {
+//        if isPresenting {
             presentViewControllerAnimation(transitionContext)
-        }
+//        }
     }
 
     func presentViewControllerAnimation(transitionContext: UIViewControllerContextTransitioning) {
 
-        guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? WelfareViewController else {
+//        guard let fromViewController = (transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! UINavigationController).topViewController  as? WelfareViewController else {
+//            return
+//        }
+        guard let tabbarVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? UITabBarController else {
+            return
+        }
+        guard let fromViewController = (tabbarVC.childViewControllers[2] as? UINavigationController)?.topViewController as? WelfareViewController else {
             return
         }
         let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? ShowWelfareViewController
@@ -41,7 +47,9 @@ class ScaleTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
         fromView?.frame  = transitionContext.initialFrameForViewController(fromViewController)
         toView?.frame = transitionContext.finalFrameForViewController(toViewController!)
-
+        /**
+         *  将toView添加到containerView
+         */
         containerView?.addSubview(toView)
         let currentCollectionView = fromViewController.collectionView
         guard let indexPath = fromViewController.indexPath else {
@@ -50,10 +58,12 @@ class ScaleTransition: NSObject, UIViewControllerAnimatedTransitioning {
         guard let selectedCell = currentCollectionView.cellForItemAtIndexPath(indexPath) as? WelfareCollectionViewCell else {
             return
         }
-        let animatedImageView = selectedCell.meiziImageView
-        animatedImageView?.contentMode = .ScaleAspectFill
-        animatedImageView?.clipsToBounds = true
-        let originFrame = currentCollectionView.convertRect(selectedCell.frame, toView: toView)
+        let animatedImageView = UIImageView()
+        animatedImageView.image = selectedCell.meiziImageView.image
+        animatedImageView.contentMode = .ScaleAspectFill
+        animatedImageView.clipsToBounds = true
+
+        let originFrame = currentCollectionView.convertRect(selectedCell.frame, toView: UIApplication.sharedApplication().keyWindow)
 
         animatedImageView.frame = originFrame
         containerView?.addSubview(animatedImageView)
@@ -66,9 +76,8 @@ class ScaleTransition: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animateWithDuration(duration, animations:  {
             animatedImageView.frame = endFrame
         }) { (finished) in
-            let wasCanceled = transitionContext.transitionWasCancelled()
-            transitionContext.completeTransition(wasCanceled)
-            UIView.animateWithDuration(0.4, animations: { 
+            transitionContext.completeTransition(true)
+            UIView.animateWithDuration(0.4, animations: {
                 toView.alpha = 1.0
                 }, completion: { (finished) in
                     animatedImageView.removeFromSuperview()
@@ -80,13 +89,13 @@ class ScaleTransition: NSObject, UIViewControllerAnimatedTransitioning {
 // MARK: - UIViewControllerTransitioningDelegate
 extension ScaleTransition: UIViewControllerTransitioningDelegate {
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        isPresenting = true
+//        isPresenting = true
         return self
     }
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        isPresenting = false
+    /*func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        isPresenting = false
         return self
-    }
+    }*/
 }
 
 func coverImageFrameToFullScreenFrame(image: UIImage?) -> CGRect {

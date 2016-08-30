@@ -17,34 +17,29 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //    var setting: GKSettingViewController?
 //    var isSettingShowing = false
     var nView: QCNoticeView!
+    var welfareResult = [SortResult]()
+    var page: Int = 1 {
+        didSet {
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
+        self.initNavItemButton()
+
         self.automaticallyAdjustsScrollViewInsets = false
 
         self.view.addSubview(self.collectionView)
-        /// 添加刷新控件
-        let rightView = UIButton(frame: CGRect.zero)
 
-        rightView.setImage(UIImage(named: "refresh"), forState: .Normal)
-        rightView.setImage(UIImage(named: "refresh_highlighted"), forState: .Highlighted)
-
-        rightView.tintColor = UIColor.blackColor()
-
-        rightView.sizeToFit()
-        rightView.addTarget(self, action: #selector(loadData), forControlEvents: .TouchUpInside)
-        rightButton = rightView
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
-
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
 
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
 
-        loadData()
+//        loadData()
+        loadDataFromRealm()
 
 //        setting = GKSettingViewController()
 //        self.addChildViewController(setting!)
@@ -67,12 +62,14 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
         // 设置导航栏透明
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 
 //        setting?.view.frame = view.bounds
 //        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
+        self.loadDataFromNetwork()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -80,7 +77,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         // 设置导航栏为nil
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,7 +86,45 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
 
     // MARK: - private function
+    private func initNavItemButton() {
+        /// 添加刷新控件
+        let rightView = UIButton(frame: CGRect.zero)
 
+        rightView.setImage(UIImage(named: "refresh"), forState: .Normal)
+        rightView.setImage(UIImage(named: "refresh_highlighted"), forState: .Highlighted)
+
+        rightView.tintColor = UIColor.blackColor()
+
+        rightView.sizeToFit()
+        rightView.addTarget(self, action: #selector(loadDataFromNetwork), forControlEvents: .TouchUpInside)
+        rightButton = rightView
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+    }
+    func loadDataFromRealm() {
+        if welfareResult.count != 0 {
+            welfareResult.removeAll()
+        }
+        let currentResults = SortResult.currentResult(15, type: URLType.welfare.rawValue)
+        for result in currentResults {
+            welfareResult.append(result)
+        }
+        self.collectionView.reloadData()
+    }
+    func loadDataFromNetwork() {
+        self.raotateRightItem()
+        if !SortNetWorkManager.sortNetwordSharedInstance.isRechalble {
+            self.rightButton?.layer.removeAllAnimations()
+        }
+        SortNetWorkManager.sortNetwordSharedInstance.fetchSortData(.welfare, page: page) { (finished) in
+            if finished {
+                self.loadDataFromRealm()
+                self.rightButton?.layer.removeAllAnimations()
+            }
+        }
+    }
     func showSettingButtonCicked() {
         // 在这里显示设置
 //        let settingVC = GKSettingViewController()
@@ -110,10 +145,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 //        }
 
     }
-    func loadMoreData() {
-        print("添加了加载更多数据")
-    }
-    @objc private func loadData() {
+    func raotateRightItem() {
         UIView.animateWithDuration(0.5, delay: 0, options: .Repeat, animations: {
             self.rightButton?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         }) { (finished) in  }
@@ -127,51 +159,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         rotationAnimation.repeatCount = MAXFLOAT
 
         self.rightButton?.layer.addAnimation(rotationAnimation, forKey: "rotationAnimation")
-        // Alamofire
-        AlamofireManager.sharedInstance.type = URLType.welfare
-
-        /// 模拟网络延迟
-//        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))
-//        dispatch_after(time, dispatch_get_main_queue()) {
-        //        }
-
-        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
-        self.results.removeAll()
-
-        AlamofireManager.sharedInstance.fetchDataForWelfare { (rootClass) in
-            guard let root = rootClass else {
-                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
-                HUD.hide()
-                self.rightButton?.layer.removeAllAnimations()
-
-                self.nView.setNoticeViewShow({ (finished) -> (Void) in
-                })
-                return
-            }
-
-            self.nView.setNoticeViewHidden({ (finished) -> (Void) in
-            })
-            self.results = root.results
-            self.results.sortInPlace({ (r1, r2) -> Bool in
-                r1.publishedAt > r2.publishedAt  // 对首页的数据进行排序
-            })
-            for _ in 0 ... 3 {
-                let value = Common.getRandomNum(self.results.count)
-                self.results[value].url = Common.manImageURLs[value % 7]
-            }
-            self.collectionView.reloadData()
-            self.rightButton?.layer.removeAllAnimations()
-            /**
-             隐藏蒙版
-             */
-            HUD.hide()
-
-        }
-    }
-
-    @objc private func didClickRightBarButton() {
-        /// 重新加载数据
-        self.loadData()
     }
 
     // MARK: - lazy
@@ -203,20 +190,19 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         let destVC = DetailViewController()
         return destVC
     }()
-    
 }
 
 extension QCEveryDayGnakViewController {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return results.count
+        return welfareResult.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Common.everydayGankCellID, forIndexPath: indexPath) as! QCEverydayGankCell
 
-        if results.count > 0 {
-            cell.result = self.results[indexPath.item]
+        if welfareResult.count > 0 {
+            cell.result = self.welfareResult[indexPath.item]
         }
 
         return cell
@@ -232,13 +218,17 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
         // 处理时间
         let formatterToDate = NSDateFormatter()
         formatterToDate.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let str = results[indexPath.item].publishedAt
-        let createTime = formatterToDate.dateFromString(str)
+//        let str = results[indexPath.item].publishedAt
+        let str = welfareResult[indexPath.item].publishedAt
+        let createTime = formatterToDate.dateFromString(str!)
 
         let formatterToString = NSDateFormatter()
         formatterToString.dateFormat = "yyyy/MM/dd"
         
         self.destVC.dateString = formatterToString.stringFromDate(createTime!)
+
+        let welfare = welfareResult[indexPath.row]
+        self.destVC.imageUrl = welfare.url!
         self.hidesBottomBarWhenPushed = true
 
         self.navigationController?.pushViewController(self.destVC, animated: true)
@@ -249,7 +239,7 @@ extension QCEveryDayGnakViewController: UICollectionViewDelegate {
 
 extension QCEveryDayGnakViewController: QCNoticeViewDelegate {
     func noticeViewDidClickTryToRefreshButton(noticeView: QCNoticeView, sender: UIButton) {
-        self.loadData()
+        self.loadDataFromRealm()
     }
 }
 //extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {

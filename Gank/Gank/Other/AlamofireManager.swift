@@ -9,64 +9,110 @@
 import Foundation
 import Alamofire
 import PKHUD
-
-class AlamofireManager {
-    typealias CompletedHandler = (rootClass: RootClass?)->Void
-
-    // 创建一个单例
-    static let sharedInstance = AlamofireManager()
+import SwiftyJSON
 
 
-    var urlStr: String = ""
-    
+class DayNetworkService: NSObject {
+    typealias CompletedHandler = Bool -> Void
+    static let dayManager = DayNetworkService()
 
-    var type: URLType? {
-        didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/\(page)"
-        }
+    var isReachable: Bool {
+        return NetworkReachabilityManager()!.isReachable
     }
-
-    var page: Int = 1 {
-        didSet {
-            urlStr = "http://gank.io/api/data/" + type!.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/\(Common.countOnePage)/" + "\(page)"
+    func fetchDayData(url: String, completedHandler: CompletedHandler) {
+        let status = NetworkReachabilityManager()!.isReachable
+        if !status {
+            completedHandler(false)
         }
-    }
+        let request = Alamofire.request(.GET, url)
+        request.responseJSON { (response) in
 
-    var alamofireNetworkReachablityManager = NetworkReachabilityManager()
-
-    func fetchDataForWelfare(completedHandler: CompletedHandler) {
-
-        let requestResult = Alamofire.request(.GET, self.urlStr, parameters: nil, encoding: .URL, headers: nil)
-        requestResult.responseJSON { (response) in
-            guard let json = response.result.value else {
-                print("\(response.debugDescription)")
-                completedHandler(rootClass: nil)
+            guard let data = response.data else {
+                completedHandler(false)
                 return
             }
-            // 处理json
-            let model = RootClass(fromDictionary: json as! NSDictionary)
-            completedHandler(rootClass: model)
-
+            let json = JSON(data: data)
+            DayResult.parseFromDict(json.dictionaryValue, fUrl: url)
+            completedHandler(true)
         }
     }
+}
 
+protocol FetchSortResultdelegate {
+    func fetchSuccess()
+    func fetchFalied()
+}
+class SortNetWorkManager: NSObject {
+    static let sortNetwordSharedInstance = SortNetWorkManager()
+
+    var isRechalble: Bool {
+        return NetworkReachabilityManager()!.isReachable
+    }
+
+    typealias CompletedHandler = Bool -> Void
+
+    var delegate: FetchSortResultdelegate?
     /**
-     网络请求
-
-     - parameter completedHandler: 得到数据后待处理的闭包。root: 包含数据的RootClass的实例
+     *  sort data
      */
-    func fectchTopicData(urlString: String, completedHandler: CompletedHandler) {
-        let dataRequest = Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL, headers: nil)
+    func fetchSortData(type: URLType, page:Int, completed: CompletedHandler) {
+        let status = NetworkReachabilityManager()?.isReachable
+        if status == false {
+            delegate?.fetchFalied()
+            completed(false)
+            return
+        }
 
-        dataRequest.responseJSON { (response) in
-            guard let json = response.result.value else {
-                print("error occurs")
-                completedHandler(rootClass: nil)
+        let urlString = Common.URL.baseURL + "/data/" + type.rawValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "/12/\(page)"
+        let request = Alamofire.request(.GET, urlString)
+
+        request.responseJSON { (response) in
+
+            guard let data = response.data else {
+                self.delegate?.fetchFalied()
+                completed(false)
                 return
             }
 
-            let modal = RootClass(fromDictionary: json as! NSDictionary)
-            completedHandler(rootClass: modal)
+
+            let json = JSON(data: data)
+
+            if let error = json["error"].bool {
+                if error == true {
+                    self.delegate?.fetchFalied()
+                    completed(false)
+                    return
+                }
+            }
+
+            if type.rawValue == "all" {
+                if let allRoot = response.result.value as? NSDictionary{
+
+                    if let results = allRoot["results"] as? NSArray {
+//                        SortResult.parseFromArray(results)
+                        AllResult.parseFromArray(results)
+                    }
+                    completed(true)
+                    self.delegate?.fetchSuccess()
+                } else {
+                    self.delegate?.fetchFalied()
+                    completed(false)
+                    return
+                }
+            }
+            if let root = response.result.value as? NSDictionary{
+
+                if let results = root["results"] as? NSArray {
+                    SortResult.parseFromArray(results)
+                }
+                completed(true)
+                self.delegate?.fetchSuccess()
+            } else {
+                self.delegate?.fetchFalied()
+                completed(false)
+                return
+            }
         }
     }
+
 }

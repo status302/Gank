@@ -56,8 +56,6 @@
 		86C8D2741CEF194900133FF5 /* QCCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */; };
 		86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */; };
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
-		86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */; };
-		86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D7F2D21D11355C0029EE75 /* EverydayResult.swift */; };
 		86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */; };
 		86D90C001D26295F00FC64AA /* GKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90BFF1D26295F00FC64AA /* GKFont.swift */; };
 		86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */; };
@@ -70,6 +68,11 @@
 		86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */; };
 		86F1BA7D1D00772300C1A61F /* ShowWelfareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */; };
 		86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */; };
+		86FEC35C1D5F65AA001B65B7 /* AllResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC35A1D5F65AA001B65B7 /* AllResult.swift */; };
+		86FEC35D1D5F65AA001B65B7 /* SortResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC35B1D5F65AA001B65B7 /* SortResult.swift */; };
+		86FEC3601D5F65F1001B65B7 /* EverydayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC35E1D5F65F1001B65B7 /* EverydayResult.swift */; };
+		86FEC3611D5F65F1001B65B7 /* EveryRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC35F1D5F65F1001B65B7 /* EveryRootClass.swift */; };
+		86FEC3631D600668001B65B7 /* DayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEC3621D600668001B65B7 /* DayResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,8 +150,6 @@
 		86C8D2731CEF194900133FF5 /* QCCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCCollectionViewLayout.swift; path = Gank/Other/QCCollectionViewLayout.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2751CEF1D2900133FF5 /* QCEverydayGankCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEverydayGankCell.swift; path = Gank/EveryDayGank/QCEverydayGankCell.swift; sourceTree = SOURCE_ROOT; };
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
-		86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryRootClass.swift; sourceTree = SOURCE_ROOT; };
-		86D7F2D21D11355C0029EE75 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
 		86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		86D90BFF1D26295F00FC64AA /* GKFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKFont.swift; sourceTree = "<group>"; };
 		86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +163,11 @@
 		86F1BA7A1D00772300C1A61F /* ShowWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowWelfareViewController.swift; sourceTree = "<group>"; };
 		86F1BA7B1D00772300C1A61F /* ShowWelfareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowWelfareViewController.xib; sourceTree = "<group>"; };
 		86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTransition.swift; sourceTree = "<group>"; };
+		86FEC35A1D5F65AA001B65B7 /* AllResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllResult.swift; path = Gank/Sort/AllResult.swift; sourceTree = SOURCE_ROOT; };
+		86FEC35B1D5F65AA001B65B7 /* SortResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortResult.swift; path = Gank/Sort/SortResult.swift; sourceTree = SOURCE_ROOT; };
+		86FEC35E1D5F65F1001B65B7 /* EverydayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EverydayResult.swift; sourceTree = SOURCE_ROOT; };
+		86FEC35F1D5F65F1001B65B7 /* EveryRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EveryRootClass.swift; sourceTree = SOURCE_ROOT; };
+		86FEC3621D600668001B65B7 /* DayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayResult.swift; sourceTree = SOURCE_ROOT; };
 		A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BC2A8188896077379D95F /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,6 +275,13 @@
 				8676CD2F1D0DA845006E860F /* QCActionView.swift */,
 			);
 			name = ActionView;
+			sourceTree = "<group>";
+		};
+		869D06D21D5634ED00A71030 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		86A19F981D09623E007CE5D5 /* View */ = {
@@ -460,6 +473,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				869D06D21D5634ED00A71030 /* Service */,
 				86E31F4C1D2CFDE0004ABD29 /* QCColor.swift */,
 				86E31F471D2CF362004ABD29 /* NoticeView */,
 				86D90C011D26B4AC00FC64AA /* Setting */,
@@ -503,8 +517,11 @@
 		86D7F2CF1D1133B00029EE75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				86D7F2D01D1134C60029EE75 /* EveryRootClass.swift */,
-				86D7F2D21D11355C0029EE75 /* EverydayResult.swift */,
+				86FEC35E1D5F65F1001B65B7 /* EverydayResult.swift */,
+				86FEC35F1D5F65F1001B65B7 /* EveryRootClass.swift */,
+				86FEC35A1D5F65AA001B65B7 /* AllResult.swift */,
+				86FEC35B1D5F65AA001B65B7 /* SortResult.swift */,
+				86FEC3621D600668001B65B7 /* DayResult.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -553,12 +570,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86BD62301CEB27B600D1FEB6 /* Build configuration list for PBXNativeTarget "Gank" */;
 			buildPhases = (
-				AEF9504B18EE7A625B514A70 /* 📦 Check Pods Manifest.lock */,
+				AEF9504B18EE7A625B514A70 /* [CP] Check Pods Manifest.lock */,
 				86BD62041CEB27B600D1FEB6 /* Sources */,
 				86BD62051CEB27B600D1FEB6 /* Frameworks */,
 				86BD62061CEB27B600D1FEB6 /* Resources */,
-				1181358C3B6F40A7B3BFCC61 /* 📦 Embed Pods Frameworks */,
-				FE447F0817A429A3855CA21C /* 📦 Copy Pods Resources */,
+				1181358C3B6F40A7B3BFCC61 /* [CP] Embed Pods Frameworks */,
+				FE447F0817A429A3855CA21C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -695,14 +712,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1181358C3B6F40A7B3BFCC61 /* 📦 Embed Pods Frameworks */ = {
+		1181358C3B6F40A7B3BFCC61 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,14 +727,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AEF9504B18EE7A625B514A70 /* 📦 Check Pods Manifest.lock */ = {
+		AEF9504B18EE7A625B514A70 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,14 +742,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FE447F0817A429A3855CA21C /* 📦 Copy Pods Resources */ = {
+		FE447F0817A429A3855CA21C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,12 +774,14 @@
 				8625952D1CF45ECF00C79531 /* Result.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */,
-				86D7F2D11D1134C60029EE75 /* EveryRootClass.swift in Sources */,
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
+				86FEC3601D5F65F1001B65B7 /* EverydayResult.swift in Sources */,
 				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
+				86FEC35D1D5F65AA001B65B7 /* SortResult.swift in Sources */,
 				86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */,
 				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
+				86FEC35C1D5F65AA001B65B7 /* AllResult.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
 				860B145B1D4CDDD300C12EC9 /* QCPassAppService.swift in Sources */,
@@ -773,6 +792,8 @@
 				861EC7F81D1CDF38001452A4 /* QCNavigationController.swift in Sources */,
 				86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				86FEC3611D5F65F1001B65B7 /* EveryRootClass.swift in Sources */,
+				86FEC3631D600668001B65B7 /* DayResult.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
@@ -787,7 +808,6 @@
 				862595331CF4682B00C79531 /* WelfareCollectionViewCell.swift in Sources */,
 				86D90C001D26295F00FC64AA /* GKFont.swift in Sources */,
 				86F1BA7C1D00772300C1A61F /* ShowWelfareViewController.swift in Sources */,
-				86D7F2D31D11355C0029EE75 /* EverydayResult.swift in Sources */,
 				86C3040E1D1E50E400854571 /* SlideTransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

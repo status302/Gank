@@ -8,12 +8,11 @@
 //  启动动画的设置
 
 import UIKit
-import LTMorphingLabel
 
 class ViewController: UIViewController, QCTextAnimatorDelegate {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var welcomeLabel: LTMorphingLabel!
+//    @IBOutlet weak var welcomeLabel: LTMorphingLabel!
 
     @IBOutlet weak var gankView: UIView!
 
@@ -29,18 +28,18 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        welcomeLabel.font = UIFont.font_heart(size: 56)
-        welcomeLabel.textColor = UIColor.yellowColor()
-        welcomeLabel.alpha = 1.0
-        welcomeLabel.text = ""
-        let effect = LTMorphingEffect.Sparkle
-        welcomeLabel.morphingEffect = effect
-        welcomeLabel.text = "Welcome"
+//        welcomeLabel.font = UIFont.font_heart(size: 56)
+//        welcomeLabel.textColor = UIColor.yellowColor()
+//        welcomeLabel.alpha = 1.0
+//        welcomeLabel.text = ""
+//        let effect = LTMorphingEffect.Sparkle
+//        welcomeLabel.morphingEffect = effect
+//        welcomeLabel.text = "Welcome"
 
         iconImageViewY = iconImageView.y
         distanceTransform = (gankView.y - self.iconImageView.y - iconImageView.height) * 0.5
 
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0.5))
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * 0))
         dispatch_after(time, dispatch_get_main_queue()) {
 
             self.startTextAnimator()
@@ -69,8 +68,8 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
 
         initTextAnimator()
     }
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
 
         self.iconImageView.layer.removeAllAnimations()
         textAnimator = nil
@@ -81,7 +80,7 @@ class ViewController: UIViewController, QCTextAnimatorDelegate {
         updateTextAnimator()
     }
     func updateTextAnimator() {
-        textAnimator?.textToAnimate = "Gank.io"
+        textAnimator?.textToAnimate = "GANK"
     }
     func startTextAnimator() {
 
@@ -100,13 +99,8 @@ extension ViewController {
 
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 
-        UIView.animateKeyframesWithDuration(1.5, delay: 0, options: [.CalculationModeLinear], animations: {
-            UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 1.5 * 0.1666666, animations: {
-                self.iconImageView.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-            })
-            UIView.addKeyframeWithRelativeStartTime(1.5 * 0.1666666, relativeDuration: 1.5 * 0.8333333, animations: {
-                self.iconImageView.transform = CGAffineTransformTranslate(self.iconImageView.transform, self.distanceTransform!, self.distanceTransform!)
-            })
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.2, options: .CurveEaseIn, animations: {
+            self.iconImageView.transform = CGAffineTransformMakeScale(1.5, 1.5)
             }) { (finished) in
 
         }

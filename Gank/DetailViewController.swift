@@ -43,17 +43,12 @@ import MonkeyKing
 
 class DetailViewController: UIViewController {
 
-    typealias CompletedHandler = (rootClass: EverydayRootClass?)->(Void)
-    typealias LoadedData = (finished: Bool)->Void
-
     // MARK: - Properties
     var dateString: String! {
         didSet {
             urlString = "http://gank.io/api/day/" + dateString
         }
     }
-    lazy var results = [String:[EverydayResult]]()
-    lazy var categories = [String]()
 
     var urlString = String()
     var imageUrl = String() {
@@ -62,11 +57,20 @@ class DetailViewController: UIViewController {
         }
     }
     var result: EverydayResult?
+
+    var dayResult: DayResult!
+    var dayResultCategory: [String:[CategoryResult]]! {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+
     let originOffsetY = -1 * UIScreen.mainScreen().bounds.height * 0.66
 
     // MARK: - Lazy
     lazy var imageView :UIImageView = {
         let imageView = UIImageView()
+//        imageView.userInteractionEnabled = true
         imageView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height * 0.66)
         imageView.contentMode = UIViewContentMode.ScaleToFill
 
@@ -88,6 +92,8 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.registerClass(CategoryCell.self, forCellReuseIdentifier: String(CategoryCell))
+
         return tableView
 
     }()
@@ -105,7 +111,7 @@ class DetailViewController: UIViewController {
         guard let sharedImage = imageView.image else {
             return
         }
-        let todayUrlStr = "http://gank.io/day/" + dateString
+        let todayUrlStr = "http://gank.io/" + dateString
         guard let todayUrl = NSURL(string: todayUrlStr) else {
             return
         }
@@ -132,7 +138,8 @@ class DetailViewController: UIViewController {
     @objc private func showImage() {
         let showImageVC = ShowWelfareViewController()
 
-        showImageVC.imageUrl = self.imageUrl
+//        showImageVC.imageUrl = self.imageUrl
+
         self.presentViewController(showImageVC, animated: true, completion: nil)
     }
 
@@ -140,7 +147,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         // Do any additional setup after loading the view.
 
         self.automaticallyAdjustsScrollViewInsets = false
@@ -163,6 +169,26 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
 
+    private func fetchDataFromNet() {
+        fetchDataFromRealm()
+
+        DayNetworkService.dayManager.fetchDayData(urlString) { (finished) in
+            if finished {
+                self.fetchDataFromRealm()
+            }
+        }
+    }
+    private func fetchDataFromRealm() {
+        dayResult = nil
+        dayResultCategory = nil
+
+        dayResult = DayResult.currentDayResult(urlString)
+
+        dayResultCategory = DayResult.currentDayResultCategory(urlString)
+
+        self.tableView.reloadData()
+    }
+
 
     private func setupSubviews() {
         /**
@@ -178,49 +204,9 @@ class DetailViewController: UIViewController {
 
     }
 
-    private func loadData(finishedLoad: LoadedData) {
-        self.results.removeAll()
-
-        self.fetchDataManager { (rootClass) -> (Void) in
-            guard let root = rootClass else {
-                return
-            }
-
-            self.results = root.results
-            self.categories = root.categories
-
-            self.categories.sortInPlace({ (c1, c2) -> Bool in
-                c1 < c2
-            })
-
-            self.tableView.reloadData()
-            finishedLoad(finished: true)
-        }
-    }
-
-    private func fetchDataManager(completedHandler: CompletedHandler) {
-        HUD.flash(.LabeledProgress(title: "数据加载ing", subtitle: ""),delay: 3.0)
-        Alamofire.request(.GET, urlString, parameters: nil, encoding: .URL, headers: nil).responseJSON { (response) in
-            guard let json = response.result.value else {
-                completedHandler(rootClass: nil)
-                HUD.flash(.LabeledError(title: "数据加载失败", subtitle: "请稍后再试~"),delay: 1.0)
-                HUD.hide()
-                return
-            }
-
-            let model = EverydayRootClass(fromDictionary: json as! NSDictionary)
-
-            completedHandler(rootClass: model)
-            /**
-             隐藏蒙版
-             */
-            HUD.hide()
-
-        }
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
 
         setupSubviews()
 
@@ -228,29 +214,29 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
+        fetchDataFromNet()
 
-        loadData { (finished) in
-            if finished {
-                self.imageUrl = self.results["福利"]![0].url
-            }
+        if imageView.image == nil {
+            imageView.kf_setImageWithURL(NSURL(string: imageUrl)!)
         }
-
-//        self.tableView.reloadData()
-
-
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-
-
+        dayResultCategory = nil
+        dayResult = nil
+        imageView.image = nil
     }
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
 
-        self.imageView.image = nil
+
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = nil
 
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 
     @IBAction func dismiss(sender: UIButton) {
@@ -270,25 +256,32 @@ extension DetailViewController: UITableViewDelegate {
 
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let category = categories[indexPath.section]
+        guard let dr = dayResult else {
+            return 0.001
+        }
+        let category = dr.category[indexPath.section]
                 /// 避免空值
-        guard let catResult = results[category] else {
+        guard let catResult = dayResultCategory[category.type!] else {
             return 56
         }
         let result = catResult[indexPath.row]
-        return result.cellHeight
+
+        let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
+        let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
+        let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 10
+
+        return CGFloat(cellHeight)
     }
     /**
      *  选中cell的操作
      */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let category = categories[indexPath.section]
-
-        guard let catResult = results[category] else {
+        let category = dayResult.category[indexPath.section].type
+        guard let catResult = dayResultCategory[category!] else {
             return
         }
-
         let result = catResult[indexPath.row]
+
         let webVC = UIStoryboard(name: "QCWebViewController", bundle: nil).instantiateViewControllerWithIdentifier("QCWebViewController") as! QCWebViewController
         webVC.url =  result.url
 
@@ -299,31 +292,43 @@ extension DetailViewController: UITableViewDelegate {
 extension DetailViewController: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categories.count
+        guard let dr = dayResult else {
+            return 0
+        }
+        return dr.category.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        let category = categories[section]
-        return results[category]!.count
+
+        guard let dr = dayResult else {
+            return 0
+        }
+        guard let drc = dayResultCategory else {
+            return 0
+        }
+        let category = dr.category[section]
+
+        let categories = drc[category.type!]
+        return categories!.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(CategoryCell), forIndexPath: indexPath) as! CategoryCell
 
-        let identifier: String = "detailCellID"
-        let cell = CategoryCell(style: .Default, reuseIdentifier: identifier)
-
-        let category = categories[indexPath.section]
-//        cell.everydayResult = results[category]![indexPath.row]
-        guard let catResults  = results[category] else {
+        guard let dr = dayResult else {
             return cell
         }
-
-        cell.everydayResult = catResults[indexPath.row]
-
+        let category = dr.category[indexPath.section]
+        if let cr = dayResultCategory[category.type!] {
+            cell.everydayResult = cr[indexPath.row]
+        }
         return cell
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categories[section]
+        guard let dr = dayResult else {
+            return nil
+        }
+        return dr.category[section].type
     }
 
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,21 +24,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.whiteColor()
 
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateInitialViewController()
+        let vc = sb.instantiateInitialViewController() as! ViewController
         window?.rootViewController = vc
 
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 5))
-        dispatch_after(time, dispatch_get_main_queue()) { 
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 3))
+        dispatch_after(time, dispatch_get_main_queue()) {
 
             self.window?.rootViewController = QCTabBarController()
         }
-
         window?.makeKeyAndVisible()
+
 
         // 设置kingfisher的最大缓存空间
         let cache = KingfisherManager.sharedManager.cache
         cache.maxMemoryCost = 30 * 1024 * 1024
         cache.maxDiskCacheSize = 30 * 1024 * 1024
+
+        self.realmSchemaMigration()
 
         return true
     }
@@ -63,7 +66,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    private func realmSchemaMigration() {
+        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { (migration, oldSchemaVersion) in
+            migration.enumerate(SortResult.className(), { (oldObject, newObject) in
+                if oldSchemaVersion < 1 {
+                    newObject!["isCollected"] = false
+                }
+            })
+        })
+        Realm.Configuration.defaultConfiguration = config
+    }
 
 }
 
