@@ -16,17 +16,16 @@ class QCPassAppService: NSObject {
         return NetworkReachabilityManager()!.isReachable
     }
     func getPassAppStoreService() {
-        if networkReachable {
-            if let url = NSURL(string: "http://simapps.cn/php/index/cqcapi.html") {
-                do {
-                    var passed: NSString = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
-                    if passed.containsString("\n") {
-                        passed = passed.substringToIndex(1)
-                    }
-                    QCUserDefault.setPassed(passed)
-                } catch let e{
-                    print("\(e)")
+        guard networkReachable == false else { return }
+        if let url = NSURL(string: "http://simapps.cn/php/index/cqcapi.html") {
+            do {
+                var passed: NSString = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+                if passed.containsString("\n") {
+                    passed = passed.substringToIndex(1)
                 }
+                QCUserDefault.setPassed(passed)
+            } catch let e{
+                print("\(e)")
             }
         }
     }

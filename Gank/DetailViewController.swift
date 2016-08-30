@@ -268,7 +268,7 @@ extension DetailViewController: UITableViewDelegate {
 
         let descLabelHeight = SortResult.stringToSize(14, str: result.desc! as NSString).height
         let timeLabelHeight = SortResult.stringToSize(10, str: result.publishedAt! as NSString).height
-        let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 10
+        let cellHeight = Float(descLabelHeight) + Float(timeLabelHeight) + 15
 
         return CGFloat(cellHeight)
     }
@@ -321,7 +321,13 @@ extension DetailViewController: UITableViewDataSource {
         let category = dr.category[indexPath.section]
         if let cr = dayResultCategory[category.type!] {
             cell.everydayResult = cr[indexPath.row]
+            if indexPath.row == cr.count - 1 {
+                cell.lineView.hidden = true
+            } else {
+                cell.lineView.hidden = false
+            }
         }
+
         return cell
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
