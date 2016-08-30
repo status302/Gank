@@ -184,7 +184,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
     }()
     lazy var createString = String()
-    lazy var results = [Result]()
 
     lazy var destVC: DetailViewController = {
 

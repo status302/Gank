@@ -21,12 +21,7 @@ class WelfareCollectionViewCell: UICollectionViewCell {
         descriptionLabel.textColor = UIColor.whiteColor()
         descriptionLabel.font = UIFont.font_dfphaib(size: 12) //UIFont(name: "DFPHaiBaoW12-GB", size: 12)
     }
-    var result: Result! {
-        didSet {
-            meiziImageView.kf_setImageWithURL(NSURL(string: result.url)!)
-            descriptionLabel.text = "#" + result.desc
-        }
-    }
+
     var welfareResult: SortResult! {
         didSet {
             meiziImageView.kf_setImageWithURL(NSURL(string: welfareResult.url!)!)
@@ -40,6 +35,4 @@ class WelfareCollectionViewCell: UICollectionViewCell {
         return welfareViewCell
     }()
 
-    var manImageURLs = ["http://7xk67j.com1.z0.glb.clouddn.com/images%20%281%29.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/images.jpeg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-2.jpg", "http://7xk67j.com1.z0.glb.clouddn.com/Daniel-Wu-Whos-Dated-Who.jpg"]
-    
 }

@@ -168,8 +168,6 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
         return collectionView
     }()
 
-    lazy var results = [Result]()
-
 }
 // MARK: - UICollectionViewDataSource
 extension WelfareViewController: UICollectionViewDataSource {
