@@ -25,7 +25,7 @@ class WelfareViewController: UIViewController, UIViewControllerTransitioningDele
 
     var welfareResults: [SortResult]! {
         didSet {
-            self.collectionView.reloadData()
+            collectionView.reloadData()
         }
     }
     var type: URLType! {

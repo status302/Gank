@@ -60,6 +60,7 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
             make.height.equalTo(200)
         })
         nView = noticeView
+        self.loadDataFromNetwork()
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,10 +68,11 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         // 设置导航栏透明
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
 
 //        setting?.view.frame = view.bounds
 //        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
-        self.loadDataFromNetwork()
+//        self.loadDataFromNetwork()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -78,7 +80,10 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         // 设置导航栏为nil
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
-
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .Default
     }
 
     override func didReceiveMemoryWarning() {

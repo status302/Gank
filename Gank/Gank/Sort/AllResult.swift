@@ -21,7 +21,7 @@ class AllResult: Object {
     dynamic var who: String?
     dynamic var isCollected: Bool = false  /// 收藏标识： 0 --->>> 不收藏， 1 --->>> 收藏
 
-    class func currentAllResult(count: Int) -> [AllResult] {
+    class func currentAllResult(/*page: Int, */count: Int) -> [AllResult] {
         let realm = try! Realm()
 
         let allResults = realm.objects(AllResult).sorted("createdAt", ascending: false)
@@ -30,7 +30,7 @@ class AllResult: Object {
         resultArr.removeAll()
 
         for (index, result) in allResults.enumerate() {
-            if index < count {
+            if index < count /** page && index > count * (page - 1) */{
                 resultArr.append(result)
             } else {
                 return resultArr

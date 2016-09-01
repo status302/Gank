@@ -15,21 +15,14 @@ import SnapKit
 class QCTopicViewController: UITableViewController, UIViewControllerTransitioningDelegate {
     let sortNetworkManager = SortNetWorkManager.sortNetwordSharedInstance
 
-    var sortResults = [SortResult]() {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    var allResults = [AllResult]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var sortResults = [SortResult]()
+
+    var allResults = [AllResult]()
     // MARK: - URL相关
 
     var type: URLType? {
         didSet {
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }
     }
     var page: Int = 1 {
@@ -54,7 +47,7 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
 
         fetchData()
 
-        tableView.registerClass(SortCell.self, forCellReuseIdentifier: "topicCellID")
+        tableView.registerClass(SortCell.self, forCellReuseIdentifier: "SortCell")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -78,28 +71,19 @@ class QCTopicViewController: UITableViewController, UIViewControllerTransitionin
                 self.customRefreshControl.endAnimation()
             }
             self.loadDataFromRealm()
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }
     }
 
 }
 // MARK: - 这里用代理有点问题。所以不使用这个
 extension QCTopicViewController {
-    /*
-    func fetchSuccess() {
-        self.customRefreshControl.endAnimation()
-        loadDataFromRealm()
-    }
-    func fetchFalied() {
-        self.customRefreshControl.endAnimation()
-        loadDataFromRealm()
-    }
-     */
+
     func loadDataFromRealm() {
+        allResults.removeAll()
         sortResults.removeAll()
-        tableView.reloadData()
         if type == URLType.all {
-            let results = AllResult.currentAllResult(15 * page)
+            let results = AllResult.currentAllResult(/*page, count: */ 15 * page)
             for result in results {
                 allResults.append(result)
             }
@@ -111,6 +95,16 @@ extension QCTopicViewController {
             sortResults.append(result)
         }
         tableView.reloadData()
+    }
+
+    private func reloadTableView(page: Int) {
+        var indexPaths = [NSIndexPath]()
+        for i in (page - 1) * 15 ..< page * 15 {
+            let indexPath = NSIndexPath(forRow: i, inSection: 0)
+            indexPaths.append(indexPath)
+        }
+        self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
+
     }
 }
 
@@ -128,8 +122,7 @@ extension QCTopicViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let cellID = "topicCellID"
-//        let cell = SortCell(style: .Default, reuseIdentifier: cellID)
+        let cellID = "SortCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! SortCell
 
         if type == URLType.all {
