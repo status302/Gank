@@ -29,7 +29,6 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
             if isLoading { // 设置reloading 的图标为 X
 
                 UIView.animateWithDuration(0.0889, animations: {
-
                     self.reloadBarButton.image = UIImage(named: "cancel")
                 })
 
@@ -78,9 +77,6 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
         webView.translatesAutoresizingMaskIntoConstraints = false
 
-        /**
-         *  这句话添加上去就会导致程序的崩溃
-         */
         webView.scrollView.delegate = self
 
         return webView
@@ -92,18 +88,15 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
         super.init(coder: aDecoder)
     }
 
-    override func loadView() {
-        if self.navigationController?.toolbar != nil {
-            self.navigationController?.toolbar.hidden = true
-        }
-        super.loadView()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 
         view.insertSubview(webView, atIndex: 0)
+
+        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnTap = true
 
         webView.snp.makeConstraints { (make) in
             make.width.equalTo(view.snp.width)
@@ -146,16 +139,11 @@ class QCWebViewController: UIViewController, WKNavigationDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.toolbar.backgroundColor = UIColor.clearColor()
-        self.toolbar.setShadowImage(UIImage(), forToolbarPosition: .Any)
-        self.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .Any, barMetrics: .Default)
-    }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.hidesBottomBarWhenPushed = false
+        navigationController?.hidesBarsOnSwipe = false
+//        navigationController?.hidesBarsOnTap = false
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -250,19 +238,15 @@ extension QCWebViewController {
 }
 
 extension QCWebViewController: UIScrollViewDelegate {
-//    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-//        UIView.animateWithDuration(0.5) {
-//            self.toolbar.transform = CGAffineTransformIdentity
-//        }
-//    }
+
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         UIView.animateWithDuration(0.5) {
-            self.toolbar.transform = CGAffineTransformIdentity
+//            self.toolbar.transform = CGAffineTransformIdentity
         }
     }
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         UIView.animateWithDuration(0.5) {
-            self.toolbar.transform = CGAffineTransformMakeTranslation(0, self.toolbar.height)
+//            self.toolbar.transform = CGAffineTransformMakeTranslation(0, self.toolbar.height)
         }
     }
 }

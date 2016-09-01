@@ -16,7 +16,7 @@ class QCPassAppService: NSObject {
         return NetworkReachabilityManager()!.isReachable
     }
     func getPassAppStoreService() {
-        guard networkReachable == false else { return }
+        guard networkReachable == true else { return }
         if let url = NSURL(string: "http://simapps.cn/php/index/cqcapi.html") {
             do {
                 var passed: NSString = try NSString(contentsOfURL: url, encoding: NSUTF8StringEncoding)
