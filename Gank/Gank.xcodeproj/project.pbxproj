@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		4724A468AE69BC895E02804B /* Pods_Gank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F0D7ECC165DF14B91A8A9B /* Pods_Gank.framework */; };
 		860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */; };
+		86076ADD1D759CCE00748AAA /* GKSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076ADC1D759CCE00748AAA /* GKSettingHeaderView.swift */; };
+		86076ADF1D759CDD00748AAA /* GKSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86076ADE1D759CDD00748AAA /* GKSettingHeaderView.xib */; };
+		86076AE41D75A04100748AAA /* GKSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AE21D75A04100748AAA /* GKSettingCell.swift */; };
+		86076AE51D75A04100748AAA /* GKSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86076AE31D75A04100748AAA /* GKSettingCell.xib */; };
+		86076AE81D75A0D100748AAA /* GKNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AE71D75A0D100748AAA /* GKNibName.swift */; };
+		86076AEA1D75D23200748AAA /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86076AE91D75D23200748AAA /* Setting.storyboard */; };
+		86076AEE1D75D69E00748AAA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AED1D75D69E00748AAA /* GKSettingViewController.swift */; };
+		86076AF01D75D95100748AAA /* GKSettingNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AEF1D75D95100748AAA /* GKSettingNavController.swift */; };
+		86076AF21D75E52000748AAA /* GKSettingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AF11D75E52000748AAA /* GKSettingTransition.swift */; };
+		86076AF41D7714E000748AAA /* GKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86076AF31D7714DF00748AAA /* GKApp.swift */; };
 		860B145B1D4CDDD300C12EC9 /* QCPassAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B145A1D4CDDD300C12EC9 /* QCPassAppService.swift */; };
 		861CEDCA1D23A44F00A82916 /* ZapfinoExtraLT-Two.otf in Resources */ = {isa = PBXBuildFile; fileRef = 861CEDC91D23A44F00A82916 /* ZapfinoExtraLT-Two.otf */; };
 		861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861EC68C1D1B9593001452A4 /* QCWebViewController.swift */; };
@@ -56,9 +66,6 @@
 		86C8D2781CEF1D2900133FF5 /* QCEverydayGankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */; };
 		86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */; };
 		86D90C001D26295F00FC64AA /* GKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90BFF1D26295F00FC64AA /* GKFont.swift */; };
-		86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */; };
-		86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */; };
-		86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */; };
 		86E122841D748D7000E04739 /* QCUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E122831D748D7000E04739 /* QCUserDefault.swift */; };
 		86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */; };
 		86E31F4B1D2CF389004ABD29 /* QCNoticeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */; };
@@ -94,6 +101,16 @@
 		209F5E66BF07E53AD4B7091D /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 		2F9091BAEA8D432BB0CCE95F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		860186661CEF135400A91D4E /* QCEveryDayGnakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QCEveryDayGnakViewController.swift; path = Gank/EveryDayGank/QCEveryDayGnakViewController.swift; sourceTree = SOURCE_ROOT; };
+		86076ADC1D759CCE00748AAA /* GKSettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingHeaderView.swift; sourceTree = "<group>"; };
+		86076ADE1D759CDD00748AAA /* GKSettingHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingHeaderView.xib; sourceTree = "<group>"; };
+		86076AE21D75A04100748AAA /* GKSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingCell.swift; sourceTree = "<group>"; };
+		86076AE31D75A04100748AAA /* GKSettingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingCell.xib; sourceTree = "<group>"; };
+		86076AE71D75A0D100748AAA /* GKNibName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKNibName.swift; sourceTree = "<group>"; };
+		86076AE91D75D23200748AAA /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		86076AED1D75D69E00748AAA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
+		86076AEF1D75D95100748AAA /* GKSettingNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingNavController.swift; sourceTree = "<group>"; };
+		86076AF11D75E52000748AAA /* GKSettingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingTransition.swift; sourceTree = "<group>"; };
+		86076AF31D7714DF00748AAA /* GKApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKApp.swift; sourceTree = "<group>"; };
 		860B145A1D4CDDD300C12EC9 /* QCPassAppService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCPassAppService.swift; sourceTree = "<group>"; };
 		861CEDC91D23A44F00A82916 /* ZapfinoExtraLT-Two.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZapfinoExtraLT-Two.otf"; sourceTree = "<group>"; };
 		861EC68C1D1B9593001452A4 /* QCWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCWebViewController.swift; sourceTree = "<group>"; };
@@ -148,9 +165,6 @@
 		86C8D2761CEF1D2900133FF5 /* QCEverydayGankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QCEverydayGankCell.xib; path = Gank/EveryDayGank/QCEverydayGankCell.xib; sourceTree = SOURCE_ROOT; };
 		86D90BFD1D26291200FC64AA /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		86D90BFF1D26295F00FC64AA /* GKFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKFont.swift; sourceTree = "<group>"; };
-		86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKSettingViewController.swift; sourceTree = "<group>"; };
-		86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GKSettingViewController.xib; sourceTree = "<group>"; };
-		86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKShowSettingAnimator.swift; sourceTree = "<group>"; };
 		86E122831D748D7000E04739 /* QCUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCUserDefault.swift; sourceTree = "<group>"; };
 		86E31F481D2CF37C004ABD29 /* QCNoticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCNoticeView.swift; sourceTree = "<group>"; };
 		86E31F4A1D2CF389004ABD29 /* QCNoticeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCNoticeView.xib; sourceTree = "<group>"; };
@@ -213,6 +227,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86076AE61D75A0B700748AAA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				86076AE71D75A0D100748AAA /* GKNibName.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		861EC6921D1B9B04001452A4 /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +267,7 @@
 				86C8D26E1CEF152E00133FF5 /* Common.swift */,
 				862595291CF3450300C79531 /* URLs.swift */,
 				86E122831D748D7000E04739 /* QCUserDefault.swift */,
+				86076AF31D7714DF00748AAA /* GKApp.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -460,6 +483,7 @@
 		86BD623C1CEB2A0200D1FEB6 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				86076AE61D75A0B700748AAA /* Protocols */,
 				869D06D21D5634ED00A71030 /* Service */,
 				86E31F471D2CF362004ABD29 /* NoticeView */,
 				86D90C011D26B4AC00FC64AA /* Setting */,
@@ -515,8 +539,14 @@
 		86D90C011D26B4AC00FC64AA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				86D90C021D26B4D200FC64AA /* GKSettingViewController.swift */,
-				86D90C031D26B4D200FC64AA /* GKSettingViewController.xib */,
+				86076AED1D75D69E00748AAA /* GKSettingViewController.swift */,
+				86076AE91D75D23200748AAA /* Setting.storyboard */,
+				86076AEF1D75D95100748AAA /* GKSettingNavController.swift */,
+				86076ADC1D759CCE00748AAA /* GKSettingHeaderView.swift */,
+				86076ADE1D759CDD00748AAA /* GKSettingHeaderView.xib */,
+				86076AE21D75A04100748AAA /* GKSettingCell.swift */,
+				86076AE31D75A04100748AAA /* GKSettingCell.xib */,
+				86076AF11D75E52000748AAA /* GKSettingTransition.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -544,7 +574,6 @@
 			children = (
 				86F8B6971D10EE510028B5B7 /* ScaleTransition.swift */,
 				86C3040D1D1E50E400854571 /* SlideTransitionAnimator.swift */,
-				86D90C061D26B61200FC64AA /* GKShowSettingAnimator.swift */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -662,13 +691,14 @@
 			files = (
 				869A65F11D250B7D000DB0B6 /* Activities.xcassets in Resources */,
 				864B2A341CF9F36500C5569A /* DFPHaiBaoW12-GB.ttf in Resources */,
+				86076AEA1D75D23200748AAA /* Setting.storyboard in Resources */,
+				86076ADF1D759CDD00748AAA /* GKSettingHeaderView.xib in Resources */,
 				86A6B9581D0C650900A17399 /* DetailViewController.xib in Resources */,
 				861EC6911D1B99CD001452A4 /* QCWebViewController.storyboard in Resources */,
 				86E31F4B1D2CF389004ABD29 /* QCNoticeView.xib in Resources */,
 				864B2A301CF9F01100C5569A /* Lobster1.4.otf in Resources */,
 				86BD62161CEB27B600D1FEB6 /* LaunchScreen.storyboard in Resources */,
 				867DB3591D19517A002FC378 /* Assets.xcassets in Resources */,
-				86D90C051D26B4D200FC64AA /* GKSettingViewController.xib in Resources */,
 				864B2A2C1CF820F100C5569A /* Sort.storyboard in Resources */,
 				86BD62421CEB2BF200D1FEB6 /* QCTabBar.xib in Resources */,
 				8631EE341D08697700661AE0 /* RefreshContents.xib in Resources */,
@@ -677,6 +707,7 @@
 				86BD62111CEB27B600D1FEB6 /* Main.storyboard in Resources */,
 				862595351CF4684300C79531 /* WelfareCollectionViewCell.xib in Resources */,
 				86D90BFE1D26291200FC64AA /* Roboto-Bold.ttf in Resources */,
+				86076AE51D75A04100748AAA /* GKSettingCell.xib in Resources */,
 				861CEDCA1D23A44F00A82916 /* ZapfinoExtraLT-Two.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,34 +789,39 @@
 				86E31F491D2CF37C004ABD29 /* QCNoticeView.swift in Sources */,
 				86BD620E1CEB27B600D1FEB6 /* ViewController.swift in Sources */,
 				86C5C8DE1D142D010046744D /* NSDate+QC.swift in Sources */,
+				86076ADD1D759CCE00748AAA /* GKSettingHeaderView.swift in Sources */,
 				8676CD301D0DA845006E860F /* QCActionView.swift in Sources */,
 				860186671CEF135400A91D4E /* QCEveryDayGnakViewController.swift in Sources */,
+				86076AE41D75A04100748AAA /* GKSettingCell.swift in Sources */,
 				86FEC3601D5F65F1001B65B7 /* EverydayResult.swift in Sources */,
 				86C45E551D12F17E0015AEA4 /* CategoryCell.swift in Sources */,
 				86E122841D748D7000E04739 /* QCUserDefault.swift in Sources */,
 				86FEC35D1D5F65AA001B65B7 /* SortResult.swift in Sources */,
-				86D90C071D26B61200FC64AA /* GKShowSettingAnimator.swift in Sources */,
+				86076AE81D75A0D100748AAA /* GKNibName.swift in Sources */,
 				86C5C8E01D14ED960046744D /* SortCell.swift in Sources */,
 				86FEC35C1D5F65AA001B65B7 /* AllResult.swift in Sources */,
 				86C8D2711CEF170400133FF5 /* UIColor+QC.swift in Sources */,
 				8625952A1CF3450300C79531 /* URLs.swift in Sources */,
+				86076AF21D75E52000748AAA /* GKSettingTransition.swift in Sources */,
 				860B145B1D4CDDD300C12EC9 /* QCPassAppService.swift in Sources */,
 				861EC68E1D1B9593001452A4 /* QCWebViewController.swift in Sources */,
 				86BD620C1CEB27B600D1FEB6 /* AppDelegate.swift in Sources */,
+				86076AF41D7714E000748AAA /* GKApp.swift in Sources */,
 				86A6B9571D0C650900A17399 /* DetailViewController.swift in Sources */,
 				862595311CF4626A00C79531 /* AlamofireManager.swift in Sources */,
 				861EC7F81D1CDF38001452A4 /* QCNavigationController.swift in Sources */,
 				86A1FDBE1D1982B00055BBA5 /* WeChatActivity.swift in Sources */,
 				86C8D2771CEF1D2900133FF5 /* QCEverydayGankCell.swift in Sources */,
+				86076AF01D75D95100748AAA /* GKSettingNavController.swift in Sources */,
 				86FEC3611D5F65F1001B65B7 /* EveryRootClass.swift in Sources */,
 				86FEC3631D600668001B65B7 /* DayResult.swift in Sources */,
 				864B2A2E1CF823C400C5569A /* SortViewController.swift in Sources */,
 				8631EE331D08697700661AE0 /* CustomRefreshControl.swift in Sources */,
 				864B2A1E1CF4A26D00C5569A /* WelfareFlowLayout.swift in Sources */,
 				864B2A361CFDD7C400C5569A /* UIBarButtonItem+QC.swift in Sources */,
-				86D90C041D26B4D200FC64AA /* GKSettingViewController.swift in Sources */,
 				864B08691D22A5C70009E49F /* QCTextAnimator.swift in Sources */,
 				862595221CF3358F00C79531 /* UIView+QC.swift in Sources */,
+				86076AEE1D75D69E00748AAA /* GKSettingViewController.swift in Sources */,
 				86F8B6981D10EE510028B5B7 /* ScaleTransition.swift in Sources */,
 				86C8D26F1CEF152E00133FF5 /* Common.swift in Sources */,
 				86E82DAD1D0917EE00BCB31B /* QCTopicViewController.swift in Sources */,

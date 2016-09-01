@@ -166,7 +166,6 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
 
     private func fetchDataFromNet() {
@@ -201,12 +200,10 @@ class DetailViewController: UIViewController {
          */
 
         view.insertSubview(imageView, aboveSubview: tableView)
-
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
 
         setupSubviews()
 
@@ -214,11 +211,12 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
-        fetchDataFromNet()
 
         if imageView.image == nil {
             imageView.kf_setImageWithURL(NSURL(string: imageUrl)!)
         }
+
+        fetchDataFromNet()
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -229,7 +227,6 @@ class DetailViewController: UIViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-
 
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = nil

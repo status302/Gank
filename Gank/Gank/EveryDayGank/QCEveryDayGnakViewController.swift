@@ -15,8 +15,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
 
     weak var rightButton: UIButton?
 //    lazy var settingAnimator = GKShowSettingAnimator()
-//    var setting: GKSettingViewController?
-//    var isSettingShowing = false
     var nView: QCNoticeView!
     var welfareResult = [SortResult]()
     var page: Int = 1 {
@@ -37,16 +35,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.view.addSubview(self.collectionView)
 
 
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), highlightedImage: UIImage(named: "setting_highlighted"), target: self, action: #selector(showSettingButtonCicked))
 
-//        loadData()
         loadDataFromRealm()
-
-//        setting = GKSettingViewController()
-//        self.addChildViewController(setting!)
-//        setting?.view.layer.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-//        view.addSubview(setting!.view)
-
 
         // show notice View 
         let noticeView = QCNoticeView.loadNoticeView()
@@ -68,8 +59,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
 
-//        setting?.view.frame = view.bounds
-//        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
         self.loadDataFromNetwork()
     }
 
@@ -102,7 +91,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightView)
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
     func loadDataFromRealm() {
         if welfareResult.count != 0 {
@@ -128,23 +116,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
     func showSettingButtonCicked() {
         // 在这里显示设置
-//        let settingVC = GKSettingViewController()
-//        settingVC.transitioningDelegate = settingAnimator
-//        settingVC.modalPresentationStyle = .Custom
-
-//        self.presentViewController(settingVC, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(settingVC, animated: true)
-//        isSettingShowing = !isSettingShowing
-//        if isSettingShowing {
-//            UIView.animateWithDuration(0.8) {
-//                self.setting?.view.transform = CGAffineTransformIdentity
-//            }
-//        } else {
-//            UIView.animateWithDuration(0.8, animations: { 
-//                self.setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
-//            })
-//        }
-
+        settingNav.transitioningDelegate = settingTransition
+        settingNav.modalPresentationStyle = .Custom
+        self.presentViewController(settingNav, animated: true, completion: nil)
     }
     func raotateRightItem() {
         UIView.animateWithDuration(0.5, delay: 0, options: .Repeat, animations: {
@@ -190,6 +164,12 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         let destVC = DetailViewController()
         return destVC
     }()
+    lazy var settingNav: GKSettingNavController = {
+        let settingNav = UIStoryboard(name: "Setting", bundle: nil).instantiateInitialViewController() as! GKSettingNavController
+
+        return settingNav
+    }()
+    lazy var settingTransition = GKSettingTransition()
 }
 
 extension QCEveryDayGnakViewController {
@@ -254,7 +234,7 @@ extension QCEveryDayGnakViewController: QCNoticeViewDelegate {
 }
 //extension QCEveryDayGnakViewController: UIViewControllerTransitioningDelegate {
 //    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return GKShowSettingAnimator()
+//        return GKSettingTransition()
 //    }
 //}
 

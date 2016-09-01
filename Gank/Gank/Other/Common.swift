@@ -56,7 +56,7 @@ extension Common {
     static let countOnePage:Int = 15
 }
 
-extension Common {
+extension Common { /// Common.WeChat
     struct WeChat {
         
         internal static let appID = "wx9b0a6ed257333cd6"

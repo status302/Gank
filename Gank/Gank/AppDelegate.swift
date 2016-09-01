@@ -43,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.realmSchemaMigration()
 
+        UINavigationBar.appearance().tintColor = UIColor.blackColor()
+
+
         return true
     }
 

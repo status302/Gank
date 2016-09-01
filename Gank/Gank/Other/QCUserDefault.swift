@@ -10,8 +10,8 @@ import UIKit
 
 struct QCUserDefault {
 
-    static let passed: NSString = {
-        return NSUserDefaults.standardUserDefaults().valueForKey(GKKeyValue.kPassed) as! NSString
+    static let passed: NSString? = {
+        return NSUserDefaults.standardUserDefaults().valueForKey(GKKeyValue.kPassed) as? NSString
     }()
 
     static func setPassed(str: NSString) {
