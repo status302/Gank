@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
     var dayResult: DayResult!
     var dayResultCategory: [String:[CategoryResult]]! {
         didSet {
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
         }
     }
 
