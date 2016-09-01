@@ -61,7 +61,9 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
 
-        self.loadDataFromNetwork()
+//        setting?.view.frame = view.bounds
+//        setting?.view.transform = CGAffineTransformMakeScale(1.0, 0.0)
+//        self.loadDataFromNetwork()
     }
 
     override func viewWillDisappear(animated: Bool) {
