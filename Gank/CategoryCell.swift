@@ -34,7 +34,8 @@ class CategoryCell: UITableViewCell {
     var everydayResult: CategoryResult!  {
         didSet {
             self.titleLabel?.text = everydayResult.desc
-            self.timeLabel.text = everydayResult.publishedAt
+            self.timeLabel.text = SortResult.dateToString(everydayResult.publishedAt!)
+            //everydayResult.publishedAt
             self.fromLabel.text = everydayResult.who
         }
     }

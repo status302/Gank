@@ -83,7 +83,6 @@ class QCEveryDayGnakViewController: UIViewController, UICollectionViewDataSource
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        UIApplication.sharedApplication().statusBarStyle = .Default
     }
 
     override func didReceiveMemoryWarning() {
