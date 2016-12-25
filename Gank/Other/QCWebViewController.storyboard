@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pg3-ks-i6h">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Web View Controller-->
+        <scene sceneID="2IA-9P-tqd">
+            <objects>
+                <viewController storyboardIdentifier="QCWebViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" hidesBottomBarWhenPushed="YES" id="pg3-ks-i6h" customClass="QCWebViewController" customModule="Gank" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pg9-Ec-hPG"/>
+                        <viewControllerLayoutGuide type="bottom" id="RjO-9r-jtD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wFl-yg-aBi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynA-Dn-5i7">
+                                <rect key="frame" x="-8" y="623" width="391" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem image="back" id="yoe-i9-aOh">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="backBarButtonCicked:" destination="pg3-ks-i6h" id="CdH-T8-AGn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="60" style="plain" systemItem="fixedSpace" id="1df-v2-gky"/>
+                                    <barButtonItem image="forward" id="tyG-DC-ECm">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="forwardBarButtonClicked:" destination="pg3-ks-i6h" id="8nC-y2-BFE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="udw-U8-aSX"/>
+                                    <barButtonItem image="safari" id="KgA-V8-iNd">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="openInSafiriBarButtonClicked:" destination="pg3-ks-i6h" id="c7v-Bb-9xG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="57" style="plain" systemItem="fixedSpace" id="9Hw-vB-xQE"/>
+                                    <barButtonItem image="networking_refresh" id="6Ec-ZC-yFm">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="reloadBarButtonClicked:" destination="pg3-ks-i6h" id="8UM-ud-dDo"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RjO-9r-jtD" firstAttribute="top" secondItem="ynA-Dn-5i7" secondAttribute="bottom" id="80s-8x-TdW">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="ynA-Dn-5i7" secondAttribute="trailing" constant="-24" id="Dgx-FZ-mVa"/>
+                            <constraint firstItem="ynA-Dn-5i7" firstAttribute="leading" secondItem="wFl-yg-aBi" secondAttribute="leadingMargin" constant="-24" id="zXS-Tp-lGv"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="backBarButton" destination="yoe-i9-aOh" id="QWp-0l-DFP"/>
+                        <outlet property="forwardBarButton" destination="tyG-DC-ECm" id="gGT-In-QqP"/>
+                        <outlet property="openInSafiriBarButton" destination="KgA-V8-iNd" id="dSI-iQ-yti"/>
+                        <outlet property="reloadBarButton" destination="6Ec-ZC-yFm" id="hgu-wW-Z1B"/>
+                        <outlet property="toolbar" destination="ynA-Dn-5i7" id="CMm-Kt-edq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KiJ-Sj-Eeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2244.75" y="375.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="13" height="20"/>
+        <image name="forward" width="13" height="20"/>
+        <image name="networking_refresh" width="20" height="22"/>
+        <image name="safari" width="22" height="22"/>
+    </resources>
+</document>
