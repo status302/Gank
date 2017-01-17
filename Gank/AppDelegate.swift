@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import Then
 import SnapKit
+import DynamicColor
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootViewController = RootViewController()
-        rootViewController.view.backgroundColor = UIColor.red
-        window?.rootViewController = rootViewController
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
