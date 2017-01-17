@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
+  - DynamicColor (3.2.1)
   - FontAwesomeKit.Swift (0.3.1)
   - pop (1.0.9)
   - PreviewTransition (2.0.1)
@@ -14,6 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.2.0)
+  - DynamicColor (~> 3.2.1)
   - FontAwesomeKit.Swift (~> 0.3.1)
   - pop (~> 1.0.9)
   - PreviewTransition (~> 2.0.1)
@@ -26,6 +28,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  DynamicColor: 4786d650c69da6c3f2cbfe068348288ec4e5521f
   FontAwesomeKit.Swift: 77fd566e8c20d3267da18161a10c48a31b9323b9
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PreviewTransition: 2f612e341ccae573a1c08b8521fe19a28fe5d763
@@ -36,6 +39,6 @@ SPEC CHECKSUMS:
   TransitionTreasury: dcf3fe6e5c740525d9e7d4544af45e6fbfd71c88
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: cfea990208c6b6ebfa11e79a54ad82c745070b9d
+PODFILE CHECKSUM: 3ac9e8e79df4803bb46ffac3a7560bfc7b2f2477
 
 COCOAPODS: 1.1.1
