@@ -167,9 +167,6 @@ extension RootViewController: UIScrollViewDelegate {
             }
         }
     }
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        print("++++")
-    }
 }
 extension UIColor {
     class var gk_random: UIColor {
