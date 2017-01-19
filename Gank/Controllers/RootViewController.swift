@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     var tableView: UITableView?
     var bgScrollView: UIScrollView?
     var tabbarView: UIView?
-    var topScrollView: UIScrollView?
+    var topScrollView: UIView?
     var statusBarView: UIView?
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class RootViewController: UIViewController {
             $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
         })
         
-        
+        /**
         let scrollView = UIScrollView().then({
             $0.showsVerticalScrollIndicator = false
             $0.showsHorizontalScrollIndicator = false
@@ -55,6 +55,20 @@ class RootViewController: UIViewController {
             $0.right.equalTo(view.snp.right)
             $0.height.equalTo(360.0)
         }
+         */
+        let scrollView = TopScrollView(frame: CGRect.zero).then({
+            $0.backgroundColor = UIColor.gk_random
+        })
+//        view.addSubview(scrollView)
+        scrollView.addedTo(view: view)
+        self.topScrollView = scrollView
+        scrollView.snp.makeConstraints {
+            $0.left.equalTo(view.snp.left)
+            $0.top.equalTo(view.snp.top)
+            $0.right.equalTo(view.snp.right)
+            $0.height.equalTo(360.0)
+        }
+        scrollView.scrollView.setContentOffset(CGPoint(x: view.frame.width, y: 0), animated: false)
         
         let statusBar = UIView().then({
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.88)
@@ -85,9 +99,9 @@ class RootViewController: UIViewController {
             $0.height.equalTo(49.00)
         }
         
-        let refresh = UIRefreshControl().then({_ in 
-            
-        })
+//        let refresh = UIRefreshControl().then({_ in
+//            
+//        })
         
         tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
             $0.delegate = self
