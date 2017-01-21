@@ -15,7 +15,17 @@ class TopScrollView: UIView {
     
     var imageJson: GankJson? {
         didSet {
-            
+            if let results = imageJson?.results {
+                if results.count > imageViews.count {
+                    for (index, imageView) in imageViews.enumerated() {
+                        if let urlStr = results[index].url {
+                            if let url = URL(string: urlStr) {
+                                imageView.sd_setImage(with: url, placeholderImage: nil)
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -61,6 +71,11 @@ class TopScrollView: UIView {
         if keyPath == "contentSize" {
             scrollView.setContentOffset(CGPoint(x: self.frame.width, y: 0), animated: false)
         }
+    }
+    
+    override func removeFromSuperview() {
+        scrollView.removeObserver(self, forKeyPath: "contentSize")
+        super.removeFromSuperview()
     }
     
     deinit {

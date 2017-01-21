@@ -15,11 +15,18 @@ class RootViewController: UIViewController {
     var tabbarView: UIView?
     var topScrollView: TopScrollView?
     var statusBarView: UIView?
+    var resultJson: GankJson? {
+        didSet {
+            topScrollView?.imageJson = resultJson
+        }
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.isStatusBarHidden = true
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.clear
     
@@ -82,6 +89,11 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        GankJson.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
+            if let iJ = $0 {
+                weakSelf?.resultJson = iJ
+            }
+        }
     }
     
     deinit {
@@ -133,11 +145,13 @@ extension RootViewController: UIScrollViewDelegate {
             }
             
             if currentOffsetY > 20 {
-                UIApplication.shared.statusBarStyle = .default
+//                UIApplication.shared.statusBarStyle = .default
+                UIApplication.shared.isStatusBarHidden = false
                 statusBarView?.alpha = min(1.0, max(0.0, currentOffsetY/100))
             }
             else if currentOffsetY <= 0 {
-                UIApplication.shared.statusBarStyle = .lightContent
+//                UIApplication.shared.statusBarStyle = .lightContent
+                UIApplication.shared.isStatusBarHidden = true
                 statusBarView?.alpha = 0.0
             }
         }

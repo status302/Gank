@@ -15,6 +15,7 @@ target 'Gank' do
   pod 'TransitionTreasury', '~> 4.0.0'
   pod 'PreviewTransition', '~> 2.0.1'
   pod 'DynamicColor', '~> 3.2.1'
+  pod 'Arrow', '~> 3.0.3'
   # Pods for Gank
 
   target 'GankTests' do
