@@ -22,9 +22,12 @@ class TopScrollView: UIView {
     var imageViews = [UIImageView]()
     var scrollView: UIScrollView!
     
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         
         let scrollView = UIScrollView().then({
             $0.alwaysBounceHorizontal = false
@@ -36,13 +39,11 @@ class TopScrollView: UIView {
         
         addSubview(scrollView)
         self.scrollView = scrollView
-        scrollView.snp.makeConstraints({
-            $0.edges.equalTo(self)
-        })
+        
+        scrollView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         for i in 0...6 {
             let imageView = UIImageView().then({
-//                $0.contentMode = .scaleAspectFit
                 $0.backgroundColor = UIColor.gk_random
                 let label = UILabel().then({
                     $0.text = "第\(i)张"
@@ -53,11 +54,38 @@ class TopScrollView: UIView {
             imageView.backgroundColor = UIColor.gk_random
             scrollView.addSubview(imageView)
             imageViews.append(imageView)
-            
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize" {
+            scrollView.setContentOffset(CGPoint(x: self.frame.width, y: 0), animated: false)
+        }
+    }
+    
+    deinit {
+        scrollView.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    func makeConstraints() {
+        guard let superView = superview else { return }
+        
+        self.snp.makeConstraints({
+            $0.left.equalTo(superView.snp.left)
+            $0.top.equalTo(superView.snp.top)
+            $0.right.equalTo(superView.snp.right)
+            $0.height.equalTo(360.0)
+        })
+        
+        scrollView.snp.makeConstraints({
+            $0.edges.equalTo(self)
+        })
+    
+        for (i, imageView) in imageViews.enumerated() {
             imageView.snp.makeConstraints({
-                $0.top.equalTo(scrollView.snp.top)
-                $0.bottom.equalTo(scrollView.snp.bottom)
-                $0.width.equalTo(scrollView.snp.width)
+                $0.top.equalTo(self.snp.top)
+                $0.bottom.equalTo(self.snp.bottom)
+                $0.width.equalTo(self.snp.width)
             })
             
             if i == 0 {
@@ -77,8 +105,6 @@ class TopScrollView: UIView {
                 })
             }
         }
-        
-        scrollView.setContentOffset(CGPoint(x: 100, y: 0), animated: false)
     }
     
     func addedTo(view: UIView) {
@@ -94,5 +120,12 @@ class TopScrollView: UIView {
 }
 
 extension TopScrollView: UIScrollViewDelegate {
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x == 0 {
+            scrollView.setContentOffset(CGPoint(x: self.frame.width * 5, y: 0), animated: false)
+        }
+        if scrollView.contentOffset.x == self.frame.width * 6 {
+            scrollView.setContentOffset(CGPoint(x: self.frame.width, y: 0), animated: false)
+        }
+    }
 }

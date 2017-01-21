@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     var tableView: UITableView?
     var bgScrollView: UIScrollView?
     var tabbarView: UIView?
-    var topScrollView: UIView?
+    var topScrollView: TopScrollView?
     var statusBarView: UIView?
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -28,47 +28,12 @@ class RootViewController: UIViewController {
             $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
         })
         
-        /**
-        let scrollView = UIScrollView().then({
-            $0.showsVerticalScrollIndicator = false
-            $0.showsHorizontalScrollIndicator = false
-            $0.alwaysBounceHorizontal = false
-            $0.alwaysBounceVertical = false
-            $0.contentSize = CGSize(width: view.frame.width * 5, height: 0)
-            $0.backgroundColor = UIColor.blue
-            $0.isPagingEnabled = true
-            
-            for index in 0..<5 {
-                let contentView = UIView()
-                contentView.frame = CGRect(x: CGFloat(index) * view.frame.width, y: 0, width: view.frame.width, height: 360.0)
-                contentView.backgroundColor = UIColor.gk_random
-                $0.addSubview(contentView)
-            }
+        let scrollView = TopScrollView().then({_ in
+//            $0.backgroundColor = UIColor.gk_random
         })
-        
-        view.addSubview(scrollView)
-        self.topScrollView = scrollView
-        
-        scrollView.snp.makeConstraints {
-            $0.left.equalTo(view.snp.left)
-            $0.top.equalTo(view.snp.top)
-            $0.right.equalTo(view.snp.right)
-            $0.height.equalTo(360.0)
-        }
-         */
-        let scrollView = TopScrollView(frame: CGRect.zero).then({
-            $0.backgroundColor = UIColor.gk_random
-        })
-//        view.addSubview(scrollView)
         scrollView.addedTo(view: view)
         self.topScrollView = scrollView
-        scrollView.snp.makeConstraints {
-            $0.left.equalTo(view.snp.left)
-            $0.top.equalTo(view.snp.top)
-            $0.right.equalTo(view.snp.right)
-            $0.height.equalTo(360.0)
-        }
-        scrollView.scrollView.setContentOffset(CGPoint(x: view.frame.width, y: 0), animated: false)
+        scrollView.makeConstraints()
         
         let statusBar = UIView().then({
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.88)
@@ -98,10 +63,6 @@ class RootViewController: UIViewController {
             $0.right.equalTo(view.snp.right)
             $0.height.equalTo(49.00)
         }
-        
-//        let refresh = UIRefreshControl().then({_ in
-//            
-//        })
         
         tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
             $0.delegate = self
