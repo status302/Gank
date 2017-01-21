@@ -11,7 +11,6 @@ target 'Gank' do
   pod 'FontAwesomeKit.Swift', '~> 0.3.1'
   pod 'pop', '~> 1.0.9'
   pod 'SwiftyJSON', '~> 3.1.3'
-  pod 'YYModel', '~> 1.0.4'
   pod 'TransitionTreasury', '~> 4.0.0'
   pod 'PreviewTransition', '~> 2.0.1'
   pod 'DynamicColor', '~> 3.2.1'
