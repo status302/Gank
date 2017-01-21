@@ -26,6 +26,12 @@ struct GankJson {
                     block(nil)
                     return
                 }
+                
+                guard response.result.isSuccess else {
+                    block(nil)
+                    return
+                }
+                
                 if let json = response.result.value {
                     var jsons = GankJson()
                     if let jsonData = JSON(json) {

@@ -25,7 +25,6 @@ extension GankType {
     
     var urlBaseString: String? {
         if let _urlEndcodingChar = self.urlEndcodingChar {
-            print(_urlEndcodingChar)
             return "http://gank.io/api/data/\(_urlEndcodingChar)/"
         }
         else {

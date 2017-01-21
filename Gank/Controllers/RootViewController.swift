@@ -25,7 +25,6 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        UIApplication.shared.statusBarStyle = .lightContent
         UIApplication.shared.isStatusBarHidden = true
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.clear
@@ -145,12 +144,10 @@ extension RootViewController: UIScrollViewDelegate {
             }
             
             if currentOffsetY > 20 {
-//                UIApplication.shared.statusBarStyle = .default
                 UIApplication.shared.isStatusBarHidden = false
                 statusBarView?.alpha = min(1.0, max(0.0, currentOffsetY/100))
             }
             else if currentOffsetY <= 0 {
-//                UIApplication.shared.statusBarStyle = .lightContent
                 UIApplication.shared.isStatusBarHidden = true
                 statusBarView?.alpha = 0.0
             }

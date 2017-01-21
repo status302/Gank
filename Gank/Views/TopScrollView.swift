@@ -102,7 +102,8 @@ class TopScrollView: UIView {
             $0.pageIndicatorTintColor = UIColor(white: 0, alpha: 0.40)
             $0.contentMode = .right
             $0.isHidden = true
-            $0.isEnabled = false
+            $0.isEnabled = true
+            $0.addTarget(self, action: Actions.pageControlAction!, for: .valueChanged)
             $0.sizeToFit()
         })
         addSubview(pageControl)
@@ -181,6 +182,18 @@ class TopScrollView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension TopScrollView {
+    struct Actions {
+        static var pageControlAction: Selector? {
+            return #selector(pageControlDidTouched(pageControl:))
+        }
+    }
+    
+    func pageControlDidTouched(pageControl: UIPageControl) {
+        scrollView.setContentOffset(CGPoint(x: frame.width * CGFloat(pageControl.currentPage + 1), y: 0), animated: true)
     }
 }
 
