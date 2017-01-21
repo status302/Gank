@@ -11,26 +11,51 @@ import SnapKit
 import SDWebImage
 import Then
 
+protocol TopScrollViewDelegate: class {
+    
+}
+
 class TopScrollView: UIView {
     
     var imageJson: GankJson? {
         didSet {
             if let results = imageJson?.results {
-                if results.count > imageViews.count {
+                if results.count > (imageViews.count - 2) {
                     for (index, imageView) in imageViews.enumerated() {
-                        if let urlStr = results[index].url {
-                            if let url = URL(string: urlStr) {
-                                imageView.sd_setImage(with: url, placeholderImage: nil)
+                        if index == 0 {
+                            if let urlStr = results[imageViews.count - 3].url {
+                                if let url = URL(string: urlStr) {
+                                    imageView.sd_setImage(with: url, placeholderImage: nil)
+                                }
                             }
                         }
+                        else if index == (imageViews.count - 1) {
+                            if let urlStr = results[0].url {
+                                if let url = URL(string: urlStr) {
+                                    imageView.sd_setImage(with: url, placeholderImage: nil)
+                                }
+                            }
+                        }
+                        else {
+                            if let urlStr = results[index - 1].url {
+                                if let url = URL(string: urlStr) {
+                                    imageView.sd_setImage(with: url, placeholderImage: nil)
+                                }
+                            }
+                        }
+                        activityIndicatorView?.stopAnimating()
+                        pageControl?.isHidden = false
                     }
                 }
             }
         }
     }
     
-    var imageViews = [UIImageView]()
+    private var imageViews = [UIImageView]()
     var scrollView: UIScrollView!
+    private var activityIndicatorView: UIActivityIndicatorView?
+    fileprivate var pageControl: UIPageControl?
+    weak var delegate: TopScrollViewDelegate?
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -52,19 +77,36 @@ class TopScrollView: UIView {
         
         scrollView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
-        for i in 0...6 {
+        for _ in 0...6 {
             let imageView = UIImageView().then({
                 $0.backgroundColor = UIColor.gk_random
-                let label = UILabel().then({
-                    $0.text = "第\(i)张"
-                    $0.sizeToFit()
-                })
-                $0.addSubview(label)
+                $0.contentMode = .scaleAspectFill
+                $0.layer.masksToBounds = true
             })
             imageView.backgroundColor = UIColor.gk_random
             scrollView.addSubview(imageView)
             imageViews.append(imageView)
         }
+        
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge).then({
+            $0.hidesWhenStopped = true
+            $0.startAnimating()
+        })
+        addSubview(activityIndicatorView)
+        self.activityIndicatorView = activityIndicatorView
+        
+        let pageControl = UIPageControl().then({
+            $0.currentPage = 0
+            $0.numberOfPages = (imageViews.count - 2)
+            $0.currentPageIndicatorTintColor = UIColor(white: 0, alpha: 1.0)
+            $0.pageIndicatorTintColor = UIColor(white: 0, alpha: 0.40)
+            $0.contentMode = .right
+            $0.isHidden = true
+            $0.isEnabled = false
+            $0.sizeToFit()
+        })
+        addSubview(pageControl)
+        self.pageControl = pageControl
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -120,6 +162,14 @@ class TopScrollView: UIView {
                 })
             }
         }
+        
+        activityIndicatorView?.snp.makeConstraints({
+            $0.center.equalTo(self.snp.center)
+        })
+        pageControl?.snp.makeConstraints({
+            $0.bottom.equalTo(self.snp.bottom)
+            $0.right.equalTo(self.snp.right).offset(-10)
+        })
     }
     
     func addedTo(view: UIView) {
@@ -142,5 +192,6 @@ extension TopScrollView: UIScrollViewDelegate {
         if scrollView.contentOffset.x == self.frame.width * 6 {
             scrollView.setContentOffset(CGPoint(x: self.frame.width, y: 0), animated: false)
         }
+        self.pageControl?.currentPage = Int(scrollView.contentOffset.x) / Int(frame.width) - 1
     }
 }

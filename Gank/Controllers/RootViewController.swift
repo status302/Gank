@@ -35,8 +35,8 @@ class RootViewController: UIViewController {
             $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
         })
         
-        let scrollView = TopScrollView().then({_ in
-//            $0.backgroundColor = UIColor.gk_random
+        let scrollView = TopScrollView().then({ _ in
+//            $0.delegate = self
         })
         scrollView.addedTo(view: view)
         self.topScrollView = scrollView
@@ -90,8 +90,8 @@ class RootViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         GankJson.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
-            if let iJ = $0 {
-                weakSelf?.resultJson = iJ
+            if let result = $0 {
+                weakSelf?.resultJson = result
             }
         }
     }

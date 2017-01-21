@@ -27,12 +27,14 @@ struct GankJson {
                     return
                 }
                 if let json = response.result.value {
-//                    let jsons = GankJson.yy_model(with: json)
                     var jsons = GankJson()
-                    jsons.deserialize(JSON(json)!)
-//                    print(json)
-                    
-                    block(jsons)
+                    if let jsonData = JSON(json) {
+                        jsons.deserialize(jsonData)
+                        block(jsons)
+                    }
+                    else {
+                        block(nil)
+                    }
                 }
             }
         }
