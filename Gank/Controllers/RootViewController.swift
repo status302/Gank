@@ -43,7 +43,9 @@ class RootViewController: UIViewController {
         let statusBar = UIView().then({
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.88)
             $0.layer.shadowColor = UIColor.black.cgColor
-            $0.layer.shadowOffset = CGSize(width: 0, height: -10)
+            $0.layer.shadowOffset = CGSize(width: 0, height: 10)
+            $0.layer.shadowRadius = 20.0
+            $0.layer.shadowOpacity = 1.0
             $0.alpha = 0.0
         })
         view.addSubview(statusBar)
@@ -99,9 +101,7 @@ class RootViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         GankJson.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
-            if let result = $0 {
-                weakSelf?.resultJson = result
-            }
+            weakSelf?.resultJson = $0
         }
     }
     

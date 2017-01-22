@@ -43,10 +43,13 @@ class TopScrollView: UIView {
                                 }
                             }
                         }
-                        activityIndicatorView?.stopAnimating()
-                        pageControl?.isHidden = false
                     }
                 }
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicatorView?.stopAnimating()
+                self?.pageControl?.isHidden = false
+                self?.scrollView.isScrollEnabled = true
             }
         }
     }
@@ -70,6 +73,7 @@ class TopScrollView: UIView {
             $0.showsHorizontalScrollIndicator = false
             $0.delegate = self
             $0.isPagingEnabled = true
+            $0.isScrollEnabled = false
         })
         
         addSubview(scrollView)

@@ -9,25 +9,47 @@
 import Foundation
 import Alamofire
 import Arrow
+import YYCache
 
 struct GankJson {
     var error: Bool?
     var results: Array<GankResult>? //"http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1"
-    
+
     static func fetchImages(gankType: GankType ,block:@escaping ((GankJson?) -> Void)) {
-        guard let baseUrl = gankType.urlBaseString else {
+        let cacheQueue = DispatchQueue(label: "gank_cache_image_queue_label", qos: .default)
+        let networkManager = NetworkReachabilityManager()
+        
+        let diskCache: YYDiskCache?
+        if let cacheFolderString = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first {
+            let path = cacheFolderString + GankConfig.imageCacheName
+            diskCache = YYDiskCache(path: path)
+        }
+        else {
+            diskCache = nil
+        }
+        cacheQueue.async {
+            let object = diskCache?.object(forKey: GankConfig.imageCacheKey)
+            if object != nil {
+                var jsons = GankJson()
+                if let jsonData = JSON(object) {
+                    jsons.deserialize(jsonData)
+                    block(jsons)
+                }
+            }
+        }
+        if !networkManager!.isReachable {
+            return
+        }
+        
+        guard let urlString = GankConfig.imageUrlString else {
             block(nil)
             return
         }
         
-        if let url = URL(string: "\(baseUrl)10/1") {
+        if let url = URL(string: urlString) {
             Alamofire.request(url, method: .get).responseJSON { (response) in
                 guard response.result.error == nil else {
-                    block(nil)
-                    return
-                }
-                
-                guard response.result.isSuccess else {
+                    print("\(response.result.error)")
                     block(nil)
                     return
                 }
@@ -37,6 +59,9 @@ struct GankJson {
                     if let jsonData = JSON(json) {
                         jsons.deserialize(jsonData)
                         block(jsons)
+                        cacheQueue.async(execute: {
+                            diskCache?.setObject(json as? NSDictionary, forKey: GankConfig.imageCacheKey)
+                        })
                     }
                     else {
                         block(nil)
@@ -64,11 +89,6 @@ struct GankResult {
     var url: String?
     var used: Bool?
     var who: String?
-    
-    
-    static func modelCustomPropertyMapper() -> [String : Any]? {
-        return ["id": "_id"]
-    }
 }
 
 extension GankResult: ArrowParsable {
