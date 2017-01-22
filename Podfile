@@ -15,6 +15,7 @@ target 'Gank' do
   pod 'PreviewTransition', '~> 2.0.1'
   pod 'DynamicColor', '~> 3.2.1'
   pod 'Arrow', '~> 3.0.3'
+  pod 'YYCache', '~> 1.0.4'
   # Pods for Gank
 
   target 'GankTests' do

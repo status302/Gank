@@ -12,6 +12,7 @@ PODS:
   - SwiftyJSON (3.1.3)
   - Then (2.1.0)
   - TransitionTreasury (4.0.0)
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.2.0)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 3.1.3)
   - Then (~> 2.1.0)
   - TransitionTreasury (~> 4.0.0)
+  - YYCache (~> 1.0.4)
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -38,7 +40,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
   TransitionTreasury: dcf3fe6e5c740525d9e7d4544af45e6fbfd71c88
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 4c9731f873a6ff5988aa494c91a415024f6fb7fb
+PODFILE CHECKSUM: 74b996cd2ba2cc08d78c4187ea890b54377accfb
 
 COCOAPODS: 1.1.1
