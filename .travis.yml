@@ -4,6 +4,6 @@ before_install:
   - pod repo update
 script:
   - xctool -workspace Gank.xcworkspace -scheme Gank -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace Gank.xcworkspace -scheme GankTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  # - xctool test -workspace Gank.xcworkspace -scheme GankTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 
