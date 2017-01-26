@@ -11,7 +11,7 @@ import UIKit
 class RootViewController: UIViewController {
 
     var tableView: UITableView?
-    var tabbarView: UIView?
+    var tabbarView: TabbarView?
     var topScrollView: TopScrollView?
     var statusBarView: UIView?
     var resultJson: GankJson? {
@@ -58,17 +58,7 @@ class RootViewController: UIViewController {
             $0.height.equalTo(20)
         })
         
-        var tabbar: UITabBar?
-        
-        let tabbarView = UIView().then {
-            $0.backgroundColor = UIColor(hexString: "0xC36A6A").lighter()
-            let tabbar = UITabBar().then({
-                $0.backgroundColor = UIColor.yellow
-                $0.barStyle = .default
-                tabbar = $0
-            })
-            $0.addSubview(tabbar)
-        }
+        let tabbarView = TabbarView()
         self.tabbarView = tabbarView
         view.addSubview(tabbarView)
         
@@ -78,9 +68,6 @@ class RootViewController: UIViewController {
             $0.right.equalTo(view.snp.right)
             $0.height.equalTo(49.00)
         }
-        tabbar?.snp.makeConstraints({
-            $0.edges.equalTo(tabbarView)
-        })
         
         tableView = UITableView(frame: CGRect.zero, style: .grouped).then {
             $0.delegate = self
