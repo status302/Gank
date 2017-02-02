@@ -9,7 +9,7 @@
 import Foundation
 
 enum GankType: String {
-    case android = "Androi"
+    case android = "Android"
     case iOS = "iOS"
     case welfare = "福利"
     case frontEnd = "前端"

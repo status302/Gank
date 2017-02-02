@@ -83,7 +83,7 @@ class TopScrollView: UIView {
         
         for _ in 0...6 {
             let imageView = UIImageView().then({
-                $0.backgroundColor = UIColor.gk_random
+                $0.backgroundColor = UIColor.black
                 $0.contentMode = .scaleAspectFill
                 $0.layer.masksToBounds = true
             })

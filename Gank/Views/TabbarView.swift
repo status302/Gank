@@ -53,6 +53,7 @@ class TabbarView: UIView {
                 $0.setTitleColor(UIColor.black, for: .highlighted)
                 $0.setTitleColor(UIColor.gray, for: .normal)
                 $0.setTitleColor(UIColor.black, for: .focused)
+                $0.tag = index
                 $0.addTarget(self, action: #selector(buttonTouchDownSelected(currentButton:)), for: .touchDown)
                 $0.addTarget(self, action: #selector(buttonTouchUpInsideSelected(currentButton:)), for: .touchUpInside)
             })
@@ -68,6 +69,7 @@ class TabbarView: UIView {
     
     func buttonTouchDownSelected(currentButton: UIButton) {
         guard lastSelectedButton != currentButton else {
+            print("refreshing data now")
             return
         }
         lastSelectedButton.isSelected = false
@@ -77,6 +79,8 @@ class TabbarView: UIView {
         currentButton.isSelected = true
         currentButton.setTitleColor(UIColor.black, for: .normal)
         lastSelectedButton = currentButton
+
+        print(currentButton.tag)
     }
     
     func setItems() {

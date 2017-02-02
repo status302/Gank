@@ -28,7 +28,7 @@ class RootViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.clear
     
-        self.navigationController?.do({
+        navigationController?.do({
             $0.navigationBar.shadowImage = UIImage()
             $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
         })
