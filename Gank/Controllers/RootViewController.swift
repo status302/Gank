@@ -14,7 +14,7 @@ class RootViewController: UIViewController {
     var tabbarView: TabbarView?
     var topScrollView: TopScrollView?
     var statusBarView: UIView?
-    var resultJson: GankJson? {
+    var resultJson: GankImageModel? {
         didSet {
             topScrollView?.imageJson = resultJson
         }
@@ -88,7 +88,7 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GankJson.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
+        GankImageModel.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
             weakSelf?.resultJson = $0
         }
     }

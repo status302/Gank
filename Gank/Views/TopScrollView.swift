@@ -17,7 +17,7 @@ protocol TopScrollViewDelegate: class {
 
 class TopScrollView: UIView {
     
-    var imageJson: GankJson? {
+    var imageJson: GankImageModel? {
         didSet {
             if let results = imageJson?.results {
                 if results.count > (imageViews.count - 2) {

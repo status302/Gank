@@ -11,11 +11,11 @@ import Alamofire
 import Arrow
 import YYCache
 
-struct GankJson {
+struct GankImageModel {
     var error: Bool?
     var results: Array<GankResult>? //"http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1"
 
-    static func fetchImages(gankType: GankType ,block:@escaping ((GankJson?) -> Void)) {
+    static func fetchImages(gankType: GankType ,block:@escaping ((GankImageModel?) -> Void)) {
         let cacheQueue = DispatchQueue(label: "gank_cache_image_queue_label", qos: .default)
         let networkManager = NetworkReachabilityManager()
         
@@ -30,7 +30,7 @@ struct GankJson {
         cacheQueue.async {
             let object = diskCache?.object(forKey: GankConfig.imageCacheKey)
             if object != nil {
-                var jsons = GankJson()
+                var jsons = GankImageModel()
                 if let jsonData = JSON(object) {
                     jsons.deserialize(jsonData)
                     block(jsons)
@@ -55,7 +55,7 @@ struct GankJson {
                 }
                 
                 if let json = response.result.value {
-                    var jsons = GankJson()
+                    var jsons = GankImageModel()
                     if let jsonData = JSON(json) {
                         jsons.deserialize(jsonData)
                         block(jsons)
@@ -72,7 +72,7 @@ struct GankJson {
     }
 }
 
-extension GankJson: ArrowParsable {
+extension GankImageModel: ArrowParsable {
     mutating func deserialize(_ json: JSON) {
         error <-- json["error"]
         results <-- json["results"]

@@ -14,6 +14,7 @@ import FontAwesomeKit_Swift
 
 protocol TabbarViewDelegate: class {
     func tabbarView(tabbarView: TabbarView, didSeleted item: GankTabbarItem, with index: Int)
+    func tabbarView(tabbarView: TabbarView, didClicked item: GankTabbarItem, with doubleClicked: Bool)
 }
 
 typealias GankTabbarItem = UIButton
@@ -78,6 +79,7 @@ class TabbarView: UIView {
     func buttonTouchDownSelected(currentButton: UIButton) {
         guard lastSelectedButton != currentButton else {
             print("refreshing data now")
+            delegate?.tabbarView(tabbarView: self, didClicked: currentButton, with: true)
             return
         }
         lastSelectedButton.isSelected = false
