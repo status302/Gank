@@ -5,6 +5,9 @@ PODS:
   - FontAwesomeKit.Swift (0.3.1)
   - pop (1.0.9)
   - PreviewTransition (2.0.1)
+  - RxCocoa (3.1.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.1.0)
   - SDWebImage (4.0.0-beta2):
     - SDWebImage/Core (= 4.0.0-beta2)
   - SDWebImage/Core (4.0.0-beta2)
@@ -21,6 +24,8 @@ DEPENDENCIES:
   - FontAwesomeKit.Swift (~> 0.3.1)
   - pop (~> 1.0.9)
   - PreviewTransition (~> 2.0.1)
+  - RxCocoa (~> 3.1.0)
+  - RxSwift (~> 3.1.0)
   - SDWebImage (~> 4.0.0-beta2)
   - SnapKit (~> 3.1.2)
   - SwiftyJSON (~> 3.1.3)
@@ -35,6 +40,8 @@ SPEC CHECKSUMS:
   FontAwesomeKit.Swift: 77fd566e8c20d3267da18161a10c48a31b9323b9
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PreviewTransition: 2f612e341ccae573a1c08b8521fe19a28fe5d763
+  RxCocoa: 50d7564866da9299161e86a263ce12a0873904d8
+  RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
@@ -42,6 +49,6 @@ SPEC CHECKSUMS:
   TransitionTreasury: dcf3fe6e5c740525d9e7d4544af45e6fbfd71c88
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 74b996cd2ba2cc08d78c4187ea890b54377accfb
+PODFILE CHECKSUM: d4688b1cf3f7df5825e301a15ac3e8f6263c074c
 
 COCOAPODS: 1.1.1

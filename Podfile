@@ -16,6 +16,8 @@ target 'Gank' do
   pod 'DynamicColor', '~> 3.2.1'
   pod 'Arrow', '~> 3.0.3'
   pod 'YYCache', '~> 1.0.4'
+  pod 'RxSwift', '~> 3.1.0'
+  pod 'RxCocoa', '~> 3.1.0'
   # Pods for Gank
 
   target 'GankTests' do
