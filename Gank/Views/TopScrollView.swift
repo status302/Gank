@@ -136,7 +136,7 @@ class TopScrollView: UIView {
             $0.left.equalTo(superView.snp.left)
             $0.top.equalTo(superView.snp.top)
             $0.right.equalTo(superView.snp.right)
-            $0.height.equalTo(360.0)
+            $0.height.equalTo(280.0)
         })
         
         scrollView.snp.makeConstraints({

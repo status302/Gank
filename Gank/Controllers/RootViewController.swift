@@ -14,6 +14,7 @@ class RootViewController: UIViewController {
     var tabbarView: TabbarView?
     var topScrollView: TopScrollView?
     var statusBarView: UIView?
+    var refreshControl: UIRefreshControl?
     var resultJson: GankImageModel? {
         didSet {
             topScrollView?.imageJson = resultJson
@@ -34,12 +35,12 @@ class RootViewController: UIViewController {
             $0.setNavigationBarHidden(true, animated: false)
         })
         
-        let scrollView = TopScrollView().then({ _ in
+        let topScrollView = TopScrollView().then({ _ in
 //            $0.delegate = self
         })
-        scrollView.addedTo(view: view)
-        self.topScrollView = scrollView
-        scrollView.makeConstraints()
+        topScrollView.addedTo(view: view)
+        self.topScrollView = topScrollView
+        topScrollView.makeConstraints()
         
         let statusBar = UIView().then({
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.88)
@@ -59,12 +60,14 @@ class RootViewController: UIViewController {
             $0.height.equalTo(20)
         })
         
-        let tabbarView = TabbarView()
+        let tabbarView = TabbarView().then({
+            $0.delegate = self
+        })
         self.tabbarView = tabbarView
         view.addSubview(tabbarView)
         
         tabbarView.snp.makeConstraints {
-            $0.top.equalTo(scrollView.snp.bottom)
+            $0.top.equalTo(topScrollView.snp.bottom)
             $0.left.equalTo(view.snp.left)
             $0.right.equalTo(view.snp.right)
             $0.height.equalTo(49.00)
@@ -75,9 +78,14 @@ class RootViewController: UIViewController {
             $0.dataSource = self
             $0.bounces = true
             $0.isScrollEnabled = true
-            $0.contentInset = UIEdgeInsets(top: 409, left: 0, bottom: 0, right: 0)
-            $0.contentOffset = CGPoint(x: 0, y: -409)
+            $0.contentInset = UIEdgeInsets(top: 329, left: 0, bottom: 0, right: 0)
+            $0.contentOffset = CGPoint(x: 0, y: -329)
             $0.backgroundColor = UIColor(hexString: "0x232329")
+            if #available(iOS 10.0, *) {
+                $0.refreshControl = UIRefreshControl().then({
+                    $0.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+                })
+            }
         }
         
         view.insertSubview(tableView!, at: 0)
@@ -96,6 +104,39 @@ class RootViewController: UIViewController {
     deinit {
         tableView?.delegate = nil
         tableView?.dataSource = nil
+    }
+    
+    func refreshData() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) { 
+            if #available(iOS 10.0, *) {
+                self.tableView?.refreshControl?.endRefreshing()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+}
+
+extension RootViewController: TabbarViewDelegate {
+    func tabbarView(tabbarView: TabbarView, didSeleted item: GankTabbarItem, with index: Int) {
+        if #available(iOS 10.0, *) {
+//            self.tableView?.refreshControl?.endRefreshing()
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    func tabbarView(tabbarView: TabbarView, didClicked item: GankTabbarItem, with doubleClicked: Bool) {
+        if doubleClicked == true {
+//            let indexPath = IndexPath(item: 0, section: 0)
+//            self.tableView?.scrollToRow(at: indexPath, at: .none, animated: false)
+            self.tableView?.contentOffset = CGPoint(x: 0, y: -64 + tableView!.contentOffset.y)
+            if #available(iOS 10.0, *) {
+                self.tableView?.refreshControl?.beginRefreshing()
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        }
     }
 }
 
@@ -125,15 +166,15 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
 extension RootViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == tableView {
-            let currentOffsetY = scrollView.contentOffset.y + 409.0
-            if currentOffsetY > 0 && currentOffsetY < 340 {
+            let currentOffsetY = scrollView.contentOffset.y + 329.0
+            if currentOffsetY > 0 && currentOffsetY < 260 {
                 self.topScrollView?.snp.updateConstraints({
                     $0.top.equalTo(view.snp.top).offset(-currentOffsetY)
                 })
             }
-            else if currentOffsetY >= 340 {
+            else if currentOffsetY >= 260 {
                 self.topScrollView?.snp.updateConstraints({
-                    $0.top.equalTo(view.snp.top).offset(-340)
+                    $0.top.equalTo(view.snp.top).offset(-260)
                 })
             } else {
                 self.topScrollView?.snp.updateConstraints({

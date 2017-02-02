@@ -89,8 +89,8 @@ class TabbarView: UIView {
         currentButton.isSelected = true
         currentButton.setTitleColor(UIColor.black, for: .normal)
         lastSelectedButton = currentButton
-
-        print(currentButton.tag)
+        
+        delegate?.tabbarView(tabbarView: self, didSeleted: currentButton, with: currentButton.tag)
     }
     
     func setItems() {
