@@ -29,8 +29,9 @@ class RootViewController: UIViewController {
         view.backgroundColor = UIColor.clear
     
         navigationController?.do({
-            $0.navigationBar.shadowImage = UIImage()
-            $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//            $0.navigationBar.shadowImage = UIImage()
+//            $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            $0.setNavigationBarHidden(true, animated: false)
         })
         
         let scrollView = TopScrollView().then({ _ in

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import DynamicColor
 import Then
+import FontAwesomeKit_Swift
 
 protocol TabbarViewDelegate: class {
     func tabbarView(tabbarView: TabbarView, didSeleted item: GankTabbarItem, with index: Int)
@@ -20,6 +21,12 @@ typealias GankTabbarItem = UIButton
 class TabbarView: UIView {
     
     var items: [GankTabbarItem]?
+    
+    lazy var titles: [FontAwesomeType] = {
+       return [FontAwesomeType.fa_list,
+               FontAwesomeType.fa_home,
+               FontAwesomeType.fa_heart,
+               FontAwesomeType.fa_cog] }()
     
     weak var delegate: TabbarViewDelegate?
     
@@ -48,7 +55,8 @@ class TabbarView: UIView {
         })
         for index in 0...3 {
             let button = UIButton(type: .custom).then({
-                $0.setTitle("test", for: .normal)
+                $0.fa_setTitle(titles[index], for: .normal)
+                $0.titleLabel?.font = UIFont(fa_fontSize: 30)
                 $0.setTitleColor(UIColor.black, for: .selected)
                 $0.setTitleColor(UIColor.black, for: .highlighted)
                 $0.setTitleColor(UIColor.gray, for: .normal)
