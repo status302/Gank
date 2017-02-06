@@ -23,6 +23,39 @@
 		F28CEA6E1E310FA700D9954D /* GankType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28CEA6D1E310FA700D9954D /* GankType.swift */; };
 		F2B979FA1E30FDC000A43AC4 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B979F71E30FDC000A43AC4 /* RootViewController.swift */; };
 		F2B979FC1E30FE0E00A43AC4 /* TopScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B979FB1E30FE0E00A43AC4 /* TopScrollView.swift */; };
+		F2C045E31E48D788004CE499 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E21E48D788004CE499 /* Alamofire.framework */; };
+		F2C045E51E48D78F004CE499 /* Arrow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E41E48D78F004CE499 /* Arrow.framework */; };
+		F2C045E71E48D795004CE499 /* DynamicColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E61E48D795004CE499 /* DynamicColor.framework */; };
+		F2C045E91E48D79A004CE499 /* PreviewTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E81E48D79A004CE499 /* PreviewTransition.framework */; };
+		F2C045EB1E48D79F004CE499 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EA1E48D79F004CE499 /* RxCocoa.framework */; };
+		F2C045ED1E48D7A4004CE499 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EC1E48D7A4004CE499 /* RxSwift.framework */; };
+		F2C045EF1E48D7AB004CE499 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EE1E48D7AB004CE499 /* SDWebImage.framework */; };
+		F2C045F11E48D7AF004CE499 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F01E48D7AF004CE499 /* SnapKit.framework */; };
+		F2C045F31E48D7B4004CE499 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F21E48D7B4004CE499 /* SwiftyJSON.framework */; };
+		F2C045F51E48D7BA004CE499 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F41E48D7BA004CE499 /* Then.framework */; };
+		F2C045F71E48D7BE004CE499 /* YYCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F61E48D7BE004CE499 /* YYCache.framework */; };
+		F2C045F81E48D7D4004CE499 /* YYCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F61E48D7BE004CE499 /* YYCache.framework */; };
+		F2C045F91E48D7D4004CE499 /* YYCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F61E48D7BE004CE499 /* YYCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C045FA1E48D7D4004CE499 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F41E48D7BA004CE499 /* Then.framework */; };
+		F2C045FB1E48D7D4004CE499 /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F41E48D7BA004CE499 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C045FC1E48D7D4004CE499 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F21E48D7B4004CE499 /* SwiftyJSON.framework */; };
+		F2C045FD1E48D7D4004CE499 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F21E48D7B4004CE499 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C045FE1E48D7D4004CE499 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F01E48D7AF004CE499 /* SnapKit.framework */; };
+		F2C045FF1E48D7D4004CE499 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045F01E48D7AF004CE499 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C046001E48D7D4004CE499 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EE1E48D7AB004CE499 /* SDWebImage.framework */; };
+		F2C046011E48D7D4004CE499 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EE1E48D7AB004CE499 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C046021E48D7D4004CE499 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EC1E48D7A4004CE499 /* RxSwift.framework */; };
+		F2C046031E48D7D4004CE499 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EC1E48D7A4004CE499 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C046041E48D7D4004CE499 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EA1E48D79F004CE499 /* RxCocoa.framework */; };
+		F2C046051E48D7D4004CE499 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045EA1E48D79F004CE499 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C046061E48D7D4004CE499 /* PreviewTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E81E48D79A004CE499 /* PreviewTransition.framework */; };
+		F2C046071E48D7D4004CE499 /* PreviewTransition.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E81E48D79A004CE499 /* PreviewTransition.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C046081E48D7D5004CE499 /* DynamicColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E61E48D795004CE499 /* DynamicColor.framework */; };
+		F2C046091E48D7D5004CE499 /* DynamicColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E61E48D795004CE499 /* DynamicColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C0460A1E48D7D5004CE499 /* Arrow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E41E48D78F004CE499 /* Arrow.framework */; };
+		F2C0460B1E48D7D5004CE499 /* Arrow.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E41E48D78F004CE499 /* Arrow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F2C0460C1E48D7D5004CE499 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E21E48D788004CE499 /* Alamofire.framework */; };
+		F2C0460D1E48D7D5004CE499 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E21E48D788004CE499 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +74,30 @@
 			remoteInfo = Gank;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2C0460E1E48D7D5004CE499 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F2C046011E48D7D4004CE499 /* SDWebImage.framework in Embed Frameworks */,
+				F2C045F91E48D7D4004CE499 /* YYCache.framework in Embed Frameworks */,
+				F2C0460B1E48D7D5004CE499 /* Arrow.framework in Embed Frameworks */,
+				F2C046051E48D7D4004CE499 /* RxCocoa.framework in Embed Frameworks */,
+				F2C046091E48D7D5004CE499 /* DynamicColor.framework in Embed Frameworks */,
+				F2C046031E48D7D4004CE499 /* RxSwift.framework in Embed Frameworks */,
+				F2C046071E48D7D4004CE499 /* PreviewTransition.framework in Embed Frameworks */,
+				F2C0460D1E48D7D5004CE499 /* Alamofire.framework in Embed Frameworks */,
+				F2C045FB1E48D7D4004CE499 /* Then.framework in Embed Frameworks */,
+				F2C045FD1E48D7D4004CE499 /* SwiftyJSON.framework in Embed Frameworks */,
+				F2C045FF1E48D7D4004CE499 /* SnapKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0393B1E743D1EDDBDB037797 /* Pods-GankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankTests/Pods-GankTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +128,17 @@
 		F28CEA6D1E310FA700D9954D /* GankType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GankType.swift; sourceTree = "<group>"; };
 		F2B979F71E30FDC000A43AC4 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F2B979FB1E30FE0E00A43AC4 /* TopScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScrollView.swift; sourceTree = "<group>"; };
+		F2C045E21E48D788004CE499 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		F2C045E41E48D78F004CE499 /* Arrow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Arrow.framework; path = Carthage/Build/iOS/Arrow.framework; sourceTree = "<group>"; };
+		F2C045E61E48D795004CE499 /* DynamicColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DynamicColor.framework; path = Carthage/Build/iOS/DynamicColor.framework; sourceTree = "<group>"; };
+		F2C045E81E48D79A004CE499 /* PreviewTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreviewTransition.framework; path = Carthage/Build/iOS/PreviewTransition.framework; sourceTree = "<group>"; };
+		F2C045EA1E48D79F004CE499 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		F2C045EC1E48D7A4004CE499 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		F2C045EE1E48D7AB004CE499 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		F2C045F01E48D7AF004CE499 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		F2C045F21E48D7B4004CE499 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		F2C045F41E48D7BA004CE499 /* Then.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Then.framework; path = Carthage/Build/iOS/Then.framework; sourceTree = "<group>"; };
+		F2C045F61E48D7BE004CE499 /* YYCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCache.framework; path = Carthage/Build/iOS/YYCache.framework; sourceTree = "<group>"; };
 		F3A034663AF704555BEBCF64 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +147,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C046061E48D7D4004CE499 /* PreviewTransition.framework in Frameworks */,
+				F2C0460C1E48D7D5004CE499 /* Alamofire.framework in Frameworks */,
+				F2C045F11E48D7AF004CE499 /* SnapKit.framework in Frameworks */,
+				F2C046041E48D7D4004CE499 /* RxCocoa.framework in Frameworks */,
+				F2C045FA1E48D7D4004CE499 /* Then.framework in Frameworks */,
+				F2C046021E48D7D4004CE499 /* RxSwift.framework in Frameworks */,
+				F2C045EF1E48D7AB004CE499 /* SDWebImage.framework in Frameworks */,
+				F2C045EB1E48D79F004CE499 /* RxCocoa.framework in Frameworks */,
+				F2C046001E48D7D4004CE499 /* SDWebImage.framework in Frameworks */,
+				F2C045F71E48D7BE004CE499 /* YYCache.framework in Frameworks */,
+				F2C045F51E48D7BA004CE499 /* Then.framework in Frameworks */,
+				F2C045E91E48D79A004CE499 /* PreviewTransition.framework in Frameworks */,
+				F2C045FE1E48D7D4004CE499 /* SnapKit.framework in Frameworks */,
+				F2C0460A1E48D7D5004CE499 /* Arrow.framework in Frameworks */,
+				F2C045F31E48D7B4004CE499 /* SwiftyJSON.framework in Frameworks */,
+				F2C045ED1E48D7A4004CE499 /* RxSwift.framework in Frameworks */,
+				F2C045E51E48D78F004CE499 /* Arrow.framework in Frameworks */,
 				5CD1B0E15CD05063DC7FD983 /* Pods_Gank.framework in Frameworks */,
+				F2C045F81E48D7D4004CE499 /* YYCache.framework in Frameworks */,
+				F2C045E71E48D795004CE499 /* DynamicColor.framework in Frameworks */,
+				F2C046081E48D7D5004CE499 /* DynamicColor.framework in Frameworks */,
+				F2C045E31E48D788004CE499 /* Alamofire.framework in Frameworks */,
+				F2C045FC1E48D7D4004CE499 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +195,17 @@
 		68593531AB7CF1C3FF8D48A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2C045F61E48D7BE004CE499 /* YYCache.framework */,
+				F2C045F41E48D7BA004CE499 /* Then.framework */,
+				F2C045F21E48D7B4004CE499 /* SwiftyJSON.framework */,
+				F2C045F01E48D7AF004CE499 /* SnapKit.framework */,
+				F2C045EE1E48D7AB004CE499 /* SDWebImage.framework */,
+				F2C045EC1E48D7A4004CE499 /* RxSwift.framework */,
+				F2C045EA1E48D79F004CE499 /* RxCocoa.framework */,
+				F2C045E81E48D79A004CE499 /* PreviewTransition.framework */,
+				F2C045E61E48D795004CE499 /* DynamicColor.framework */,
+				F2C045E41E48D78F004CE499 /* Arrow.framework */,
+				F2C045E21E48D788004CE499 /* Alamofire.framework */,
 				C1D3618B6E6694694FB125D6 /* Pods_Gank.framework */,
 				193D8E513F0985C5C7A60038 /* Pods_GankTests.framework */,
 				7E0AA50718AA42652EBBA451 /* Pods_GankUITests.framework */,
@@ -230,6 +331,7 @@
 				86B4A9C41E229484005474E8 /* Resources */,
 				964390BBA09C90627596FB32 /* [CP] Embed Pods Frameworks */,
 				844C97AB038EA23F2FA32E43 /* [CP] Copy Pods Resources */,
+				F2C0460E1E48D7D5004CE499 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -663,6 +765,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JDTEF93AA4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsccw.Gank;
@@ -682,6 +788,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = JDTEF93AA4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Gank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vsccw.Gank;
