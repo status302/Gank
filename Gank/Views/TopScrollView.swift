@@ -59,6 +59,10 @@ class TopScrollView: UIView {
     private var activityIndicatorView: UIActivityIndicatorView?
     fileprivate var pageControl: UIPageControl?
     weak var delegate: TopScrollViewDelegate?
+
+    static var height: CGFloat {
+        return 360.0
+    }
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -136,7 +140,7 @@ class TopScrollView: UIView {
             $0.left.equalTo(superView.snp.left)
             $0.top.equalTo(superView.snp.top)
             $0.right.equalTo(superView.snp.right)
-            $0.height.equalTo(280.0)
+            $0.height.equalTo(TopScrollView.height)
         })
         
         scrollView.snp.makeConstraints({
