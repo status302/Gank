@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+
     class var gk_random: UIColor {
         let r = CGFloat(Double(arc4random_uniform(256)) / 256.0)
         let g = CGFloat(Double(arc4random_uniform(256)) / 256.0)

@@ -9,7 +9,7 @@
 import UIKit
 import FontAwesomeKit_Swift
 
-class GKTabbarController: UITabBarController {
+class TabbarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -100,6 +100,7 @@ class TopScrollView: UIView {
             $0.hidesWhenStopped = true
             $0.startAnimating()
         })
+
         addSubview(activityIndicatorView)
         self.activityIndicatorView = activityIndicatorView
         
@@ -120,7 +121,7 @@ class TopScrollView: UIView {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
-            scrollView.setContentOffset(CGPoint(x: self.frame.width, y: 0), animated: false)
+            scrollView.setContentOffset(CGPoint(x: frame.width, y: 0), animated: false)
         }
     }
     
@@ -175,6 +176,7 @@ class TopScrollView: UIView {
         activityIndicatorView?.snp.makeConstraints({
             $0.center.equalTo(self.snp.center)
         })
+
         pageControl?.snp.makeConstraints({
             $0.bottom.equalTo(self.snp.bottom)
             $0.right.equalTo(self.snp.right).offset(-10)

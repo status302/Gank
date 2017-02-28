@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YYCache
 
 class CacheHelper: NSObject {
 

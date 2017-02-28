@@ -25,6 +25,8 @@ class HomeViewController: UIViewController {
     var categoryDatas: [String] = {
         return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
     }()
+
+    var isExpandingDict: [String: Bool]?
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +78,14 @@ class HomeViewController: UIViewController {
         tableView?.snp.makeConstraints({
             $0.edges.equalTo(view)
         })
+
+        isExpandingDict = ["iOS": false,
+                       "前端": false,
+                       "Android": false,
+                       "扩展资源": false,
+                       "福利": false,
+                       "休息视频": false]
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,10 +128,11 @@ extension HomeViewController: TabbarViewDelegate {
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -145,19 +156,38 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell!
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
-    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return TopScrollView.height
         default:
             return 58.0
+        }
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+
+            let categoryName = categoryDatas[indexPath.row]
+            if let isExpanding = isExpandingDict?[categoryName] {
+                if !isExpanding {
+
+                }
+                else {
+
+                }
+            }
         }
     }
 }
