@@ -67,11 +67,6 @@ class HomeViewController: UIViewController {
             $0.register(HomeTopCell.self, forCellReuseIdentifier: HomeTopCell.identifier)
             $0.register(HomeCategoryCell.self, forCellReuseIdentifier: HomeCategoryCell.identifier)
             $0.backgroundColor = UIColor(hexString: "0x232329")
-//            if #available(iOS 10.0, *) {
-//                $0.refreshControl = UIRefreshControl().then({
-//                    $0.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-//                })
-//            }
         }
         
         view.insertSubview(tableView!, at: 0)
@@ -85,7 +80,6 @@ class HomeViewController: UIViewController {
                        "扩展资源": false,
                        "福利": false,
                        "休息视频": false]
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,12 +88,13 @@ class HomeViewController: UIViewController {
             weakSelf?.resultJson = $0
         }
     }
+
     
     deinit {
         tableView?.delegate = nil
         tableView?.dataSource = nil
     }
-    
+
     func refreshData() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) { 
             if #available(iOS 10.0, *) {

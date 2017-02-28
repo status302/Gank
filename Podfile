@@ -9,6 +9,7 @@ target 'Gank' do
     #  pod 'SnapKit', '~> 3.1.2'
     #  pod 'Then', '~> 2.1.0'
     pod 'FontAwesomeKit.Swift', '~> 0.3.1'
+    # pod 'SVPullToRefresh'
     pod 'pop', '~> 1.0.9'
     #  pod 'SwiftyJSON', '~> 3.1.3'
     pod 'TransitionTreasury', '~> 4.0.0'

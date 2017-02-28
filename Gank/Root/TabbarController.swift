@@ -22,7 +22,7 @@ class TabbarController: UITabBarController {
         homeNavigation.tabBarItem = UITabBarItem.init(title: "首页", image: homeItemImage, tag: 1)
         addChildViewController(homeNavigation)
 
-        let categoryVC = UIViewController()
+        let categoryVC = CategoryViewController()
         categoryVC.view.backgroundColor = UIColor.red
         let categoryNavigaiton = UINavigationController.init(rootViewController: categoryVC)
         let categoryItemImage = UIImage.init(awesomeType: .fa_align_justify, size: 10, color: UIColor.black)
@@ -43,7 +43,16 @@ class TabbarController: UITabBarController {
         settingNavigation.tabBarItem = UITabBarItem.init(title: "设置", image: settingItemImage
             , tag: 4)
         addChildViewController(settingNavigation)
+    }
 
+    override func setNeedsStatusBarAppearanceUpdate() {
+        super.setNeedsStatusBarAppearanceUpdate()
+        if selectedIndex != 0 {
+            UIApplication.shared.isStatusBarHidden = false
+        }
+        else {
+            UIApplication.shared.isStatusBarHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
