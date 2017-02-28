@@ -14,6 +14,8 @@ class GKTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBar.tintColor = UIColor.black
+
         let homeVC = HomeViewController()
         let homeNavigation = UINavigationController.init(rootViewController: homeVC)
         let homeItemImage = UIImage.init(awesomeType: .fa_home, size: 10, color: UIColor.black)
