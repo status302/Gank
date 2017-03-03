@@ -10,21 +10,22 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
-    weak var bgView: UIView?
+    weak var bgView: CategoryTopScrollView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        UIApplication.shared.isStatusBarHidden = false
-
-        let bgView = UIView().then({ [weak self] in
-            $0.backgroundColor = UIColor.gray
-            self?.bgView = $0
-        })
-        self.navigationItem.titleView = bgView
-        bgView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
+        self.navigationItem.titleView = CategoryTopScrollView()
+            .then({ [weak self] in
+                $0.backgroundColor = UIColor.clear
+                $0.frame = CGRect(x: 12, y: 0, width: UIScreen.mainWidth - 24, height: 44)
+                self?.bgView = $0
+            })
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
     func makeContraints() {
         guard let superView = bgView?.superview else {

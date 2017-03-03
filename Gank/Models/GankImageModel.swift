@@ -18,18 +18,11 @@ struct GankImageModel {
     static func fetchImages(gankType: GankType ,block:@escaping ((GankImageModel?) -> Void)) {
         let cacheQueue = DispatchQueue(label: "gank_cache_image_queue_label", qos: .default)
         let networkManager = NetworkReachabilityManager()
-        
-        let diskCache: YYDiskCache?
-        if let cacheFolderString = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first {
-            let path = cacheFolderString + GankConfig.imageCacheName
-            diskCache = YYDiskCache(path: path)
-        }
-        else {
-            diskCache = nil
-        }
+
+        let imageCacheHelper = CacheHelper(type: .forImage)
+        let diskCache = imageCacheHelper.imageCache()
         cacheQueue.async {
-            let object = diskCache?.object(forKey: GankConfig.imageCacheKey)
-            if object != nil {
+            if let object = diskCache.object(forKey: GankConfig.imageCacheKey)            {
                 var jsons = GankImageModel()
                 if let jsonData = JSON(object) {
                     jsons.deserialize(jsonData)
@@ -60,7 +53,7 @@ struct GankImageModel {
                         jsons.deserialize(jsonData)
                         block(jsons)
                         cacheQueue.async(execute: {
-                            diskCache?.setObject(json as? NSDictionary, forKey: GankConfig.imageCacheKey)
+                            diskCache.setObject(json as? NSDictionary, forKey: GankConfig.imageCacheKey)
                         })
                     }
                     else {

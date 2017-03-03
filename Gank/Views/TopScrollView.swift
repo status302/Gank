@@ -16,45 +16,40 @@ protocol TopScrollViewDelegate: class {
 }
 
 class TopScrollView: UIView {
-    
+
     var imageJson: GankImageModel? {
         didSet {
-            if let results = imageJson?.results {
-                if results.count > (imageViews.count - 2) {
-                    for (index, imageView) in imageViews.enumerated() {
-                        if index == 0 {
-                            if let urlStr = results[imageViews.count - 3].url {
-                                if let url = URL(string: urlStr) {
-                                    imageView.sd_setImage(with: url, placeholderImage: nil)
-                                }
-                            }
-                        }
-                        else if index == (imageViews.count - 1) {
-                            if let urlStr = results[0].url {
-                                if let url = URL(string: urlStr) {
-                                    imageView.sd_setImage(with: url, placeholderImage: nil)
-                                }
-                            }
-                        }
-                        else {
-                            if let urlStr = results[index - 1].url {
-                                if let url = URL(string: urlStr) {
-                                    imageView.sd_setImage(with: url, placeholderImage: nil)
-                                }
-                            }
+            if let results = imageJson?.results,
+                results.count > (imageViews.count - 2) {
+                for (index, imageView) in imageViews.enumerated() {
+                    if index == 0,
+                        let urlStr = results[imageViews.count - 3].url,
+                        let url = URL(string: urlStr) {
+                        imageView.sd_setImage(with: url, placeholderImage: nil)
+                    }
+                    else if index == (imageViews.count - 1),
+                        let urlStr = results[0].url,
+                        let url = URL(string: urlStr) {
+                        imageView.sd_setImage(with: url, placeholderImage: nil)
+                    }
+                    else {
+                        if let urlStr = results[index - 1].url,
+                            let url = URL(string: urlStr) {
+                            imageView.sd_setImage(with: url, placeholderImage: nil)
                         }
                     }
                 }
-            }
-            DispatchQueue.main.async { [weak self] in
-                self?.activityIndicatorView?.stopAnimating()
-                self?.pageControl?.isHidden = false
-                self?.scrollView.isScrollEnabled = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.activityIndicatorView?.stopAnimating()
+                    self?.pageControl?.isHidden = false
+                    self?.scrollView.isScrollEnabled = true
+                }
             }
         }
     }
-    
+
     private var imageViews = [UIImageView]()
+
     var scrollView: UIScrollView!
     private var activityIndicatorView: UIActivityIndicatorView?
     fileprivate var pageControl: UIPageControl?
@@ -91,7 +86,7 @@ class TopScrollView: UIView {
                 $0.contentMode = .scaleAspectFill
                 $0.layer.masksToBounds = true
             })
-            imageView.backgroundColor = UIColor.gk_random
+            imageView.backgroundColor = UIColor.init(hex: 0x232329)
             scrollView.addSubview(imageView)
             imageViews.append(imageView)
         }
@@ -107,8 +102,8 @@ class TopScrollView: UIView {
         let pageControl = UIPageControl().then({
             $0.currentPage = 0
             $0.numberOfPages = (imageViews.count - 2)
-            $0.currentPageIndicatorTintColor = UIColor(white: 0, alpha: 1.0)
-            $0.pageIndicatorTintColor = UIColor(white: 0, alpha: 0.40)
+            $0.currentPageIndicatorTintColor = UIColor(white: 1.0, alpha: 0.85)
+            $0.pageIndicatorTintColor = UIColor(white: 1.0, alpha: 0.40)
             $0.contentMode = .right
             $0.isHidden = true
             $0.isEnabled = true

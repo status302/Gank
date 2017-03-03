@@ -7,7 +7,8 @@
 //
 
 import UIKit
+import Arrow
 
-class GankDayResult: NSObject {
-
+struct GankDayResult {
+    
 }

@@ -22,11 +22,13 @@ class HomeViewController: UIViewController {
             }
         }
     }
+
+    fileprivate var lastSelectedMasterIndexPath = IndexPath()
+
     var categoryDatas: [String] = {
         return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
     }()
 
-    var isExpandingDict: [String: Bool]?
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,13 +75,6 @@ class HomeViewController: UIViewController {
         tableView?.snp.makeConstraints({
             $0.edges.equalTo(view)
         })
-
-        isExpandingDict = ["iOS": false,
-                       "前端": false,
-                       "Android": false,
-                       "扩展资源": false,
-                       "福利": false,
-                       "休息视频": false]
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -139,16 +134,16 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0  {
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTopCell.identifier, for: indexPath) as? HomeTopCell
+            let cell = tableView.dequeueReusableCell(indexPath) as HomeTopCell
             if resultJson != nil {
-                cell?.resultJson = self.resultJson
+                cell.resultJson = self.resultJson
             }
-            return cell!
+            return cell
         }
         else  {
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeCategoryCell.identifier, for: indexPath) as? HomeCategoryCell
-            cell?.categoryName = categoryDatas[indexPath.row]
-            return cell!
+            let cell = tableView.dequeueReusableCell(indexPath) as HomeCategoryCell
+            cell.categoryName = categoryDatas[indexPath.row]
+            return cell
         }
     }
 
@@ -171,18 +166,27 @@ extension HomeViewController: UITableViewDelegate {
         return CGFloat.leastNormalMagnitude
     }
 
+    //MARK: - select cell
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log("Will select row at indexPath : \(indexPath)")
+        return indexPath
+    }
+
+    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log("Will deselect row at indexPath : \(indexPath)")
+        return indexPath
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        Log("Did deselect row at indexPath : \(indexPath)")
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-
-            let categoryName = categoryDatas[indexPath.row]
-            if let isExpanding = isExpandingDict?[categoryName] {
-                if !isExpanding {
-
-                }
-                else {
-
-                }
-            }
+        Log("Did select row at indexPath : \(indexPath)")
+        if indexPath.section == 1,
+            let cell = tableView.cellForRow(at: indexPath),
+            cell.isKind(of: HomeCategoryCell.self) {
+            
         }
     }
 }

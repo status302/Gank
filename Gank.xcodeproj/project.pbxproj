@@ -27,6 +27,10 @@
 		86E57EE31E63284C00B59C0E /* GankDayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EE21E63284C00B59C0E /* GankDayResult.swift */; };
 		86FAA0C71E65D8FA00D1CFD3 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0C61E65D8FA00D1CFD3 /* CategoryViewController.swift */; };
 		86FAA0C91E65DF6B00D1CFD3 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0C81E65DF6B00D1CFD3 /* Log.swift */; };
+		86FAA0CC1E68688A00D1CFD3 /* CategoryTopScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0CB1E68688A00D1CFD3 /* CategoryTopScrollView.swift */; };
+		86FAA0CE1E68693500D1CFD3 /* UIScreen+Gank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0CD1E68693500D1CFD3 /* UIScreen+Gank.swift */; };
+		86FAA0D01E686D5800D1CFD3 /* UITableVIew+Gank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0CF1E686D5800D1CFD3 /* UITableVIew+Gank.swift */; };
+		86FAA0D21E68883E00D1CFD3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0D11E68883E00D1CFD3 /* HomeViewModel.swift */; };
 		F21F22281E435A740048520F /* GankResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F22271E435A740048520F /* GankResult.swift */; };
 		F223265D1E34FFB3007446CC /* GankConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F223265C1E34FFB3007446CC /* GankConfig.swift */; };
 		F28465FC1E33D49C000BD3E6 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28465FB1E33D49C000BD3E6 /* TabbarView.swift */; };
@@ -140,6 +144,10 @@
 		86E57EE21E63284C00B59C0E /* GankDayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GankDayResult.swift; sourceTree = "<group>"; };
 		86FAA0C61E65D8FA00D1CFD3 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		86FAA0C81E65DF6B00D1CFD3 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		86FAA0CB1E68688A00D1CFD3 /* CategoryTopScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTopScrollView.swift; sourceTree = "<group>"; };
+		86FAA0CD1E68693500D1CFD3 /* UIScreen+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Gank.swift"; sourceTree = "<group>"; };
+		86FAA0CF1E686D5800D1CFD3 /* UITableVIew+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableVIew+Gank.swift"; sourceTree = "<group>"; };
+		86FAA0D11E68883E00D1CFD3 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C1D3618B6E6694694FB125D6 /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9054F725BB5B7DF4E4871DA /* Pods-GankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EF158F190FDBA2CAD4203E81 /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +272,7 @@
 				86E57ED61E62FB5800B59C0E /* Protocols */,
 				F2B979F61E30FDC000A43AC4 /* Controllers */,
 				F2B979F81E30FDC000A43AC4 /* Models */,
+				86FAA0CA1E68679D00D1CFD3 /* ViewModel */,
 				F2B979F91E30FDC000A43AC4 /* Views */,
 				F28CEA6C1E310F7C00D9954D /* Helpers */,
 				86E57ECE1E62A0BF00B59C0E /* Root */,
@@ -324,8 +333,18 @@
 			children = (
 				86E57EDA1E62FE8C00B59C0E /* DispatchQueue+Gank.swift */,
 				86E57EDC1E62FFC900B59C0E /* UIColor+Gank.swift */,
+				86FAA0CD1E68693500D1CFD3 /* UIScreen+Gank.swift */,
+				86FAA0CF1E686D5800D1CFD3 /* UITableVIew+Gank.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86FAA0CA1E68679D00D1CFD3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				86FAA0D11E68883E00D1CFD3 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F28CEA6C1E310F7C00D9954D /* Helpers */ = {
@@ -366,6 +385,7 @@
 				86E57ED21E62D6DC00B59C0E /* HomeTopCell.swift */,
 				86E57ED41E62F8C000B59C0E /* HomeCategoryCell.swift */,
 				86E57EDE1E630F1000B59C0E /* GankDetailCell.swift */,
+				86FAA0CB1E68688A00D1CFD3 /* CategoryTopScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -673,6 +693,8 @@
 				F28465FC1E33D49C000BD3E6 /* TabbarView.swift in Sources */,
 				F2B979FC1E30FE0E00A43AC4 /* TopScrollView.swift in Sources */,
 				86E57ED81E62FB8600B59C0E /* ViewIdentifierReuseable.swift in Sources */,
+				86FAA0CE1E68693500D1CFD3 /* UIScreen+Gank.swift in Sources */,
+				86FAA0D21E68883E00D1CFD3 /* HomeViewModel.swift in Sources */,
 				86E57EDF1E630F1000B59C0E /* GankDetailCell.swift in Sources */,
 				86E57EDB1E62FE8C00B59C0E /* DispatchQueue+Gank.swift in Sources */,
 				86E57ED51E62F8C000B59C0E /* HomeCategoryCell.swift in Sources */,
@@ -680,12 +702,14 @@
 				F2B979FA1E30FDC000A43AC4 /* HomeViewController.swift in Sources */,
 				F21F22281E435A740048520F /* GankResult.swift in Sources */,
 				F28CEA681E30FFE500D9954D /* GankImageModel.swift in Sources */,
+				86FAA0D01E686D5800D1CFD3 /* UITableVIew+Gank.swift in Sources */,
 				86E57ED11E62A0ED00B59C0E /* TabbarController.swift in Sources */,
 				F223265D1E34FFB3007446CC /* GankConfig.swift in Sources */,
 				F28CEA6E1E310FA700D9954D /* GankType.swift in Sources */,
 				86FAA0C91E65DF6B00D1CFD3 /* Log.swift in Sources */,
 				86E57ED31E62D6DC00B59C0E /* HomeTopCell.swift in Sources */,
 				86E57EDD1E62FFC900B59C0E /* UIColor+Gank.swift in Sources */,
+				86FAA0CC1E68688A00D1CFD3 /* CategoryTopScrollView.swift in Sources */,
 				86FAA0C71E65D8FA00D1CFD3 /* CategoryViewController.swift in Sources */,
 				86B4A9CA1E229484005474E8 /* AppDelegate.swift in Sources */,
 			);
