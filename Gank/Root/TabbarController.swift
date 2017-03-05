@@ -25,6 +25,7 @@ class TabbarController: UITabBarController {
         let categoryVC = CategoryViewController()
         categoryVC.view.backgroundColor = UIColor.red
         let categoryNavigaiton = UINavigationController.init(rootViewController: categoryVC)
+        categoryNavigaiton.navigationBar.isTranslucent = false
         let categoryItemImage = UIImage.init(awesomeType: .fa_align_justify, size: 10, color: UIColor.black)
         categoryNavigaiton.tabBarItem = UITabBarItem.init(title: "类别", image: categoryItemImage, tag: 2)
         addChildViewController(categoryNavigaiton)
