@@ -20,11 +20,16 @@ class CategoryViewController: UIViewController {
                 $0.backgroundColor = UIColor.clear
                 $0.frame = CGRect(x: 12, y: 0, width: UIScreen.mainWidth - 24, height: 44)
                 self?.bgView = $0
+                $0.addTarget(self, action: #selector(self?.valueChange(view:)), for: .touchUpInside)
             })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func valueChange(view: CategoryTopScrollView) {
+        
     }
 
     func makeContraints() {
