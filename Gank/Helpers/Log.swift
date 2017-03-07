@@ -8,6 +8,6 @@
 
 import UIKit
 
-func Log<T>(_ message: T, file: String = #file, function: String = #function, line: Int = #line) {
-    print(file + "-" + function + "-" + "\(line)" + "-" + "\(message)")
+func Log<T>(_ message: T, function: String = #function, line: Int = #line) {
+    print(function + "-" + "\(line)" + "-" + "\(message)")
 }

@@ -12,4 +12,8 @@ extension String {
     func boundsWidth(font: UIFont, height: CGFloat) -> CGFloat{
         return self.boundingRect(with: CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: height), options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil).width
     }
+    
+    func boundsHeight(font: UIFont, width: CGFloat) -> CGFloat {
+        return self.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil).height
+    }
 }
