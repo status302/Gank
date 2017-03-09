@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     var subModels = [String]()
     fileprivate var lastSelectedMasterIndexPath = IndexPath.init(row: Int(MAXINTERP), section: 1)
     var isExpanding = false
+    var isSelectedSubCell = false
 
     var categoryDatas: [String] = {
         return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
@@ -132,7 +133,7 @@ extension HomeViewController: UITableViewDataSource {
         else {
             if subModels.count > 0 {
                 if indexPath.row > lastSelectedMasterIndexPath.row
-                    && indexPath.row <= lastSelectedMasterIndexPath.row + subModels.count {
+                    && indexPath.row <= (lastSelectedMasterIndexPath.row + subModels.count) {
                     let cell = tableView.dequeueReusableCell(indexPath) as HomeResultCell
                     
                     return cell
@@ -182,95 +183,87 @@ extension HomeViewController: UITableViewDelegate {
 
     //MARK: - select cell
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        Log("Will select row at indexPath : \(indexPath)")
+        Log(indexPath)
         if let cell = tableView.cellForRow(at: indexPath),
-           cell.isKind(of: HomeResultCell.self) {
-            return indexPath
-        }
-        else if let cell = tableView.cellForRow(at: indexPath),
-            cell.isKind(of: HomeCategoryCell.self) {
-            if indexPath.row < lastSelectedMasterIndexPath.row {
+            cell.isMember(of: HomeCategoryCell.self) {
+            isSelectedSubCell = false
+            if indexPath.row > lastSelectedMasterIndexPath.row {
+                return IndexPath(row: indexPath.row - subModels.count, section: indexPath.section)
+            }
+            else {
                 return indexPath
             }
-            else if indexPath.row > lastSelectedMasterIndexPath.row + subModels.count {
-                return IndexPath(row: indexPath.row - subModels.count, section: 1)
-            }
+        }
+        else if let _ = tableView.cellForRow(at: indexPath) {
+            isSelectedSubCell = true
+            return indexPath
         }
         return indexPath
     }
-
+    
+    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log(indexPath)
+        if isSelectedSubCell {
+            return nil
+        }
+        return indexPath
+    }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        Log("Did deselect row at indexPath : \(indexPath)")
+        Log(indexPath)
         if let cell = tableView.cellForRow(at: indexPath),
-            cell.isKind(of: HomeCategoryCell.self) {
+            cell.isMember(of: HomeCategoryCell.self) {
             if subModels.count > 0 && isExpanding == true {
+                tableView.beginUpdates()
                 var deletedIndexPaths = [IndexPath]()
                 for i in (lastSelectedMasterIndexPath.row + 1) ... (lastSelectedMasterIndexPath.row + subModels.count) {
-                    deletedIndexPaths.append(IndexPath(row: i, section: 1))
+                    deletedIndexPaths.append(IndexPath(row: i, section: indexPath.section))
                 }
-                tableView.beginUpdates()
                 tableView.deleteRows(at: deletedIndexPaths, with: .automatic)
                 subModels.removeAll()
                 tableView.endUpdates()
                 isExpanding = false
-                
-//                var reloadDataIndexPaths = [IndexPath]()
-//                for i in lastSelectedMasterIndexPath.row ..< categoryDatas.count {
-//                    let indexPath = IndexPath.init(row: i, section: 1)
-//                    reloadDataIndexPaths.append(indexPath)
-//                }
-//                tableView.reloadRows(at: reloadDataIndexPaths, with: .none)
             }
+            
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Log("Did select row at indexPath : \(indexPath)")
-//        guard lastSelectedMasterIndexPath != indexPath, isExpanding != true else {
-//            tableView.deselectRow(at: lastSelectedMasterIndexPath, animated: true)
-//            self.tableView(tableView, didDeselectRowAt: lastSelectedMasterIndexPath)
-//            lastSelectedMasterIndexPath = IndexPath(row: Int.max, section: 1)
-//            isExpanding = false
-//            return
-//        }
+        Log(indexPath)
         if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
-            cell.isKind(of: HomeResultCell.self) {
-            print("home result cell")
-            return
-        }
-        
-        if indexPath.section == 1,
-            let cell = tableView.cellForRow(at: indexPath),
-            cell.isKind(of: HomeCategoryCell.self) {
-            if isExpanding == true, lastSelectedMasterIndexPath == indexPath {
+            cell.isMember(of: HomeCategoryCell.self) {
+            if isExpanding == true,
+                lastSelectedMasterIndexPath == indexPath {
                 tableView.deselectRow(at: lastSelectedMasterIndexPath, animated: true)
                 self.tableView(tableView, didDeselectRowAt: lastSelectedMasterIndexPath)
-//                if lastSelectedMasterIndexPath.row == indexPath.row {
-                lastSelectedMasterIndexPath = IndexPath(row: Int.max, section: 1)
+                lastSelectedMasterIndexPath = IndexPath(row: Int.max, section: indexPath.section)
+                isSelectedSubCell = true
                 return
-//                }
             }
             
             lastSelectedMasterIndexPath = indexPath
             isExpanding = true
+            isSelectedSubCell = false
+            
             let appendingDatas = ["哈哈", "测试"]
             subModels.append(contentsOf: appendingDatas)
-            tableView.beginUpdates()
+            
             var indexPaths = [IndexPath]()
             for (index, data) in subModels.enumerated() {
-                let ip = IndexPath(row: indexPath.row + index + 1, section: 1)
+                let ip = IndexPath(row: indexPath.row + index + 1, section: indexPath.section)
                 indexPaths.append(ip)
             }
+            tableView.beginUpdates()
             tableView.insertRows(at: indexPaths, with: .bottom)
             tableView.endUpdates()
-            
-//            var reloadDataIndexPaths = [IndexPath]()
-//            for i in indexPath.row ..< (subModels.count + categoryDatas.count) {
-//                let indexPath = IndexPath(row: i, section: 1)
-//                reloadDataIndexPaths.append(indexPath)
-//            }
-//            tableView.reloadRows(at: reloadDataIndexPaths, with: .none)
+        }
+        else if indexPath.section == 1,
+            let cell = tableView.cellForRow(at: indexPath),
+            cell.isMember(of: HomeResultCell.self) {
+            print("----")
+            isSelectedSubCell = true
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }

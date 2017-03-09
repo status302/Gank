@@ -34,34 +34,33 @@ struct GankImageModel {
             return
         }
         
-        guard let urlString = GankConfig.imageUrlString else {
+        guard let urlString = GankConfig.imageUrlString,
+            let url = URL.init(string: urlString) else {
             block(nil)
             return
         }
-        
-        if let url = URL(string: urlString) {
-            Alamofire.request(url, method: .get).responseJSON { (response) in
-                guard response.result.error == nil else {
-                    print("\(response.result.error)")
-                    block(nil)
-                    return
+        Alamofire.request(url, method: .get).responseJSON { (response) in
+            guard response.result.error == nil else {
+                print("\(response.result.error)")
+                block(nil)
+                return
+            }
+            
+            if let json = response.result.value {
+                var jsons = GankImageModel()
+                if let jsonData = JSON(json) {
+                    jsons.deserialize(jsonData)
+                    block(jsons)
+                    cacheQueue.async(execute: {
+                        diskCache.setObject(json as? NSDictionary, forKey: GankConfig.imageCacheKey)
+                    })
                 }
-                
-                if let json = response.result.value {
-                    var jsons = GankImageModel()
-                    if let jsonData = JSON(json) {
-                        jsons.deserialize(jsonData)
-                        block(jsons)
-                        cacheQueue.async(execute: {
-                            diskCache.setObject(json as? NSDictionary, forKey: GankConfig.imageCacheKey)
-                        })
-                    }
-                    else {
-                        block(nil)
-                    }
+                else {
+                    block(nil)
                 }
             }
         }
+
     }
 }
 
