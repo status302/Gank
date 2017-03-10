@@ -23,7 +23,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    var subModels = [String]()
+    var subModels = [GankResult]()
+    
+    var rootModel: GankDayModel?
+    
     fileprivate var lastSelectedMasterIndexPath = IndexPath.init(row: Int(MAXINTERP), section: 1)
     var isExpanding = false
     var isSelectedSubCell = false
@@ -89,22 +92,16 @@ class HomeViewController: UIViewController {
         GankImageModel.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
             weakSelf?.resultJson = $0
         }
+        
+        GankDayModel.getTodayResult { (dayModel) in
+            self.rootModel = dayModel
+        }
     }
 
     
     deinit {
         tableView?.delegate = nil
         tableView?.dataSource = nil
-    }
-
-    func refreshData() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) { 
-            if #available(iOS 10.0, *) {
-                self.tableView?.refreshControl?.endRefreshing()
-            } else {
-                // Fallback on earlier versions
-            }
-        }
     }
 }
 
@@ -135,7 +132,9 @@ extension HomeViewController: UITableViewDataSource {
                 if indexPath.row > lastSelectedMasterIndexPath.row
                     && indexPath.row <= (lastSelectedMasterIndexPath.row + subModels.count) {
                     let cell = tableView.dequeueReusableCell(indexPath) as HomeResultCell
-                    
+                    if let ios = rootModel?.results?.ios?.first {
+                        cell.model = ios
+                    }
                     return cell
                 }
                 else if indexPath.row < lastSelectedMasterIndexPath.row {
@@ -163,7 +162,7 @@ extension HomeViewController: UITableViewDataSource {
             if subModels.count > 0 {
                 if indexPath.row > lastSelectedMasterIndexPath.row
                     && indexPath.row <= lastSelectedMasterIndexPath.row + subModels.count {
-                    return 40
+                    return 100
                 }
             }
             return 58.0
@@ -219,7 +218,7 @@ extension HomeViewController: UITableViewDelegate {
                 for i in (lastSelectedMasterIndexPath.row + 1) ... (lastSelectedMasterIndexPath.row + subModels.count) {
                     deletedIndexPaths.append(IndexPath(row: i, section: indexPath.section))
                 }
-                tableView.deleteRows(at: deletedIndexPaths, with: .automatic)
+                tableView.deleteRows(at: deletedIndexPaths, with: .right)
                 subModels.removeAll()
                 tableView.endUpdates()
                 isExpanding = false
@@ -246,11 +245,11 @@ extension HomeViewController: UITableViewDelegate {
             isExpanding = true
             isSelectedSubCell = false
             
-            let appendingDatas = ["哈哈", "测试"]
-            subModels.append(contentsOf: appendingDatas)
-            
+            if let ios = rootModel?.results?.ios {
+                subModels.append(contentsOf: ios)
+            }
             var indexPaths = [IndexPath]()
-            for (index, data) in subModels.enumerated() {
+            for (index, _) in subModels.enumerated() {
                 let ip = IndexPath(row: indexPath.row + index + 1, section: indexPath.section)
                 indexPaths.append(ip)
             }

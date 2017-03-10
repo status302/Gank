@@ -34,14 +34,14 @@ class HomeCategoryCell: UITableViewCell, ViewIdentifierReuseable {
         // Initialization code
         setupSubviews()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     func setupSubviews() {
+        self.selectionStyle = .none
+        
         let _ = UILabel().then({
             $0.font = UIFont.init(fa_fontSize: 26)
             $0.fa_text = .fa_arrow_right

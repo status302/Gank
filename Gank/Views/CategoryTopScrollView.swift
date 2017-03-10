@@ -5,7 +5,7 @@ class CategoryTopScrollView: UIControl {
     
     fileprivate typealias Item = UILabel
     
-    var datas: [String] = ["所有", "iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
+    var datas: [String] = ["所有", "iOS", "前端", "Android", "扩展资源", "福利", "休息视频", "瞎推荐"]
     private(set) var eachWidth = [CGFloat]()
     fileprivate var labels = [UILabel]()
     private var locations = [CGFloat]()

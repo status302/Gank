@@ -15,6 +15,7 @@ enum GankType: String {
     case frontEnd = "前端"
     case video = "休息视频"
     case resource = "扩展资源"
+    case other = "瞎推荐"
     case all = "all"
 }
 
@@ -32,6 +33,10 @@ extension GankType {
         }
     }
     
+    var urlBaseStringForToday: String {
+        return "http://gank.io/api/day/"
+    }
+    
     var pageCount: Int {
         get {
             return self.pageCount
@@ -40,6 +45,11 @@ extension GankType {
             pageCount = newValue
         }
     }
-    
-    
 }
+
+extension GankType {
+    static var today: String {
+        return "http://gank.io/api/day/2017/03/09"
+    }
+}
+

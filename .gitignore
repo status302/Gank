@@ -5,6 +5,8 @@
 ## Build generated
 build/
 DerivedData
+*.playground
+
 
 ## Various settings
 *.pbxuser

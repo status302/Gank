@@ -24,7 +24,7 @@
 		86E57EDD1E62FFC900B59C0E /* UIColor+Gank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EDC1E62FFC900B59C0E /* UIColor+Gank.swift */; };
 		86E57EDF1E630F1000B59C0E /* GankDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EDE1E630F1000B59C0E /* GankDetailCell.swift */; };
 		86E57EE11E63280500B59C0E /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EE01E63280500B59C0E /* CacheHelper.swift */; };
-		86E57EE31E63284C00B59C0E /* GankDayResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EE21E63284C00B59C0E /* GankDayResult.swift */; };
+		86E57EE31E63284C00B59C0E /* GankDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E57EE21E63284C00B59C0E /* GankDayModel.swift */; };
 		86FAA0C71E65D8FA00D1CFD3 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0C61E65D8FA00D1CFD3 /* CategoryViewController.swift */; };
 		86FAA0C91E65DF6B00D1CFD3 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0C81E65DF6B00D1CFD3 /* Log.swift */; };
 		86FAA0CC1E68688A00D1CFD3 /* CategoryTopScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FAA0CB1E68688A00D1CFD3 /* CategoryTopScrollView.swift */; };
@@ -73,6 +73,8 @@
 		F2C0460C1E48D7D5004CE499 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E21E48D788004CE499 /* Alamofire.framework */; };
 		F2C0460D1E48D7D5004CE499 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2C045E21E48D788004CE499 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F2E2283B1E6C0839009BB35A /* String+Gank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E2283A1E6C0839009BB35A /* String+Gank.swift */; };
+		F2EA2AFB1E71845000DEBD8E /* Date+Gank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2AFA1E71845000DEBD8E /* Date+Gank.swift */; };
+		F2EA2AFE1E7249D800DEBD8E /* ServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EA2AFD1E7249D800DEBD8E /* ServiceResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +145,7 @@
 		86E57EDC1E62FFC900B59C0E /* UIColor+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Gank.swift"; sourceTree = "<group>"; };
 		86E57EDE1E630F1000B59C0E /* GankDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GankDetailCell.swift; sourceTree = "<group>"; };
 		86E57EE01E63280500B59C0E /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
-		86E57EE21E63284C00B59C0E /* GankDayResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GankDayResult.swift; sourceTree = "<group>"; };
+		86E57EE21E63284C00B59C0E /* GankDayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GankDayModel.swift; sourceTree = "<group>"; };
 		86FAA0C61E65D8FA00D1CFD3 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		86FAA0C81E65DF6B00D1CFD3 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		86FAA0CB1E68688A00D1CFD3 /* CategoryTopScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTopScrollView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,9 @@
 		F2C045F41E48D7BA004CE499 /* Then.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Then.framework; path = Carthage/Build/iOS/Then.framework; sourceTree = "<group>"; };
 		F2C045F61E48D7BE004CE499 /* YYCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCache.framework; path = Carthage/Build/iOS/YYCache.framework; sourceTree = "<group>"; };
 		F2E2283A1E6C0839009BB35A /* String+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Gank.swift"; sourceTree = "<group>"; };
+		F2EA2AFA1E71845000DEBD8E /* Date+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Gank.swift"; sourceTree = "<group>"; };
+		F2EA2AFC1E7184D200DEBD8E /* Gank.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Gank.playground; sourceTree = "<group>"; };
+		F2EA2AFD1E7249D800DEBD8E /* ServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
 		F3A034663AF704555BEBCF64 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +277,7 @@
 		86B4A9C81E229484005474E8 /* Gank */ = {
 			isa = PBXGroup;
 			children = (
+				F2EA2AFC1E7184D200DEBD8E /* Gank.playground */,
 				86E57ED91E62FE7400B59C0E /* Extensions */,
 				86E57ED61E62FB5800B59C0E /* Protocols */,
 				F2B979F61E30FDC000A43AC4 /* Controllers */,
@@ -340,6 +346,7 @@
 				86FAA0CD1E68693500D1CFD3 /* UIScreen+Gank.swift */,
 				86FAA0CF1E686D5800D1CFD3 /* UITableVIew+Gank.swift */,
 				F2E2283A1E6C0839009BB35A /* String+Gank.swift */,
+				F2EA2AFA1E71845000DEBD8E /* Date+Gank.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,6 +366,7 @@
 				F223265C1E34FFB3007446CC /* GankConfig.swift */,
 				86E57EE01E63280500B59C0E /* CacheHelper.swift */,
 				86FAA0C81E65DF6B00D1CFD3 /* Log.swift */,
+				F2EA2AFD1E7249D800DEBD8E /* ServiceResult.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -377,7 +385,7 @@
 			children = (
 				F28CEA671E30FFE500D9954D /* GankImageModel.swift */,
 				F21F22271E435A740048520F /* GankResult.swift */,
-				86E57EE21E63284C00B59C0E /* GankDayResult.swift */,
+				86E57EE21E63284C00B59C0E /* GankDayModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -701,10 +709,11 @@
 				86E57ED81E62FB8600B59C0E /* ViewIdentifierReuseable.swift in Sources */,
 				86FAA0CE1E68693500D1CFD3 /* UIScreen+Gank.swift in Sources */,
 				86FAA0D21E68883E00D1CFD3 /* HomeViewModel.swift in Sources */,
+				F2EA2AFB1E71845000DEBD8E /* Date+Gank.swift in Sources */,
 				86E57EDF1E630F1000B59C0E /* GankDetailCell.swift in Sources */,
 				86E57EDB1E62FE8C00B59C0E /* DispatchQueue+Gank.swift in Sources */,
 				86E57ED51E62F8C000B59C0E /* HomeCategoryCell.swift in Sources */,
-				86E57EE31E63284C00B59C0E /* GankDayResult.swift in Sources */,
+				86E57EE31E63284C00B59C0E /* GankDayModel.swift in Sources */,
 				F2B979FA1E30FDC000A43AC4 /* HomeViewController.swift in Sources */,
 				F21F22281E435A740048520F /* GankResult.swift in Sources */,
 				F28CEA681E30FFE500D9954D /* GankImageModel.swift in Sources */,
@@ -717,6 +726,7 @@
 				86E57ED31E62D6DC00B59C0E /* HomeTopCell.swift in Sources */,
 				86E57EDD1E62FFC900B59C0E /* UIColor+Gank.swift in Sources */,
 				86FAA0CC1E68688A00D1CFD3 /* CategoryTopScrollView.swift in Sources */,
+				F2EA2AFE1E7249D800DEBD8E /* ServiceResult.swift in Sources */,
 				86FAA0C71E65D8FA00D1CFD3 /* CategoryViewController.swift in Sources */,
 				86B4A9CA1E229484005474E8 /* AppDelegate.swift in Sources */,
 				F2E2283B1E6C0839009BB35A /* String+Gank.swift in Sources */,
