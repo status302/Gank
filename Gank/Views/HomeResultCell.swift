@@ -17,8 +17,20 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
         didSet {
             if let images = model?.images,
                 let imageUrl = images.first,
-                let url = URL(string: imageUrl + "?imageView2/1/w/120/h/84") {
+                let url = URL(string: imageUrl + "?imageView2/1/w/66/h/44") {
                 descImageView?.sd_setImage(with: url)
+            }
+            
+            if let desc = model?.desc {
+                descLabel?.text = desc
+            }
+            
+            if let who = model?.who {
+                whoLabel?.text = who
+            }
+            
+            if let time = model?.publishedAt {
+                timeLabel?.text = time
             }
         }
     }
@@ -58,6 +70,7 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
         
         let nameLabel = UILabel().then({
             $0.font = UIFont.systemFont(ofSize: 12)
+            $0.sizeToFit()
             $0.textColor = UIColor.gray
             $0.textAlignment = .left
         })
@@ -66,6 +79,7 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
         
         let timeLabel = UILabel().then({
             $0.font = UIFont.systemFont(ofSize: 12)
+            $0.sizeToFit()
             $0.textColor = UIColor.gray
             $0.textAlignment = .left
         })
@@ -79,8 +93,27 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
         descImageView?.snp.makeConstraints({
             $0.top.equalTo(self.snp.top).offset(8)
             $0.left.equalTo(self.snp.left).offset(8)
-            $0.width.equalTo(120)
-            $0.height.equalTo(84)
+            $0.width.equalTo(66)
+            $0.height.equalTo(44)
+        })
+        
+        descLabel?.snp.makeConstraints({
+            guard let descImageView = descImageView else { return }
+            $0.top.equalTo(descImageView.snp.top).offset(5)
+            $0.left.equalTo(descImageView.snp.right).offset(10)
+            $0.right.equalTo(self.snp.right).offset(10)
+        })
+        
+        whoLabel?.snp.makeConstraints({
+            guard let imageView = descImageView else { return }
+            $0.left.equalTo(imageView.snp.right).offset(10)
+            $0.bottom.equalTo(imageView.snp.bottom)
+        })
+        
+        timeLabel?.snp.makeConstraints({
+            guard let whoLabel = whoLabel else { return }
+            $0.left.equalTo(whoLabel.snp.right).offset(10)
+            $0.bottom.equalTo(whoLabel.snp.bottom)
         })
     }
     

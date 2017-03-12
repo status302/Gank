@@ -162,7 +162,7 @@ extension HomeViewController: UITableViewDataSource {
             if subModels.count > 0 {
                 if indexPath.row > lastSelectedMasterIndexPath.row
                     && indexPath.row <= lastSelectedMasterIndexPath.row + subModels.count {
-                    return 100
+                    return 60
                 }
             }
             return 58.0
