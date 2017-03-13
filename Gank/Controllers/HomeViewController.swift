@@ -31,9 +31,16 @@ class HomeViewController: UIViewController {
     var isExpanding = false
     var isSelectedSubCell = false
 
-    var categoryDatas: [String] = {
-        return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
-    }()
+//    var categoryDatas: [String] = {
+//        return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
+//    }()
+    var categoryDatas = [String]() {
+        didSet {
+            DispatchQueue.safeMainQueue { [weak self] in
+                self?.tableView?.reloadData()
+            }
+        }
+    }
     
 
     // MARK: - Life Cycle
@@ -95,6 +102,7 @@ class HomeViewController: UIViewController {
         
         GankDayModel.getTodayResult { (dayModel) in
             self.rootModel = dayModel
+            self.categoryDatas = dayModel?.category ?? [""]
         }
     }
 
@@ -245,9 +253,43 @@ extension HomeViewController: UITableViewDelegate {
             isExpanding = true
             isSelectedSubCell = false
             
-            if let ios = rootModel?.results?.ios {
-                subModels.append(contentsOf: ios)
+            let category = categoryDatas[indexPath.row]
+            if category == GankType.android.rawValue {
+                if let android = rootModel?.results?.android {
+                    subModels.append(contentsOf: android)
+                }
             }
+            else if category == GankType.iOS.rawValue {
+                if let ios = rootModel?.results?.ios {
+                    subModels.append(contentsOf: ios)
+                }
+            }
+            else if category == GankType.frontEnd.rawValue {
+                if let frontEnd = rootModel?.results?.frontEnd {
+                    subModels.append(contentsOf: frontEnd)
+                }
+            }
+            else if category == GankType.other.rawValue {
+                if let other = rootModel?.results?.others {
+                    subModels.append(contentsOf: other)
+                }
+            }
+            else if category == GankType.video.rawValue {
+                if let video = rootModel?.results?.video {
+                    subModels.append(contentsOf: video)
+                }
+            }
+            else if category == GankType.welfare.rawValue {
+                if let welfare = rootModel?.results?.welfare {
+                    subModels.append(contentsOf: welfare)
+                }
+            }
+            else if category == GankType.resource.rawValue {
+                if let resource = rootModel?.results?.resource {
+                    subModels.append(contentsOf: resource)
+                }
+            }
+            
             var indexPaths = [IndexPath]()
             for (index, _) in subModels.enumerated() {
                 let ip = IndexPath(row: indexPath.row + index + 1, section: indexPath.section)

@@ -14,7 +14,7 @@ enum GankType: String {
     case welfare = "福利"
     case frontEnd = "前端"
     case video = "休息视频"
-    case resource = "扩展资源"
+    case resource = "拓展资源"
     case other = "瞎推荐"
     case all = "all"
 }
