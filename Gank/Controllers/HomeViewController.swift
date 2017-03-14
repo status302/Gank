@@ -17,28 +17,24 @@ class HomeViewController: UIViewController {
     var refreshControl: UIRefreshControl?
     var resultJson: GankImageModel? {
         didSet {
-            DispatchQueue.safeMainQueue { [weak self] in
-                self?.tableView?.reloadData()
-            }
+            self.tableView?.reloadData()
         }
     }
+
+    var activityView : UIActivityIndicatorView?
     
     var subModels = [GankResult]()
     
     var rootModel: GankDayModel?
     
     fileprivate var lastSelectedMasterIndexPath = IndexPath.init(row: Int(MAXINTERP), section: 1)
+    /// 展开状态
     var isExpanding = false
     var isSelectedSubCell = false
 
-//    var categoryDatas: [String] = {
-//        return ["iOS", "前端", "Android", "扩展资源", "福利", "休息视频"]
-//    }()
     var categoryDatas = [String]() {
         didSet {
-            DispatchQueue.safeMainQueue { [weak self] in
-                self?.tableView?.reloadData()
-            }
+            self.tableView?.reloadData()
         }
     }
     
@@ -92,6 +88,17 @@ class HomeViewController: UIViewController {
         tableView?.snp.makeConstraints({
             $0.edges.equalTo(view)
         })
+
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+            .then({
+                $0.hidesWhenStopped = true
+            })
+        view.addSubview(activityView!)
+        activityView?.snp.makeConstraints({
+            $0.top.equalTo(self.view.snp.top).offset(370)
+            $0.centerX.equalTo(self.view.snp.centerX)
+        })
+        activityView?.startAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,13 +107,14 @@ class HomeViewController: UIViewController {
             weakSelf?.resultJson = $0
         }
         
-        GankDayModel.getTodayResult { (dayModel) in
-            self.rootModel = dayModel
-            self.categoryDatas = dayModel?.category ?? [""]
+        GankDayModel.getTodayResult { [weak self] (dayModel) in
+            self?.rootModel = dayModel
+            self?.categoryDatas = dayModel?.category ?? [""]
+            self?.activityView?.stopAnimating()
+            self?.activityView = nil
         }
     }
 
-    
     deinit {
         tableView?.delegate = nil
         tableView?.dataSource = nil
@@ -189,8 +197,10 @@ extension HomeViewController: UITableViewDelegate {
 
     //MARK: - select cell
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        
-        guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
+        Log(indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return indexPath
+        }
         if cell.isMember(of: HomeCategoryCell.self) {
             isSelectedSubCell = false
             if isExpanding {
@@ -208,50 +218,55 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log(indexPath)
         if isSelectedSubCell {
+            isSelectedSubCell = false
             return nil
         }
         return indexPath
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            tableView.reloadData()
-            return
-        }
-        if cell.isMember(of: HomeCategoryCell.self) {
+        Log(indexPath)
+        if let cell = tableView.cellForRow(at: indexPath),
+            cell.isMember(of: HomeCategoryCell.self) {
             if subModels.count > 0 && isExpanding == true {
-                tableView.beginUpdates()
                 var deletedIndexPaths = [IndexPath]()
-                for i in (lastSelectedMasterIndexPath.row + 1) ... (lastSelectedMasterIndexPath.row + subModels.count) {
-                    deletedIndexPaths.append(IndexPath(row: i, section: indexPath.section))
+                for i in 1...subModels.count {
+                    deletedIndexPaths.append(IndexPath(row: i + indexPath.row, section: indexPath.section))
                 }
+                tableView.beginUpdates()
                 tableView.deleteRows(at: deletedIndexPaths, with: .right)
                 subModels.removeAll()
                 tableView.endUpdates()
                 isExpanding = false
             }
         }
+        else {
+            isSelectedSubCell = false
+            subModels.removeAll()
+            let sections = IndexSet(integer: 1)
+            tableView.reloadSections(sections, with: .none)
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Log(indexPath)
         if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeCategoryCell.self) {
+            isSelectedSubCell = false
+
             if isExpanding == true,
                 lastSelectedMasterIndexPath == indexPath {
-                tableView.deselectRow(at: lastSelectedMasterIndexPath, animated: true)
-                self.tableView(tableView, didDeselectRowAt: lastSelectedMasterIndexPath)
-                lastSelectedMasterIndexPath = IndexPath(row: Int.max, section: indexPath.section)
-                isSelectedSubCell = true
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.tableView(tableView, didDeselectRowAt: indexPath)
                 return
             }
-            
+
             lastSelectedMasterIndexPath = indexPath
             isExpanding = true
-            isSelectedSubCell = false
-            
+
             let category = categoryDatas[indexPath.row]
             if category == GankType.android.rawValue {
                 if let android = rootModel?.results?.android {
@@ -290,18 +305,20 @@ extension HomeViewController: UITableViewDelegate {
             }
             
             var indexPaths = [IndexPath]()
-            for (index, _) in subModels.enumerated() {
-                let ip = IndexPath(row: indexPath.row + index + 1, section: indexPath.section)
+            for index in 1...subModels.count {
+                let ip = IndexPath(row: indexPath.row + index, section: indexPath.section)
                 indexPaths.append(ip)
             }
             tableView.beginUpdates()
-            tableView.insertRows(at: indexPaths, with: .bottom)
+            tableView.insertRows(at: indexPaths, with: .top)
             tableView.endUpdates()
         }
         else if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeResultCell.self) {
+
             print("----")
+
             isSelectedSubCell = true
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -310,31 +327,16 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView == tableView {
-//            let currentOffsetY = scrollView.contentOffset.y + 329.0
-//            if currentOffsetY > 0 && currentOffsetY < 260 {
-//                self.topScrollView?.snp.updateConstraints({
-//                    $0.top.equalTo(view.snp.top).offset(-currentOffsetY)
-//                })
-//            }
-//            else if currentOffsetY >= 260 {
-//                self.topScrollView?.snp.updateConstraints({
-//                    $0.top.equalTo(view.snp.top).offset(-260)
-//                })
-//            } else {
-//                self.topScrollView?.snp.updateConstraints({
-//                    $0.top.equalTo(view.snp.top)
-//                })
-//            }
-//            
-//            if currentOffsetY > 20 {
-//                UIApplication.shared.isStatusBarHidden = false
-//                statusBarView?.alpha = min(1.0, max(0.0, currentOffsetY/100))
-//            }
-//            else if currentOffsetY <= 0 {
-//                UIApplication.shared.isStatusBarHidden = true
-//                statusBarView?.alpha = 0.0
-//            }
-//        }
+        if scrollView == tableView {
+            let currentOffsetY = scrollView.contentOffset.y
+            if currentOffsetY > 20 {
+                UIApplication.shared.isStatusBarHidden = false
+                statusBarView?.alpha = min(1.0, max(0.0, currentOffsetY/100.0))
+            }
+            else if currentOffsetY <= 0 {
+                UIApplication.shared.isStatusBarHidden = true
+                statusBarView?.alpha = 0.0
+            }
+        }
     }
 }

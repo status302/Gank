@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CategoryViewController: UIViewController {
 
     weak var bgView: CategoryTopScrollView?
+
+    let disposedBag = DisposeBag()
+    let item = ["haha", "test", "will", "animation"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +31,17 @@ class CategoryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
+            .then({
+                $0.delegate = self
+                $0.dataSource = self
+                $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+            })
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints({
+            $0.edges.equalTo(self.view)
+        })
     }
     
     func valueChange(view: CategoryTopScrollView) {
@@ -49,4 +65,39 @@ class CategoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return item.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = item[indexPath.row]
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Log(indexPath)
+        Log("----\(tableView.indexPathForSelectedRow)")
+    }
+
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log(indexPath)
+        return indexPath
+    }
+
+    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        Log(indexPath)
+        return indexPath
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        Log(indexPath)
+    }
 }

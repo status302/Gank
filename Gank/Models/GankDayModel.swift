@@ -20,7 +20,9 @@ struct GankDayModel {
         
         guard let networkManager = NetworkReachabilityManager(),
             networkManager.isReachable else {
-                block?(nil)
+                DispatchQueue.safeMainQueue {
+                    block?(nil)
+                }
                 return
         }
         
@@ -34,7 +36,9 @@ struct GankDayModel {
                 let json = JSON.init(rawValue) {
                 var dayResult = GankDayModel()
                 dayResult.deserialize(json)
-                block?(dayResult)
+                DispatchQueue.safeMainQueue {
+                    block?(dayResult)
+                }
             }
         }
     }
