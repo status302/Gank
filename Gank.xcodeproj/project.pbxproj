@@ -152,6 +152,7 @@
 		86FAA0CD1E68693500D1CFD3 /* UIScreen+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Gank.swift"; sourceTree = "<group>"; };
 		86FAA0CF1E686D5800D1CFD3 /* UITableVIew+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableVIew+Gank.swift"; sourceTree = "<group>"; };
 		86FAA0D11E68883E00D1CFD3 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		86FAA0D31E78485A00D1CFD3 /* Gank.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Gank.playground; sourceTree = "<group>"; };
 		C1D3618B6E6694694FB125D6 /* Pods_Gank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9054F725BB5B7DF4E4871DA /* Pods-GankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EF158F190FDBA2CAD4203E81 /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		F2C045F61E48D7BE004CE499 /* YYCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYCache.framework; path = Carthage/Build/iOS/YYCache.framework; sourceTree = "<group>"; };
 		F2E2283A1E6C0839009BB35A /* String+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Gank.swift"; sourceTree = "<group>"; };
 		F2EA2AFA1E71845000DEBD8E /* Date+Gank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Gank.swift"; sourceTree = "<group>"; };
-		F2EA2AFC1E7184D200DEBD8E /* Gank.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Gank.playground; sourceTree = "<group>"; };
 		F2EA2AFD1E7249D800DEBD8E /* ServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
 		F3A034663AF704555BEBCF64 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,7 +277,7 @@
 		86B4A9C81E229484005474E8 /* Gank */ = {
 			isa = PBXGroup;
 			children = (
-				F2EA2AFC1E7184D200DEBD8E /* Gank.playground */,
+				86FAA0D31E78485A00D1CFD3 /* Gank.playground */,
 				86E57ED91E62FE7400B59C0E /* Extensions */,
 				86E57ED61E62FB5800B59C0E /* Protocols */,
 				F2B979F61E30FDC000A43AC4 /* Controllers */,
@@ -495,7 +495,7 @@
 				TargetAttributes = {
 					86B4A9C51E229484005474E8 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = JDTEF93AA4;
+						DevelopmentTeam = 57EP4P69NV;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -882,7 +882,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = JDTEF93AA4;
+				DEVELOPMENT_TEAM = 57EP4P69NV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -905,7 +905,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = JDTEF93AA4;
+				DEVELOPMENT_TEAM = 57EP4P69NV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
