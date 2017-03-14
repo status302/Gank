@@ -140,9 +140,8 @@ extension HomeViewController: UITableViewDataSource {
                 if indexPath.row > lastSelectedMasterIndexPath.row
                     && indexPath.row <= (lastSelectedMasterIndexPath.row + subModels.count) {
                     let cell = tableView.dequeueReusableCell(indexPath) as HomeResultCell
-                    if let ios = rootModel?.results?.ios?.first {
-                        cell.model = ios
-                    }
+                    let currentRow = indexPath.row - lastSelectedMasterIndexPath.row - 1
+                    cell.model = subModels[currentRow]
                     return cell
                 }
                 else if indexPath.row < lastSelectedMasterIndexPath.row {
@@ -190,26 +189,25 @@ extension HomeViewController: UITableViewDelegate {
 
     //MARK: - select cell
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        Log(indexPath)
-        if let cell = tableView.cellForRow(at: indexPath),
-            cell.isMember(of: HomeCategoryCell.self) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return nil }
+        if cell.isMember(of: HomeCategoryCell.self) {
             isSelectedSubCell = false
-            if indexPath.row > lastSelectedMasterIndexPath.row {
-                return IndexPath(row: indexPath.row - subModels.count, section: indexPath.section)
-            }
-            else {
+            if isExpanding {
+                if indexPath.row > lastSelectedMasterIndexPath.row {
+                    return IndexPath(row: indexPath.row - subModels.count, section: indexPath.section)
+                }
                 return indexPath
             }
+            return indexPath
         }
-        else if let _ = tableView.cellForRow(at: indexPath) {
+        else {
             isSelectedSubCell = true
             return indexPath
         }
-        return indexPath
     }
     
     func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        Log(indexPath)
         if isSelectedSubCell {
             return nil
         }
@@ -217,9 +215,12 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        Log(indexPath)
-        if let cell = tableView.cellForRow(at: indexPath),
-            cell.isMember(of: HomeCategoryCell.self) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            tableView.reloadData()
+            return
+        }
+        if cell.isMember(of: HomeCategoryCell.self) {
             if subModels.count > 0 && isExpanding == true {
                 tableView.beginUpdates()
                 var deletedIndexPaths = [IndexPath]()
@@ -231,12 +232,10 @@ extension HomeViewController: UITableViewDelegate {
                 tableView.endUpdates()
                 isExpanding = false
             }
-            
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Log(indexPath)
         if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeCategoryCell.self) {
