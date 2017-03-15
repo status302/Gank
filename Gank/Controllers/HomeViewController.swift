@@ -28,13 +28,14 @@ class HomeViewController: UIViewController {
     var rootModel: GankDayModel?
     
     fileprivate var lastSelectedMasterIndexPath = IndexPath.init(row: Int(MAXINTERP), section: 1)
+    fileprivate var willSelectedIndexPath: IndexPath?
     /// 展开状态
     var isExpanding = false
     var isSelectedSubCell = false
 
     var categoryDatas = [String]() {
         didSet {
-            self.tableView?.reloadData()
+            self.reloadTableViewSectionOne()
         }
     }
     
@@ -99,25 +100,31 @@ class HomeViewController: UIViewController {
             $0.centerX.equalTo(self.view.snp.centerX)
         })
         activityView?.startAnimating()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        GankImageModel.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
-            weakSelf?.resultJson = $0
-        }
-        
-        GankDayModel.getTodayResult { [weak self] (dayModel) in
-            self?.rootModel = dayModel
-            self?.categoryDatas = dayModel?.category ?? [""]
-            self?.activityView?.stopAnimating()
-            self?.activityView = nil
-        }
+
+        loadData()
     }
 
     deinit {
         tableView?.delegate = nil
         tableView?.dataSource = nil
+    }
+
+    fileprivate func reloadTableViewSectionOne() {
+        let sections = IndexSet(integer: 1)
+        tableView?.reloadSections(sections, with: .none)
+    }
+
+    private func loadData() {
+        GankImageModel.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
+            weakSelf?.resultJson = $0
+        }
+
+        GankDayModel.getTodayResult(url: "2017/03/15") { [weak self] (dayModel) in
+            self?.rootModel = dayModel
+            self?.categoryDatas = dayModel?.category ?? [""]
+            self?.activityView?.stopAnimating()
+            self?.activityView = nil
+        }
     }
 }
 
@@ -197,7 +204,7 @@ extension HomeViewController: UITableViewDelegate {
 
     //MARK: - select cell
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        Log(indexPath)
+        willSelectedIndexPath = indexPath
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return indexPath
         }
@@ -218,7 +225,6 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        Log(indexPath)
         if isSelectedSubCell {
             isSelectedSubCell = false
             return nil
@@ -227,7 +233,6 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        Log(indexPath)
         if let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeCategoryCell.self) {
             if subModels.count > 0 && isExpanding == true {
@@ -244,14 +249,13 @@ extension HomeViewController: UITableViewDelegate {
         }
         else {
             isSelectedSubCell = false
+            isExpanding = false
             subModels.removeAll()
-            let sections = IndexSet(integer: 1)
-            tableView.reloadSections(sections, with: .none)
+            reloadTableViewSectionOne()
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Log(indexPath)
         if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeCategoryCell.self) {

@@ -13,13 +13,21 @@ import YYCache
 
 struct GankImageModel {
     var error: Bool?
-    var results: Array<GankResult>? //"http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1"
+    var results: Array<GankResult>? { //"http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1"
+        didSet {
+            if let results = results, let first = results.first {
+                self.currentDate = first.publishedAt.dateString
+            }
+        }
+    }
 
-    static func fetchImages(gankType: GankType ,block:@escaping ((GankImageModel?) -> Void)) {
+    private(set) var currentDate: String?
+
+    static func fetchImages(gankType: GankType, block: @escaping ((GankImageModel?) -> Void)) {
         let cacheQueue = DispatchQueue(label: "gank_cache_image_queue_label", qos: .default)
         let networkManager = NetworkReachabilityManager()
 
-        let imageCacheHelper = CacheHelper(type: .forImage)
+        let imageCacheHelper = CacheHelper(type: GankCacheType.forImage)
         let diskCache = imageCacheHelper.imageCache()
         cacheQueue.async {
             if let object = diskCache.object(forKey: GankConfig.imageCacheKey)            {
@@ -32,6 +40,7 @@ struct GankImageModel {
                 }
             }
         }
+        
         if !networkManager!.isReachable {
             return
         }
