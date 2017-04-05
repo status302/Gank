@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class HomeViewController: UIViewController {
 
@@ -42,14 +43,9 @@ class HomeViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        UIApplication.shared.isStatusBarHidden = true
+        
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.clear
-    
-        navigationController?.do({
-            $0.setNavigationBarHidden(true, animated: false)
-        })
 
         let statusBar = UIView().then({
             $0.backgroundColor = UIColor(white: 1.0, alpha: 0.88)
@@ -76,12 +72,11 @@ class HomeViewController: UIViewController {
             $0.isScrollEnabled = true
             $0.contentInset.bottom = 49.0
             $0.contentOffset = CGPoint.zero
+            $0.backgroundColor = UIColor(hexString: "0x232329")
             
             $0.registerCell(HomeTopCell.self)
             $0.registerCell(HomeCategoryCell.self)
             $0.registerCell(HomeResultCell.self)
-            
-            $0.backgroundColor = UIColor(hexString: "0x232329")
         }
         
         view.insertSubview(tableView!, at: 0)
@@ -99,10 +94,7 @@ class HomeViewController: UIViewController {
             $0.centerX.equalTo(self.view.snp.centerX)
         })
         activityView?.startAnimating()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
         GankImageModel.fetchImages(gankType: .welfare) { [weak weakSelf = self] in
             weakSelf?.resultJson = $0
         }
@@ -113,6 +105,24 @@ class HomeViewController: UIViewController {
             self?.activityView?.stopAnimating()
             self?.activityView = nil
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.do({
+            $0.setNavigationBarHidden(true, animated: false)
+        })
+        if let currentOffsetY = tableView?.contentOffset.y {
+            if currentOffsetY < 20.0 {
+                UIApplication.shared.isStatusBarHidden = true
+            }
+            else {
+                UIApplication.shared.isStatusBarHidden = false
+            }
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 
     deinit {
@@ -312,13 +322,24 @@ extension HomeViewController: UITableViewDelegate {
             tableView.beginUpdates()
             tableView.insertRows(at: indexPaths, with: .top)
             tableView.endUpdates()
+            tableView.scrollTo(atRow: lastSelectedMasterIndexPath.row + subModels.count, atSection: 1, animated: true)
         }
         else if indexPath.section == 1,
             let cell = tableView.cellForRow(at: indexPath),
             cell.isMember(of: HomeResultCell.self) {
-
-            print("----")
-
+            if categoryDatas[lastSelectedMasterIndexPath.row] == GankType.welfare.rawValue {
+                //TODO: 福利部分
+                print("++福利来了++")
+            }
+            else {
+                let selectedIndex = indexPath.row - lastSelectedMasterIndexPath.row - 1
+                if let urlStr = subModels[selectedIndex].url,
+                    let url = URL.init(string: urlStr) {
+                    let safariViewController = SFSafariViewController.init(url: url)
+                    self.present(safariViewController, animated: true, completion: {
+                    })
+                }
+            }
             isSelectedSubCell = true
             tableView.deselectRow(at: indexPath, animated: true)
         }
