@@ -1,9 +1,12 @@
 language: objective-c
 osx_image: xcode8.2
+xcode_workspace: Gank.xcworkspace
+xcode_scheme: Gank
 before_install:
   - pod repo update
+  - pod install
 script:
-  - xctool -workspace Gank.xcworkspace -scheme Gank -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  # - xctool -workspace Gank.xcworkspace -scheme Gank -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
   # - xctool test -workspace Gank.xcworkspace -scheme GankTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 
