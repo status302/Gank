@@ -20,6 +20,12 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
                 let url = URL(string: imageUrl + "?imageView2/1/w/66/h/44") {
                 descImageView?.sd_setImage(with: url)
             }
+            else {
+                descImageView?.image = nil
+//                descImageView?.snp.updateConstraints({
+//                    $0.width.equalTo(0)
+//                })
+            }
             
             if let desc = model?.desc {
                 descLabel?.text = desc
@@ -30,7 +36,7 @@ class HomeResultCell: UITableViewCell, ViewIdentifierReuseable {
             }
             
             if let time = model?.publishedAt {
-                timeLabel?.text = time
+                timeLabel?.text = time.dateString
             }
         }
     }

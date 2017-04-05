@@ -16,4 +16,15 @@ extension String {
     func boundsHeight(font: UIFont, width: CGFloat) -> CGFloat {
         return self.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil).height
     }
+
+    var dateString: String? {
+        let formatter = DateFormatter.init()
+        formatter.dateFormat = "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"
+        let formatterToReturn = DateFormatter.init()
+        formatterToReturn.dateFormat = "yyyy/MM/dd"
+        if let date = formatter.date(from: self) {
+            return formatterToReturn.string(from: date)
+        }
+        return nil
+    }
 }

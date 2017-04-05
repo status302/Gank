@@ -15,8 +15,11 @@ struct GankDayModel {
     var category: [String]?
     var results: GankDaySubModel?
     
-    static func getTodayResult(block: ((GankDayModel?) -> Void)?) {
-        guard let url = URL.init(string: GankType.today) else { return }
+    static func getTodayResult(url: String?, block: ((GankDayModel?) -> Void)?) {
+        guard let urlStr = url,
+            let url = URL(string: urlBaseStringForToday + urlStr) else {
+                return
+        }
         
         guard let networkManager = NetworkReachabilityManager(),
             networkManager.isReachable else {

@@ -19,11 +19,15 @@ enum GankType: String {
     case all = "all"
 }
 
+var urlBaseStringForToday: String {
+    return "http://gank.io/api/day/"
+}
+
 extension GankType {
     private var urlEndcodingChar: String? { // 将url中的中文字符转换成可以识别的url字符
         return self.rawValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
-    
+
     var urlBaseString: String? {
         if let _urlEndcodingChar = self.urlEndcodingChar {
             return "http://gank.io/api/data/\(_urlEndcodingChar)/"
@@ -32,11 +36,8 @@ extension GankType {
             return nil
         }
     }
-    
-    var urlBaseStringForToday: String {
-        return "http://gank.io/api/day/"
-    }
-    
+
+
     var pageCount: Int {
         get {
             return self.pageCount
