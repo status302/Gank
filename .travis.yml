@@ -3,7 +3,7 @@ osx_image: xcode8.2
 # xcode_workspace: Gank.xcworkspace
 # xcode_scheme: Gank
 before_install:
- - brew install carthage
+ - brew update carthage
  - carthage update --platform ios
  - pod repo update
  - pod update
