@@ -54,7 +54,7 @@ struct GankImageModel {
         }
         Alamofire.request(url, method: .get).responseJSON { (response) in
             guard response.result.error == nil else {
-                print("\(response.result.error)")
+                print("\(String(describing: response.result.error))")
                 DispatchQueue.safeMainQueue {
                     block(nil)
                 }

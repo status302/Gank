@@ -60,8 +60,8 @@ class CategoryViewController: UIViewController {
         })
 
         childView1?.snp.makeConstraints({
-            $0.left.equalTo(scrollView?.snp.left)
-
+          guard let scrollView = scrollView else { return }
+            $0.left.equalTo(scrollView.snp.left)
         })
     }
 

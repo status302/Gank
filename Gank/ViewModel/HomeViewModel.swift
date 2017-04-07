@@ -29,7 +29,7 @@ struct HomeViewModel  {
         
         Alamofire.request(url, method: .get).responseJSON { (response) in
             guard response.result.error == nil else {
-                print("some error occur: \(response.result.error)")
+                print("some error occur: \(String(describing: response.result.error))")
                 return
             }
             

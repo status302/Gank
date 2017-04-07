@@ -1,18 +1,23 @@
 PODS:
   - FontAwesomeKit.Swift (0.3.1)
   - pop (1.0.9)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - TransitionTreasury (4.0.0)
 
 DEPENDENCIES:
   - FontAwesomeKit.Swift (~> 0.3.1)
   - pop (~> 1.0.9)
+  - SDWebImage (~> 4.0.0-beta2)
   - TransitionTreasury (~> 4.0.0)
 
 SPEC CHECKSUMS:
   FontAwesomeKit.Swift: 77fd566e8c20d3267da18161a10c48a31b9323b9
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   TransitionTreasury: dcf3fe6e5c740525d9e7d4544af45e6fbfd71c88
 
-PODFILE CHECKSUM: 6af05c8e1ab4d669936d58ff4ae791cadca67a24
+PODFILE CHECKSUM: 92d4437c326435548573642d7e6e15c1625b5425
 
 COCOAPODS: 1.1.1
