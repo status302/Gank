@@ -10,6 +10,7 @@
 		2BCE1A4273F0AA8E788AB65F /* Pods_GankTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193D8E513F0985C5C7A60038 /* Pods_GankTests.framework */; };
 		348B59308B1FA7B8A6A9DF72 /* Pods_GankUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0AA50718AA42652EBBA451 /* Pods_GankUITests.framework */; };
 		5CD1B0E15CD05063DC7FD983 /* Pods_Gank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D3618B6E6694694FB125D6 /* Pods_Gank.framework */; };
+		865409B21E79B48100F5AFD4 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865409B11E79B48100F5AFD4 /* CategoryDetailViewController.swift */; };
 		86B4A9CA1E229484005474E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B4A9C91E229484005474E8 /* AppDelegate.swift */; };
 		86B4A9CF1E229484005474E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B4A9CD1E229484005474E8 /* Main.storyboard */; };
 		86B4A9D11E229484005474E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B4A9D01E229484005474E8 /* Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		40EE6A7BE405796E4DD87325 /* Pods-GankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankTests/Pods-GankTests.release.xcconfig"; sourceTree = "<group>"; };
 		5849408DE1AF3FDCBF699E20 /* Pods-GankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E0AA50718AA42652EBBA451 /* Pods_GankUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		865409B11E79B48100F5AFD4 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		86B4A9C61E229484005474E8 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B4A9C91E229484005474E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B4A9CE1E229484005474E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			children = (
 				F2B979F71E30FDC000A43AC4 /* HomeViewController.swift */,
 				86FAA0C61E65D8FA00D1CFD3 /* CategoryViewController.swift */,
+				865409B11E79B48100F5AFD4 /* CategoryDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				86E57EE31E63284C00B59C0E /* GankDayModel.swift in Sources */,
 				F2B979FA1E30FDC000A43AC4 /* HomeViewController.swift in Sources */,
 				F21F22281E435A740048520F /* GankResult.swift in Sources */,
+				865409B21E79B48100F5AFD4 /* CategoryDetailViewController.swift in Sources */,
 				F28CEA681E30FFE500D9954D /* GankImageModel.swift in Sources */,
 				86FAA0D01E686D5800D1CFD3 /* UITableVIew+Gank.swift in Sources */,
 				86E57ED11E62A0ED00B59C0E /* TabbarController.swift in Sources */,

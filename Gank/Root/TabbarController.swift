@@ -23,7 +23,6 @@ class TabbarController: UITabBarController {
         addChildViewController(homeNavigation)
 
         let categoryVC = CategoryViewController()
-        categoryVC.view.backgroundColor = UIColor.red
         let categoryNavigaiton = UINavigationController.init(rootViewController: categoryVC)
         categoryNavigaiton.navigationBar.isTranslucent = false
         let categoryItemImage = UIImage.init(awesomeType: .fa_align_justify, size: 10, color: UIColor.black)
