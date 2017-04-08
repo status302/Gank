@@ -43,17 +43,21 @@ class CategoryViewController: UIViewController {
     self.scrollView = scrollView
     view.addSubview(scrollView)
     
-    let childVC = CategoryDetailViewController.init(type: .all)
-    self.addChildViewController(childVC)
-    childVC.view.backgroundColor = UIColor.blue
-    scrollView.addSubview(childVC.view)
-    childView1 = childVC.view
-    
-    let childVC2 = CategoryDetailViewController.init(type: .iOS)
-    self.addChildViewController(childVC2)
-    childVC2.view.backgroundColor = UIColor.orange
-    scrollView.addSubview(childVC2.view)
-    childView2 = childVC2.view
+    let types: [GankType] = [GankType.all,
+                             GankType.iOS,
+                             GankType.frontEnd,
+                             GankType.android,
+                             GankType.resource,
+                             GankType.welfare,
+                             GankType.video,
+                             GankType.other
+                             ]
+    for i in 0 ..< types.count {
+      let childVC = CategoryDetailViewController.init(type: types[i])
+      self.addChildViewController(childVC)
+      childVC.view.backgroundColor = UIColor.gk_random
+      scrollView.addSubview(childVC.view)
+    }
     
     makeContraints()
   }
@@ -63,7 +67,8 @@ class CategoryViewController: UIViewController {
   }
   
   func valueChange(view: CategoryTopScrollView) {
-    print(view.value)
+    let positionX = CGFloat(view.value) * self.view.frame.width
+    scrollView?.setContentOffset(CGPoint.init(x: positionX, y: 0), animated: true)
   }
   
   func makeContraints() {
@@ -72,23 +77,40 @@ class CategoryViewController: UIViewController {
       $0.edges.equalTo(strongSelf.view)
     })
     
-    childView1?.snp.makeConstraints({ [weak self] in
-      guard let scrollView = self?.scrollView, let strongSelf = self else { return }
-      $0.left.equalTo(scrollView.snp.left)
-      $0.top.equalTo(scrollView.snp.top)
-      $0.height.equalTo(strongSelf.view.snp.height)
-      $0.width.equalTo(strongSelf.view.snp.width)
-    })
-    
-    childView2?.snp.makeConstraints({ [weak self] in
-      guard let scrollView = self?.scrollView,
-        let childView1 = self?.childView1 else { return }
-        $0.top.equalTo(childView1.snp.top)
-        $0.bottom.equalTo(childView1.snp.bottom)
-        $0.left.equalTo(childView1.snp.right)
-        $0.width.equalTo(childView1.snp.width)
-        $0.right.equalTo(scrollView.snp.right)
-    })
+    for (index ,childVC) in childViewControllers.enumerated() {
+      let childView = childVC.view
+      let firstView = childViewControllers.first?.view
+      if index == 0 {
+        childView?.snp.makeConstraints({ [weak self](make) in
+          guard let scrollView = self?.scrollView,
+            let strongSelf = self else { return }
+          make.left.equalTo(scrollView.snp.left)
+          make.top.equalTo(scrollView.snp.top)
+          make.height.equalTo(strongSelf.view.snp.height)
+          make.width.equalTo(strongSelf.view.snp.width)
+        })
+      }
+      else if index == childViewControllers.count - 1 {
+        let previousView = childViewControllers[index - 1].view
+        childView?.snp.makeConstraints({ [weak self] (make) in
+          guard let scrollView = self?.scrollView else { return }
+          make.top.equalTo(firstView!.snp.top)
+          make.left.equalTo(previousView!.snp.right)
+          make.bottom.equalTo(firstView!.snp.bottom)
+          make.width.equalTo(firstView!.snp.width)
+          make.right.equalTo(scrollView.snp.right)
+        })
+      }
+      else {
+        let previousView = childViewControllers[index - 1].view
+        childView?.snp.makeConstraints({ (make) in
+          make.left.equalTo(previousView!.snp.right)
+          make.top.equalTo(firstView!.snp.top)
+          make.bottom.equalTo(firstView!.snp.bottom)
+          make.width.equalTo(firstView!.snp.width)
+        })
+      }
+    }
   }
   
   override func didReceiveMemoryWarning() {

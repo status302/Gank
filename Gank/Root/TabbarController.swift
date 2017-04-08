@@ -50,9 +50,6 @@ class TabbarController: UITabBarController {
         if selectedIndex != 0 {
             UIApplication.shared.isStatusBarHidden = false
         }
-        else {
-            UIApplication.shared.isStatusBarHidden = true
-        }
     }
 
     override func didReceiveMemoryWarning() {
