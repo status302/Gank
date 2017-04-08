@@ -39,7 +39,6 @@ class HomeViewController: UIViewController {
             self.reloadTableViewSectionOne()
         }
     }
-    
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -336,13 +335,11 @@ extension HomeViewController: UITableViewDelegate {
                 print("++福利来了++")
             }
             else {
-                let selectedIndex = indexPath.row - lastSelectedMasterIndexPath.row - 1
-                if let urlStr = subModels[selectedIndex].url,
-                    let url = URL.init(string: urlStr) {
-                    let safariViewController = SFSafariViewController.init(url: url)
-                    self.present(safariViewController, animated: true, completion: {
-                    })
-                }
+              let selectedIndex = indexPath.row - lastSelectedMasterIndexPath.row - 1
+              if let urlStr = subModels[selectedIndex].url {
+                let webController = SafariViewController.init(urlString: urlStr)
+                self.tabBarController?.show(webController, sender: self)
+              }
             }
             isSelectedSubCell = true
             tableView.deselectRow(at: indexPath, animated: true)
