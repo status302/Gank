@@ -9,23 +9,22 @@
 import UIKit
 
 class CategoryDetailViewController: UIViewController {
-
-    init(type: GankType) {
-        super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = UIColor.gk_random
-    }
+  
+  init(type: GankType) {
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
 }
